@@ -78,7 +78,7 @@
         <div id="profileMenu" class="hidden absolute right-0 mt-2 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
           <div class="px-4 py-2 border-b border-slate-100 flex items-center justify-between">
             <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Seleccionar Canal / Perfil</p>
-            <span class="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded">Datos 100% Reales</span>
+            <span class="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded">100% Real</span>
           </div>
           <button onclick="switchProfile('sebastian')" class="w-full px-4 py-3 flex items-center gap-3 hover:bg-amber-50/60 transition-colors text-left border-b border-slate-50">
             <div class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center shrink-0">SM</div>
@@ -87,7 +87,7 @@
                 Sebastián Monoga 
                 <span class="text-[10px] bg-amber-100 text-amber-800 px-1 rounded font-semibold">USA</span>
               </p>
-              <p class="text-[11px] text-slate-500">Contratistas Hispanos en EE. UU.</p>
+              <p class="text-[11px] text-slate-500">Contratistas & Home Services EE. UU.</p>
             </div>
           </button>
           <button onclick="switchProfile('daniel')" class="w-full px-4 py-3 flex items-center gap-3 hover:bg-blue-50/60 transition-colors text-left">
@@ -104,9 +104,9 @@
       </div>
 
       <!-- Quick Action Button -->
-      <button onclick="openFirstVideoScript()" class="bg-red-500 hover:bg-red-600 text-white font-semibold text-xs px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all transform active:scale-98">
+      <button onclick="openTeleprompterForCurrentEp()" class="bg-red-500 hover:bg-red-600 text-white font-semibold text-xs px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all transform active:scale-98">
         <i class="fa-solid fa-video text-xs"></i>
-        <span>Ver Guion para Grabar Hoy</span>
+        <span>Modo Teleprompter / Grabar Hoy</span>
       </button>
     </div>
   </header>
@@ -118,41 +118,43 @@
     <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
       <!-- Main Nav Links -->
       <nav class="space-y-1">
-        <a href="#dashboard" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-blue-50 text-blue-600">
+        <button onclick="switchView('dashboard')" id="nav-dashboard" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-blue-50 text-blue-600 text-left transition-colors">
           <i class="fa-solid fa-chart-pie w-5 text-center text-blue-600"></i>
           <span>Dashboard</span>
-        </a>
-        <a href="#pipeline" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-diagram-project w-5 text-center text-slate-400"></i>
-          <span>Pipeline de Contenido</span>
-        </a>
-        <a href="#guiones" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+        </button>
+        <button onclick="switchView('guiones')" id="nav-guiones" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors">
           <i class="fa-solid fa-file-lines w-5 text-center text-slate-400"></i>
-          <span>Guiones Palabra x Palabra</span>
-        </a>
-        <a href="#leadmagnets" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-toolbox w-5 text-center text-slate-400"></i>
-          <span>Calculadoras & Tools</span>
-        </a>
-        <a href="#calendario" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-regular fa-calendar w-5 text-center text-slate-400"></i>
-          <span>Calendario de Emisión</span>
-        </a>
+          <span>Guiones Completos</span>
+        </button>
+        <button onclick="switchView('shorts')" id="nav-shorts" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors">
+          <i class="fa-solid fa-mobile-screen-button w-5 text-center text-slate-400"></i>
+          <span>Shorts Derivados</span>
+        </button>
+        <button onclick="switchView('community')" id="nav-community" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors">
+          <i class="fa-solid fa-comments w-5 text-center text-slate-400"></i>
+          <span>Comunidad & LinkedIn</span>
+        </button>
+        <button onclick="switchView('tools')" id="nav-tools" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors">
+          <i class="fa-solid fa-calculator w-5 text-center text-slate-400"></i>
+          <span>Calculadoras B2B Live</span>
+        </button>
+        <button onclick="switchView('calendar')" id="nav-calendar" class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors">
+          <i class="fa-regular fa-calendar-days w-5 text-center text-slate-400"></i>
+          <span>Calendario 8 Semanas</span>
+        </button>
       </nav>
 
-      <!-- Bottom Growth Card (Checklist Real de Operación) -->
+      <!-- Bottom Growth Card -->
       <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mt-6">
         <div class="flex items-center justify-between mb-1.5">
           <h4 class="text-xs font-bold text-slate-900">Protocolo de Producción 🎬</h4>
         </div>
         <p class="text-[11px] text-slate-500 mb-2.5" id="growthProgressText">3 de 5 pasos verificados</p>
         
-        <!-- Progress Bar -->
         <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-3.5">
           <div id="growthProgressBar" class="h-full bg-emerald-500 rounded-full transition-all duration-300" style="width: 60%;"></div>
         </div>
 
-        <!-- Task Checklist Real -->
         <div class="space-y-2 text-xs">
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
@@ -187,281 +189,387 @@
     <!-- ================= DASHBOARD MAIN CONTENT AREA ================= -->
     <main class="flex-1 overflow-y-auto p-6 space-y-6">
 
-      <!-- ================= 1. TOP METRICS BAR (REAL OPERATING METRICS) ================= -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <!-- Card 1: Misiones en Pipeline -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-layer-group"></i>
+      <!-- ================= VIEW 1: DASHBOARD (MAIN BENTO GRID) ================= -->
+      <div id="viewDashboard" class="space-y-6">
+        <!-- Top Metrics Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Semanas 1–8</span>
             </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
-              Semanas 1–8
-            </span>
+            <p class="text-xs font-medium text-slate-400">Plan Editorial Maestro</p>
+            <h3 id="metric1Value" class="text-2xl font-bold text-slate-900 mt-0.5">8 Videos</h3>
+            <p id="metric1Sub" class="text-[11px] text-slate-400 mt-1">16 Shorts + 8 Posts vinculados</p>
           </div>
-          <p class="text-xs font-medium text-slate-400">Plan Editorial Maestro</p>
-          <h3 id="metric1Value" class="text-2xl font-bold text-slate-900 mt-0.5">8 Videos</h3>
-          <p id="metric1Sub" class="text-[11px] text-slate-400 mt-1">16 Shorts + 8 Posts programados</p>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-file-circle-check"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">100% Listos</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Guiones Completos</p>
+            <h3 id="metric2Value" class="text-2xl font-bold text-slate-900 mt-0.5">4 Guiones</h3>
+            <p id="metric2Sub" class="text-[11px] text-slate-400 mt-1">Palabra x palabra con hooks</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">B2B Tools</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Herramientas en Código</p>
+            <h3 id="metric3Value" class="text-2xl font-bold text-slate-900 mt-0.5">3 Tools</h3>
+            <p id="metric3Sub" class="text-[11px] text-slate-400 mt-1">True Cost & Job Pricing Engine</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Límite Estricto</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Presupuesto por Video</p>
+            <h3 id="metric4Value" class="text-2xl font-bold text-slate-900 mt-0.5">180 min</h3>
+            <p id="metric4Sub" class="text-[11px] text-slate-400 mt-1">Cero deuda de tiempo</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-circle-play"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full animate-pulse">● HOY</span>
+            </div>
+            <p class="text-xs font-medium text-slate-400">Siguiente Acción</p>
+            <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">Grabar Ep 1</h3>
+            <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1" id="nextEpLabel">True Cost de Empleado</p>
+          </div>
         </div>
 
-        <!-- Card 2: Guiones Listos -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-file-circle-check"></i>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              100% Listos
-            </span>
-          </div>
-          <p class="text-xs font-medium text-slate-400">Guiones Completos</p>
-          <h3 id="metric2Value" class="text-2xl font-bold text-slate-900 mt-0.5">4 Guiones</h3>
-          <p id="metric2Sub" class="text-[11px] text-slate-400 mt-1">Palabra x palabra con hooks</p>
-        </div>
+        <!-- 3-Column Bento Grid -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
 
-        <!-- Card 3: Herramientas / Lead Magnets -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-calculator"></i>
+          <!-- Left Column: Blurred Future Upload -->
+          <div class="xl:col-span-3 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-6 text-center z-20 border border-slate-700/20">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-3 shadow-lg">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-400/30 mb-2">Módulo para el futuro</span>
+              <h4 class="text-sm font-bold text-white mb-1">Subida Directa a YouTube</h4>
+              <p class="text-xs text-slate-200 max-w-xs leading-relaxed">
+                Se activará cuando conectes la API de YouTube v3 de tu canal. Actualmente se graba en local y los guiones se auditan en DRAFT seguro.
+              </p>
+              <button onclick="switchView('guiones')" class="mt-4 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-book-open"></i> Ver Guiones Listos
+              </button>
             </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
-              B2B Tools
-            </span>
+            <!-- Background skeleton -->
+            <div class="space-y-4 filter blur-xs select-none pointer-events-none opacity-40">
+              <div class="h-6 bg-slate-200 rounded-md w-3/4"></div>
+              <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center">
+                <div class="w-12 h-12 mx-auto bg-slate-100 rounded-full mb-3"></div>
+              </div>
+              <div class="h-10 bg-slate-100 rounded-xl"></div>
+            </div>
           </div>
-          <p class="text-xs font-medium text-slate-400">Herramientas en Código</p>
-          <h3 id="metric3Value" class="text-2xl font-bold text-slate-900 mt-0.5">3 Tools</h3>
-          <p id="metric3Sub" class="text-[11px] text-slate-400 mt-1">True Cost & Job Pricing Engine</p>
-        </div>
 
-        <!-- Card 4: Presupuesto Máximo de Producción -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
-              <i class="fa-regular fa-clock"></i>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">
-              Límite Estricto
-            </span>
-          </div>
-          <p class="text-xs font-medium text-slate-400">Presupuesto por Video</p>
-          <h3 id="metric4Value" class="text-2xl font-bold text-slate-900 mt-0.5">180 min</h3>
-          <p id="metric4Sub" class="text-[11px] text-slate-400 mt-1">Cero deuda de tiempo</p>
-        </div>
+          <!-- Middle Column: Pipeline & Calendar (6 cols) -->
+          <div class="xl:col-span-6 space-y-6">
+            <!-- Pipeline Kanban -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
+                    <i class="fa-solid fa-diagram-project"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-slate-900">Pipeline de Producción B2B</h3>
+                    <p class="text-[11px] text-slate-400">Haz clic en cualquier tarjeta para abrir su guion completo y hook</p>
+                  </div>
+                </div>
+                <button onclick="openAddIdeaModal()" class="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5">
+                  <i class="fa-solid fa-plus text-[10px]"></i> Añadir idea
+                </button>
+              </div>
 
-        <!-- Card 5: Estado de Grabación -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-circle-play"></i>
+              <!-- Kanban Board Container -->
+              <div id="kanbanBoard" class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin"></div>
             </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full animate-pulse">
-              ● HOY
-            </span>
+
+            <!-- Calendar and Recents -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <!-- Calendar -->
+              <div class="lg:col-span-7 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-calendar text-slate-400 text-sm"></i>
+                    <h4 class="text-xs font-bold text-slate-900">Calendario Editorial</h4>
+                  </div>
+                  <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">1 Video / sem</span>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-slate-800">Septiembre 2026</span>
+                  <div class="flex p-0.5 bg-slate-100 rounded-lg text-[10px] font-semibold text-slate-600">
+                    <span class="px-2 py-0.5 bg-slate-800 text-white rounded-md shadow-2xs">Mes</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-slate-400 border-b border-slate-100 pb-1 mb-1">
+                  <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
+                <div id="calendarDays" class="grid grid-cols-7 gap-1 text-[10px]"></div>
+              </div>
+
+              <!-- Recents -->
+              <div class="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-xs font-bold text-slate-900">Episodios Prioritarios</h4>
+                    <span class="text-[11px] font-semibold text-blue-600">4 Guiones</span>
+                  </div>
+                  <div class="divide-y divide-slate-100" id="recentVideosList"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="text-xs font-medium text-slate-400">Siguiente Acción</p>
-          <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">Grabar Ep 1</h3>
-          <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1" id="nextEpLabel">True Cost de Empleado</p>
+
+          <!-- Right Column: Analytics (Blurred), Checklist & Tasks (3 cols) -->
+          <div class="xl:col-span-3 space-y-6">
+            <!-- Analytics (Blurred) -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden">
+              <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-4 text-center z-20 border border-slate-700/20">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-lg mb-2">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-blue-400/30 mb-1.5">Módulo para el futuro</span>
+                <h4 class="text-xs font-bold text-white mb-1">YouTube Studio Analytics</h4>
+                <p class="text-[11px] text-slate-200 max-w-[210px] leading-tight">
+                  Sincronización en vivo de retención, impresiones y CTR cuando conectes la API del canal.
+                </p>
+              </div>
+              <div class="filter blur-xs opacity-30 select-none pointer-events-none">
+                <div class="h-28 bg-slate-100 rounded-xl"></div>
+              </div>
+            </div>
+
+            <!-- Audit Checklist -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-slate-900">Checklist de Grabación</h4>
+                <span id="optimizationCounter" class="text-[11px] font-semibold text-slate-400">0/6 verificados</span>
+              </div>
+              <div class="space-y-2 text-xs" id="optChecklist">
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Afirmaciones marcadas FACT o INFERENCE</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Demo ejecutada con datos sintéticos</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Cero credenciales o rutas privadas</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Herramienta descargable funcional</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Un solo llamado a la acción (CTA)</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                  <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                  <span class="text-slate-600">Tiempo total dentro de 180 min</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Tasks -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-bold text-slate-900">Tareas Operativas de Hoy</h4>
+                <button onclick="openAddTaskModal()" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                  <i class="fa-solid fa-plus text-[10px]"></i> Añadir
+                </button>
+              </div>
+              <div class="space-y-2.5 text-xs" id="tasksList"></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- ================= 2. BENTO MAIN 3-COLUMN WORKSPACE ================= -->
-      <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
-
-        <!-- ================= COL 1: SUBIR NUEVO VIDEO (CON OVERLAY: MÓDULO PARA EL FUTURO) ================= -->
-        <div class="xl:col-span-3 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden flex flex-col justify-between">
-          
-          <!-- OVERLAY MODULO PARA EL FUTURO -->
-          <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-6 text-center z-20 border border-slate-700/20">
-            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-3 shadow-lg">
-              <i class="fa-solid fa-lock"></i>
-            </div>
-            <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-400/30 mb-2">Módulo para el futuro</span>
-            <h4 class="text-sm font-bold text-white mb-1">Subida Directa a YouTube</h4>
-            <p class="text-xs text-slate-200 max-w-xs leading-relaxed">
-              Se activará cuando conectes la API de YouTube v3 de tu canal. Por seguridad y privacidad, actualmente se graba en local y los guiones se auditan en DRAFT.
-            </p>
-            <div class="mt-4 px-3 py-1.5 bg-slate-800/80 rounded-lg border border-slate-700 text-[11px] text-slate-300">
-              <i class="fa-solid fa-check text-emerald-400 mr-1"></i> Guiones listos en el Pipeline 👉
-            </div>
-          </div>
-
-          <!-- Blurred Background Elements -->
-          <div class="space-y-4 filter blur-xs select-none pointer-events-none opacity-40">
+      <!-- ================= VIEW 2: GUIONES COMPLETOS (STUDIO VIEW) ================= -->
+      <div id="viewGuiones" class="hidden space-y-6">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
             <div>
-              <h3 class="text-base font-bold text-slate-900">Subir nuevo video</h3>
-              <p class="text-xs text-slate-400">Sube, configura y optimiza tu video de YouTube</p>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Estudio de Grabación</span>
+              <h2 class="text-xl font-bold text-slate-900 mt-1">Guiones Completos Palabra por Palabra</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Todos los episodios listos para teleprompter, grabación de pantalla y cámara frontal.</p>
             </div>
-            <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center">
-              <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-xl mb-3">
-                <i class="fa-solid fa-cloud-arrow-up text-slate-400"></i>
-              </div>
-              <p class="text-xs font-semibold text-slate-700">Arrastra y suelta tu video aquí</p>
-            </div>
-            <div class="space-y-2">
-              <div class="h-8 bg-slate-100 rounded-xl"></div>
-              <div class="h-16 bg-slate-100 rounded-xl"></div>
+            <div class="flex items-center gap-2" id="scriptSelectorTabs">
+              <!-- Script selector tabs rendered via JS -->
             </div>
           </div>
 
+          <!-- Active Script Display -->
+          <div id="activeScriptContainer" class="space-y-6"></div>
         </div>
+      </div>
 
-        <!-- ================= COL 2: PIPELINE & CALENDARIO & RECIENTES (6 Cols) ================= -->
-        <div class="xl:col-span-6 space-y-6">
+      <!-- ================= VIEW 3: SHORTS DERIVADOS ================= -->
+      <div id="viewShorts" class="hidden space-y-6">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
+          <div class="border-b border-slate-100 pb-4 mb-6">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md border border-rose-200">Formato Vertical (9:16)</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1">Shorts, Reels & TikToks Derivados</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Guiones de 35 a 45 segundos para grabar en 15 minutos con ganchos de alto impacto.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="shortsListContainer"></div>
+        </div>
+      </div>
 
-          <!-- 2.1 PIPELINE DE CONTENIDO REAL (KANBAN BOARD) -->
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2.5">
-                <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
-                  <i class="fa-solid fa-diagram-project"></i>
+      <!-- ================= VIEW 4: COMUNIDAD & LINKEDIN ================= -->
+      <div id="viewCommunity" class="hidden space-y-6">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
+          <div class="border-b border-slate-100 pb-4 mb-6">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">Publicaciones Escritas</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1">Pestaña de Comunidad & LinkedIn</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Posts redactados para mantener engagement y capturar leads entre episodios largos.</p>
+          </div>
+          <div class="space-y-6" id="communityListContainer"></div>
+        </div>
+      </div>
+
+      <!-- ================= VIEW 5: CALCULADORAS B2B LIVE (INTERACTIVE TOOL RUNNER) ================= -->
+      <div id="viewTools" class="hidden space-y-6">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
+          <div class="border-b border-slate-100 pb-4 mb-6">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">Motor Matemático en Vivo</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1">True Labor Cost & Job Pricing Calculator (USA)</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Herramienta ejecutable en vivo para mostrar en pantalla durante la grabación o compartir con clientes.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Inputs Panel -->
+            <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+              <h3 class="text-sm font-bold text-slate-900 border-b border-slate-200 pb-2 flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-purple-600"></i> Parámetros del Empleado
+              </h3>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Salario Nominal Base ($ / hora)</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2.5 text-slate-400 font-bold text-xs">$</span>
+                  <input id="calcWage" type="number" value="20" min="10" max="100" class="w-full pl-7 pr-3 py-2 text-sm font-bold bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500/20" oninput="runLiveCalculation()">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Estado (USA)</label>
+                  <select id="calcState" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500/20" onchange="runLiveCalculation()">
+                    <option value="FL">Florida (FL)</option>
+                    <option value="TX">Texas (TX)</option>
+                    <option value="CA">California (CA)</option>
+                    <option value="NY">New York (NY)</option>
+                    <option value="NC">North Carolina (NC)</option>
+                    <option value="GA">Georgia (GA)</option>
+                  </select>
                 </div>
                 <div>
-                  <h3 class="text-sm font-bold text-slate-900">Pipeline de Producción B2B</h3>
-                  <p class="text-[11px] text-slate-400">Haz clic en cualquier tarjeta para ver su guion completo y hook para grabar</p>
-                </div>
-              </div>
-              <button onclick="openAddIdeaModal()" class="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5">
-                <i class="fa-solid fa-plus text-[10px]"></i> Añadir idea
-              </button>
-            </div>
-
-            <!-- Kanban Horizontal Scrolling Board -->
-            <div id="kanbanBoard" class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-              <!-- Columns are rendered dynamically with REAL SCRIPTS -->
-            </div>
-          </div>
-
-          <!-- 2.2 SPLIT ROW: CALENDARIO DE CONTENIDO + MIS VIDEOS RECIENTES -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-            <!-- Calendario de contenido (7 Cols) -->
-            <div class="lg:col-span-7 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                  <i class="fa-regular fa-calendar text-slate-400 text-sm"></i>
-                  <h4 class="text-xs font-bold text-slate-900">Calendario Editorial de Grabación</h4>
-                </div>
-                <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Cadencia 1/sem</span>
-              </div>
-
-              <!-- Calendar Month & View Toggles -->
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-1.5">
-                  <span class="text-xs font-bold text-slate-800" id="calendarMonthTitle">Septiembre 2026</span>
-                </div>
-                <div class="flex p-0.5 bg-slate-100 rounded-lg text-[10px] font-semibold text-slate-600">
-                  <span class="px-2 py-0.5 bg-slate-800 text-white rounded-md shadow-2xs">Mes</span>
-                  <span class="px-2 py-0.5 text-slate-400">Semana</span>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Workers' Comp %</label>
+                  <select id="calcWc" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500/20" onchange="runLiveCalculation()">
+                    <option value="0.08">8% (Pintura Ligera / Limpieza)</option>
+                    <option value="0.10" selected>10% (Pintura Residencial)</option>
+                    <option value="0.15">15% (Carpintería / Drywall)</option>
+                    <option value="0.25">25% (Roofing / Techos)</option>
+                  </select>
                 </div>
               </div>
 
-              <!-- Calendar Grid -->
-              <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-slate-400 border-b border-slate-100 pb-1 mb-1">
-                <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
-              </div>
-              <div id="calendarDays" class="grid grid-cols-7 gap-1 text-[10px]">
-                <!-- Calendar cells rendered via app.js -->
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Horas Downtime / sem</label>
+                  <input id="calcDowntime" type="number" value="5" min="0" max="20" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl" oninput="runLiveCalculation()">
+                  <p class="text-[10px] text-slate-400 mt-0.5">Tráfico, Home Depot, limpieza</p>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Overhead / semana ($)</label>
+                  <input id="calcOverhead" type="number" value="80" min="0" max="500" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl" oninput="runLiveCalculation()">
+                  <p class="text-[10px] text-slate-400 mt-0.5">Gasolina, herramientas, troca</p>
+                </div>
               </div>
             </div>
 
-            <!-- Videos Listos para Grabar (5 Cols) -->
-            <div class="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs flex flex-col justify-between">
+            <!-- Live Output Results -->
+            <div class="lg:col-span-7 bg-white border-2 border-purple-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-3">
-                  <h4 class="text-xs font-bold text-slate-900">Episodios Prioritarios</h4>
-                  <span class="text-[11px] font-semibold text-blue-600">4 Guiones</span>
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                  <span class="text-xs font-bold text-purple-900 uppercase tracking-wider">Desglose Matemático Real (Labor Burden)</span>
+                  <span id="calcStateBadge" class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md">Florida</span>
                 </div>
 
-                <div class="divide-y divide-slate-100" id="recentVideosList">
-                  <!-- Video rows rendered via app.js -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <p class="text-xs text-slate-500 font-medium">Costo por Hora Pagada</p>
+                    <p class="text-2xl font-black text-slate-800 mt-1" id="resPaidHour">$24.28 <span class="text-xs font-bold text-slate-400">/hr</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">+<span id="resBurdenPct">21</span>% sobre salario base</p>
+                  </div>
+
+                  <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+                    <p class="text-xs text-rose-700 font-bold flex items-center gap-1">
+                      <i class="fa-solid fa-triangle-exclamation"></i> Costo Real x Hora Facturable
+                    </p>
+                    <p class="text-2xl font-black text-rose-600 mt-1" id="resBillableHour">$28.73 <span class="text-xs font-bold text-rose-400">/hr</span></p>
+                    <p class="text-[11px] text-rose-500 font-semibold mt-1">+<span id="resTrueBurdenPct">44</span>% carga real de campo</p>
+                  </div>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-xs text-emerald-800 font-bold uppercase tracking-wider">Precio de Venta Mínimo Sugerido (40% Margen Neto)</p>
+                      <p class="text-[11px] text-emerald-700 mt-0.5">Fórmula: Costo Real / (1 - 0.40) para no subsidiar al cliente de tu bolsillo.</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-3xl font-black text-emerald-700" id="resSellingPrice">$47.88</p>
+                      <p class="text-[10px] text-emerald-600 font-bold">Cobro por hora / hombre</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-          </div>
-
-        </div>
-
-        <!-- ================= COL 3: ANALÍTICAS (CON OVERLAY), CHECKLIST & TAREAS (3 Cols) ================= -->
-        <div class="xl:col-span-3 space-y-6">
-
-          <!-- 3.1 RENDIMIENTO EN VIVO (CON OVERLAY: MÓDULO PARA EL FUTURO) -->
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden">
-            
-            <!-- OVERLAY MODULO PARA EL FUTURO -->
-            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-4 text-center z-20 border border-slate-700/20">
-              <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-lg mb-2">
-                <i class="fa-solid fa-chart-line"></i>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Eficiencia de utilización: <strong id="resEfficiency">88%</strong></span>
+                <span>Costo anual total empresa: <strong id="resTotalYear">$50,500 USD</strong></span>
               </div>
-              <span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-blue-400/30 mb-1.5">Módulo para el futuro</span>
-              <h4 class="text-xs font-bold text-white mb-1">YouTube Studio Analytics</h4>
-              <p class="text-[11px] text-slate-200 max-w-[210px] leading-tight">
-                Sincronización en vivo de retención, impresiones y CTR cuando conectes la API del canal.
-              </p>
-            </div>
-
-            <!-- Blurred Background Chart -->
-            <div class="filter blur-xs opacity-30 select-none pointer-events-none">
-              <div class="flex items-center justify-between mb-1">
-                <h4 class="text-xs font-bold text-slate-900">Rendimiento (últimos 28 días)</h4>
-              </div>
-              <div class="h-32 bg-slate-100 rounded-xl mt-2"></div>
-            </div>
-
-          </div>
-
-          <!-- 3.2 CHECKLIST DE AUDITORÍA ANTES DE GRABAR -->
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
-            <div class="flex items-center justify-between mb-3">
-              <h4 class="text-xs font-bold text-slate-900">Checklist de Grabación</h4>
-              <span id="optimizationCounter" class="text-[11px] font-semibold text-slate-400">0/6 verificados</span>
-            </div>
-            
-            <div class="space-y-2 text-xs" id="optChecklist">
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Afirmaciones marcadas FACT o INFERENCE</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Demo ejecutada con datos sintéticos</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Cero credenciales o rutas privadas en pantalla</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Herramienta descargable funcional</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Un solo llamado a la acción (CTA) claro</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Tiempo total de producción dentro de 180 min</span>
-              </label>
             </div>
           </div>
-
-          <!-- 3.3 TAREAS OPERATIVAS REALES -->
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
-            <div class="flex items-center justify-between mb-3">
-              <h4 class="text-xs font-bold text-slate-900">Tareas Operativas de Hoy</h4>
-              <button onclick="openAddTaskModal()" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                <i class="fa-solid fa-plus text-[10px]"></i> Añadir
-              </button>
-            </div>
-
-            <div class="space-y-2.5 text-xs" id="tasksList">
-              <!-- Task items rendered via app.js -->
-            </div>
-          </div>
-
         </div>
+      </div>
 
+      <!-- ================= VIEW 6: CALENDARIO 8 SEMANAS ================= -->
+      <div id="viewCalendar" class="hidden space-y-6">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-2xs">
+          <div class="border-b border-slate-100 pb-4 mb-6">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Estrategia Editorial Maestra</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1">Hoja de Ruta Editorial de 8 Semanas</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Sincronización semanal: 1 Video Largo + 2 Shorts + 1 Post de Comunidad + 1 Lead Magnet.</p>
+          </div>
+          <div class="space-y-4" id="eightWeekRoadmapContainer"></div>
+        </div>
       </div>
 
     </main>
@@ -472,7 +580,6 @@
   <div id="videoDetailModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
       
-      <!-- Modal Header -->
       <div class="px-6 py-4 border-b border-slate-100 flex items-start justify-between bg-slate-50/50">
         <div>
           <div class="flex items-center gap-2 mb-1">
@@ -486,65 +593,60 @@
         </button>
       </div>
 
-      <!-- Modal Body (Scrollable) -->
       <div class="px-6 py-5 overflow-y-auto space-y-5 text-xs leading-relaxed">
-        
-        <!-- Gancho / Hook Frontal -->
+        <!-- Hook -->
         <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4">
           <div class="flex items-center justify-between mb-1.5">
             <span class="text-[11px] font-bold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
-              <i class="fa-solid fa-bolt text-amber-500"></i> Hook / Gancho para Cámara (0:00–0:30)
+              <i class="fa-solid fa-bolt text-amber-500"></i> Hook / Gancho para Cámara (0:00–0:35)
             </span>
             <button onclick="copyToClipboard('modalHookText')" class="text-[10px] font-bold text-amber-800 hover:underline">
               <i class="fa-regular fa-copy mr-1"></i> Copiar
             </button>
           </div>
-          <p id="modalHookText" class="text-amber-950 font-medium italic text-xs leading-relaxed bg-white/70 p-3 rounded-xl border border-amber-200/50">
-            Hook...
-          </p>
+          <p id="modalHookText" class="text-amber-950 font-medium italic text-xs leading-relaxed bg-white/70 p-3 rounded-xl border border-amber-200/50"></p>
         </div>
 
-        <!-- Estructura del Video -->
+        <!-- Structure -->
         <div>
           <h4 class="font-bold text-slate-800 text-xs mb-2 flex items-center gap-1.5">
             <i class="fa-solid fa-list-check text-blue-600"></i> Estructura y Tomas Paso a Paso
           </h4>
-          <div id="modalStructureList" class="space-y-2 pl-1">
-            <!-- Rendered list -->
-          </div>
+          <div id="modalStructureList" class="space-y-2 pl-1"></div>
         </div>
 
-        <!-- Lead Magnet & Monetización -->
+        <!-- Lead Magnet & Monetization -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-3">
             <span class="text-[10px] font-bold text-blue-800 uppercase tracking-wider block mb-1">🎁 Herramienta / Lead Magnet</span>
-            <p id="modalLeadMagnet" class="font-semibold text-slate-800 text-xs">Calculadora...</p>
+            <p id="modalLeadMagnet" class="font-semibold text-slate-800 text-xs"></p>
           </div>
           <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-3">
             <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block mb-1">💰 Monetización Asociada</span>
-            <p id="modalMonetization" class="font-semibold text-slate-800 text-xs">Afiliado...</p>
+            <p id="modalMonetization" class="font-semibold text-slate-800 text-xs"></p>
           </div>
         </div>
 
-        <!-- Llamado a la Acción (CTA) -->
+        <!-- CTA -->
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
           <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">📢 Llamado a la Acción (CTA) Final</span>
-          <p id="modalCtaText" class="font-semibold text-slate-800 text-xs">"Escribime..."</p>
+          <p id="modalCtaText" class="font-semibold text-slate-800 text-xs"></p>
         </div>
-
       </div>
 
-      <!-- Modal Footer -->
       <div class="px-6 py-3 border-t border-slate-100 flex items-center justify-between bg-slate-50">
         <button onclick="closeModal('videoDetailModal')" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">
           Cerrar
         </button>
         <div class="flex items-center gap-2">
+          <button onclick="openTeleprompterModal()" class="px-3.5 py-2 text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-xl border border-purple-200 transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-expand"></i> Teleprompter
+          </button>
           <button onclick="copyFullScript()" class="px-3.5 py-2 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-xl border border-blue-200 transition-colors flex items-center gap-1.5">
-            <i class="fa-regular fa-copy"></i> Copiar Guion Completo
+            <i class="fa-regular fa-copy"></i> Copiar Guion
           </button>
           <button onclick="markAsRecorded()" class="px-4 py-2 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-check"></i> Marcar como Grabado
+            <i class="fa-solid fa-check"></i> Marcar Grabado
           </button>
         </div>
       </div>
@@ -552,50 +654,28 @@
     </div>
   </div>
 
-  <!-- Modal: Añadir Idea -->
-  <div id="ideaModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="text-sm font-bold text-slate-900">Nueva Idea de Video</h3>
-        <button onclick="closeModal('ideaModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
-      </div>
+  <!-- ================= FULLSCREEN TELEPROMPTER MODAL ================= -->
+  <div id="teleprompterModal" class="hidden fixed inset-0 bg-slate-950 text-white z-50 flex flex-col p-8">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Título de la Idea</label>
-        <input id="modalIdeaTitle" type="text" placeholder="ej. Por qué los contratistas quiebran en su 2do año" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+        <span class="text-xs font-bold text-red-500 uppercase tracking-wider">● MODO TELEPROMPTER DE GRABACIÓN</span>
+        <h2 id="teleprompterTitle" class="text-xl font-bold mt-1">Título del Video</h2>
       </div>
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Pilar / Tema</label>
-        <input id="modalIdeaPillar" type="text" placeholder="ej. Finanzas de Obra / Gestión" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
+      <div class="flex items-center gap-3">
+        <button onclick="adjustTeleprompterFont(1)" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold">A+</button>
+        <button onclick="adjustTeleprompterFont(-1)" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold">A-</button>
+        <button onclick="closeModal('teleprompterModal')" class="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold">
+          Salir (ESC)
+        </button>
       </div>
-      <div class="flex justify-end gap-2 pt-2">
-        <button onclick="closeModal('ideaModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
-        <button onclick="saveNewIdea()" class="px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl">Guardar Tarjeta</button>
-      </div>
+    </div>
+    <div id="teleprompterContent" class="flex-1 overflow-y-auto max-w-3xl mx-auto text-xl leading-relaxed font-sans space-y-6 text-slate-200 select-none">
+      <!-- Script loaded here -->
     </div>
   </div>
 
-  <!-- Modal: Añadir Tarea -->
-  <div id="taskModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="text-sm font-bold text-slate-900">Añadir Tarea Operativa</h3>
-        <button onclick="closeModal('taskModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción de la Tarea</label>
-        <input id="modalTaskText" type="text" placeholder="ej. Grabar tomas de pantalla de la calculadora" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-      </div>
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Prioridad / Fecha</label>
-        <input id="modalTaskBadge" type="text" placeholder="ej. Hoy / Mañana" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
-      </div>
-      <div class="flex justify-end gap-2 pt-2">
-        <button onclick="closeModal('taskModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
-        <button onclick="saveNewTask()" class="px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl">Crear Tarea</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- Scripts -->
+  <script src="./content-database.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
