@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
     "test": "node --test tests/*.test.js",
     "check": "node --check lib/local-core.js && node --check lib/store.js && node --check bin/youtube-content-os.js && node --check apps-script/Core.js && node --check apps-script/Code.js && node --test tests/*.test.js",
     "local": "node bin/youtube-content-os.js"

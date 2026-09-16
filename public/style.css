@@ -1,0 +1,94 @@
+/* Custom scrollbar and animations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 5px;
+}
+
+/* Kanban column and card styles */
+.kanban-col {
+  min-width: 140px;
+  max-width: 170px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  padding: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.kanban-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.75rem;
+  padding: 0.625rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  cursor: grab;
+  transition: all 0.15s ease-in-out;
+}
+
+.kanban-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+  border-color: #CBD5E1;
+}
+
+.kanban-card.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.kanban-col.drag-over {
+  background-color: #EFF6FF;
+  border-color: #3B82F6;
+}
+
+/* Calendar day cells */
+.cal-day-cell {
+  min-height: 48px;
+  border: 1px solid #F1F5F9;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: background-color 0.15s;
+}
+
+.cal-day-cell:hover {
+  background-color: #F8FAFC;
+}
+
+.cal-day-num {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748B;
+  text-align: left;
+}
+
+.cal-event-badge {
+  font-size: 8.5px;
+  padding: 1px 3px;
+  border-radius: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  line-height: 1.2;
+}
