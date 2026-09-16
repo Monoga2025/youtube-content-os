@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CreadorPro — Tu contenido, más lejos</title>
+  <title>CreadorPro — YouTube Content OS (Monoga)</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,7 +32,7 @@
 <body class="bg-[#F8FAFC] text-[#1E293B] font-sans antialiased min-h-screen flex flex-col">
 
   <!-- ================= TOP NAVIGATION BAR ================= -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-6 py-2.5 flex items-center justify-between">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-6 py-2.5 flex items-center justify-between shadow-2xs">
     <!-- Brand / Logo -->
     <div class="flex items-center gap-3 min-w-[240px]">
       <div class="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white shadow-sm">
@@ -41,8 +41,9 @@
       <div>
         <div class="flex items-center gap-1.5 leading-tight">
           <span class="font-bold text-lg tracking-tight text-slate-900">Creador<span class="text-red-600">Pro</span></span>
+          <span class="bg-blue-50 text-blue-700 text-[10px] font-bold px-1.5 py-0.5 rounded border border-blue-200">B2B OS</span>
         </div>
-        <p class="text-[11px] text-slate-400 font-medium leading-none mt-0.5">Tu contenido, más lejos</p>
+        <p class="text-[11px] text-slate-400 font-medium leading-none mt-0.5">Monoga Media Holding</p>
       </div>
     </div>
 
@@ -53,7 +54,7 @@
         <input 
           id="globalSearch"
           type="text" 
-          placeholder="Buscar videos, ideas, comentarios..." 
+          placeholder="Buscar videos, guiones, ganchos o herramientas..." 
           class="w-full pl-10 pr-12 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
         >
         <span class="absolute right-3 px-1.5 py-0.5 text-[11px] font-semibold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs">⌘K</span>
@@ -62,56 +63,50 @@
 
     <!-- Right Header Actions -->
     <div class="flex items-center gap-4">
-      <!-- Notification Bell -->
-      <button class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors" title="Notificaciones">
-        <i class="fa-regular fa-bell text-lg"></i>
-        <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
-      </button>
-
-      <!-- Profile Selector / User Info -->
+      <!-- Profile Selector (Daniel vs Sebastián) -->
       <div class="relative" id="profileDropdownContainer">
-        <button id="profileDropdownBtn" class="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all">
-          <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-slate-200">
+        <button id="profileDropdownBtn" class="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all">
+          <div id="userAvatarContainer" class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center shadow-xs">SM</div>
           <div class="text-left leading-tight hidden sm:block">
-            <p id="userName" class="text-xs font-semibold text-slate-800">Alex Martinez</p>
-            <p id="userHandle" class="text-[11px] text-slate-400">@alexmartinez</p>
+            <p id="userName" class="text-xs font-bold text-slate-800">Sebastián Monoga</p>
+            <p id="userHandle" class="text-[11px] text-slate-500">Home Services USA (@sebastian)</p>
           </div>
-          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-1"></i>
         </button>
 
         <!-- Dropdown Menu -->
-        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
-          <div class="px-4 py-2 border-b border-slate-100">
-            <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Cambiar de Perfil</p>
+        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-72 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
+          <div class="px-4 py-2 border-b border-slate-100 flex items-center justify-between">
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Seleccionar Canal / Perfil</p>
+            <span class="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded">Datos 100% Reales</span>
           </div>
-          <button onclick="switchProfile('alex')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-7 h-7 rounded-full object-cover">
+          <button onclick="switchProfile('sebastian')" class="w-full px-4 py-3 flex items-center gap-3 hover:bg-amber-50/60 transition-colors text-left border-b border-slate-50">
+            <div class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center shrink-0">SM</div>
             <div>
-              <p class="text-xs font-bold text-slate-800">Alex Martinez</p>
-              <p class="text-[11px] text-slate-400">Canal Tech & Lifestyle (@alexmartinez)</p>
+              <p class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                Sebastián Monoga 
+                <span class="text-[10px] bg-amber-100 text-amber-800 px-1 rounded font-semibold">USA</span>
+              </p>
+              <p class="text-[11px] text-slate-500">Contratistas Hispanos en EE. UU.</p>
             </div>
           </button>
-          <button onclick="switchProfile('daniel')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
-            <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">DM</div>
+          <button onclick="switchProfile('daniel')" class="w-full px-4 py-3 flex items-center gap-3 hover:bg-blue-50/60 transition-colors text-left">
+            <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0">DM</div>
             <div>
-              <p class="text-xs font-bold text-slate-800">Daniel Monoga</p>
-              <p class="text-[11px] text-slate-400">Sistemas & B2B Software (@daniel)</p>
-            </div>
-          </button>
-          <button onclick="switchProfile('sebastian')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
-            <div class="w-7 h-7 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center">SM</div>
-            <div>
-              <p class="text-xs font-bold text-slate-800">Sebastián Monoga</p>
-              <p class="text-[11px] text-slate-400">Home Services & Contratistas USA (@sebastian)</p>
+              <p class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                Daniel Monoga
+                <span class="text-[10px] bg-blue-100 text-blue-800 px-1 rounded font-semibold">Latam</span>
+              </p>
+              <p class="text-[11px] text-slate-500">Sistemas & Software Operativo B2B</p>
             </div>
           </button>
         </div>
       </div>
 
-      <!-- Quick Upload Button -->
-      <button onclick="focusUploadForm()" class="bg-red-500 hover:bg-red-600 text-white font-medium text-sm px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all transform active:scale-98">
-        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
-        <span>Subir Video</span>
+      <!-- Quick Action Button -->
+      <button onclick="openFirstVideoScript()" class="bg-red-500 hover:bg-red-600 text-white font-semibold text-xs px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all transform active:scale-98">
+        <i class="fa-solid fa-video text-xs"></i>
+        <span>Ver Guion para Grabar Hoy</span>
       </button>
     </div>
   </header>
@@ -127,84 +122,63 @@
           <i class="fa-solid fa-chart-pie w-5 text-center text-blue-600"></i>
           <span>Dashboard</span>
         </a>
-        <a href="#contenido" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-regular fa-circle-play w-5 text-center text-slate-400"></i>
-          <span>Contenido</span>
+        <a href="#pipeline" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-diagram-project w-5 text-center text-slate-400"></i>
+          <span>Pipeline de Contenido</span>
         </a>
-        <a href="#subidas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-cloud-arrow-up w-5 text-center text-slate-400"></i>
-          <span>Subidas</span>
+        <a href="#guiones" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-file-lines w-5 text-center text-slate-400"></i>
+          <span>Guiones Palabra x Palabra</span>
+        </a>
+        <a href="#leadmagnets" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-toolbox w-5 text-center text-slate-400"></i>
+          <span>Calculadoras & Tools</span>
         </a>
         <a href="#calendario" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
           <i class="fa-regular fa-calendar w-5 text-center text-slate-400"></i>
-          <span>Calendario</span>
-        </a>
-        <a href="#ideas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-regular fa-lightbulb w-5 text-center text-slate-400"></i>
-          <span>Ideas</span>
-        </a>
-        <a href="#miniaturas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-regular fa-image w-5 text-center text-slate-400"></i>
-          <span>Miniaturas</span>
-        </a>
-        <a href="#analiticas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-chart-simple w-5 text-center text-slate-400"></i>
-          <span>Analíticas</span>
-        </a>
-        <a href="#comentarios" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <div class="flex items-center gap-3">
-            <i class="fa-regular fa-comment-dots w-5 text-center text-slate-400"></i>
-            <span>Comentarios</span>
-          </div>
-          <span class="bg-red-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full">12</span>
-        </a>
-        <a href="#listas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-list w-5 text-center text-slate-400"></i>
-          <span>Listas de reproducción</span>
-        </a>
-        <a href="#configuracion" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-          <i class="fa-solid fa-gear w-5 text-center text-slate-400"></i>
-          <span>Configuración</span>
+          <span>Calendario de Emisión</span>
         </a>
       </nav>
 
-      <!-- Bottom Growth Card -->
+      <!-- Bottom Growth Card (Checklist Real de Operación) -->
       <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mt-6">
         <div class="flex items-center justify-between mb-1.5">
-          <h4 class="text-xs font-bold text-slate-900">Sigue creciendo 🚀</h4>
+          <h4 class="text-xs font-bold text-slate-900">Protocolo de Producción 🎬</h4>
         </div>
-        <p class="text-[11px] text-slate-500 mb-2.5" id="growthProgressText">3 de 5 tareas completadas</p>
+        <p class="text-[11px] text-slate-500 mb-2.5" id="growthProgressText">3 de 5 pasos verificados</p>
         
         <!-- Progress Bar -->
         <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-3.5">
           <div id="growthProgressBar" class="h-full bg-emerald-500 rounded-full transition-all duration-300" style="width: 60%;"></div>
         </div>
 
-        <!-- Task Checklist -->
+        <!-- Task Checklist Real -->
         <div class="space-y-2 text-xs">
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
             <span class="text-slate-700 font-medium flex items-center gap-1.5">
-              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Sube tu primer video
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Guion palabra x palabra listo
             </span>
           </label>
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
             <span class="text-slate-700 font-medium flex items-center gap-1.5">
-              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Personaliza tu canal
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Demo sintética / Números validados
+            </span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-700 font-medium flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Lead Magnet enlazado en descripción
             </span>
           </label>
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
-            <span class="text-slate-600">Conecta tus redes</span>
+            <span class="text-slate-600">Grabación A-roll (≤75 min)</span>
           </label>
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
-            <span class="text-slate-600">Crea una lista de reproducción</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer select-none">
-            <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
-            <span class="text-slate-600">Explora las analíticas</span>
+            <span class="text-slate-600">Extracción de 2 Shorts derivados</span>
           </label>
         </div>
       </div>
@@ -213,221 +187,138 @@
     <!-- ================= DASHBOARD MAIN CONTENT AREA ================= -->
     <main class="flex-1 overflow-y-auto p-6 space-y-6">
 
-      <!-- ================= 1. TOP METRICS BAR (5 KPI CARDS) ================= -->
+      <!-- ================= 1. TOP METRICS BAR (REAL OPERATING METRICS) ================= -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <!-- Card 1: Vistas totales -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
-          <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
-              <i class="fa-regular fa-eye"></i>
-            </div>
-            <span id="metric1Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              <i class="fa-solid fa-arrow-up text-[9px]"></i> 12%
-            </span>
-          </div>
-          <p class="text-xs font-medium text-slate-400">Vistas totales</p>
-          <h3 id="metric1Value" class="text-2xl font-bold text-slate-900 mt-0.5">125,4K</h3>
-          <p id="metric1Sub" class="text-[11px] text-slate-400 mt-1">+13,2K que el mes pasado</p>
-        </div>
-
-        <!-- Card 2: Suscriptores -->
+        <!-- Card 1: Misiones en Pipeline -->
         <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
           <div class="flex items-center justify-between mb-2">
             <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-users"></i>
+              <i class="fa-solid fa-layer-group"></i>
             </div>
-            <span id="metric2Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              <i class="fa-solid fa-arrow-up text-[9px]"></i> 8%
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+              Semanas 1–8
             </span>
           </div>
-          <p class="text-xs font-medium text-slate-400">Suscriptores</p>
-          <h3 id="metric2Value" class="text-2xl font-bold text-slate-900 mt-0.5">8,320</h3>
-          <p id="metric2Sub" class="text-[11px] text-slate-400 mt-1">+612 que el mes pasado</p>
+          <p class="text-xs font-medium text-slate-400">Plan Editorial Maestro</p>
+          <h3 id="metric1Value" class="text-2xl font-bold text-slate-900 mt-0.5">8 Videos</h3>
+          <p id="metric1Sub" class="text-[11px] text-slate-400 mt-1">16 Shorts + 8 Posts programados</p>
         </div>
 
-        <!-- Card 3: Tiempo de reproducción -->
+        <!-- Card 2: Guiones Listos -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              100% Listos
+            </span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">Guiones Completos</p>
+          <h3 id="metric2Value" class="text-2xl font-bold text-slate-900 mt-0.5">4 Guiones</h3>
+          <p id="metric2Sub" class="text-[11px] text-slate-400 mt-1">Palabra x palabra con hooks</p>
+        </div>
+
+        <!-- Card 3: Herramientas / Lead Magnets -->
         <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
           <div class="flex items-center justify-between mb-2">
             <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
-              <i class="fa-regular fa-clock"></i>
+              <i class="fa-solid fa-calculator"></i>
             </div>
-            <span id="metric3Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              <i class="fa-solid fa-arrow-up text-[9px]"></i> 14%
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
+              B2B Tools
             </span>
           </div>
-          <p class="text-xs font-medium text-slate-400">Tiempo de reproducción</p>
-          <h3 id="metric3Value" class="text-2xl font-bold text-slate-900 mt-0.5">4,1K horas</h3>
-          <p id="metric3Sub" class="text-[11px] text-slate-400 mt-1">+500 horas que el mes pasado</p>
+          <p class="text-xs font-medium text-slate-400">Herramientas en Código</p>
+          <h3 id="metric3Value" class="text-2xl font-bold text-slate-900 mt-0.5">3 Tools</h3>
+          <p id="metric3Sub" class="text-[11px] text-slate-400 mt-1">True Cost & Job Pricing Engine</p>
         </div>
 
-        <!-- Card 4: CTR promedio -->
+        <!-- Card 4: Presupuesto Máximo de Producción -->
         <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
           <div class="flex items-center justify-between mb-2">
-            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-chart-column"></i>
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+              <i class="fa-regular fa-clock"></i>
             </div>
-            <span id="metric4Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              <i class="fa-solid fa-arrow-up text-[9px]"></i> 1,2%
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">
+              Límite Estricto
             </span>
           </div>
-          <p class="text-xs font-medium text-slate-400">CTR promedio</p>
-          <h3 id="metric4Value" class="text-2xl font-bold text-slate-900 mt-0.5">6,8%</h3>
-          <p id="metric4Sub" class="text-[11px] text-slate-400 mt-1">+0,8% que el mes pasado</p>
+          <p class="text-xs font-medium text-slate-400">Presupuesto por Video</p>
+          <h3 id="metric4Value" class="text-2xl font-bold text-slate-900 mt-0.5">180 min</h3>
+          <p id="metric4Sub" class="text-[11px] text-slate-400 mt-1">Cero deuda de tiempo</p>
         </div>
 
-        <!-- Card 5: Videos programados -->
+        <!-- Card 5: Estado de Grabación -->
         <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
           <div class="flex items-center justify-between mb-2">
             <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg">
-              <i class="fa-regular fa-calendar"></i>
+              <i class="fa-solid fa-circle-play"></i>
             </div>
-            <span class="text-xs text-slate-300 font-bold">—</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full animate-pulse">
+              ● HOY
+            </span>
           </div>
-          <p class="text-xs font-medium text-slate-400">Videos programados</p>
-          <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">3</h3>
-          <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1">Próximo: 12 abr 2025</p>
+          <p class="text-xs font-medium text-slate-400">Siguiente Acción</p>
+          <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">Grabar Ep 1</h3>
+          <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1" id="nextEpLabel">True Cost de Empleado</p>
         </div>
       </div>
 
       <!-- ================= 2. BENTO MAIN 3-COLUMN WORKSPACE ================= -->
       <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
 
-        <!-- ================= COL 1: SUBIR NUEVO VIDEO (3 Cols) ================= -->
-        <div class="xl:col-span-3 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs space-y-4">
-          <div>
-            <h3 class="text-base font-bold text-slate-900">Subir nuevo video</h3>
-            <p class="text-xs text-slate-400">Sube, configura y optimiza tu video de YouTube</p>
+        <!-- ================= COL 1: SUBIR NUEVO VIDEO (CON OVERLAY: MÓDULO PARA EL FUTURO) ================= -->
+        <div class="xl:col-span-3 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden flex flex-col justify-between">
+          
+          <!-- OVERLAY MODULO PARA EL FUTURO -->
+          <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-6 text-center z-20 border border-slate-700/20">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-3 shadow-lg">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-400/30 mb-2">Módulo para el futuro</span>
+            <h4 class="text-sm font-bold text-white mb-1">Subida Directa a YouTube</h4>
+            <p class="text-xs text-slate-200 max-w-xs leading-relaxed">
+              Se activará cuando conectes la API de YouTube v3 de tu canal. Por seguridad y privacidad, actualmente se graba en local y los guiones se auditan en DRAFT.
+            </p>
+            <div class="mt-4 px-3 py-1.5 bg-slate-800/80 rounded-lg border border-slate-700 text-[11px] text-slate-300">
+              <i class="fa-solid fa-check text-emerald-400 mr-1"></i> Guiones listos en el Pipeline 👉
+            </div>
           </div>
 
-          <!-- Drag & Drop Area -->
-          <div 
-            id="dropZone"
-            class="border-2 border-dashed border-slate-200 hover:border-blue-400 bg-slate-50/70 hover:bg-blue-50/30 rounded-2xl p-6 text-center transition-all cursor-pointer group"
-            onclick="document.getElementById('fileInput').click()"
-          >
-            <input type="file" id="fileInput" class="hidden" accept="video/mp4,video/quicktime,video/x-msvideo" onchange="handleFileSelect(event)">
-            <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 group-hover:bg-blue-100 text-slate-500 group-hover:text-blue-600 flex items-center justify-center text-xl mb-3 transition-colors">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
+          <!-- Blurred Background Elements -->
+          <div class="space-y-4 filter blur-xs select-none pointer-events-none opacity-40">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Subir nuevo video</h3>
+              <p class="text-xs text-slate-400">Sube, configura y optimiza tu video de YouTube</p>
             </div>
-            <p class="text-xs font-semibold text-slate-700">Arrastra y suelta tu video aquí</p>
-            <p class="text-[11px] text-slate-400 mt-0.5">o haz clic para seleccionar un archivo</p>
-            <p class="text-[10px] text-slate-400 mt-2 font-medium">MP4, MOV, AVI (máx. 2 GB)</p>
-            <div id="selectedFileName" class="hidden mt-3 text-xs font-semibold text-blue-600 bg-blue-50 py-1 px-2 rounded-lg truncate"></div>
+            <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center">
+              <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-xl mb-3">
+                <i class="fa-solid fa-cloud-arrow-up text-slate-400"></i>
+              </div>
+              <p class="text-xs font-semibold text-slate-700">Arrastra y suelta tu video aquí</p>
+            </div>
+            <div class="space-y-2">
+              <div class="h-8 bg-slate-100 rounded-xl"></div>
+              <div class="h-16 bg-slate-100 rounded-xl"></div>
+            </div>
           </div>
 
-          <!-- Video Metadata Form -->
-          <form id="videoUploadForm" onsubmit="handleVideoSubmit(event)" class="space-y-3.5">
-            <!-- Título -->
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Título del video <span class="text-red-500">*</span></label>
-              <input 
-                id="formTitle"
-                type="text" 
-                required
-                placeholder="Escribe un título atractivo..." 
-                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              >
-            </div>
-
-            <!-- Descripción -->
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción</label>
-              <textarea 
-                id="formDesc"
-                rows="3" 
-                placeholder="Cuenta de qué trata tu video..." 
-                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
-              ></textarea>
-            </div>
-
-            <!-- Etiquetas -->
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Etiquetas (separadas por coma)</label>
-              <input 
-                id="formTags"
-                type="text" 
-                placeholder="ej. productividad, youtube, consejos" 
-                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              >
-            </div>
-
-            <!-- 2-col selects: Lista y Audiencia -->
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Lista de reproducción</label>
-                <select id="formPlaylist" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
-                  <option value="">Selecciona...</option>
-                  <option value="tutoriales">Tutoriales</option>
-                  <option value="estrategia">Estrategia B2B</option>
-                  <option value="vlogs">Vlogs & Rutinas</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Audiencia</label>
-                <select id="formAudience" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
-                  <option value="todos">Todos</option>
-                  <option value="empresas">Empresarios B2B</option>
-                  <option value="contratistas">Contratistas USA</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- 2-col inputs: Visibilidad y Fecha -->
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Visibilidad</label>
-                <select id="formVisibility" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
-                  <option value="programar">Programar</option>
-                  <option value="publico">Público</option>
-                  <option value="oculto">Oculto</option>
-                  <option value="privado">Privado</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Fecha de programación</label>
-                <input 
-                  id="formDate"
-                  type="text" 
-                  value="12/04/2025 10:00" 
-                  class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-                >
-              </div>
-            </div>
-
-            <!-- Form Action Buttons -->
-            <div class="pt-2 space-y-2">
-              <button 
-                type="submit" 
-                class="w-full bg-red-500 hover:bg-red-600 text-white font-medium text-xs py-2.5 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"
-              >
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <span>Subir Video</span>
-              </button>
-              <button 
-                type="button" 
-                onclick="saveDraft()"
-                class="w-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-2"
-              >
-                <i class="fa-regular fa-floppy-disk"></i>
-                <span>Guardar como borrador</span>
-              </button>
-            </div>
-          </form>
         </div>
 
         <!-- ================= COL 2: PIPELINE & CALENDARIO & RECIENTES (6 Cols) ================= -->
         <div class="xl:col-span-6 space-y-6">
 
-          <!-- 2.1 PIPELINE DE CONTENIDO (KANBAN BOARD) -->
+          <!-- 2.1 PIPELINE DE CONTENIDO REAL (KANBAN BOARD) -->
           <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-3">
               <div class="flex items-center gap-2.5">
                 <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
                   <i class="fa-solid fa-diagram-project"></i>
                 </div>
                 <div>
-                  <h3 class="text-sm font-bold text-slate-900">Pipeline de contenido</h3>
-                  <p class="text-[11px] text-slate-400">Arrastra videos entre etapas de tu proceso</p>
+                  <h3 class="text-sm font-bold text-slate-900">Pipeline de Producción B2B</h3>
+                  <p class="text-[11px] text-slate-400">Haz clic en cualquier tarjeta para ver su guion completo y hook para grabar</p>
                 </div>
               </div>
               <button onclick="openAddIdeaModal()" class="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5">
@@ -437,7 +328,7 @@
 
             <!-- Kanban Horizontal Scrolling Board -->
             <div id="kanbanBoard" class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-              <!-- Columns are rendered via app.js -->
+              <!-- Columns are rendered dynamically with REAL SCRIPTS -->
             </div>
           </div>
 
@@ -449,28 +340,19 @@
               <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
                   <i class="fa-regular fa-calendar text-slate-400 text-sm"></i>
-                  <h4 class="text-xs font-bold text-slate-900">Calendario de contenido</h4>
+                  <h4 class="text-xs font-bold text-slate-900">Calendario Editorial de Grabación</h4>
                 </div>
-                <button onclick="openScheduleModal()" class="text-[11px] font-semibold text-blue-600 hover:bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg transition-colors">
-                  + Programar
-                </button>
+                <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Cadencia 1/sem</span>
               </div>
 
               <!-- Calendar Month & View Toggles -->
               <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-1.5">
-                  <button class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-500 text-xs">
-                    <i class="fa-solid fa-chevron-left"></i>
-                  </button>
-                  <span class="text-xs font-bold text-slate-800">Abril 2025</span>
-                  <button class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-500 text-xs">
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </button>
+                  <span class="text-xs font-bold text-slate-800" id="calendarMonthTitle">Septiembre 2026</span>
                 </div>
                 <div class="flex p-0.5 bg-slate-100 rounded-lg text-[10px] font-semibold text-slate-600">
-                  <button class="px-2 py-0.5 bg-slate-800 text-white rounded-md shadow-2xs">Mes</button>
-                  <button class="px-2 py-0.5 hover:text-slate-900 transition-colors">Semana</button>
-                  <button class="px-2 py-0.5 hover:text-slate-900 transition-colors">Agenda</button>
+                  <span class="px-2 py-0.5 bg-slate-800 text-white rounded-md shadow-2xs">Mes</span>
+                  <span class="px-2 py-0.5 text-slate-400">Semana</span>
                 </div>
               </div>
 
@@ -483,12 +365,12 @@
               </div>
             </div>
 
-            <!-- Mis videos recientes (5 Cols or full width below) -->
+            <!-- Videos Listos para Grabar (5 Cols) -->
             <div class="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between mb-3">
-                  <h4 class="text-xs font-bold text-slate-900">Mis videos recientes</h4>
-                  <a href="#contenido" class="text-[11px] font-semibold text-blue-600 hover:underline">Ver todos</a>
+                  <h4 class="text-xs font-bold text-slate-900">Episodios Prioritarios</h4>
+                  <span class="text-[11px] font-semibold text-blue-600">4 Guiones</span>
                 </div>
 
                 <div class="divide-y divide-slate-100" id="recentVideosList">
@@ -501,111 +383,73 @@
 
         </div>
 
-        <!-- ================= COL 3: ANALÍTICAS, CHECKLIST & TAREAS (3 Cols) ================= -->
+        <!-- ================= COL 3: ANALÍTICAS (CON OVERLAY), CHECKLIST & TAREAS (3 Cols) ================= -->
         <div class="xl:col-span-3 space-y-6">
 
-          <!-- 3.1 RENDIMIENTO (ÚLTIMOS 28 DÍAS) CON CHART INTERACTIVO -->
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="text-xs font-bold text-slate-900">Rendimiento (últimos 28 días)</h4>
-              <select id="chartMetricSelect" onchange="updateChartMetric()" class="text-[11px] bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-slate-600 focus:outline-none">
-                <option value="vistas">Vistas ▾</option>
-                <option value="suscriptores">Suscriptores</option>
-                <option value="tiempo">Horas</option>
-              </select>
+          <!-- 3.1 RENDIMIENTO EN VIVO (CON OVERLAY: MÓDULO PARA EL FUTURO) -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs relative overflow-hidden">
+            
+            <!-- OVERLAY MODULO PARA EL FUTURO -->
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-4 text-center z-20 border border-slate-700/20">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-lg mb-2">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-blue-400/30 mb-1.5">Módulo para el futuro</span>
+              <h4 class="text-xs font-bold text-white mb-1">YouTube Studio Analytics</h4>
+              <p class="text-[11px] text-slate-200 max-w-[210px] leading-tight">
+                Sincronización en vivo de retención, impresiones y CTR cuando conectes la API del canal.
+              </p>
             </div>
 
-            <!-- Metric Header -->
-            <div class="flex items-baseline gap-2 mb-2">
-              <span id="chartMetricDisplay" class="text-2xl font-bold text-slate-900">125,4K</span>
-              <span class="inline-flex items-center text-[11px] font-semibold text-emerald-600">
-                <i class="fa-solid fa-arrow-up text-[9px] mr-0.5"></i> 12%
-              </span>
+            <!-- Blurred Background Chart -->
+            <div class="filter blur-xs opacity-30 select-none pointer-events-none">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="text-xs font-bold text-slate-900">Rendimiento (últimos 28 días)</h4>
+              </div>
+              <div class="h-32 bg-slate-100 rounded-xl mt-2"></div>
             </div>
 
-            <!-- SVG Smooth Bezier Chart with Peak Tooltip -->
-            <div class="relative w-full h-36 mt-3">
-              <!-- Floating peak badge -->
-              <div class="absolute top-1 right-2 bg-slate-800 text-white text-[9px] font-semibold py-0.5 px-2 rounded-md shadow-md flex items-center gap-1 z-10">
-                <span>6 abr 2025</span>
-                <span class="font-bold text-blue-300">5,4K vistas</span>
-              </div>
-              <svg viewBox="0 0 300 120" class="w-full h-full overflow-visible">
-                <defs>
-                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
-                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
-                  </linearGradient>
-                </defs>
-                <!-- Grid Lines -->
-                <line x1="0" y1="30" x2="300" y2="30" stroke="#F1F5F9" stroke-width="1"/>
-                <line x1="0" y1="65" x2="300" y2="65" stroke="#F1F5F9" stroke-width="1"/>
-                <line x1="0" y1="100" x2="300" y2="100" stroke="#F1F5F9" stroke-width="1"/>
-                <!-- Area Fill -->
-                <path d="M 0,95 C 40,90 60,65 100,70 C 140,75 160,55 200,50 C 240,45 260,25 285,28 L 285,110 L 0,110 Z" fill="url(#chartGradient)" />
-                <!-- Curved Stroke -->
-                <path d="M 0,95 C 40,90 60,65 100,70 C 140,75 160,55 200,50 C 240,45 260,25 285,28" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
-                <!-- Highlight Dot -->
-                <circle cx="285" cy="28" r="4" fill="#2563EB" stroke="#FFFFFF" stroke-width="2" class="cursor-pointer animate-pulse"/>
-              </svg>
-              <!-- X Axis Labels -->
-              <div class="flex justify-between text-[9px] text-slate-400 mt-1">
-                <span>9 mar</span>
-                <span>16 mar</span>
-                <span>23 mar</span>
-                <span>30 mar</span>
-                <span>6 abr</span>
-              </div>
-            </div>
           </div>
 
-          <!-- 3.2 CHECKLIST DE OPTIMIZACIÓN -->
+          <!-- 3.2 CHECKLIST DE AUDITORÍA ANTES DE GRABAR -->
           <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
             <div class="flex items-center justify-between mb-3">
-              <h4 class="text-xs font-bold text-slate-900">Checklist de optimización</h4>
-              <span id="optimizationCounter" class="text-[11px] font-semibold text-slate-400">0/8 completadas</span>
+              <h4 class="text-xs font-bold text-slate-900">Checklist de Grabación</h4>
+              <span id="optimizationCounter" class="text-[11px] font-semibold text-slate-400">0/6 verificados</span>
             </div>
             
             <div class="space-y-2 text-xs" id="optChecklist">
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Miniatura atractiva</span>
+                <span class="text-slate-600">Afirmaciones marcadas FACT o INFERENCE</span>
               </label>
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Título SEO optimizado</span>
+                <span class="text-slate-600">Demo ejecutada con datos sintéticos</span>
               </label>
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Descripción detallada</span>
+                <span class="text-slate-600">Cero credenciales o rutas privadas en pantalla</span>
               </label>
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Etiquetas relevantes</span>
+                <span class="text-slate-600">Herramienta descargable funcional</span>
               </label>
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Capítulos</span>
+                <span class="text-slate-600">Un solo llamado a la acción (CTA) claro</span>
               </label>
               <label class="flex items-center gap-2.5 cursor-pointer select-none">
                 <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Subtítulos</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Pantalla final (End Screen)</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
-                <span class="text-slate-600">Tarjetas (Cards)</span>
+                <span class="text-slate-600">Tiempo total de producción dentro de 180 min</span>
               </label>
             </div>
           </div>
 
-          <!-- 3.3 TAREAS Y RECORDATORIOS -->
+          <!-- 3.3 TAREAS OPERATIVAS REALES -->
           <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
             <div class="flex items-center justify-between mb-3">
-              <h4 class="text-xs font-bold text-slate-900">Tareas y recordatorios</h4>
+              <h4 class="text-xs font-bold text-slate-900">Tareas Operativas de Hoy</h4>
               <button onclick="openAddTaskModal()" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
                 <i class="fa-solid fa-plus text-[10px]"></i> Añadir
               </button>
@@ -624,9 +468,92 @@
 
   </div>
 
-  <!-- ================= MODALS ================= -->
+  <!-- ================= POPUP / MODAL DETALLADO DE GUION Y VIDEO ================= -->
+  <div id="videoDetailModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-slate-100 flex items-start justify-between bg-slate-50/50">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="modalPillarBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 uppercase">Pilar</span>
+            <span id="modalStageBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">Listo para Grabar</span>
+          </div>
+          <h3 id="modalVideoTitle" class="text-base font-bold text-slate-900 leading-snug">Título del Video</h3>
+        </div>
+        <button onclick="closeModal('videoDetailModal')" class="text-slate-400 hover:text-slate-600 p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="px-6 py-5 overflow-y-auto space-y-5 text-xs leading-relaxed">
+        
+        <!-- Gancho / Hook Frontal -->
+        <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-bold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-amber-500"></i> Hook / Gancho para Cámara (0:00–0:30)
+            </span>
+            <button onclick="copyToClipboard('modalHookText')" class="text-[10px] font-bold text-amber-800 hover:underline">
+              <i class="fa-regular fa-copy mr-1"></i> Copiar
+            </button>
+          </div>
+          <p id="modalHookText" class="text-amber-950 font-medium italic text-xs leading-relaxed bg-white/70 p-3 rounded-xl border border-amber-200/50">
+            Hook...
+          </p>
+        </div>
+
+        <!-- Estructura del Video -->
+        <div>
+          <h4 class="font-bold text-slate-800 text-xs mb-2 flex items-center gap-1.5">
+            <i class="fa-solid fa-list-check text-blue-600"></i> Estructura y Tomas Paso a Paso
+          </h4>
+          <div id="modalStructureList" class="space-y-2 pl-1">
+            <!-- Rendered list -->
+          </div>
+        </div>
+
+        <!-- Lead Magnet & Monetización -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-3">
+            <span class="text-[10px] font-bold text-blue-800 uppercase tracking-wider block mb-1">🎁 Herramienta / Lead Magnet</span>
+            <p id="modalLeadMagnet" class="font-semibold text-slate-800 text-xs">Calculadora...</p>
+          </div>
+          <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-3">
+            <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block mb-1">💰 Monetización Asociada</span>
+            <p id="modalMonetization" class="font-semibold text-slate-800 text-xs">Afiliado...</p>
+          </div>
+        </div>
+
+        <!-- Llamado a la Acción (CTA) -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">📢 Llamado a la Acción (CTA) Final</span>
+          <p id="modalCtaText" class="font-semibold text-slate-800 text-xs">"Escribime..."</p>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3 border-t border-slate-100 flex items-center justify-between bg-slate-50">
+        <button onclick="closeModal('videoDetailModal')" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">
+          Cerrar
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="copyFullScript()" class="px-3.5 py-2 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-xl border border-blue-200 transition-colors flex items-center gap-1.5">
+            <i class="fa-regular fa-copy"></i> Copiar Guion Completo
+          </button>
+          <button onclick="markAsRecorded()" class="px-4 py-2 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-xs transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-check"></i> Marcar como Grabado
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Modal: Añadir Idea -->
-  <div id="ideaModal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+  <div id="ideaModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <h3 class="text-sm font-bold text-slate-900">Nueva Idea de Video</h3>
@@ -634,18 +561,11 @@
       </div>
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">Título de la Idea</label>
-        <input id="modalIdeaTitle" type="text" placeholder="ej. Cómo escalar a $50K/mes con automatización" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+        <input id="modalIdeaTitle" type="text" placeholder="ej. Por qué los contratistas quiebran en su 2do año" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
       </div>
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Etapa Inicial</label>
-        <select id="modalIdeaStage" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
-          <option value="ideas">Ideas</option>
-          <option value="guion">Guión</option>
-          <option value="grabado">Grabado</option>
-          <option value="editado">Editado</option>
-          <option value="miniatura">Miniatura lista</option>
-          <option value="programado">Programado</option>
-        </select>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Pilar / Tema</label>
+        <input id="modalIdeaPillar" type="text" placeholder="ej. Finanzas de Obra / Gestión" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeModal('ideaModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
@@ -655,19 +575,19 @@
   </div>
 
   <!-- Modal: Añadir Tarea -->
-  <div id="taskModal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+  <div id="taskModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="text-sm font-bold text-slate-900">Añadir Tarea</h3>
+        <h3 class="text-sm font-bold text-slate-900">Añadir Tarea Operativa</h3>
         <button onclick="closeModal('taskModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción de la Tarea</label>
-        <input id="modalTaskText" type="text" placeholder="ej. Revisar métricas de retención" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+        <input id="modalTaskText" type="text" placeholder="ej. Grabar tomas de pantalla de la calculadora" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
       </div>
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">Fecha / Prioridad</label>
-        <input id="modalTaskBadge" type="text" placeholder="ej. Hoy / Mañana / 15 abr" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Prioridad / Fecha</label>
+        <input id="modalTaskBadge" type="text" placeholder="ej. Hoy / Mañana" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeModal('taskModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
