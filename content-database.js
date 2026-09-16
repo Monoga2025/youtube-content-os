@@ -2,7 +2,11 @@
 // 100% Real Production Scripts, Hooks, Shorts, Posts, and Interactive Math
 'use strict';
 
-const CONTENT_DATABASE = {
+if (typeof window !== 'undefined') {
+  window.CONTENT_DATABASE = window.CONTENT_DATABASE || {};
+}
+
+var CONTENT_DATABASE = {
   // =========================================================================
   // SEBASTIÁN MONOGA — HOME-SERVICE BUSINESSES & LATINO CONTRACTORS EN EE. UU.
   // =========================================================================
@@ -1056,4 +1060,14 @@ function calculateTrueCostLive(wage, stateCode, downtimeHours, overheadWeekly, w
     trueBurdenPercent: Math.round(((trueCostPerBillableHour - baseWage) / baseWage) * 100),
     billableEfficiency: Math.round((billableHoursWeekly / weeklyPaidHours) * 100)
   };
+}
+
+if (typeof window !== 'undefined') {
+  window.CONTENT_DATABASE = CONTENT_DATABASE;
+  window.STATE_TAX_PRESETS = STATE_TAX_PRESETS;
+  window.calculateTrueCostLive = calculateTrueCostLive;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { CONTENT_DATABASE, STATE_TAX_PRESETS, calculateTrueCostLive };
 }
