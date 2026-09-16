@@ -251,6 +251,27 @@
             <p class="text-xs font-medium text-slate-400">Siguiente Acción</p>
             <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">Grabar Ep 1</h3>
             <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1" id="nextEpLabel">True Cost de Empleado</p>
+        </div>
+
+        <!-- Weekly Daily Schedule: Lunes a Sábado -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm font-bold shadow-2xs">
+                <i class="fa-regular fa-calendar-check"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Cronograma Semanal de Grabación & Emisión (Día a Día)</h3>
+                <p class="text-[11px] text-slate-500 font-medium">Haz clic en cualquier tarjeta para abrir su guion palabra por palabra, hook y notas de teleprompter</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200" id="weeklyScheduleFocusBadge">Semana 1 • Mano de Obra & Nómina</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3" id="weeklyDailyScheduleGrid">
+            <!-- Rendered dynamically by renderWeeklyDailySchedule() -->
           </div>
         </div>
 

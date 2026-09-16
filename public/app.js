@@ -1,23 +1,59 @@
 // CreadorPro Core Application Logic & Studio Controller
 'use strict';
 
+function getDatabase() {
+  if (typeof window !== 'undefined' && window.CONTENT_DATABASE && Object.keys(window.CONTENT_DATABASE).length > 0) {
+    return window.CONTENT_DATABASE;
+  }
+  if (typeof CONTENT_DATABASE !== 'undefined' && CONTENT_DATABASE) {
+    return CONTENT_DATABASE;
+  }
+  return null;
+}
+
 let currentProfileKey = 'sebastian'; // Default to Sebastian
-let currentData = CONTENT_DATABASE.sebastian;
+let currentData = null;
 let activeCardInModal = null;
 let currentView = 'dashboard';
 let teleprompterFontSize = 22;
 
+const KANBAN_COLS = [
+  { key: 'ideas', label: 'Ideas B2B', pillColor: 'bg-amber-50 text-amber-700 border border-amber-200' },
+  { key: 'guion', label: 'Guión Completo', pillColor: 'bg-blue-50 text-blue-700 border border-blue-200' },
+  { key: 'grabado', label: 'Listo p/ Grabar', pillColor: 'bg-rose-50 text-rose-700 border border-rose-200' },
+  { key: 'editado', label: 'En Edición', pillColor: 'bg-sky-50 text-sky-700 border border-sky-200' },
+  { key: 'miniatura', label: 'Miniatura Lista', pillColor: 'bg-purple-50 text-purple-700 border border-purple-200' },
+  { key: 'programado', label: 'Programado', pillColor: 'bg-indigo-50 text-indigo-700 border border-indigo-200' },
+  { key: 'publicado', label: 'Publicado', pillColor: 'bg-emerald-50 text-emerald-700 border border-emerald-200' }
+];
+
+function initData() {
+  const db = getDatabase();
+  if (db && db[currentProfileKey]) {
+    currentData = db[currentProfileKey];
+  }
+}
+
 // ================= APP INITIALIZATION =================
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', onInit);
+} else {
+  onInit();
+}
+
+function onInit() {
+  initData();
   renderAll();
   setupEventListeners();
   runLiveCalculation();
-});
+}
 
 function renderAll() {
-  currentData = CONTENT_DATABASE[currentProfileKey];
+  initData();
+  if (!currentData) return;
   renderProfileHeader();
   renderTopMetrics();
+  renderWeeklyDailySchedule();
   renderKanbanBoard();
   renderCalendar();
   renderRecentVideos();
@@ -55,6 +91,10 @@ function switchView(viewName) {
       }
     }
   });
+
+  if (viewName === 'guiones') {
+    renderGuionesStudio();
+  }
 }
 
 function capitalize(s) {
@@ -63,6 +103,7 @@ function capitalize(s) {
 
 // ================= PROFILE SWITCHING =================
 function renderProfileHeader() {
+  if (!currentData) initData();
   const p = currentData.profile;
   document.getElementById('userName').textContent = p.name;
   document.getElementById('userHandle').textContent = p.handle;
@@ -73,10 +114,210 @@ function renderProfileHeader() {
 }
 
 function switchProfile(key) {
-  if (!CONTENT_DATABASE[key]) return;
+  const db = getDatabase();
+  if (!db || !db[key]) return;
   currentProfileKey = key;
   renderAll();
   document.getElementById('profileMenu').classList.add('hidden');
+}
+
+// ================= WEEKLY DAILY SCHEDULE RENDERING =================
+function renderWeeklyDailySchedule() {
+  const container = document.getElementById('weeklyDailyScheduleGrid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const focusBadge = document.getElementById('weeklyScheduleFocusBadge');
+  if (focusBadge) {
+    focusBadge.textContent = currentProfileKey === 'sebastian'
+      ? 'Semana 1 • Mano de Obra & Nómina Formal'
+      : 'Semana 1 • Sistemas Deterministas & Jarvis';
+  }
+
+  const days = currentProfileKey === 'sebastian' ? [
+    {
+      day: 'Lunes',
+      time: '09:00 AM',
+      type: 'EDUCACIÓN',
+      typePill: 'bg-blue-50 text-blue-700 border-blue-200',
+      icon: 'fa-comments',
+      iconBg: 'bg-blue-100 text-blue-700',
+      title: 'Post Comunidad: Caso Orlando ($380K vs Deuda)',
+      desc: 'Caso de estudio: cómo 3 empleados a $22/h generaron $24K en tarjetas y $18K de auditoría.',
+      action: () => openCardItem('programado', 'seb_cp1')
+    },
+    {
+      day: 'Martes',
+      time: '12:00 PM',
+      type: 'EDUCACIÓN',
+      typePill: 'bg-sky-50 text-sky-700 border-sky-200',
+      icon: 'fa-mobile-screen-button',
+      iconBg: 'bg-sky-100 text-sky-700',
+      title: 'Short 1: La mentira de los $20/hr en USA (38s)',
+      desc: 'Hook de billete de $20: por qué con FICA y Workers\' Comp te cuesta $32.14/hr.',
+      action: () => openCardItem('editado', 'seb_s1')
+    },
+    {
+      day: 'Miércoles',
+      time: '03:00 PM',
+      type: 'PRE-PRODUCCIÓN',
+      typePill: 'bg-purple-50 text-purple-700 border-purple-200',
+      icon: 'fa-calculator',
+      iconBg: 'bg-purple-100 text-purple-700',
+      title: 'Demo en Pantalla: True Employee Cost en Sheets',
+      desc: 'Verificación de fórmulas de impuestos patronales y calibración de tasas estatales (FL/TX).',
+      action: () => openCardItem('publicado', 'tool_cost')
+    },
+    {
+      day: 'Jueves',
+      time: '07:00 PM EST',
+      isMain: true,
+      type: 'VENTA B2B & CAPTURA',
+      typePill: 'bg-rose-600 text-white font-bold',
+      statusPill: '● GRABAR HOY',
+      icon: 'fa-video',
+      iconBg: 'bg-rose-100 text-rose-700',
+      title: 'Ep 1: El costo REAL de contratar a $20/h (14:30 min)',
+      desc: 'Video Maestro. Desglose en pantalla, regalo de calculadora y monetización con Gusto ($300/activación).',
+      action: () => openVideoDetail('seb_v1')
+    },
+    {
+      day: 'Viernes',
+      time: '10:00 AM',
+      type: 'VENTA B2B',
+      typePill: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      icon: 'fa-file-arrow-down',
+      iconBg: 'bg-emerald-100 text-emerald-700',
+      title: 'Lead Magnet: Entrega de Labor Burden Calculator',
+      desc: 'Envío del Google Sheets a los prospectos registrados y derivación a asesoría de nómina.',
+      action: () => openCardItem('publicado', 'tool_cost')
+    },
+    {
+      day: 'Sábado',
+      time: '01:00 PM',
+      type: 'VENTA / OBJECIÓN',
+      typePill: 'bg-amber-50 text-amber-800 border-amber-200',
+      icon: 'fa-triangle-exclamation',
+      iconBg: 'bg-amber-100 text-amber-800',
+      title: 'Short 2: Multa de $15,000 del IRS por 1099 (36s)',
+      desc: 'Hook de advertencia legal sobre pago en efectivo y reclasificación DOL.',
+      action: () => openCardItem('editado', 'seb_s2')
+    }
+  ] : [
+    {
+      day: 'Lunes',
+      time: '09:00 AM',
+      type: 'EDUCACIÓN OPERATIVA',
+      typePill: 'bg-blue-50 text-blue-700 border-blue-200',
+      icon: 'fa-comments',
+      iconBg: 'bg-blue-100 text-blue-700',
+      title: 'Post Comunidad: Las 4 preguntas antes de usar IA',
+      desc: 'Disparador, responsable, evidencia y ambigüedad para evitar deuda técnica.',
+      action: () => openCardItem('programado', 'dan_cp1')
+    },
+    {
+      day: 'Martes',
+      time: '12:00 PM',
+      type: 'EDUCACIÓN SISTEMAS',
+      typePill: 'bg-sky-50 text-sky-700 border-sky-200',
+      icon: 'fa-mobile-screen-button',
+      iconBg: 'bg-sky-100 text-sky-700',
+      title: 'Short 1: No es olvido, es diseño (35s)',
+      desc: 'Por qué comprar otra aplicación no resuelve problemas operativos.',
+      action: () => openCardItem('editado', 'dan_s1')
+    },
+    {
+      day: 'Miércoles',
+      time: '03:00 PM',
+      type: 'ARQUITECTURA',
+      typePill: 'bg-purple-50 text-purple-700 border-purple-200',
+      icon: 'fa-diagram-project',
+      iconBg: 'bg-purple-100 text-purple-700',
+      title: 'Demo: Idempotencia y Entregas Deterministas',
+      desc: 'Secuencia de entrega con aislamiento y manejo cerrado de fallos.',
+      action: () => openCardItem('publicado', 'tool_dan1')
+    },
+    {
+      day: 'Jueves',
+      time: '07:00 PM EST',
+      isMain: true,
+      type: 'VENTA B2B',
+      typePill: 'bg-rose-600 text-white font-bold',
+      statusPill: '● GRABAR HOY',
+      icon: 'fa-video',
+      iconBg: 'bg-rose-100 text-rose-700',
+      title: 'Ep 1: Tu empresa no necesita recordatorios: Jarvis (09:00 min)',
+      desc: 'Video Maestro. Arquitectura de operador único y oferta de Diagnóstico B2B.',
+      action: () => openVideoDetail('dan_v1')
+    },
+    {
+      day: 'Viernes',
+      time: '10:00 AM',
+      type: 'VENTA B2B',
+      typePill: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      icon: 'fa-file-arrow-down',
+      iconBg: 'bg-emerald-100 text-emerald-700',
+      title: 'Lead Magnet: Mapa de Flujo Operativo Monoga OS',
+      desc: 'Framework de 4 preguntas para líderes de operaciones y PyMEs.',
+      action: () => openCardItem('publicado', 'tool_dan1')
+    },
+    {
+      day: 'Sábado',
+      time: '01:00 PM',
+      type: 'CONTROL & TRADE-OFFS',
+      typePill: 'bg-amber-50 text-amber-800 border-amber-200',
+      icon: 'fa-shield-halved',
+      iconBg: 'bg-amber-100 text-amber-800',
+      title: 'Short 2: La IA no debería enviar dos veces (38s)',
+      desc: 'El valor de la idempotencia en sistemas de facturación y mensajes.',
+      action: () => openCardItem('editado', 'dan_s2')
+    }
+  ];
+
+  days.forEach(d => {
+    const card = document.createElement('div');
+    card.className = `p-3.5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+      d.isMain
+        ? 'bg-rose-50/40 border-rose-300 ring-2 ring-rose-500/20 shadow-xs hover:border-rose-500'
+        : 'bg-slate-50/70 border-slate-200 hover:border-blue-400 hover:bg-white hover:shadow-xs'
+    }`;
+    card.onclick = d.action;
+
+    card.innerHTML = `
+      <div>
+        <div class="flex items-center justify-between gap-1 mb-2">
+          <div class="flex items-center gap-1.5">
+            <span class="w-6 h-6 rounded-lg ${d.iconBg} flex items-center justify-center text-[10px] shrink-0">
+              <i class="fa-solid ${d.icon}"></i>
+            </span>
+            <div>
+              <p class="text-xs font-bold text-slate-900 leading-none">${d.day}</p>
+              <span class="text-[9px] text-slate-400 font-medium">${d.time}</span>
+            </div>
+          </div>
+          ${d.statusPill ? `<span class="text-[9px] font-bold bg-rose-600 text-white px-1.5 py-0.5 rounded shadow-2xs animate-pulse">${d.statusPill}</span>` : ''}
+        </div>
+
+        <div class="mb-2">
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-wider ${d.typePill}">
+            ${d.type}
+          </span>
+        </div>
+
+        <h4 class="text-xs font-bold text-slate-900 leading-snug line-clamp-2 hover:text-blue-600 transition-colors mb-1">
+          ${d.title}
+        </h4>
+        <p class="text-[10px] text-slate-500 leading-tight line-clamp-2">${d.desc}</p>
+      </div>
+
+      <div class="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-bold ${d.isMain ? 'text-rose-600' : 'text-blue-600'}">
+        <span>Ver Guion</span>
+        <i class="fa-solid fa-arrow-right text-[8px]"></i>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
 // ================= TOP METRICS RENDERING =================
@@ -101,16 +342,6 @@ function renderTopMetrics() {
 }
 
 // ================= KANBAN BOARD RENDERING =================
-const KANBAN_COLS = [
-  { key: 'ideas', label: 'Ideas B2B', pillColor: 'bg-amber-50 text-amber-700 border border-amber-200' },
-  { key: 'guion', label: 'Guión Completo', pillColor: 'bg-blue-50 text-blue-700 border border-blue-200' },
-  { key: 'grabado', label: 'Listo p/ Grabar', pillColor: 'bg-rose-50 text-rose-700 border border-rose-200' },
-  { key: 'editado', label: 'En Edición', pillColor: 'bg-sky-50 text-sky-700 border border-sky-200' },
-  { key: 'miniatura', label: 'Miniatura Lista', pillColor: 'bg-purple-50 text-purple-700 border border-purple-200' },
-  { key: 'programado', label: 'Programado', pillColor: 'bg-indigo-50 text-indigo-700 border border-indigo-200' },
-  { key: 'publicado', label: 'Publicado', pillColor: 'bg-emerald-50 text-emerald-700 border border-emerald-200' }
-];
-
 function getKanbanCardsForProfile() {
   const cards = {
     ideas: [],
