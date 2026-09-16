@@ -1,0 +1,84 @@
+
+> youtube-content-os@0.1.0 test
+> node --test tests/*.test.js
+
+✔ Apps Script adapter contains only approved YouTube read resources (5.3037ms)
+✔ manifest has no Drive-wide or YouTube write scope (0.5972ms)
+✔ seed reference names never include guessed channel IDs (0.4134ms)
+✔ batch assembly rejects incomplete playlist pages and missing requested videos before signal writes (23.7828ms)
+✔ upload discovery stops after the documented 50 recent items without following historical pages (4.0999ms)
+✔ upload discovery rejects an incomplete first bounded page without requesting history (1.8801ms)
+✔ batch assembly requests bounded discovered video IDs in API-sized complete batches (3.085ms)
+✔ retention maintenance has manual and trigger-safe entry points for 90-day logs and removed sources (0.3223ms)
+✔ retention purges expired run logs and payloads for disabled configured sources deterministically (5.8223ms)
+✔ runSafely records STARTED and lock-contention SKIPPED records with safe messages (21.2102ms)
+✔ enabled sources require a verified YouTube channel ID (10.7042ms)
+✔ signal upsert preserves human curation while refreshing raw fields (10.5197ms)
+✔ mission creation requires owner, curated signal, and safe verified evidence (2.8464ms)
+✔ mission creation rejects blank mission text and incomplete evidence fields (0.6639ms)
+✔ formula-like external strings are forced to text (0.331ms)
+✔ API batch validation fails closed on partial responses (0.5302ms)
+✔ official Google Developers Atom feed identity and required namespaces are enforced (7.4928ms)
+✔ worksheet formula-like input is neutralized and import rejects formulas (1.1767ms)
+✖ human backup is lossless for all human entities and excludes raw signal payload (3.5966ms)
+✔ multi-source fetch prepares every batch before an atomic caller can write (5.1582ms)
+✔ RSS dedupe updates source data without replacing human fields (12.9714ms)
+✔ hostile, wrong namespace and wrong channel RSS are rejected (2.1624ms)
+✔ redirect hosts and timeout are fail closed (15.4252ms)
+✔ retention and source deletion remove derived data while preserving human missions (1.411ms)
+✔ workbook import rejects stale export revision and redacts secrets (3.3508ms)
+✔ scheduled run is idempotent and backup human-only omits expired source-derived data (0.7147ms)
+✖ profiles isolate human backups, reject cross-profile restore/workbook and invalidate stale exports after restore (493.9726ms)
+✔ wrong owner fails closed across stateful profile commands and traversal profile is rejected without a path leak (810.9871ms)
+✔ profile names are fixed and traversal cannot select storage (3.5549ms)
+✔ human backup retains feedback and evidence body without raw signals (1.0744ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 28
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1688.7822
+
+✖ failing tests:
+
+test at tests\correction.test.js:8:1
+✖ human backup is lossless for all human entities and excludes raw signal payload (3.5966ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (C:\Users\Monoga\Desktop\Monoga OS\02_PROYECTOS_WEB\youtube-content-os\tests\correction.test.js:8:477)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\profile-cli.test.js:6:1
+✖ profiles isolate human backups, reject cross-profile restore/workbook and invalidate stale exports after restore (493.9726ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\Monoga\Desktop\Monoga OS\02_PROYECTOS_WEB\youtube-content-os\tests\profile-cli.test.js:9:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

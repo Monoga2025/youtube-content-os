@@ -1,0 +1,4 @@
+✔ RSS dedupe updates source data without replacing human fields (30.3387ms)
+✔ hostile, wrong namespace and wrong channel RSS are rejected (4.1148ms)
+
+RESULT: TIMEOUT_AFTER_3_SECONDS (expected RED: non-cooperative fetch never settles)

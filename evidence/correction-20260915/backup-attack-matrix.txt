@@ -1,0 +1,3 @@
+case=../escape.json exit=1 output=unsafe backup filename
+case=attack.json exit=1 output=backup destination already exists
+case=C:\sentinel.json exit=1 output=unsafe backup filename

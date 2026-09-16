@@ -1,0 +1,42 @@
+
+> youtube-content-os@0.1.0 test
+> node --test tests/*.test.js
+
+✔ Apps Script adapter contains only approved YouTube read resources (3.6473ms)
+✔ manifest has no Drive-wide or YouTube write scope (1.0208ms)
+✔ seed reference names never include guessed channel IDs (0.3908ms)
+✔ batch assembly rejects incomplete playlist pages and missing requested videos before signal writes (14.5575ms)
+✔ upload discovery stops after the documented 50 recent items without following historical pages (2.9634ms)
+✔ upload discovery rejects an incomplete first bounded page without requesting history (3.8561ms)
+✔ batch assembly requests bounded discovered video IDs in API-sized complete batches (3.0423ms)
+✔ retention maintenance has manual and trigger-safe entry points for 90-day logs and removed sources (0.4291ms)
+✔ retention purges expired run logs and payloads for disabled configured sources deterministically (4.6839ms)
+✔ runSafely records STARTED and lock-contention SKIPPED records with safe messages (14.0456ms)
+✔ enabled sources require a verified YouTube channel ID (3.6476ms)
+✔ signal upsert preserves human curation while refreshing raw fields (5.8207ms)
+✔ mission creation requires owner, curated signal, and safe verified evidence (1.164ms)
+✔ mission creation rejects blank mission text and incomplete evidence fields (0.698ms)
+✔ formula-like external strings are forced to text (0.4344ms)
+✔ API batch validation fails closed on partial responses (0.6574ms)
+✔ official Google Developers Atom feed identity and required namespaces are enforced (6.4321ms)
+✔ worksheet formula-like input is neutralized and import rejects formulas (1.3662ms)
+✔ human backup is lossless for all human entities and excludes raw signal payload (1.0589ms)
+✔ multi-source fetch prepares every batch before an atomic caller can write (3.3585ms)
+✔ RSS dedupe updates source data without replacing human fields (12.8573ms)
+✔ hostile, wrong namespace and wrong channel RSS are rejected (1.8966ms)
+✔ redirect hosts and timeout are fail closed (16.1005ms)
+✔ retention and source deletion remove derived data while preserving human missions (0.8639ms)
+✔ workbook import rejects stale export revision and redacts secrets (0.6514ms)
+✔ scheduled run is idempotent and backup human-only omits expired source-derived data (0.6387ms)
+✔ profiles isolate human backups, reject cross-profile restore/workbook and invalidate stale exports after restore (4029.7044ms)
+✔ wrong owner fails closed across stateful profile commands and traversal profile is rejected without a path leak (629.752ms)
+✔ profile names are fixed and traversal cannot select storage (2.4838ms)
+✔ human backup retains feedback and evidence body without raw signals (0.9355ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4986.0588

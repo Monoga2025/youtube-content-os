@@ -1,0 +1,162 @@
+{
+  "schema_version": 2,
+  "system": "monoga-project-os",
+  "phases": [
+    {
+      "id": 1,
+      "slug": "discovery",
+      "name": "Discovery / Brief",
+      "artifacts": [
+        "docs/product/01-BRIEF.md"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "mvp",
+      "name": "MVP y definición de éxito",
+      "artifacts": [
+        "docs/product/02-MVP-SCOPE.md"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "commercial-scope",
+      "name": "Alcance comercial",
+      "artifacts": [
+        "docs/product/03-COMMERCIAL-SCOPE.md"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "domain-model",
+      "name": "Dominio y reglas del negocio",
+      "artifacts": [
+        "docs/product/04-DOMAIN-MODEL.md"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "user-flows",
+      "name": "User flows y excepciones",
+      "artifacts": [
+        "docs/product/05-USER-FLOWS.md"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "screen-inventory",
+      "name": "Pantallas y contenido",
+      "artifacts": [
+        "docs/product/06-SCREEN-INVENTORY.md"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "ui-direction",
+      "name": "Dirección visual",
+      "artifacts": [
+        "docs/product/07-UI-DIRECTION.md"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "ui-spec",
+      "name": "UI Spec y referencias",
+      "artifacts": [
+        "docs/product/08-UI-SPEC.md",
+        "design-reference/APPROVED.md"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "architecture",
+      "name": "Arquitectura técnica",
+      "artifacts": [
+        "docs/product/09-TECH-ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "data-permissions",
+      "name": "Datos, auth y permisos",
+      "artifacts": [
+        "docs/product/10-DATA-AND-PERMISSIONS.md"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "build-plan",
+      "name": "Plan de construcción",
+      "artifacts": [
+        "docs/product/11-BUILD-PLAN.md"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "vertical-slice",
+      "name": "Vertical Slice 0",
+      "artifacts": [
+        "docs/product/12-VERTICAL-SLICE.md"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "module-delivery",
+      "name": "Entrega por módulos",
+      "artifacts": [
+        "docs/product/13-DELIVERY-BOARD.md"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "qa",
+      "name": "QA",
+      "artifacts": [
+        "docs/product/14-QA-REPORT.md"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "uat",
+      "name": "UAT del cliente",
+      "artifacts": [
+        "docs/product/15-UAT.md"
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "production",
+      "name": "Producción",
+      "artifacts": [
+        "docs/product/16-DEPLOYMENT.md"
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "handoff",
+      "name": "Handoff y mantenimiento",
+      "artifacts": [
+        "docs/product/17-HANDOFF.md"
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "post-launch",
+      "name": "Post-lanzamiento",
+      "artifacts": [
+        "docs/product/18-POST-LAUNCH.md"
+      ]
+    }
+  ],
+  "approved_statuses": [
+    "approved",
+    "not_applicable"
+  ],
+  "artifact_statuses": [
+    "draft",
+    "in_review",
+    "approved",
+    "blocked",
+    "not_applicable"
+  ]
+}

@@ -1,0 +1,42 @@
+
+> youtube-content-os@0.1.0 check
+> node --check lib/local-core.js && node --check lib/store.js && node --check bin/youtube-content-os.js && node --check apps-script/Core.js && node --check apps-script/Code.js && node --test tests/*.test.js
+
+✔ Apps Script adapter contains only approved YouTube read resources (2.2405ms)
+✔ manifest has no Drive-wide or YouTube write scope (0.6704ms)
+✔ seed reference names never include guessed channel IDs (0.2749ms)
+✔ batch assembly rejects incomplete playlist pages and missing requested videos before signal writes (12.5049ms)
+✔ upload discovery stops after the documented 50 recent items without following historical pages (2.9589ms)
+✔ upload discovery rejects an incomplete first bounded page without requesting history (2.0448ms)
+✔ batch assembly requests bounded discovered video IDs in API-sized complete batches (2.5175ms)
+✔ retention maintenance has manual and trigger-safe entry points for 90-day logs and removed sources (0.3847ms)
+✔ retention purges expired run logs and payloads for disabled configured sources deterministically (5.4064ms)
+✔ runSafely records STARTED and lock-contention SKIPPED records with safe messages (11.8464ms)
+✔ enabled sources require a verified YouTube channel ID (1.6001ms)
+✔ signal upsert preserves human curation while refreshing raw fields (1.3283ms)
+✔ mission creation requires owner, curated signal, and safe verified evidence (0.6279ms)
+✔ mission creation rejects blank mission text and incomplete evidence fields (0.4424ms)
+✔ formula-like external strings are forced to text (0.1981ms)
+✔ API batch validation fails closed on partial responses (0.3699ms)
+✔ official Google Developers Atom feed identity and required namespaces are enforced (6.3416ms)
+✔ worksheet formula-like input is neutralized and import rejects formulas (1.0093ms)
+✔ human backup is lossless for all human entities and excludes raw signal payload (0.7445ms)
+✔ multi-source fetch prepares every batch before an atomic caller can write (7.082ms)
+✔ RSS dedupe updates source data without replacing human fields (16.9286ms)
+✔ hostile, wrong namespace and wrong channel RSS are rejected (3.7093ms)
+✔ redirect hosts and timeout are fail closed (13.5924ms)
+✔ retention and source deletion remove derived data while preserving human missions (0.5693ms)
+✔ workbook import rejects stale export revision and redacts secrets (0.3887ms)
+✔ scheduled run is idempotent and backup human-only omits expired source-derived data (0.4481ms)
+✔ profiles isolate human backups, reject cross-profile restore/workbook and invalidate stale exports after restore (2952.7747ms)
+✔ wrong owner fails closed across stateful profile commands and traversal profile is rejected without a path leak (706.5439ms)
+✔ profile names are fixed and traversal cannot select storage (4.1176ms)
+✔ human backup retains feedback and evidence body without raw signals (1.1366ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3881.4096
