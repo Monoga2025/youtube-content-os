@@ -84,7 +84,7 @@ Cada semana opera bajo una regla de sincronización absoluta: **1 Video Largo Ma
 
 ---
 
-## 4. Cuatro (4) Guiones Completos Palabra por Palabra
+## 4. Ocho (8) Guiones Completos Palabra por Palabra
 
 ---
 
@@ -506,6 +506,158 @@ Cada semana opera bajo una regla de sincronización absoluta: **1 Video Largo Ma
 > Descarga tu Scorecard gratuito en el enlace de la descripción o en el primer comentario.  
 > Déjame en los comentarios: ¿cuál crees que es la fuga más grande en tu negocio en este momento? Te voy a estar respondiendo personalmente.  
 > No trabajes más duro; trabaja con mejores sistemas. Nos vemos en el próximo video."
+
+---
+
+### GUION VIDEO 5: "¿1099 o W-2? El error legal que puede destruir tu compañía este año (Multas del IRS y DOL)"
+
+* **Duración estimada:** 15:40 min.
+* **Tono:** Revelador, fiscal, preventivo y de autoridad institucional.
+* **Props / Pantalla:** Formularios oficiales del IRS (Form W-2 y Form 1099-NEC) en mano / Portal del Department of Labor (DOL).
+* **Lead Magnet Asociado:** *Subcontractor Compliance Checklist & 1099 vs W-2 Risk Matrix*.
+
+#### [0:00 - 1:15] EL HOOK DE IMPACTO: LA RULETA RUSA FISCAL Y LABORAL
+*(Sebastián en plano medio. Sostiene en su mano izquierda una forma W-2 y en su mano derecha una forma 1099-NEC).*
+
+> **SEBASTIÁN:**  
+> "El 80% de los contratistas hispanos en Estados Unidos creen que pagar a sus chalanes con forma 1099 o en efectivo les ahorra miles de dólares en impuestos y en seguro de Workers' Comp.
+> 
+> Déjame decirte la verdad sin anestesia: estás jugando a la ruleta rusa con cinco balas en el tambor.
+> 
+> El IRS, el Departamento de Trabajo (DOL) y las aseguradoras no son tontos. Si tú le dices a tu trabajador a qué hora llegar a la obra, le pones la troca, le compras las brochas y le pagas por día o por hora... a ojos de la ley federal, ese muchacho es tu empleado en nómina W-2.
+> 
+> Un solo accidente en una escalera o una solicitud de desempleo y te cae una auditoría laboral retroactiva de 3 años con multas que superan los **$15,000 por trabajador**.
+> 
+> Hoy te voy a enseñar los 6 factores legales del Departamento de Trabajo, cómo saber si estás en riesgo hoy mismo y el plan paso a paso para pasar a tus trabajadores a nómina formal con Gusto sin que tu negocio quiebre."
+
+#### [1:16 - 4:30] EL MITO DEL "ÉL ME PIDIÓ QUE LE PAGARA EN CASH O 1099"
+*(Corte a pantalla. Portal oficial del IRS y DOL con los avisos de Misclassification).*
+
+> **SEBASTIÁN:**  
+> "La excusa número uno que escucho en las obras es:  
+> *—'Oye Sebastián, es que Juan me dijo que no tiene papeles o que prefiere cash para que no le quiten taxes.'*  
+> 
+> Ante un juez federal y ante el auditor de Workers' Comp, esa excusa vale CERO.  
+> La ley en EE. UU. establece que la responsabilidad de clasificar al personal es **100% del empleador**. El trabajador puede firmarte una carta en servilleta aceptando ser 1099; si se cae de una escalera de 12 pies y va a emergencias, el hospital reporta el accidente laboral y el estado te investiga por fraude de nómina. Pierdes tus camionetas, tus ahorros y tu licencia comercial."
+
+#### [4:31 - 9:00] LOS 6 FACTORES DEL TEST DE REALIDAD ECONÓMICA DEL DOL
+> **SEBASTIÁN:**  
+> "Veamos los 6 factores legales del DOL:  
+> 1. **Control de horarios y métodos:** Si tú le dices a qué hora llegar y cómo pintar, es W-2.  
+> 2. **Inversión en herramientas:** Si usa tu compresor y tu escalera, es W-2.  
+> 3. **Oportunidad de ganancias o pérdidas:** Si cobra $180 fijos al día sin riesgo de capital, es W-2.  
+> 4. **Permanencia:** Si trabaja contigo de lunes a viernes mes tras mes, es W-2.  
+> 5. **Iniciativa de negocio independiente:** Si no tiene su propia LLC y no le factura a otros, es W-2.  
+> 6. **Parte integral del servicio:** Si tu empresa pinta casas y él pinta casas, es el corazón de tu negocio: es W-2."
+
+#### [9:01 - 12:30] LA AUDITORÍA ANUAL DE WORKERS' COMP
+> **SEBASTIÁN:**  
+> "Cada año, tu seguro te pide el reporte de nómina y formas 1099. Si ven pagos de $60,000 a subcontratistas sin su propio Certificado de Seguro (COI) con Workers' Comp activa... ¡la aseguradora te manda una factura de ajuste de prima retroactiva de **$7,200 dólares en un solo cheque**!"
+
+#### [12:31 - 15:40] TRANSICIÓN A W-2 CON GUSTO & CTA
+> **SEBASTIÁN:**  
+> "Formalizarte con Gusto Payroll te cuesta menos de $45 al mes, calcula retenciones automáticamente y se sincroniza pay-as-you-go con tu seguro.  
+> Descarga gratis el Checklist de Cumplimiento 1099 vs W-2 en el primer comentario y blinda tu negocio hoy mismo."
+
+---
+
+### GUION VIDEO 6: "El truco de las grandes compañías para ganar 25% extra en materiales legalmente"
+
+* **Duración estimada:** 13:50 min.
+* **Tono:** Estratégico, comercial, analítico y práctico.
+* **Props / Pantalla:** Factura de Sherwin-Williams / Cuenta Home Depot Pro Xtra en pantalla.
+* **Lead Magnet Asociado:** *Material Markup & Waste Factor Calculator en Google Sheets*.
+
+#### [0:00 - 1:00] HOOK: EL TICKET DE MATERIALES EN LA MESA
+> **SEBASTIÁN:**  
+> "¿Vas a Sherwin-Williams o a The Home Depot, compras $4,000 dólares en pintura y tornillos, y luego le cobras al cliente exactamente esos mismos $4,000 mostrándole el recibo?  
+> Si haces eso, estás perdiendo dinero todos los días.  
+> Tu camioneta gastó gasolina. Tu chofer gastó 45 minutos. Tu tarjeta financió la compra. Y si se derrama medio galón, la garantía la pagas tú.  
+> Las grandes empresas ganan un 20% a 30% extra en cada proyecto solo manejando inteligentemente el markup de materiales. Hoy te enseño la fórmula exacta."
+
+#### [1:01 - 4:15] LOS 3 COSTOS INVISIBLES DE LOS MATERIALES
+> **SEBASTIÁN:**  
+> "1. **Costo de financiamiento:** 1.5% mensual en tarjeta de crédito comercial.  
+> 2. **Factor de merma y desperdicio (Waste Factor):** 5% a 8% en pintura, 10% a 15% en madera y drywall.  
+> 3. **Logística y acarreo:** Tiempo de chofer y desgaste de troca.  
+> Cobrar al costo significa financiar al cliente de tu propio bolsillo."
+
+#### [4:16 - 8:30] LA FÓRMULA DEL MATERIAL MARKUP
+> **SEBASTIÁN:**  
+> "Escala de recargo profesional:  
+> * Menos de $2,000 en materiales: **25% a 35% de markup**.  
+> * De $2,000 a $10,000: **20% a 25% de markup**.  
+> * Más de $10,000 comercial: **15% a 18% de markup**.  
+> En una compra de $3,000 en Sherwin: $3,000 x 1.25 = $3,750 dólares presupuestados. Son $750 limpios de ganancia logística."
+
+#### [8:31 - 11:20] CUENTAS PRO TIER Y PRO DELIVERY (40% OFF)
+> **SEBASTIÁN:**  
+> "Una cuenta comercial Sherwin Pro o Home Depot Pro Xtra baja el galón de Duration de $82 a $46. Tú cotizas al valor del mercado y duplicas tu margen neto. Con Sherwin Pro Delivery te llevan el material a la obra a las 7:00 AM y eliminas la parada de 45 minutos de tu cuadrilla."
+
+#### [11:21 - 13:50] CÓMO PRESENTARLO EN EL PRESUPUESTO & CTA
+> **SEBASTIÁN:**  
+> "Nunca desgloces tu ganancia en materiales; cotiza por ítem cerrado de sistema instalado.  
+> Descarga la Material Markup Calculator en el enlace fijado en el primer comentario."
+
+---
+
+### GUION VIDEO 7: "Cómo cobrar los trabajos extra (Change Orders) sin que el cliente se enoje"
+
+* **Duración estimada:** 14:10 min.
+* **Tono:** Firme, diplomático, contractual y de negociación.
+* **Props / Pantalla:** Tablet con modelo digital de Change Order y firma con dedo.
+* **Lead Magnet Asociado:** *Plantilla de Change Order de 1 Página + Lien Waiver Pack*.
+
+#### [0:00 - 1:10] HOOK: "YA QUE ESTÁS AQUÍ..." LA FRASE MÁS CARA EN CONSTRUCCIÓN
+> **SEBASTIÁN:**  
+> "Estás en el tercer día de pintar una casa y la dueña sale con una taza de café, te sonríe y te dice:  
+> *'Oye, ya que estás aquí arriba con la escalera... ¿me puedes pintar también las molduras de este pasillo y la puerta del garaje? Es un momentito, ¿verdad?'*  
+> Tú, por pena, dices: *'Claro doña María'*. Trabajas 5 horas más, gastas un galón extra, y el viernes cuando dices: *'Fueron $450 extra'*, la cliente se enoja: *'¡Pensé que venía incluido!'*  
+> Perdiste $450 dólares y una recomendación. Hoy te doy la frase de 10 palabras que protege tu dinero sin pelear."
+
+#### [1:11 - 8:15] LA RESPUESTA DE 10 PALABRAS QUE ELIMINA EL CONFLICTO
+> **SEBASTIÁN:**  
+> "La frase exacta:  
+> *'Con mucho gusto doña María, permítame preparar la Orden de Cambio formal.'*  
+> Explicas: *'Nuestro protocolo de seguro y calidad nos exige registrar cualquier área adicional en una Orden de Cambio digital. Le llega a su celular en 2 minutos para su firma y en cuanto lo apruebe, mis muchachos empiezan.'*  
+> Trasladas la responsabilidad a un protocolo corporativo y eliminas cualquier discusión."
+
+#### [8:16 - 14:10] ANATOMÍA DEL CHANGE ORDER DE 1 PÁGINA & CTA
+> **SEBASTIÁN:**  
+> "Los 5 puntos innegociables: 1) Scope exacto, 2) Materiales, 3) Impacto en el calendario (+1 día), 4) Precio cerrado (50% al firmar, 50% al terminar), 5) Firma digital en celular.  
+> Acompaña proyectos grandes con Lien Waivers condicionales.  
+> Descarga gratis la plantilla de Change Order en el enlace fijado del primer comentario."
+
+---
+
+### GUION VIDEO 8: "Cómo salir de la obra: El paso a paso para contratar y delegar en tu primer capataz"
+
+* **Duración estimada:** 18:00 min.
+* **Tono:** De mentoría ejecutiva, transformacional y operativo.
+* **Props / Pantalla:** Pizarra con organigrama de empresa de $1M/año en Home Services.
+* **Lead Magnet Asociado:** *Foreman Hiring Blueprint & Production Pay Matrix*.
+
+#### [0:00 - 1:20] HOOK: LA CÁRCEL CON HERRAMIENTAS
+> **SEBASTIÁN:**  
+> "Si tú no vas a la obra el lunes por la mañana... ¿tu compañía sigue produciendo dinero o se detiene por completo?  
+> Si se detiene todo, no tienes una empresa: tienes una cárcel con herramientas donde tú eres el guardia y el prisionero.  
+> Trabajas 14 horas al día, no ves a tus hijos y si te enfermas, tu familia no come.  
+> Para pasar de $200K a $1M debes delegar en un Working Foreman (Capataz Operativo). Hoy te doy el organigrama y el bono de rentabilidad."
+
+#### [1:21 - 4:45] EL SÍNDROME DE "NADIE LO HACE TAN BIEN COMO YO"
+> **SEBASTIÁN:**  
+> "Un capataz que pinte al 85% de tu nivel pero siguiendo un checklist estricto vale 10 veces más que tú pintando al 100% mientras descuidas las ventas. Si estás en la escalera con una brocha, ¿quién está vendiendo los contratos de $20,000?"
+
+#### [4:46 - 13:50] EL PERFIL DEL WORKING FOREMAN Y EL BONO DEL 3%
+> **SEBASTIÁN:**  
+> "Working Foreman: 70% produce en campo, 30% coordina y revisa calidad.  
+> Si a tu pintor le pagas $22/h, tu capataz gana $26 a $30/h en W-2.  
+> Y el secreto: **Bono del 3% al 5% del margen bruto ahorrado** si entrega el proyecto a tiempo y con cero quejas. De repente, es el primero en cuidar las brochas y exigir orden a los ayudantes."
+
+#### [13:51 - 18:00] EL SOP DE 5 PUNTOS DE CALIDAD & CTA
+> **SEBASTIÁN:**  
+> "Checklist diario: 1) Protección matutina, 2) Foto a mediodía, 3) Lámpara de 500 lumens a las 3:30 PM, 4) Limpieza 30 min antes de salir, 5) Firma de satisfacción del cliente.  
+> Descarga gratis el Foreman Hiring Blueprint en el primer comentario."
 
 ---
 

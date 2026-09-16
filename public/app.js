@@ -84,11 +84,20 @@ function renderTopMetrics() {
   const vCount = currentData.longVideos.length;
   const sCount = currentData.shorts.length;
   const cCount = currentData.communityPosts.length;
-  document.getElementById('metric1Value').textContent = `8 Videos`;
+  document.getElementById('metric1Value').textContent = `${vCount} Videos`;
   document.getElementById('metric2Value').textContent = `${vCount} Guiones`;
   document.getElementById('metric3Value').textContent = currentProfileKey === 'sebastian' ? '3 Tools USA' : '4 Sistemas OS';
   document.getElementById('metric4Value').textContent = '180 min';
   document.getElementById('metric5Value').textContent = 'Grabar Ep 1';
+  
+  const nextLabel = document.getElementById('nextEpLabel');
+  if (nextLabel && currentData.longVideos[0]) {
+    nextLabel.textContent = currentData.longVideos[0].title.slice(0, 32) + '...';
+  }
+  const recentBadge = document.getElementById('recentVideosBadge');
+  if (recentBadge) {
+    recentBadge.textContent = `${vCount} Guiones`;
+  }
 }
 
 // ================= KANBAN BOARD RENDERING =================
@@ -113,35 +122,196 @@ function getKanbanCardsForProfile() {
     publicado: []
   };
 
-  currentData.longVideos.forEach((v, idx) => {
-    const cardObj = {
-      id: v.id,
-      title: v.title,
-      tag: v.pilar,
-      pillar: v.pilar,
-      hook: v.hook,
-      structure: v.structure,
-      leadMagnet: v.leadMagnet,
-      monetization: v.monetization,
-      cta: v.cta,
-      fullScript: v.fullScript,
-      duration: v.duration
-    };
-
-    if (idx === 0) {
-      cards.grabado.push(cardObj);
-    } else if (idx < 3) {
-      cards.guion.push(cardObj);
-    } else {
-      cards.ideas.push(cardObj);
+  if (currentProfileKey === 'sebastian') {
+    // 1. Listo p/ Grabar (Hoy)
+    const v1 = currentData.longVideos[0];
+    if (v1) {
+      cards.grabado.push({
+        id: v1.id,
+        title: `Ep 1: ${v1.title}`,
+        tag: 'Listo p/ Grabar Hoy',
+        type: 'video',
+        videoId: v1.id
+      });
     }
-  });
+
+    // 2. Guion Completo: Episodios 2, 3, 4, 5
+    currentData.longVideos.slice(1, 5).forEach(v => {
+      cards.guion.push({
+        id: v.id,
+        title: `Ep ${v.number}: ${v.title}`,
+        tag: `${v.pilar}`,
+        type: 'video',
+        videoId: v.id
+      });
+    });
+
+    // 3. Ideas B2B: Episodios 6, 7, 8
+    currentData.longVideos.slice(5).forEach(v => {
+      cards.ideas.push({
+        id: v.id,
+        title: `Ep ${v.number}: ${v.title}`,
+        tag: `${v.pilar}`,
+        type: 'video',
+        videoId: v.id
+      });
+    });
+
+    // 4. En Edición: Shorts 1 & 2
+    cards.editado.push({
+      id: 'seb_s1_card',
+      title: 'Short 1: La mentira de los $20/hr (38s • Alex Hormozi Style)',
+      tag: 'Short 9:16',
+      type: 'short',
+      shortId: 'seb_s1'
+    });
+    cards.editado.push({
+      id: 'seb_s2_card',
+      title: 'Short 2: Multa de $15,000 del IRS por 1099 (36s)',
+      tag: 'Short 9:16',
+      type: 'short',
+      shortId: 'seb_s2'
+    });
+
+    // 5. Miniatura Lista: A/B Test Ep 1 y Ep 2
+    cards.miniatura.push({
+      id: 'thumb_ep1',
+      title: 'Miniatura A/B Ep 1: Billete $20 vs W-2 (CTR Obj: >9.5%)',
+      tag: 'Diseño A/B',
+      type: 'generic',
+      detailTitle: 'Miniatura A/B Ep 1: Billete $20 vs Formulario W-2',
+      detailTag: 'Miniatura A/B Test',
+      detailContent: 'Versión A: Primer plano de Sebastián con billete de $20 en mano y texto amarillo: "TE CUESTA $32".\nVersión B: Comparativa dividida: "1099 ($0 Taxes)" en rojo vs "W-2 ($15K Multa)" en amarillo.\nObjetivo CTR en YouTube: > 9.2% en las primeras 48 horas.'
+    });
+    cards.miniatura.push({
+      id: 'thumb_ep2',
+      title: 'Miniatura Ep 2: Markup vs Margen (Gráfico en fondo oscuro)',
+      tag: 'Diseño A/B',
+      type: 'generic',
+      detailTitle: 'Miniatura Ep 2: El Error de Kínder en Cotizaciones',
+      detailTag: 'Miniatura A/B Test',
+      detailContent: 'Composición: Gráfico de barras de $10,000 de costo. Flecha roja tachando $12,000 (16.6% margen falso) y flecha verde a $16,666 (40% margen neto real).\nTipografía: Inter Bold 120pt.'
+    });
+
+    // 6. Programado: Post Comunidad 1 & Short 3
+    cards.programado.push({
+      id: 'post_com1',
+      title: 'Post Comunidad: Caso de Estudio 3 empleados Orlando FL',
+      tag: 'Comunidad YT',
+      type: 'community',
+      postId: 'seb_cp1'
+    });
+    cards.programado.push({
+      id: 'short_prog3',
+      title: 'Short 3: Margen vs Markup (Programado Sábado 12:00 PM)',
+      tag: 'Short 9:16',
+      type: 'short',
+      shortId: 'seb_s3'
+    });
+
+    // 7. Publicado: Herramientas en Código Live
+    cards.publicado.push({
+      id: 'tool_cost',
+      title: 'Tool Live: True Employee Cost Calculator (v2.1 Google Sheets)',
+      tag: 'Lead Magnet Live',
+      type: 'generic',
+      detailTitle: 'True Employee Cost Calculator (Labor Burden Master)',
+      detailTag: 'Lead Magnet #1',
+      detailContent: 'Herramienta matemática funcional en Node.js y Google Sheets.\nCalcula FICA (7.65%), FUTA, SUTA estatal (TX, FL, CA, NY, NC, GA), Workers\' Comp por oficio y horas no facturables.\nEntrega el precio de venta sugerido para un margen neto del 40% innegociable.'
+    });
+    cards.publicado.push({
+      id: 'tool_pricing',
+      title: 'Tool Live: Job Costing & Pricing Matrix 2026',
+      tag: 'Lead Magnet Live',
+      type: 'generic',
+      detailTitle: 'Job Costing & Pricing Matrix 2026',
+      detailTag: 'Lead Magnet #2',
+      detailContent: 'Matriz estructurada de 4 bloques: Materiales con 15% de desperdicio + Mano de obra con True Cost + Overhead asignado + Margen neto 40%.\nIncluye generador de propuestas de 3 opciones (Good, Better, Best).'
+    });
+
+  } else {
+    // Daniel profile
+    const v1 = currentData.longVideos[0];
+    if (v1) {
+      cards.grabado.push({
+        id: v1.id,
+        title: `Ep 1: ${v1.title}`,
+        tag: 'Listo p/ Grabar',
+        type: 'video',
+        videoId: v1.id
+      });
+    }
+
+    currentData.longVideos.slice(1, 2).forEach(v => {
+      cards.guion.push({
+        id: v.id,
+        title: `Ep ${v.number}: ${v.title}`,
+        tag: `${v.pilar}`,
+        type: 'video',
+        videoId: v.id
+      });
+    });
+
+    currentData.longVideos.slice(2).forEach(v => {
+      cards.ideas.push({
+        id: v.id,
+        title: `Ep ${v.number}: ${v.title}`,
+        tag: `${v.pilar}`,
+        type: 'video',
+        videoId: v.id
+      });
+    });
+
+    cards.editado.push({
+      id: 'dan_s1_card',
+      title: 'Short 1: No es olvido, es diseño (35s)',
+      tag: 'Short 9:16',
+      type: 'short',
+      shortId: 'dan_s1'
+    });
+    cards.editado.push({
+      id: 'dan_s2_card',
+      title: 'Short 2: La IA no debería enviar dos veces (38s)',
+      tag: 'Short 9:16',
+      type: 'short',
+      shortId: 'dan_s2'
+    });
+
+    cards.miniatura.push({
+      id: 'thumb_dan1',
+      title: 'Miniatura Ep 1: Diagrama de Idempotencia Jarvis',
+      tag: 'Diseño Pro',
+      type: 'generic',
+      detailTitle: 'Miniatura Ep 1: Arquitectura de Jarvis',
+      detailTag: 'Miniatura',
+      detailContent: 'Captura de pantalla de la consola determinista y gráfico de secuencia de entrega con estado en cuarentena.'
+    });
+
+    cards.programado.push({
+      id: 'post_dan1',
+      title: 'Post Comunidad: Las 4 preguntas antes de usar IA',
+      tag: 'Comunidad YT',
+      type: 'community',
+      postId: 'dan_cp1'
+    });
+
+    cards.publicado.push({
+      id: 'tool_dan1',
+      title: 'Blueprint: Mapa de Flujo Operativo Monoga OS',
+      tag: 'Framework Live',
+      type: 'generic',
+      detailTitle: 'Mapa de Flujo Operativo Monoga OS',
+      detailTag: 'Lead Magnet',
+      detailContent: 'Protocolo de 4 preguntas innegociables para auditar y automatizar tareas operativas de PyMEs sin crear deuda técnica.'
+    });
+  }
 
   return cards;
 }
 
 function renderKanbanBoard() {
   const board = document.getElementById('kanbanBoard');
+  if (!board) return;
   board.innerHTML = '';
   const kanbanData = getKanbanCardsForProfile();
 
@@ -154,18 +324,18 @@ function renderKanbanBoard() {
     colEl.innerHTML = `
       <div class="flex items-center justify-between px-1 pb-1">
         <span class="text-xs font-bold text-slate-800">${col.label}</span>
-        <span class="text-[11px] font-semibold text-slate-400 bg-white border border-slate-200 px-1.5 py-0.2 rounded-md">${cards.length}</span>
+        <span class="text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 px-1.5 py-0.5 rounded-md shadow-2xs">${cards.length}</span>
       </div>
       <div class="space-y-2 min-h-[160px] flex-1 kanban-card-container" data-col-key="${col.key}">
         ${cards.map(card => `
-          <div class="kanban-card group" draggable="true" data-card-id="${card.id}" data-col-key="${col.key}" onclick="openVideoDetail('${card.id}')">
+          <div class="kanban-card group cursor-pointer hover:border-blue-300 hover:shadow-xs transition-all" draggable="true" data-card-id="${card.id}" data-col-key="${col.key}" onclick="openCardItem('${col.key}', '${card.id}')">
             <p class="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">${card.title}</p>
             <div class="mt-2 flex items-center justify-between">
               <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md ${col.pillColor}">
                 ${card.tag || col.label}
               </span>
               <span class="text-[10px] text-blue-500 font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
-                Guion <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                Ver <i class="fa-solid fa-arrow-right text-[8px]"></i>
               </span>
             </div>
           </div>
@@ -218,6 +388,74 @@ function findVideoById(videoId) {
   return currentData.longVideos.find(v => v.id === videoId);
 }
 
+function openCardItem(colKey, cardId) {
+  // 1. If it's a long video ID
+  const v = currentData.longVideos.find(vid => vid.id === cardId);
+  if (v) {
+    openVideoDetail(v.id);
+    return;
+  }
+  // 2. If it's a short
+  const s = currentData.shorts.find(sh => sh.id === cardId || cardId.includes(sh.id));
+  if (s) {
+    openGenericDetail(s.title, 'Short Vertical 9:16 (40s)', `⚡ HOOK DE IMPACTO:\n"${s.hook}"\n\n📜 GUION:\n${s.script}\n\n📢 LLAMADO A LA ACCIÓN (CTA):\n${s.cta}`, 'Short derivado de alto impacto para adquisición orgánica de leads en YouTube y TikTok.');
+    return;
+  }
+  // 3. If it's a community post
+  const cp = currentData.communityPosts.find(p => p.id === cardId || cardId.includes(p.id));
+  if (cp) {
+    openGenericDetail(cp.title, `Post de Comunidad • ${cp.type}`, cp.content, 'Publicación de debate y engagement para la pestaña de Comunidad de YouTube y LinkedIn.');
+    return;
+  }
+  // 4. Check custom generic kanban cards
+  const kanbanData = getKanbanCardsForProfile();
+  for (const c in kanbanData) {
+    const found = kanbanData[c].find(item => item.id === cardId);
+    if (found && found.detailTitle) {
+      openGenericDetail(found.detailTitle, found.detailTag, found.detailContent, 'Herramienta / Entregable del Pipeline de Producción Monoga OS.');
+      return;
+    }
+  }
+  // Fallback
+  if (currentData.longVideos[0]) {
+    openVideoDetail(currentData.longVideos[0].id);
+  }
+}
+
+function openGenericDetail(title, tag, content, subtitle) {
+  const firstVideo = currentData.longVideos[0];
+  activeCardInModal = firstVideo;
+
+  document.getElementById('modalVideoTitle').textContent = title;
+  document.getElementById('modalPillarBadge').textContent = tag;
+  document.getElementById('modalStageBadge').textContent = 'Pipeline Activo';
+  document.getElementById('modalHookText').textContent = content.split('\n')[0] || title;
+
+  const structContainer = document.getElementById('modalStructureList');
+  structContainer.innerHTML = '';
+  const lines = content.split('\n').filter(l => l.trim().length > 0).slice(0, 4);
+  lines.forEach((line, i) => {
+    const stepEl = document.createElement('div');
+    stepEl.className = 'flex items-start gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100';
+    stepEl.innerHTML = `
+      <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">${i + 1}</span>
+      <span class="text-slate-700 leading-snug font-medium">${line}</span>
+    `;
+    structContainer.appendChild(stepEl);
+  });
+
+  const fullScriptEl = document.getElementById('modalFullScriptContainer');
+  if (fullScriptEl) {
+    fullScriptEl.innerHTML = content.replace(/\n/g, '<br>');
+  }
+
+  document.getElementById('modalLeadMagnet').textContent = subtitle;
+  document.getElementById('modalMonetization').textContent = 'Conversión de Tráfico Orgánico a Clientes B2B';
+  document.getElementById('modalCtaText').textContent = 'Accede a las herramientas oficiales en la descripción del video.';
+
+  document.getElementById('videoDetailModal').classList.remove('hidden');
+}
+
 function openVideoDetail(videoId) {
   const v = findVideoById(videoId);
   if (!v) return;
@@ -241,6 +479,12 @@ function openVideoDetail(videoId) {
       `;
       structContainer.appendChild(stepEl);
     });
+  }
+
+  // Full Word-for-Word Script
+  const fullScriptEl = document.getElementById('modalFullScriptContainer');
+  if (fullScriptEl) {
+    fullScriptEl.innerHTML = (v.fullScript || v.hook).replace(/\n/g, '<br>');
   }
 
   // Lead magnet, Monetization, CTA
@@ -515,11 +759,30 @@ function renderCalendar() {
   const calDays = document.getElementById('calendarDays');
   if (!calDays) return;
   calDays.innerHTML = '';
+
   const events = {
-    16: [{ type: 'video', title: 'GRABAR: Ep 1', highlight: true }],
-    18: [{ type: 'short', title: 'Short: Mentira $20' }],
-    23: [{ type: 'video', title: 'GRABAR: Ep 2' }],
-    25: [{ type: 'short', title: 'Short: Markup vs Margen' }]
+    1: [{ type: 'post', title: 'Post: Caso Orlando' }],
+    2: [{ type: 'short', title: 'S1: Mentira $20' }],
+    4: [{ type: 'video', title: 'Revisión Ep 1' }],
+    5: [{ type: 'video', title: 'GRABAR Ep 1', highlight: true }],
+    7: [{ type: 'short', title: 'S2: Multa IRS' }],
+    8: [{ type: 'post', title: 'Encuesta Pricing' }],
+    9: [{ type: 'short', title: 'S3: Margen Markup' }],
+    11: [{ type: 'video', title: 'Revisión Ep 2' }],
+    12: [{ type: 'video', title: 'GRABAR Ep 2' }],
+    14: [{ type: 'short', title: 'S4: Depósito 50%' }],
+    15: [{ type: 'post', title: 'Post: Libreta CRM' }],
+    16: [{ type: 'short', title: 'S5: WhatsApp CRM', highlight: true }],
+    18: [{ type: 'video', title: 'Revisión Ep 3' }],
+    19: [{ type: 'video', title: 'GRABAR Ep 3' }],
+    21: [{ type: 'short', title: 'S6: Delegar 85%' }],
+    22: [{ type: 'post', title: 'Post: Manifiesto W2' }],
+    23: [{ type: 'short', title: 'S7: Troca $80K' }],
+    25: [{ type: 'video', title: 'Revisión Ep 4' }],
+    26: [{ type: 'video', title: 'GRABAR Ep 4' }],
+    28: [{ type: 'short', title: 'S8: Change Orders' }],
+    29: [{ type: 'post', title: 'Post: Auditoría P&L' }],
+    30: [{ type: 'short', title: 'S9: DOL Test' }]
   };
 
   const pad = document.createElement('div');
@@ -528,21 +791,21 @@ function renderCalendar() {
 
   for (let day = 1; day <= 30; day++) {
     const dayCell = document.createElement('div');
-    dayCell.className = 'cal-day-cell';
+    dayCell.className = 'cal-day-cell min-h-[46px] p-1 border border-slate-100 rounded-lg flex flex-col justify-between bg-white hover:border-blue-300 transition-colors';
     const dayEvents = events[day] || [];
 
     let eventHtml = '';
     if (dayEvents.length > 0) {
       eventHtml = dayEvents.map(ev => `
-        <div class="cal-event-badge ${ev.highlight ? 'bg-rose-600 text-white font-bold' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
+        <div class="cal-event-badge text-[8.5px] px-1 py-0.5 rounded leading-tight truncate ${ev.highlight ? 'bg-rose-600 text-white font-bold' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
           ${ev.title}
         </div>
       `).join('');
     }
 
     dayCell.innerHTML = `
-      <span class="cal-day-num ${dayEvents.length > 0 && dayEvents[0].highlight ? 'text-rose-600 font-bold' : ''}">${day}</span>
-      ${eventHtml}
+      <span class="cal-day-num text-[10px] font-bold ${dayEvents.some(e => e.highlight) ? 'text-rose-600' : 'text-slate-500'}">${day}</span>
+      <div class="space-y-0.5">${eventHtml}</div>
     `;
     calDays.appendChild(dayCell);
   }
@@ -553,22 +816,31 @@ function renderRecentVideos() {
   if (!container) return;
   container.innerHTML = '';
 
-  currentData.longVideos.slice(0, 4).forEach((v, idx) => {
+  currentData.longVideos.slice(0, 5).forEach((v, idx) => {
     const row = document.createElement('div');
     row.className = 'py-2.5 flex items-center justify-between gap-3 text-xs';
     row.innerHTML = `
       <div class="flex items-center gap-2.5 min-w-0 flex-1">
-        <div class="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 shrink-0 font-bold text-[10px]">
-          ${v.duration}
+        <div class="w-9 h-9 rounded-xl ${idx === 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-slate-100 text-slate-700 border border-slate-200'} flex flex-col items-center justify-center shrink-0 font-bold text-[10px] leading-none">
+          <span>Ep ${v.number}</span>
+          <span class="text-[8px] font-normal text-slate-400 mt-0.5">${v.duration.split(' ')[0]}</span>
         </div>
         <div class="min-w-0">
-          <p class="font-bold text-slate-800 truncate">${v.title}</p>
-          <span class="text-[10px] text-slate-400">${v.pilar}</span>
+          <p class="font-bold text-slate-800 truncate hover:text-blue-600 cursor-pointer" onclick="openVideoDetail('${v.id}')">${v.title}</p>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[10px] text-slate-400 truncate">${v.pilar}</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded font-semibold ${idx === 0 ? 'bg-rose-100 text-rose-700' : 'bg-blue-50 text-blue-700'} shrink-0">${v.status || 'Guion Listo'}</span>
+          </div>
         </div>
       </div>
-      <button onclick="openVideoDetail('${v.id}')" class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-blue-600 rounded-lg text-[11px] font-bold transition-colors shrink-0">
-        Ver
-      </button>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button onclick="openVideoDetail('${v.id}')" class="px-2.5 py-1 bg-slate-50 hover:bg-blue-50 hover:text-blue-700 border border-slate-200 text-slate-700 rounded-lg text-[11px] font-bold transition-colors">
+          Guion
+        </button>
+        <button onclick="activeCardInModal = currentData.longVideos[${idx}]; openTeleprompterModal();" class="p-1.5 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="Teleprompter">
+          <i class="fa-solid fa-expand text-xs"></i>
+        </button>
+      </div>
     `;
     container.appendChild(row);
   });
