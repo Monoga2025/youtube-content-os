@@ -333,7 +333,7 @@
                 <div>
                   <div class="flex items-center justify-between mb-3">
                     <h4 class="text-xs font-bold text-slate-900">Episodios Prioritarios</h4>
-                    <span class="text-[11px] font-semibold text-blue-600">4 Guiones</span>
+                    <span id="recentVideosBadge" class="text-[11px] font-semibold text-blue-600">8 Guiones</span>
                   </div>
                   <div class="divide-y divide-slate-100" id="recentVideosList"></div>
                 </div>
@@ -613,6 +613,19 @@
             <i class="fa-solid fa-list-check text-blue-600"></i> Estructura y Tomas Paso a Paso
           </h4>
           <div id="modalStructureList" class="space-y-2 pl-1"></div>
+        </div>
+
+        <!-- Full Word-for-word Script -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <h4 class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-file-lines text-blue-600"></i> Guion Completo Palabra por Palabra
+            </h4>
+            <button onclick="copyFullScript()" class="text-[10px] font-bold text-blue-600 hover:underline flex items-center gap-1">
+              <i class="fa-regular fa-copy"></i> Copiar Guion Completo
+            </button>
+          </div>
+          <div id="modalFullScriptContainer" class="text-xs leading-relaxed text-slate-800 font-mono bg-slate-50 p-4 rounded-xl border border-slate-200 select-text max-h-56 overflow-y-auto whitespace-pre-line"></div>
         </div>
 
         <!-- Lead Magnet & Monetization -->
