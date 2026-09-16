@@ -7,1058 +7,491 @@ if (typeof window !== 'undefined') {
 }
 
 var CONTENT_DATABASE = {
-  // =========================================================================
-  // SEBASTIÁN MONOGA — HOME-SERVICE BUSINESSES & LATINO CONTRACTORS EN EE. UU.
-  // =========================================================================
-  sebastian: {
-    profile: {
-      name: 'Sebastián Monoga',
-      role: 'El COO del Contratista Hispano en USA',
-      handle: 'Home Services USA (@sebastian)',
-      avatarText: 'SM',
-      avatarBg: 'bg-amber-600',
-      niche: 'Home-Service Businesses & Latino Contractors en USA',
-      market: 'Pintura, Drywall, Landscaping, HVAC, Roofing, Framing, Cleaning',
-      currency: 'USD ($)',
-      weeklyBudget: '180 minutos'
+  "sebastian": {
+    "profile": {
+      "name": "Sebastián Monoga",
+      "role": "El COO del Contratista Hispano en USA",
+      "handle": "Home Services USA (@sebastian)",
+      "avatarText": "SM",
+      "avatarBg": "bg-amber-600",
+      "niche": "Home-Service Businesses & Latino Contractors en USA",
+      "market": "Pintura, Drywall, Landscaping, HVAC, Roofing, Framing, Cleaning",
+      "currency": "USD ($)",
+      "weeklyBudget": "180 minutos"
     },
-    longVideos: [
+    "longVideos": [
       {
-        id: 'seb_v1',
-        number: 1,
-        title: 'El costo REAL de contratar un empleado a $20/hora en USA (Lo que nadie te dice)',
-        duration: '14:30 min',
-        pilar: 'Mano de Obra & Nómina',
-        status: 'Listo para Grabar',
-        hook: `Si le estás pagando $20 dólares la hora a tu trabajador en el campo y en tu mente crees que ese trabajador te cuesta $20 dólares la hora... tu compañía está perdiendo dinero cada minuto que pasa, y ni siquiera te has dado cuenta.
-
-En este momento, miles de contratistas latinos en California, Texas, Florida y Nueva York están cobrando sus proyectos a $35 o $40 dólares la hora creyendo que se están embolsando una ganancia tremenda.
-
-Hoy te voy a demostrar con números reales en mano, impuestos federales, estatales, Workers' Comp y costos ocultos, por qué ese empleado de $20 la hora en realidad te está costando entre $28.50 y $32.40 dólares cada 60 minutos.
-
-Si no entiendes este número hoy, estás a un solo accidente de obra o a una auditoría del estado de perder absolutamente todo lo que has construido.`,
-        fullScript: `[0:00 - 0:45] EL HOOK DE IMPACTO VISUAL Y COGNITIVO
-(Sebastián mira fijamente a la cámara. Plano medio cerrado. Sostiene en la mano un billete de $20 dólares).
-"Si le estás pagando $20 dólares la hora a tu trabajador en el campo y en tu mente crees que ese trabajador te cuesta $20 dólares la hora... tu compañía está perdiendo dinero cada minuto que pasa, y ni siquiera te has dado cuenta.
-En este momento, miles de contratistas latinos en California, Texas, Florida y Nueva York están cobrando sus proyectos a $35 o $40 dólares la hora creyendo que se están embolsando una ganancia tremenda.
-Hoy te voy a demostrar con números reales en mano, impuestos federales, estatales, Workers' Comp y costos ocultos, por qué ese empleado de $20 la hora en realidad te está costando entre $28.50 y $32.40 dólares cada 60 minutos.
-Si no entiendes este número hoy, estás a un solo accidente de obra o a una auditoría del estado de perder absolutamente todo lo que has construido."
-
-[0:46 - 2:15] LA ILUSIÓN ÓPTICA DEL CONTRATISTA
-(Corte a plano general. Sebastián se sienta frente a su escritorio con la pantalla visible).
-"Vamos a ser honestos entre tú y yo. Cuando empezamos como contratistas independientes, venimos de trabajar con las herramientas. Sabemos cuánto rinde un galón de primer, sabemos cuántos paquetes de shingle caben en la troca. Pero nadie nos enseñó contabilidad laboral en Estados Unidos.
-La conversación típica en la obra es:
-—'Oye, Juan, te voy a pagar a $20 la hora. Si trabajas 40 horas a la semana, son $800 semanales.'
-Multiplicas $800 por 4 semanas y dices: 'Me cuesta $3,200 al mes. Si cobro el proyecto en $6,000, me sobran casi $3,000 limpiecitos.'
-Mentira. Ilusión total.
-Ese cálculo infantil es la razón número uno por la cual los contratistas trabajan 14 horas al día de lunes a sábado, y cuando llega el viernes de nómina, tienen que usar su propia tarjeta de crédito personal para pagarle a su gente.
-Vamos a abrir la hoja de cálculo y desarmar el término que los gringos llaman Labor Burden (la carga laboral real)."
-
-[2:16 - 6:30] DESGLOSE EN PANTALLA: LOS IMPUESTOS QUE NO VES
-(Corte directo a la pantalla compartida. Hoja de cálculo con encabezados oscuros).
-"Miren mi pantalla. Tomemos un salario base de $20.00 USD por hora. Suponiendo 40 horas a la semana y 50 semanas de trabajo al año (dejando 2 semanas de descanso o días feriados). Eso representa 2,000 horas al año, lo que equivale a un salario bruto de $40,000 USD anuales.
-
-Ahora, veamos lo que la ley federal y estatal te obliga a ti, como empleador, a pagar por encima de esos $40,000:
-1. FICA (Seguro Social 6.2% + Medicare 1.45% = 7.65%):
-Tu empleado paga el 7.65% de su cheque, pero tú como dueño de negocio tienes que igualar exactamente el 7.65% adicional. En $40,000 al año, esto son $3,060 USD. Eso añade $1.53 por hora.
-2. FUTA (Federal Unemployment Tax Act):
-El impuesto federal por desempleo efectivo es del 0.6% sobre los primeros $7,000 dólares de salario por empleado. Son $42 USD al año ($0.02 por hora).
-3. SUTA (State Unemployment Tax Act):
-En promedio estatal ronda el 3.5% sobre los primeros $9,000: son $315 USD al año ($0.16 por hora).
-
-Hasta aquí, sin seguros privados, tu empleado ya te cuesta $21.71 por hora. Pero aquí viene el golpe que noquea a la mayoría: el seguro de compensación al trabajador."
-
-[6:31 - 9:45] EL MONSTRUO DE WORKERS' COMP Y GENERAL LIABILITY
-"Si estás en construcción o servicios en USA, tú no puedes operar legalmente sin Workers' Comp. Un solo resbalón de una escalera de 12 pies te puede costar $250,000 en gastos médicos y demandas legales.
-En una compañía de pintura residencial promedio (Code 5474), una tasa conservadora es del 10%: el 10% de $40,000 son $4,000 USD al año ($2.00 por hora).
-Añade la porción proporcional de General Liability ($1M/$2M) que añade unos $0.40 por hora.
-¿En cuánto vamos? En $24.11 por hora. Pero todavía falta el factor más letal de todos: Las Horas No Facturables."
-
-[9:46 - 12:15] LA TRAMPA DE LA INEFICIENCIA: HORAS FACTURABLES VS HORAS PAGADAS
-"Tú le pagas a tu trabajador por 8 horas al día. Pero, ¿cuántas horas está produciendo con la brocha en la mano?
-- 30 min cargando la troca y yendo a comprar la pintura a Sherwin-Williams.
-- 25 min preparando plástico y tape.
-- 20 min de hidratación.
-- 30 min al final del día lavando pistolas y limpiando.
-La tasa de utilización real es del 70% al 75%. De 40 horas semanales que pagas, solo puedes facturar al cliente entre 28 y 30 horas.
-Cuando divides el costo total ($48,220 incluyendo equipo y uniformes) entre las 1,500 horas reales producidas en el proyecto:
-¡EL COSTO REAL ES DE $32.14 DÓLARES POR HORA!
-Si cobras a $30 la hora, estás subsidiando al cliente de tu bolsillo con $2.14 por cada hora que tu trabajador trabaja."
-
-[12:16 - 14:30] RESOLUCIÓN Y LLAMADO A LA ACCIÓN
-"Para que no tengas que hacer estas matemáticas a mano construí una herramienta exacta para nuestra comunidad: La True Employee Cost Calculator en Google Sheets.
-Pones tu salario base, eliges tu estado (TX, FL, CA, etc.) y tu oficio, y la hoja calcula tu costo exacto por hora y a cuánto debes cotizar para ganar el 40% de margen neto.
-Descárgala 100% gratis en el primer comentario. ¡Es hora de que los hispanos en este país dejemos de competir por precio y empecemos a dominar por números y rentabilidad!"`,
-        structure: [
-          '0:00–0:45 Gancho: El billete de $20 y la mentira del salario nominal.',
-          '0:45–2:15 La trampa del flujo de caja del contratista.',
-          '2:15–6:30 Desglose en pantalla de FICA (7.65%), FUTA y SUTA estatal.',
-          '6:30–9:45 Workers\' Comp según código de oficio (Pintura 10%, Roofing 25%+).',
-          '9:45–12:15 Horas no facturables: Por qué 40 horas pagadas son 28 horas producidas.',
-          '12:15–14:30 Salto a $32.14/hr real y descarga de la calculadora.'
+        "id": "seb_v1",
+        "number": 1,
+        "title": "El costo REAL de pagar $20/hora a un chalán en USA (Workers' Comp, FICA y Downtime)",
+        "duration": "14:15 min",
+        "pilar": "Mano de Obra & Nómina",
+        "status": "Listo para Grabar",
+        "hook": "*(CÁMARA: Plano medio cerrado, iluminación dramática y nítida. Sebastián mira directo al lente. Sostiene un billete de $20 USD en la mano derecha).*\n\nSi le pagas $20 dólares la hora a tu trabajador en la obra y crees que te cuesta $20 dólares la hora... tu compañía está perdiendo $12.14 dólares cada 60 minutos sin que te des cuenta. En este video te voy a mostrar la matemática exacta que te está quebrando.\n\n*(EFECTO SONORO: Whoosh digital y golpe sordo de caja registradora. Gráfico en pantalla gigante con alerta roja: $20/hr Salario = $32.14/hr Costo Real).*\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'True Employee Cost Calculator (Labor Burden Master) en Google Sheets',
-        monetization: 'Afiliado Gusto Payroll ($200–$400 por activación de nómina formal)',
-        cta: 'Descarga gratis la calculadora de costo real en el enlace fijado del primer comentario.',
-        shorts: ['S1: La mentira de los $20/hora', 'S2: La multa de $15,000 del IRS por pagar 1099']
+        "leadMagnet": "True Employee Cost Calculator (Labor Burden Master Sheet 2026).",
+        "monetization": "Afiliación Gusto Payroll ($300/activación) + Auditoría de Nómina Monoga OS ($2,500)",
+        "cta": "Descarga la Calculadora de True Employee Cost en el primer enlace de la descripción y agenda tu Diagnóstico Operativo de 20 minutos.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Plano medio cerrado, iluminación dramática y nítida. Sebastián mira directo al lente. Sostiene un billete de $20 USD en la mano derecha).*\n\n> **SEBASTIÁN:**  \n> \"Si le pagas $20 dólares la hora a tu trabajador en la obra y crees que te cuesta $20 dólares la hora... tu compañía está perdiendo $12.14 dólares cada 60 minutos sin que te des cuenta. En este video te voy a mostrar la matemática exacta que te está quebrando.\"\n\n*(EFECTO SONORO: \"Whoosh\" digital y golpe sordo de caja registradora. Gráfico en pantalla gigante con alerta roja: \"$20/hr Salario = $32.14/hr Costo Real\").*\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Corte a plano medio abierto. Sebastián se sienta frente a su escritorio con su iPad).*\n\n> **SEBASTIÁN:**  \n> \"Hablemos como contratistas de verdad, de hombre a hombre. Llegas a este país, aprendes el oficio, te compras tu primera troca, sacas tu LLC y decides contratar a tu primer ayudante.  \n> \n> Juan llega el lunes por la mañana y tú le dices: *'Juan, te voy a pagar a $20 la hora. Son 40 horas a la semana, $800 dólares semanales. Al mes son $3,200.'*  \n> \n> Luego vas donde un cliente gringo a cotizar una casa en Suburbios, calculas que pintar el exterior toma 40 horas, y dices en tu cabeza: *'Le pago $800 a Juan, me gasto $800 en materiales y cobro el trabajo en $2,500. ¡Me sobran $900 limpiecitos de ganancia!'*  \n> \n> Llega el viernes. Pagas la gasolina de la troca, compraste cinta azul y plástico que se te olvidó cobrar, pagas el payroll de Juan... y cuando miras la cuenta del banco de Chase o Bank of America, te quedan $85 dólares.  \n> \n> Trabajaste 65 horas bajo el sol a 95 grados de temperatura, aguantaste la presión del cliente, pusiste tus herramientas, y tu ayudante se fue a su casa con un cheque limpio mientras tú no sabes si vas a poder pagar la renta de tu casa el primero del mes.  \n> \n> ¿Por qué pasa esto? Porque nadie en la escuela nos enseñó el concepto más sagrado de los negocios en Estados Unidos: **El Labor Burden (la carga laboral real)** y **el Costo de Ineficiencia de Obra**.  \n> \n> Vamos a abrir la hoja de cálculo de Monoga OS ahora mismo y te voy a desglosar centavo por centavo a dónde se va tu dinero.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla dividida. A la izquierda, Sebastián explicando con lápiz digital; a la derecha, captura en 4K de la hoja de cálculo interactiva).*\n\n```\n+---------------------------------------------------------------------------------------+\n|              MONOGA OS — LABOR BURDEN & BILLABLE COST BREAKDOWN (USA 2026)            |\n+---------------------------------------------------------------------------------------+\n| Base Salarial (Hourly Wage):                                                 $20.00   |\n| Horas Anuales Pagadas (40 hrs/sem x 50 sem):                             2,000 hrs    |\n| Salario Anual Bruto (Gross Payroll):                                       $40,000.00 |\n+---------------------------------------------------------------------------------------+\n| 1. IMPUESTOS PATRONALES OBLIGATORIOS (FEDERAL & STATE TAXES)                          |\n|    - FICA Social Security (Employer 6.20%):                                 $2,480.00 |\n|    - FICA Medicare (Employer 1.45%):                                          $580.00 |\n|    - FUTA (Federal Unemployment 0.60% sobre primeros $7,000):                  $42.00 |\n|    - SUTA (State Unemployment promedio 3.50% sobre base estatal $9,000):      $315.00 |\n|    SUBTOTAL TAXES ANUAL:                                                    $3,417.00 |\n|    Impacto por hora pagada:                                                    +$1.71 |\n+---------------------------------------------------------------------------------------+\n| 2. SEGUROS COMERCIALES Y PROTECCIÓN (INSURANCE & SAFETY)                              |\n|    - Workers' Compensation (Clase Pintura 5474 @ 10.5% por cada $100):      $4,200.00 |\n|    - General Liability Atribuible ($1M/$2M Policy per field tech):            $650.00 |\n|    - Equipo de Protección Personal (EPP, arnés, respirador, botas, uniforme): $450.00 |\n|    SUBTOTAL SEGUROS Y SEGURIDAD:                                            $5,300.00 |\n|    Impacto por hora pagada:                                                    +$2.65 |\n+---------------------------------------------------------------------------------------+\n| COSTO TOTAL DEL EMPLEADO EN NÓMINA (ANUAL):                                $48,717.00 |\n| COSTO POR HORA PAGADA EN EL RELOJ:                                             $24.36 |\n+---------------------------------------------------------------------------------------+\n| 3. EL FACTOR DESTRUCTIVO: TASA DE UTILIZACIÓN REAL (DOWNTIME EN OBRA)                 |\n|    - Horas pagadas al año: 2,000 horas                                                |\n|    - Paradas matutinas en Home Depot / Sherwin-Williams:              -120 hrs        |\n|    - Carga/descarga de troca, preparación de plásticos y limpieza:    -240 hrs        |\n|    - Traslados entre proyectos y descansos reglamentarios:            -160 hrs        |\n|    TOTAL HORAS FACTURABLES REALES AL AÑO (74% Eficiencia):                  1,480 hrs |\n+---------------------------------------------------------------------------------------+\n| COSTO REAL FACTURABLE POR HORA DE PRODUCCIÓN:                                  $32.92 |\n+---------------------------------------------------------------------------------------+\n| 4. PRECIO DE VENTA MÍNIMO SUGERIDO (MARKUP PARA 40% MARGEN NETO)                      |\n|    Fórmula: Costo Real / (1 - Margen Deseado) = $32.92 / (1 - 0.40)                    |\n|    TARIFA MÍNIMA A COTIZAR POR HORA DE MANO DE OBRA:                           $54.87 |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren esto con lupa. Cuando tú le pagas $20 dólares la hora a un trabajador en W-2:\n> \n> Primero, el gobierno federal y tu estado te exigen pagar impuestos patronales que no puedes evadir. FICA (Seguro Social y Medicare) es el **7.65% obligatorio**, son $3,060 al año. FUTA y SUTA (desempleo federal y estatal) suman otros $357 dólares. Solo en impuestos de nómina, ya le sumaste **$1.71 por hora**.\n> \n> Segundo, el seguro de **Workers' Comp**. En trabajos de pintura (código 5474) o drywall (5445), la tasa promedio en estados como Texas, Florida o Georgia oscila entre el 8% y el 12% por cada $100 de nómina. En Roofing (código 5551) puede llegar al 28% o 35%. Usando un 10.5% conservador para pintura residencial, son **$4,200 dólares al año** de Workers' Comp. Súmale $650 de la porción de General Liability y $450 en uniformes y equipo de seguridad: ya vas en **$24.36 dólares por hora**.\n> \n> Pero aquí viene el veneno que mata a las compañías de Home Services: **Las horas no facturables**.  \n> Tú le pagas a tu chalán 8 horas al día. Entra a las 7:30 AM y sale a las 4:00 PM.  \n> Pero, ¿cuánto tiempo produce con la brocha o el taladro sobre la pared del cliente?  \n> - 40 minutos en el Home Depot esperando que le preparen la pintura y comprando un café.  \n> - 30 minutos empapelando y cubriendo pisos.  \n> - 30 minutos al final del día lavando brochas, recogiendo extensiones y limpiando la máquina airless.  \n> \n> La tasa de utilización promedio en Estados Unidos es del **74%**. De las 2,000 horas que le pagas al año, ¡solo puedes facturarle al cliente **1,480 horas**!  \n> \n> Si divides el costo total real de $48,717 entre las 1,480 horas que realmente producen dinero... **el costo de ese trabajador es de $32.92 dólares por hora**.  \n> \n> Grábatelo en la cabeza: si cotizas la mano de obra a $35 o $40 dólares creyendo que ganas la mitad, después de pagar tus trocas, tu contador, tu teléfono y tu gasolina... estás perdiendo dinero de tu bolsillo.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Primer plano. Sebastián gesticula con seguridad y autoridad).*\n\n> **SEBASTIÁN:**  \n> \"Para blindar tu empresa y ganar un 40% de margen neto real, vas a aplicar este sistema de 3 pasos a partir de mañana:\n> \n> **Paso 1: Establece tu Multiplicador de Carga Laboral (Labor Burden Multiplier):**  \n> Tu multiplicador base no puede ser menor a **1.65**. Si pagas $20, tu costo base es $20 x 1.65 = **$33.00**. Si pagas a un maestro pintor $26/hr, tu costo real es $26 x 1.65 = **$42.90**. Nunca vuelvas a hacer un presupuesto con el número del salario pelado.\n> \n> **Paso 2: Elimina las paradas de las 7:30 AM en las tiendas:**  \n> Cada viaje a Home Depot o Sherwin-Williams con 3 trabajadores en la camioneta te cuesta $98 dólares en tiempo perdido. Usa el servicio de entrega en obra (*Sherwin-Williams Pro Delivery*) o haz que tu Project Manager cargue los materiales el día anterior a las 4:30 PM. Las cuadrillas deben llegar a las 7:30 AM a la casa del cliente con todo listo para empezar a trabajar a las 7:35 AM.\n> \n> **Paso 3: Aplica la fórmula de precio con margen neto del 40%:**  \n> Si tu costo real por hora de mano de obra es $32.92, divides $32.92 entre (1 - 0.40), es decir, entre 0.60.  \n> **Tu precio mínimo de venta al cliente debe ser de $54.87 a $58.00 por hora/hombre.**  \n> Si el proyecto requiere 40 horas de trabajo, la mano de obra se cotiza en **$2,200 a $2,320 dólares**, más materiales con recargo.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Plano general mostrando el código QR en pantalla y la interfaz del Google Sheet en iPad).*\n\n> **SEBASTIÁN:**  \n> \"Sé que estas matemáticas pueden parecer complicadas cuando estás cansado después de 12 horas en la obra. Por eso construí para ti la **True Employee Cost Calculator (Labor Burden Master Sheet 2026)**.  \n> \n> Es exactamente la misma plantilla de Google Sheets que acabas de ver en mi pantalla. Lo único que tienes que hacer es:  \n> 1. Escribir el salario base por hora que le pagas a tu trabajador.  \n> 2. Seleccionar tu estado en EE. UU. (Texas, California, Florida, Georgia, etc.).  \n> 3. Seleccionar tu industria (Pintura, Drywall, Roofing, HVAC o Remodelación).  \n> \n> La hoja calcula automáticamente tus impuestos exactos, tu Workers' Comp, tu costo por ineficiencia y te arroja la cifra exacta en dólares a la que debes cotizar por hora para ganarte tu 40% neto limpio.  \n> \n> Es 100% gratuita para toda nuestra comunidad de contratistas latinos. Haz clic en el enlace del primer comentario fijado o escanea el código QR que ves en pantalla para descargarla y guardarla en tu Google Drive.\"\n\n---\n\n### [12:30 - 14:15] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado con iluminación de estudio cálida).*\n\n> **SEBASTIÁN:**  \n> \"Escúchame bien, hermano: viniste a este país a construir un patrimonio para tu familia, no a ser esclavo de una camioneta de trabajo y de clientes que te pagan cuando quieren.  \n> \n> Si ya estás facturando más de $20,000 dólares al mes pero sientes que el dinero se te escapa entre los dedos y quieres que auditemos tus costos e implementemos estos sistemas financieros en tu empresa, agenda una llamada de diagnóstico con nuestro equipo en Monoga OS a través del enlace de la descripción.  \n> \n> Dale like al video, suscríbete al canal y compártelo en tu grupo de WhatsApp de contratistas. En el próximo video te voy a revelar cómo cotizar trabajos de pintura y remodelación con el método 'Good, Better, Best' para que el cliente gringo nunca más te regatee el precio.  \n> \n> Nos vemos en el siguiente video. ¡A romperla en la obra!\"\n\n---"
       },
       {
-        id: 'seb_v2',
-        number: 2,
-        title: 'Cómo cotizar proyectos de servicios para ganar 40% de margen neto sin perder clientes',
-        duration: '16:15 min',
-        pilar: 'Pricing & Job Costing',
-        status: 'Guion Listo',
-        hook: `La mayoría de contratistas latinos cotizan sus proyectos rezándole a la Virgen de Guadalupe para que el cliente no les diga que está muy caro.
-Llegan a la casa del cliente, miran el trabajo con los ojos entrecerrados, se rascan la cabeza y dicen: "Hummm... esto se ve como de unos $3,500 dólares".
-¿De dónde salió ese número? Del miedo a perder el trabajo frente al otro paisano que cobra $2,000.
-Y el resultado es siempre el mismo: trabajas como esclavo dos semanas y te sobran $300 dólares.
-Hoy te voy a enseñar el sistema exacto de 4 partes que utilizan las franquicias americanas de Home Services para vender con 40% de margen neto real.`,
-        fullScript: `[0:00 - 0:55] EL HOOK: LA GUERRA DE PRECIOS
-"La mayoría de contratistas latinos cotizan sus proyectos rezándole a la Virgen de Guadalupe para que el cliente no les diga que está muy caro... Hoy te voy a enseñar cómo cotizar al 40% de margen neto real."
-
-[0:56 - 3:10] EL ERROR MORTAL: CONFUNDIR MARKUP CON MARGEN
-"Si un proyecto te cuesta $10,000 y le sumas 20% de ganancia creyendo que ganas el 20%, cobras $12,000. Tu margen NO es 20%, es 16.6%.
-Fórmula correcta:
-Precio de Venta = Costos Directos / (1 - Margen Deseado)
-Para ganar 40% con $10,000 de costo:
-$10,000 / (1 - 0.40) = $16,666 dólares. ¡Hay más de $2,600 dólares que estás regalando en cada proyecto!"
-
-[3:11 - 8:20] LA ESTRUCTURA DEL JOB COSTING EN 4 BLOQUES
-1. Materiales directos + 10% a 15% de factor de desperdicio y flete.
-2. Mano de obra con True Cost (no el salario nominal).
-3. Overhead empresarial asignado (seguros, renta de bodega, camioneta, software).
-4. Margen de beneficio neto real innegociable.
-
-[8:21 - 13:00] LA TÉCNICA GOOD-BETTER-BEST (3 OPCIONES)
-"Nunca envíes un solo precio. Presenta 3 opciones:
-- Opción Esencial (Good): Preparación básica y 1 mano de pintura estándar.
-- Opción Recomendada (Better): Preparación profunda, imprimante sellador y 2 manos de pintura premium (Sherwin Duration).
-- Opción Platino (Best): Garantía de 10 años, pintura lavable Emerald y lavado a presión exterior gratis.
-El 65% de los clientes gringos eligen la opción del medio y el 20% compra la más cara. ¡Tu ticket promedio sube 30% automáticamente!"
-
-[13:01 - 16:15] CTA & DESCARGA
-"Descarga la Job Costing & Pricing Matrix en el primer comentario y nunca más cotices a ojo."`,
-        structure: [
-          '0:00–0:55 Gancho: La cotización a ojo y el miedo a cobrar.',
-          '0:56–3:10 La matemática: Markup vs Margen (Por qué $10K al 40% son $16,666 y no $14,000).',
-          '3:11–8:20 Los 4 bloques del Job Costing profesional.',
-          '8:21–13:00 Técnica de presupuesto Good-Better-Best para cerrar sin rebajas.',
-          '13:01–16:15 CTA y descarga de la Matriz de Cotización.'
+        "id": "seb_v2",
+        "number": 2,
+        "title": "Cómo cotizar con el método 'Good, Better, Best' para ganar 40% neto sin que el gringo te regatee",
+        "duration": "13:40 min",
+        "pilar": "Pricing & Margen 40%",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Primer plano a dos hojas de papel sobre la mesa. Sebastián rompe por la mitad la hoja de cuaderno arrugada).*\n\nSi mandas tus cotizaciones como un solo precio en un mensaje de texto de WhatsApp, el cliente tiene solo dos opciones: decirte que sí o pedirte rebaja. Cuando le presentas tres opciones estructuradas, el 70% elige la más cara sin regatearte un solo centavo.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Job Costing & Pricing Matrix 2026 (Google Sheets)',
-        monetization: 'Toolkit de Estimación ($29) / Auditoría de Cotizaciones',
-        cta: 'Descarga gratis la matriz de cotización en el enlace fijado del primer comentario.',
-        shorts: ['S3: Margen vs Markup: El error de kínder', 'S4: El anticipo del 50% no es ganancia']
+        "leadMagnet": "Job Costing & 3-Tier Pricing Matrix 2026.",
+        "monetization": "Plantilla Pro de Job Costing + Consultoría de Pricing y Cierre ($1,500 - $3,500)",
+        "cta": "Descarga la Matriz de Pricing Good/Better/Best en la descripción y deja de perder 40% de margen en cada cotización.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Primer plano a dos hojas de papel sobre la mesa. Sebastián rompe por la mitad la hoja de cuaderno arrugada).*\n\n> **SEBASTIÁN:**  \n> \"Si mandas tus cotizaciones como un solo precio en un mensaje de texto de WhatsApp, el cliente tiene solo dos opciones: decirte que sí o pedirte rebaja. Cuando le presentas tres opciones estructuradas, el 70% elige la más cara sin regatearte un solo centavo.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián se acomoda en la silla y habla con tono de complicidad).*\n\n> **SEBASTIÁN:**  \n> \"Dime si esto te suena familiar: Vas a la casa de un cliente en un vecindario de casas de $800,000 dólares. El dueño de la casa sale, te muestra la sala, el comedor y las recámaras.  \n> Tú sacas tu cinta métrica, miras el techo, te rascas la cabeza y dices en tu mente: *'Hummm... el otro contratista seguro cobra $4,000. Si cobro $4,500 tal vez lo pierda. Le voy a decir $3,800 a ver si me lo da'*.  \n> \n> Llegas a tu troca, le mandas un mensaje de texto que dice: *'Buenas tardes Mr. Smith, el trabajo de pintura le sale en $3,800 con pintura incluida'*.  \n> \n> ¿Qué te responde Mr. Smith?  \n> *'Thank you Sebastian, but I have another quote for $3,200. Can you do it for $3,000 cash?'*  \n> \n> Y tú, por la desesperación de tener a los muchachos parados la próxima semana, dices que sí.  \n> Te metiste en la trampa del regateo. Te bajaste $800 dólares de tu propia ganancia antes de abrir la primera lata de pintura.  \n> \n> Los clientes en Estados Unidos con alto poder adquisitivo no compran precio: compran **estatus, garantía, opciones y certidumbre psicológica**.  \n> Hoy te voy a enseñar el método **Good, Better, Best (Buena, Mejor, Élite)**, el mismo que usan las franquicias millonarias americanas de Home Services para cerrar contratos con un 40% a 50% de margen neto.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla completa con el desglose del Job Costing de una casa de 2,400 sqft).*\n\n```\n+---------------------------------------------------------------------------------------+\n|                    CASO DE ESTUDIO REAL: REPINTADO INTERIOR 2,400 SQFT                |\n+---------------------------------------------------------------------------------------+\n| 1. COSTOS DIRECTOS DE PRODUCCIÓN (COGS):                                              |\n|    - Mano de Obra Totalmente Cargada (3 pintores x 3 días = 72 hrs @ $32.92/hr): $2,370|\n|    - Materiales Base (Primer, plástico, tape, masking, lija, calafateo):         $450 |\n|    - Costo de Pintura según Nivel (Duration / Emerald / Promar):             Variable |\n|    - Overhead Asignado por Proyecto (12% del costo operativo):                   $380 |\n+---------------------------------------------------------------------------------------+\n| 2. ESTRUCTURA DE LAS 3 OPCIONES (\"GOOD, BETTER, BEST\"):                              |\n+---------------------------------------------------------------------------------------+\n| OPCIÓN 1: \"PAQUETE ESENCIAL\" (GOOD)                                                   |\n| - Preparación estándar de huecos y grietas menores.                                  |\n| - 1 mano de pintura Sherwin-Williams Promar 200 / SuperPaint (Costo Pintura: $380).  |\n| - Garantía de 1 año en mano de obra.                                                 |\n| COSTO TOTAL DIRECTO: $3,200 USD                                                       |\n| PRECIO DE VENTA (Margen Neto 28%):                                            $4,450  |\n+---------------------------------------------------------------------------------------+\n| OPCIÓN 2: \"PAQUETE PREMIUM / RECOMENDADO\" (BETTER)  --> EL OBJETIVO (68% DE VENTAS)   |\n| - Preparación profunda: lijado con aspiración HEPA, calafateo con uretano 50 años.    |\n| - 2 manos de pintura Sherwin-Williams Duration Home (Costo Pintura: $680).           |\n| - Pintura de puertas interiores y marcos incluida.                                   |\n| - Garantía extendida de 3 años + retoque gratis a los 12 meses.                      |\n| COSTO TOTAL DIRECTO: $3,600 USD                                                       |\n| PRECIO DE VENTA (Margen Neto 42%):                                            $6,250  |\n+---------------------------------------------------------------------------------------+\n| OPCIÓN 3: \"PAQUETE PLATINO / EJECUTIVO\" (BEST)       --> ANCLA DE ALTO VALOR (16%)   |\n| - Todo lo del Paquete Premium + lavado a presión de accesos y garaje.                |\n| - 2 manos de Sherwin-Williams Emerald Urethane en molduras, zócalos y gabinetes.     |\n| - Limpieza profunda diaria con servicio de protección total de alfombras.            |\n| - Garantía de por vida de 5 años transferible a nuevo dueño de la propiedad.         |\n| COSTO TOTAL DIRECTO: $4,200 USD                                                       |\n| PRECIO DE VENTA (Margen Neto 51%):                                            $8,600  |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren la psicología detrás de esta matriz en pantalla.  \n> \n> Cuando tú le mandas a Mr. Smith solo la cotización de $6,250, su cerebro gringo piensa: *'Está caro, déjame llamar a otro'*.  \n> \n> Pero cuando le mandas un presupuesto profesional con tres columnas:  \n> - **Esencial:** $4,450  \n> - **Premium:** $6,250  \n> - **Platino:** $8,600  \n> \n> El marco de referencia del cliente cambia por completo.  \n> Ahora su cerebro no se pregunta si debe contratarte a ti o a otro. Su cerebro se pregunta: **'¿Cuál de las 3 opciones de Sebastián es la que mejor se adapta a mi casa?'**  \n> \n> La opción de $8,600 actúa como un 'efecto ancla' (Price Anchor). Hace que la opción de $6,250 parezca sumamente razonable y equilibrada.  \n> Y la opción de $4,450 te protege: si el cliente realmente anda apretado de dinero, no se va con la competencia, sino que compra tu paquete básico que todavía te deja un 28% de margen limpio.  \n> \n> En nuestras estadísticas con cientos de contratistas:  \n> - El **16% de los clientes eligen el paquete Platino** de $8,600 (te ganas más del 50% neto).  \n> - El **68% eligen el paquete Premium** de $6,250 (tu objetivo principal con 42% neto).  \n> - El **16% eligen el paquete Esencial** de $4,450.  \n> \n> Tu ticket promedio sube automáticamente de $3,800 a más de **$6,200 dólares por proyecto** con exactamente los mismos trabajadores.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Sebastián muestra la app en su tablet interactiva).*\n\n> **SEBASTIÁN:**  \n> \"Para implementar el sistema Good, Better, Best en tu negocio esta misma semana, sigue estos 4 pasos operativos:\n> \n> **Paso 1: Construye tu Catálogo de Servicios (Price Book):**  \n> No inventes los precios en el carro. Ten predefinidos tus 3 paquetes en tu teléfono o iPad con los materiales exactos de cada nivel (Promar 200 vs Duration vs Emerald).\n> \n> **Paso 2: Haz las preguntas de diagnóstico en la visita:**  \n> Cuando camines la casa con el dueño, pregúntale: *'Mr. Smith, ¿está pintando esta casa para venderla en los próximos meses, o piensa vivir aquí con su familia por los próximos 5 a 10 años?'*  \n> Si te dice que piensa vivir ahí 10 años, ya sabes que te va a comprar la opción Premium o Platino porque quiere máxima durabilidad.\n> \n> **Paso 3: Envía el presupuesto digital antes de salir del driveway:**  \n> Nunca le digas al cliente: *'Se lo mando el domingo por correo'*. El domingo ya se le enfrió el interés. Con una herramienta digital, seleccionas las 3 opciones, tomas 4 fotos de las áreas críticas y se lo envías a su celular mientras todavía estás parqueado afuera de su casa.\n> \n> **Paso 4: Bloquea el regateo con elegancia:**  \n> Si el cliente te dice: *'Me gusta la opción Platino, pero ¿me puedes dejar el precio en $5,000?'*, tú respondes con una sonrisa:  \n> *'Mr. Smith, no puedo bajar el precio de la opción Platino porque incluye los mejores materiales de Sherwin-Williams y 5 años de garantía. Pero con gusto podemos ejecutar la Opción Esencial que se ajusta perfectamente a su presupuesto.'*  \n> Nunca bajes el precio sin quitar alcance de trabajo.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Animación en pantalla mostrando las hojas de cálculo de Job Costing).*\n\n> **SEBASTIÁN:**  \n> \"Para que no tengas que calcular los porcentajes ni redactar las descripciones de los paquetes en inglés desde cero, te preparé la **Job Costing & 3-Tier Pricing Matrix 2026**.  \n> \n> Viene con las plantillas pre-redactadas en inglés y español para Painting, Roofing, Drywall y Remodelación. Solo introduces los pies cuadrados (sqft) o las horas estimadas, y la matriz te genera los textos exactos y los 3 precios calculados con tu 40% de ganancia neta.  \n> \n> Descárgala totalmente gratis en el enlace del primer comentario fijado de este video.\"\n\n---\n\n### [12:30 - 15:30] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado con energía y convicción).*\n\n> **SEBASTIÁN:**  \n> \"Basta de regalar tu trabajo por miedo a cobrar lo que vales. Si quieres que implementemos esta matriz de precios y reestructuremos toda tu oferta comercial para clientes de alto ticket en Estados Unidos, agenda una sesión de estrategia con Monoga OS en el enlace de abajo.  \n> \n> Dale like al video, suscríbete y activa la campanita. En el siguiente episodio te voy a mostrar cómo tiramos las libretas de papel a la basura y cómo un software CRM nos permitió duplicar la facturación cobrando depósitos automáticos desde el celular.  \n> \n> ¡Nos vemos en el próximo video!\"\n\n---"
       },
       {
-        id: 'seb_v3',
-        number: 3,
-        title: 'Dejamos de usar papel y WhatsApp: Cómo un CRM duplicó nuestra facturación (Housecall Pro vs Jobber)',
-        duration: '15:20 min',
-        pilar: 'Sistemas & CRM',
-        status: 'Guion Listo',
-        hook: `Si tus presupuestos siguen viviendo en notas de WhatsApp, en una libreta en el asiento de la troca o en servilletas arrugadas, estás dejando escapar al menos el 30% de tus ventas simplemente por no hacer seguimiento automático.
-Los clientes en Estados Unidos compran por velocidad, confianza y profesionalismo.
-Hoy te voy a mostrar en vivo cómo configuramos un CRM de Home Services (Housecall Pro y Jobber) para cotizar en el celular, cobrar con tarjeta en el sitio y recibir pagos 14 días más rápido.`,
-        fullScript: `[0:00 - 1:15] GANCHO: LA LIBRETA EN LA TROCA
-"El cliente te llama, te pide un estimado. Lo anotas en un papel. Llegas a la casa cansado, se te olvida mandar el mensaje y cuando le escribes tres días después... el cliente ya contrató a otra compañía.
-Perdiste $6,000 dólares por no tener un sistema."
-
-[1:16 - 6:00] DEMO EN VIVO: HOUSECALL PRO VS JOBBER
-- Cómo crear un cliente en 30 segundos.
-- Cómo enviar una propuesta profesional con fotos antes/después y firma digital en el celular del cliente.
-- Automatizaciones: SMS 'On My Way' con foto del técnico y mapa GPS en tiempo real.
-
-[6:01 - 11:30] COBRO EN SITIO Y EL FIN DEL JINETEO DE CHEQUES
-- Cobro con tarjeta de crédito en la obra con lector contactless.
-- Depósito automático en tu cuenta comercial de banco en 24 horas.
-- Fin de las llamadas incómodas de "oiga patrón, ¿cuándo me paga?".
-
-[11:31 - 15:20] NÚMEROS Y CTA
-- Un contratista con CRM factura en promedio $11,000 extra al mes solo recuperando cotizaciones no cerradas.
-- Enlace con descuento exclusivo de 20% en Housecall Pro y Jobber en la descripción.`,
-        structure: [
-          '0:00–1:15 Gancho: Las ventas perdidas en WhatsApp.',
-          '1:16–6:00 Demostración en vivo de Housecall Pro y Jobber en pantalla.',
-          '6:01–11:30 Automatizaciones: On My Way, firma digital y cobro en sitio.',
-          '11:31–15:20 Retorno de inversión y descuento de afiliado.'
+        "id": "seb_v3",
+        "number": 3,
+        "title": "Dejamos el cuaderno y WhatsApp: Cómo duplicamos la facturación usando un CRM (Jobber / Housecall Pro)",
+        "duration": "12:50 min",
+        "pilar": "Tecnología & CRM",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Primer plano al teléfono de Sebastián. Suena una notificación de SMS: Depósito de $4,500 aprobado por Mr. Davis).*\n\nEran las 8:30 de la noche. Estaba cenando con mis hijos cuando mi teléfono sonó: un cliente aprobó una cotización de $9,000 y pagó su depósito del 50% con tarjeta de crédito sin que yo tuviera que llamarlo. Si sigues usando libretas y WhatsApp, estás perdiendo el 50% de tus ventas.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Guía Comparativa & Setup Paso a Paso: Housecall Pro vs Jobber',
-        monetization: 'Afiliado B2B Housecall Pro / Jobber ($250 por cuenta activada)',
-        cta: 'Activa tu prueba con descuento exclusivo de nuestro canal en el enlace de la descripción.',
-        shorts: ['S5: Dejar $5,000 en la mesa por no dar seguimiento', 'S6: Por qué el cliente gringo prefiere factura digital']
+        "leadMagnet": "Guía Definitiva & Setup Blueprint: Housecall Pro vs Jobber para Contratistas.",
+        "monetization": "Afiliado Jobber / Housecall Pro ($150-$250) + Setup Completo de CRM ($2,500)",
+        "cta": "Usa el link oficial en la descripción para obtener 14 días gratis de Jobber + 20% de descuento en tu primer año y la guía de setup lista.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Primer plano al teléfono de Sebastián. Suena una notificación de SMS: \"Depósito de $4,500 aprobado por Mr. Davis\").*\n\n> **SEBASTIÁN:**  \n> \"Eran las 8:30 de la noche. Estaba cenando con mis hijos cuando mi teléfono sonó: un cliente aprobó una cotización de $9,000 y pagó su depósito del 50% con tarjeta de crédito sin que yo tuviera que llamarlo. Si sigues usando libretas y WhatsApp, estás perdiendo el 50% de tus ventas.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián muestra la libreta manchada de pintura).*\n\n> **SEBASTIÁN:**  \n> \"Miren esta libreta. Esta era mi vida hace unos años.  \n> Tenía los números de teléfono de los clientes anotados en servilletas, presupuestos escritos en pedazos de cartón de yeso, y más de 80 chats abiertos en WhatsApp.  \n> \n> ¿Qué pasaba todos los días?  \n> - Un cliente me pedía un estimado el lunes; se me olvidaba responderle y para el jueves ya había contratado a otra compañía.  \n> - Terminaba un trabajo de $5,000 el viernes y pasaban 3 semanas antes de que me acordara de mandar la factura, porque la nota estaba refundida en el tablero de la troca.  \n> - Mis chalanes me llamaban 10 veces al día preguntando: *'Oye jefe, ¿cuál es la dirección de la casa? ¿Qué color de pintura va en la recámara principal?'*.  \n> \n> El caos operativo no te deja crecer. Estás tan ocupado apagando fuegos por mensajes de texto que no tienes tiempo de vender ni de supervisar la calidad.  \n> \n> En el mercado de Estados Unidos, los clientes quieren la misma experiencia que tienen con Amazon o con Uber: rapidez, notificaciones automáticas y pagos digitales con un clic.  \n> Hoy te voy a mostrar la pantalla de nuestro CRM y cómo duplicamos la facturación sin trabajar una sola hora extra.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Captura de pantalla de la app del CRM mostrando el embudo de ventas y las métricas financieras).*\n\n```\n+---------------------------------------------------------------------------------------+\n|              EL IMPACTO FINANCIERO DE MIGRAR DE WHATSAPP A UN CRM B2B                 |\n+---------------------------------------------------------------------------------------+\n| MÉTRICA OPERATIVA                       CON WHATSAPP Y PAPEL    CON CRM (JOBBER / HCP)|\n+---------------------------------------------------------------------------------------+\n| 1. Tiempo promedio de envío de estimate: 48 a 72 horas          Menos de 15 minutos   |\n| 2. Tasa de conversión de estimates:      28% de cierre          54% de cierre         |\n| 3. Cobro de depósitos iniciales:        En cheque / Zelle lento  Automático con tarjeta|\n| 4. Tiempo promedio en cobrar factura:    18 días de retraso     Cobro en menos de 24h |\n| 5. Fugas por Change Orders no cobradas:  $1,800 / mes           $0 (Cobro previo 100%)|\n+---------------------------------------------------------------------------------------+\n| SIMULACIÓN FINANCIERA MENSUAL (EMPRESA DE PINTURA / REMODELACIÓN - 2 CUADRILLAS):     |\n| - Leads recibidos al mes: 20 prospectos                                               |\n| - Con sistema tradicional (28% cierre @ $4,000 ticket):       5 trabajos = $20,000 USD|\n| - Con CRM automatizado (54% cierre @ $5,800 Good-Better-Best):11 trabajos = $63,800USD|\n| DIFERENCIA DE FACTURACIÓN MENSUAL:                                       +$43,800 USD |\n+---------------------------------------------------------------------------------------+\n| COSTO DEL SOFTWARE CRM:                                                 $129 USD / mes|\n| RETORNO DE INVERSIÓN (ROI):                                                    33,900%|\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren estos números reales. No son inventados; son las métricas de cientos de contratistas que hemos digitalizado.  \n> \n> Cuando cotizas por papel o WhatsApp, tu tasa de cierre es del **28%**. ¿Por qué? Porque te tardas 48 horas en mandar el presupuesto y nunca haces seguimiento por pena o por olvido.  \n> \n> Las estadísticas en Estados Unidos demuestran que **el 60% de los contratos se cierran después del segundo o tercer recordatorio automático**.  \n> En el CRM, cuando el cliente no abre el presupuesto en 24 horas, el sistema le manda un mensaje de texto automático y cordial:  \n> *'Hola Mr. Davis, le enviamos su presupuesto para la pintura de su residencia. ¿Tiene alguna pregunta o le gustaría agendar la fecha de inicio?'*  \n> \n> Ese simple mensaje automatizado rescata 3 de cada 10 contratos que dabas por muertos.  \n> \n> Y cuando terminas el trabajo, el capataz presiona un botón: 'Job Complete'.  \n> Al cliente le llega la factura digital a su celular con un botón verde gigante: **'Pay Invoice'**.  \n> El cliente mete su tarjeta de crédito o cuenta bancaria ACH, el dinero entra directo a tu cuenta de Chase en 24 horas y se reconcilia solo en QuickBooks Online.  \n> Se acabaron las llamadas incómodas rogándole al cliente que te pague el cheque.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Sebastián muestra el flujo de 4 pantallas en vivo).*\n\n> **SEBASTIÁN:**  \n> \"Este es el flujo exacto de 4 pasos que debes configurar en tu CRM:\n> \n> **Paso 1: Booking Online en Google Business:**  \n> Integra el enlace de agendamiento de tu CRM en tu perfil de Google Maps y en tu página web. El cliente elige el día y la hora de la visita de estimación sin que tú tengas que contestar el teléfono mientras estás manejando.\n> \n> **Paso 2: Notificación 'On My Way' con GPS:**  \n> Cuando vas en camino, tocas el botón 'On My Way'. Al cliente le llega un SMS con tu foto, logotipo de tu empresa y mapa en tiempo real. Esto elimina el 100% de las cancelaciones de citas y te posiciona como una empresa de $5 millones.\n> \n> **Paso 3: Ficha de Trabajo Digital para los Trabajadores (Job Card):**  \n> Tus muchachos abren la app en sus teléfonos y ven la dirección, las fotos de lo que tienen que hacer, el color exacto de la pintura y el código de la puerta. Cero llamadas preguntando tonterías.\n> \n> **Paso 4: Solicitud Automática de Reseñas en Google (Review Automation):**  \n> A los 30 minutos de que el cliente paga la factura final, el CRM le envía un SMS: *'Gracias por confiar en nuestra empresa. ¿Nos dejarías una reseña de 5 estrellas en Google?'*  \n> Así es como consigues 150 reseñas de 5 estrellas en Google sin esfuerzo, lo que te genera leads gratis todas las semanas.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida con la guía interactiva en PDF y video tutorial).*\n\n> **SEBASTIÁN:**  \n> \"Para que no pierdas semanas intentando configurar el software desde cero, preparé la **Guía Definitiva & Setup Blueprint: Housecall Pro vs Jobber para Contratistas Hispanos**.  \n> \n> En esta guía te explico cuál de las dos plataformas te conviene según tu oficio, cómo importar tu catálogo de precios, y te regalo las 5 plantillas exactas de mensajes de texto automáticos en inglés y español para agendar, confirmar y cobrar.  \n> \n> Descárgala gratis en el enlace fijado en el primer comentario.\"\n\n---\n\n### [12:30 - 16:00] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado. Sebastián con tono inspirador).*\n\n> **SEBASTIÁN:**  \n> \"La tecnología no es para las empresas grandes; las empresas se hicieron grandes porque usaron tecnología. Deja de operar como en 1995. Si quieres que nuestro equipo configure tu CRM llave en mano, con tu catálogo de precios y automatizaciones listas en 7 días, agenda una sesión de evaluación con Monoga OS.  \n> \n> Suscríbete al canal, deja tu like y comenta: ¿cuál es el mayor problema que tienes hoy al cobrar a tus clientes?  \n> En el próximo episodio haremos una auditoría en vivo a una empresa de pintura que factura $45,000 al mes pero cuyo dueño gana menos que sus trabajadores.  \n> ¡Nos vemos en el siguiente video!\"\n\n---"
       },
       {
-        id: 'seb_v4',
-        number: 4,
-        title: 'Auditoría en Vivo: Esta compañía de pintura factura $45K al mes pero el dueño gana menos que sus chalanes',
-        duration: '17:45 min',
-        pilar: 'Auditoría Financiera',
-        status: 'Guion Listo',
-        hook: `Facturar mucho no significa ganar dinero.
-Hoy vamos a desarmar los números reales de una compañía de pintura residencial en Florida que factura $45,000 dólares mensuales... y cuando llega fin de mes, el dueño tiene que pedir prestado para pagar su renta personal.
-Encontramos 5 fugas silenciosas que le estaban costando $12,450 dólares limpios cada 30 días.
-Si tú estás facturando entre $20K y $80K al mes, es casi seguro que tienes al menos tres de estas fugas activas en este momento.`,
-        fullScript: `[0:00 - 1:30] GANCHO: LA PARADOJA DE LA FACTURACIÓN
-"Miren este estado de cuenta: $45,210 dólares entraron en julio. Cualquiera diría que este contratista es millonario. Pero el saldo final del mes era de $412 dólares. ¿A dónde se fue el dinero?"
-
-[1:31 - 5:30] LAS 5 FUGAS SILENCIOSAS DESTRUCTIVAS
-1. Fuga en galones de pintura: compraban 40 galones y facturaban solo 30. El resto se quedaba en botes secos o desperdicio. ($1,800/mes).
-2. Tiempo muerto matutino: cuadrillas de 4 personas perdiendo 45 minutos diarios en Sherwin-Williams. ($3,150/mes).
-3. No cobrar Change Orders: "hazme también este closet". Trabajo regalado. ($2,400/mes).
-4. Markup cero en consumibles: cinta, plástico, brochas y lija no se cargaban a la cotización. ($900/mes).
-5. Descuentos por miedo: rebajar $500 de entrada cuando el cliente ponía cara de duda. ($4,200/mes).
-
-[5:31 - 12:00] EL PLAN DE RESCATE OPERATIVO
-- Inventario semanal centralizado con pedidos entregados en obra (Sherwin Pro Delivery).
-- Regla innegociable de Change Orders firmados antes de tocar una herramienta.
-- Estandarización de 40% de margen con la Job Costing Matrix.
-
-[12:01 - 17:45] RESULTADO A LOS 60 DÍAS Y CTA
-- Facturación idéntica de $46,000, pero BENEFICIO NETO RETENIDO DE $13,200 USD mensuales para el dueño.
-- CTA: Postulación para Auditoría Operativa 1 a 1 de Monoga OS para compañías que facturen más de $15K/mes.`,
-        structure: [
-          '0:00–1:30 Gancho: Facturar $45K con saldo de $412 en el banco.',
-          '1:31–5:30 Las 5 fugas silenciosas que quiebran contratistas.',
-          '5:31–12:00 Plan de rescate paso a paso sin vender un solo cliente más.',
-          '12:01–17:45 Resultados y postulación a Auditoría Privada.'
+        "id": "seb_v4",
+        "number": 4,
+        "title": "Auditoría en Vivo: Esta compañía de pintura factura $45K al mes pero el dueño gana menos que sus trabajadores",
+        "duration": "14:10 min",
+        "pilar": "Finanzas & P&L",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Plano cerrado al rostro de Sebastián. Tono de absoluta seriedad).*\n\nCarlos factura $45,000 dólares todos los meses con su compañía de pintura en Atlanta. Tiene 2 trocas nuevas y 6 trabajadores. Pero el mes pasado solo le quedaron $780 dólares en el bolsillo. Hoy vamos a abrir su P&L en vivo y tapar las 4 fugas mortales de dinero.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Contractor Business Health Scorecard (Diagnóstico de 10 preguntas)',
-        monetization: 'Auditoría High-Ticket ($500–$1,500) e Implementación Monoga OS',
-        cta: 'Postula a una auditoría operativa de tu negocio en el enlace de la descripción.',
-        shorts: ['S7: $500K facturados, $0 en la cuenta bancaria', 'S8: Tu troca de $80K no es un gasto inteligente']
+        "leadMagnet": "Contractor Business Health Scorecard & P&L Audit Sheet.",
+        "monetization": "Auditoría Financiera y P&L Diagnóstico 1-a-1 Monoga OS ($3,500)",
+        "cta": "Accede al Contractor Health Scorecard en la descripción y agenda una auditoría de números confidencial con nuestro equipo.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Plano cerrado al rostro de Sebastián. Tono de absoluta seriedad).*\n\n> **SEBASTIÁN:**  \n> \"Carlos factura $45,000 dólares todos los meses con su compañía de pintura en Atlanta. Tiene 2 trocas nuevas y 6 trabajadores. Pero el mes pasado solo le quedaron $780 dólares en el bolsillo. Hoy vamos a abrir su P&L en vivo y tapar las 4 fugas mortales de dinero.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián abre el expediente de auditoría sobre la mesa).*\n\n> **SEBASTIÁN:**  \n> \"Carlos me contactó desesperado hace tres semanas. Me dijo:  \n> *'Sebastián, no duermo. Facturo más de medio millón de dólares al año. Mis muchachos cobran entre $1,000 y $1,200 limpios todos los viernes, y yo llevo dos meses usando mi tarjeta de crédito personal para comprar la comida de mi casa. Mi esposa me dice que venda todo y me regrese a trabajar como pintor por horas'*.  \n> \n> Esta es la epidemia silenciosa del contratista en Estados Unidos: **Facturación gigante, cero ganancia líquida**.  \n> Confundimos tener la cuenta de banco llena el lunes cuando entra un depósito con tener un negocio rentable.  \n> \n> Hoy vamos a poner el bisturí sobre los números de Carlos. Te voy a mostrar exactamente en qué renglones se estaba desangrando su dinero y cómo hicimos para que pasara de ganar $780 al mes a embolsarse **$12,450 dólares netos mensuales** en menos de 60 días.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla completa mostrando la radiografía del P&L de Carlos antes y después de la intervención).*\n\n```\n+---------------------------------------------------------------------------------------+\n|           AUDITORÍA FINANCIERA EN VIVO — ESTADO DE PÉRDIDAS Y GANANCIAS (P&L)          |\n|                      EMPRESA: CARLOS PRO PAINTING (ATLANTA, GA)                       |\n+---------------------------------------------------------------------------------------+\n| CUENTA CONTABLE (P&L)                   ESTADO INICIAL (MES AUDITADO)   ESTADO REESTRUCTURADO|\n+---------------------------------------------------------------------------------------+\n| INGRESOS BRUTOS TOTALES (Gross Sales):           $45,200 USD (100.0%)    $42,800 USD (100.0%)|\n|                                                                                       |\n| COSTOS DIRECTOS DE PRODUCCIÓN (COGS):                                                 |\n| - Materiales (Pintura, consumibles, herramientas): $11,800 USD ( 26.1%)     $6,850 USD ( 16.0%)|\n| - Mano de Obra Directa + Payroll Taxes + Subs:   $21,300 USD ( 47.1%)    $16,200 USD ( 37.8%)|\n| TOTAL COSTOS DIRECTOS (COGS):                    $33,100 USD ( 73.2%)    $23,050 USD ( 53.8%)|\n|                                                                                       |\n| MARGEN BRUTO OPERATIVO (Gross Profit):           $12,100 USD ( 26.8%)    $19,750 USD ( 46.2%)|\n+---------------------------------------------------------------------------------------+\n| GASTOS GENERALES Y OPERATIVOS (OVERHEAD):                                             |\n| - Pagos de 2 Camionetas Comerciales + Seguros:    $2,850 USD              $1,750 USD (1 venta)|\n| - Combustible y Mantenimiento de Flota:           $1,950 USD              $1,100 USD (Rutas)  |\n| - Seguros (Workers' Comp + General Liability):    $2,200 USD              $1,850 USD          |\n| - Storage Unit (Bodega de almacenamiento):          $650 USD                $350 USD          |\n| - Publicidad Desordenada (Angi Leads / Google):   $1,800 USD                $900 USD (Google) |\n| - Herramientas rotas, extraviadas y consumibles:  $1,450 USD                $250 USD (Control)|\n| - Teléfonos, software, suscripciones varias:        $420 USD                $300 USD          |\n| TOTAL OVERHEAD (Gastos Fijos):                   $11,320 USD ( 25.0%)     $6,500 USD ( 15.2%)|\n+---------------------------------------------------------------------------------------+\n| BENEFICIO NETO REAL PARA EL DUEÑO (NET PROFIT):     $780 USD (  1.7%)    $13,250 USD ( 31.0%)|\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren esta carnicería financiera.  \n> \n> Carlos facturaba $45,200 dólares.  \n> Pero el gasto de materiales estaba en el **26.1%**. En pintura residencial de repintado, el material NUNCA debe superar el 15% al 17%. ¿Por qué estaba en 26%? Porque sus dos capataces tenían tarjetas de Sherwin-Williams libres. Iban todos los días a comprar brochas nuevas de $22 dólares que tiraban a la basura al final del día en lugar de lavarlas, y compraban cinta azul a precio de tienda minorista. **Había casi $5,000 dólares al mes de puro desperdicio**.\n> \n> Segunda fuga: **Mano de obra descontrolada en 47.1%**.  \n> ¿Por qué tan alta? Por las horas extras no presupuestadas (Overtime pagado a 1.5x) y porque Carlos hacía trabajos adicionales de gratis: *'Ya que estás aquí, píntame la puertita del garaje'*. Esos 'favorcitos' le costaron $2,100 dólares en salarios pagados a sus chalanes ese mes.\n> \n> Y en el Overhead: Una troca de $75,000 con pagos de $1,200 al mes que solo usaba para pasear los fines de semana, y $1,800 al mes tirados en leads basura de Angi donde competía contra piratas sin seguro.  \n> \n> Resultado: De $45,200 dólares, a Carlos le quedaron **$780 dólares**.  \n> Trabajó como un esclavo, asumió el riesgo de 6 hombres subidos en escaleras... para ganar $780 dólares al mes. Es una locura.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Primer plano a Sebastián explicando las 3 correcciones de emergencia).*\n\n> **SEBASTIÁN:**  \n> \"Esto fue lo que hicimos con Carlos en 45 días:\n> \n> **Paso 1: Cancelación de tarjetas abiertas y centralización de compras:**  \n> Retiramos las tarjetas de las tiendas a los empleados. Los consumibles (plásticos, cintas, brochas) se compran en volumen al por mayor el primer lunes de cada mes con 35% de descuento directo y se almacenan bajo llave. El gasto de materiales cayó de $11,800 a $6,850.\n> \n> **Paso 2: Protocolo estricto de Change Orders:**  \n> Prohibido tocar un martillo o una brocha para un trabajo extra sin firma digital del cliente en la app. Esto recuperó $2,400 dólares de facturación que antes se regalaban.\n> \n> **Paso 3: Depuración de gastos fijos (Overhead Slashing):**  \n> Vendió la segunda camioneta sobredimensionada que no producía dinero, renegoció la póliza comercial pay-as-you-go y cortó los leads basura de Angi para enfocarse en Google Business Profile y referidos de clientes pasados.\n> \n> El resultado: Facturando incluso un poco menos ($42,800), **la ganancia neta subió a $13,250 dólares al mes**. Carlos ahora se paga un salario fijo de $8,000 al mes como CEO y la empresa guarda $5,000 de reserva mensual.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida con el Contractor Health Scorecard interactivo).*\n\n> **SEBASTIÁN:**  \n> \"¿En qué estado de salud financiera está tu negocio en este momento?  \n> Para que no tengas que esperar a una crisis para descubrirlo, creé el **Contractor Business Health Scorecard & P&L Audit Sheet**.  \n> \n> Es una herramienta en Excel y Google Sheets con 15 preguntas de diagnóstico. Metes tus números de ventas, materiales, nómina y gastos fijos, y en 3 minutos la hoja te marca con alertas rojas exactamente dónde tienes fugas invisibles de dinero y qué porcentaje debes ajustar.  \n> \n> Descárgala 100% gratis en el primer comentario fijado.\"\n\n---\n\n### [12:30 - 17:45] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado).*\n\n> **SEBASTIÁN:**  \n> \"Tu negocio tiene que darte libertad financiera y paz mental, no úlceras gástricas. Si estás facturando más de $25,000 al mes y quieres que auditemos tus números personalmente para estructurar tu empresa hacia el millón de dólares con márgenes saludables, aplica a nuestro programa de consultoría en Monoga OS en el enlace de abajo.  \n> \n> Suscríbete, déjame tu comentario sobre cuál es tu gasto más pesado hoy en día, y nos vemos en el episodio 5 para hablar de la diferencia legal entre subcontratistas 1099 y empleados W-2.  \n> ¡Nos vemos en el próximo video!\"\n\n---"
       },
       {
-        id: 'seb_v5',
-        number: 5,
-        title: '¿1099 o W-2? El error legal que puede destruir tu compañía este año (Multas del IRS y DOL)',
-        duration: '15:40 min',
-        pilar: 'Compliance Legal & Laboral',
-        status: 'Guion Listo',
-        hook: `El 80% de los contratistas hispanos en Estados Unidos creen que pagar a sus chalanes con forma 1099 o en efectivo les ahorra miles de dólares en impuestos y seguro de Workers' Comp.
-Déjame decirte la verdad sin anestesia: estás jugando a la ruleta rusa con cinco balas en el tambor.
-El IRS, el Departamento de Trabajo (DOL) y las aseguradoras no son tontos. Si tú le dices a tu trabajador a qué hora llegar, le pones la troca, le compras las brochas y le pagas por día o por hora... a ojos de la ley federal, ese muchacho es tu empleado W-2.
-Un solo accidente en una escalera o una solicitud de desempleo y te cae una auditoría laboral retroactiva de 3 años con multas que superan los $15,000 por trabajador.
-Hoy te voy a enseñar los 6 factores legales del Departamento de Trabajo, cómo saber si estás en riesgo hoy mismo y el plan paso a paso para pasar a tus trabajadores a nómina formal con Gusto sin que tu negocio quiebre.`,
-        fullScript: `[0:00 - 1:15] EL HOOK: LA RULETA RUSA FISCAL Y LABORAL
-(Sebastián en plano medio. Sostiene dos formularios del IRS: una forma W-2 y una forma 1099-NEC).
-"El 80% de los contratistas hispanos en Estados Unidos creen que pagar a sus chalanes con forma 1099 o en efectivo les ahorra miles de dólares en taxes y en Workers' Comp.
-Déjame decirte la verdad sin anestesia: estás jugando a la ruleta rusa con cinco balas en el tambor.
-El IRS, el Departamento de Trabajo de tu estado y las compañías de seguro no son tontos. Si tú le dices a tu trabajador a qué hora llegar a la obra, le prestas tus herramientas y le pagas por hora... ante la ley federal ese trabajador NO es un contratista independiente: es tu empleado en nómina W-2.
-Un solo accidente o un reclamo de desempleo y te cae una auditoría retrospectiva con multas que superan los $15,000 por trabajador.
-Hoy te voy a revelar los 6 criterios del DOL y cómo formalizar tu nómina con Gusto para dormir en paz y calificar a contratos millonarios."
-
-[1:16 - 4:30] EL MITO DEL "ÉL ME PIDIÓ QUE LE PAGARA EN CASH O 1099"
-(Corte a escritorio. Pantalla compartida con la página oficial del IRS).
-"La excusa número uno que escucho todos los días en las obras de Texas, Florida y Georgia es:
-—'Oye Sebastián, es que mi trabajador me dijo que no tiene papeles o que prefiere que le pague en cash o con 1099 porque no quiere que le descuenten taxes'.
-Amigo mío: ante un juez federal y ante el auditor del Departamento de Trabajo, esa excusa vale CERO.
-La ley en Estados Unidos dice explícitamente que la responsabilidad legal y fiscal de la clasificación laboral recae 100% sobre el empleador, no sobre el trabajador.
-El trabajador puede firmarte un papel en servilleta diciendo que él acepta ser 1099. Al día siguiente se cae de una escalera de 12 pies, llega al hospital de emergencia, el hospital le pregunta: '¿Dónde te caíste?', y cuando dice el nombre de tu compañía, la aseguradora niega la póliza y el estado te abre una investigación por fraude laboral.
-En ese instante perdiste tus camionetas, tus ahorros de 10 años y tu licencia comercial."
-
-[4:31 - 9:00] LOS 6 FACTORES DEL TEST DE REALIDAD ECONÓMICA DEL DOL (2026)
-"Vamos a ver los 6 factores legales que determinan si alguien es 1099 o W-2:
-1. Grado de control: ¿Tú fijas el horario? ¿Le dices cómo hacer el trabajo paso a paso? Si la respuesta es sí, es W-2.
-2. Inversión en herramientas y equipo: ¿Usa tu compresor, tu pistola de pintar Graco, tu escalera y tu camioneta? Si no invirtió en sus propias herramientas pesadas, es W-2.
-3. Oportunidad de ganancias o pérdidas: ¿Él puede perder dinero en el proyecto si calcula mal, o cobra sus $180 fijos al día pase lo que pase? Si no arriesga capital, es W-2.
-4. Permanencia de la relación: ¿Lleva contigo 6 meses trabajando de lunes a viernes? Si es continuo, es W-2.
-5. Grado de habilidad e iniciativa de negocio: ¿Tiene su propia página web, su propia LLC, su propio seguro y le trabaja a otros 4 contratistas al mismo tiempo? Si solo trabaja para ti, es W-2.
-6. Parte integral del negocio: ¿Tu compañía vende pintura y él pinta? Es el corazón de tu negocio: es W-2."
-
-[9:01 - 12:30] LA ANATOMÍA DE UNA AUDITORÍA RETROACTIVA DE WORKERS' COMP
-"Miren esto: las auditorías más agresivas en Home Services no vienen del IRS; vienen de las compañías de Workers' Comp.
-Cada año, tu compañía de seguros te pide el reporte de nómina y los formularios 1099. Si ven que le pagaste $60,000 a 'subcontratistas' pero ellos no tienen su propio certificado de seguro (COI) con Workers' Comp activa...
-¡La aseguradora reclasifica esos $60,000 como nómina de tu empresa y te manda un cobro de ajuste de $7,200 dólares en una sola factura!
-He visto contratistas perder contratos de $150,000 con General Contractors porque no pudieron presentar un certificado limpio."
-
-[12:31 - 15:40] EL PLAN DE TRANSICIÓN A W-2 CON GUSTO & CTA
-"Formalizar tu nómina no es caro. Usando Gusto Payroll pagas nómina en 3 clics desde tu celular, el sistema retiene los impuestos federales y estatales automáticamente, genera los W-2 a final de año y se integra directo con tu póliza de Workers' Comp pay-as-you-go (pagas solo según lo que trabajes cada semana).
-Para ayudarte a revisar tu situación, preparé el Checklist de Cumplimiento 1099 vs W-2 con las 6 preguntas oficiales y la plantilla de Acuerdo de Subcontratista Independiente.
-Descárgalo gratis en el enlace fijado del primer comentario.
-¡Es hora de construir una empresa de verdad en este país, blindada legalmente y lista para ganar contratos grandes!"`,
-        structure: [
-          '0:00–1:15 Gancho: La ruleta rusa de pagar en cash o 1099.',
-          '1:16–4:30 Por qué la excusa "él me pidió 1099" no te salva ante el juez.',
-          '4:31–9:00 Los 6 factores del DOL (Department of Labor) explicados con manzanitas.',
-          '9:01–12:30 La trampa de la auditoría anual de Workers\' Comp.',
-          '12:31–15:40 Transición a W-2 con Gusto y descarga del Checklist Legal.'
+        "id": "seb_v5",
+        "number": 5,
+        "title": "Subcontratista 1099 vs Empleado W-2: Por qué el IRS y el seguro te van a multar con $25,000 si no sabes esta diferencia legal en USA",
+        "duration": "13:15 min",
+        "pilar": "Legal, IRS & Seguros",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Primer plano. Sebastián sostiene la forma W-2 en la mano izquierda y la 1099-NEC en la derecha. Sirena de advertencia en pantalla).*\n\nSi le dices a tu trabajador a qué hora llegar a la obra, le compras las herramientas y viaja en tu camioneta... a ojos del IRS y del seguro él NO es un subcontratista 1099. Estás a un solo accidente de una multa de más de $25,000 dólares.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Subcontractor Compliance Checklist & 1099 vs W-2 Risk Matrix',
-        monetization: 'Nómina formal automatizada con Gusto Payroll ($200–$400 por activación) + Seguro Next/Hiscox',
-        cta: 'Descarga gratis el Checklist de Cumplimiento 1099 vs W-2 en el primer comentario.',
-        shorts: ['S9: Las 3 preguntas del IRS para clasificarte', 'S10: Tu subcontratista no tiene seguro: ¿Quién paga?']
+        "leadMagnet": "Subcontractor Agreement Template & 1099 vs W-2 Compliance Checklist.",
+        "monetization": "Next Insurance / Hiscox B2B Partner + Monoga OS Legal & Payroll Shield ($4,500)",
+        "cta": "Descarga el Contrato de Subcontratista 1099 y Checklist de Cumplimiento en la descripción para blindar tu negocio hoy mismo.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Primer plano. Sebastián sostiene la forma W-2 en la mano izquierda y la 1099-NEC en la derecha. Sirena de advertencia en pantalla).*\n\n> **SEBASTIÁN:**  \n> \"Si le dices a tu trabajador a qué hora llegar a la obra, le compras las herramientas y viaja en tu camioneta... a ojos del IRS y del seguro él NO es un subcontratista 1099. Estás a un solo accidente de una multa de más de $25,000 dólares.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián con tono firme y preventivo).*\n\n> **SEBASTIÁN:**  \n> \"El 85% de los contratistas latinos en Estados Unidos operan bajo una mentira muy peligrosa.  \n> Dicen: *'No Sebastián, yo no tengo empleados en nómina. A todos mis muchachos les pago con 1099 o en cheque personal, así me ahorro el Workers' Comp, no pago impuestos patronales y no me complico la vida'*.  \n> \n> Déjame decirte la verdad cruda: las aseguradoras, el Departamento de Trabajo (DOL) y el IRS conocen este truco de memoria.  \n> \n> ¿Qué pasa cuando uno de tus muchachos se resbala de un andamio a 10 pies de altura y se fractura un brazo?  \n> Va a la sala de emergencias del hospital. En el hospital le preguntan: *'¿Dónde se lastimó?'*. Él responde: *'Estaba pintando una casa para la compañía de Sebastián'*.  \n> \n> El hospital reporta el accidente laboral al estado. La aseguradora investiga y descubre que tú lo tenías como '1099' sin seguro propio.  \n> El estado te abre una auditoría por **Employee Misclassification (clasificación errónea de empleados)**.  \n> Te obligan a pagar todos los impuestos de nómina atrasados de los últimos 3 años, con intereses, penalizaciones del 100% y la factura retroactiva del seguro. He visto contratistas perder sus casas, sus camionetas y tener que declararse en bancarrota por este error.  \n> \n> Hoy te voy a enseñar los 6 factores legales del Departamento de Trabajo para blindar tu empresa.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla dividida con la tabla de evaluación legal del IRS y el impacto de una auditoría).*\n\n```\n+---------------------------------------------------------------------------------------+\n|             EL TEST DE REALIDAD ECONÓMICA DEL DEPARTAMENTO DE TRABAJO (DOL)           |\n+---------------------------------------------------------------------------------------+\n| CRITERIO DE EVALUACIÓN                ¿ES EMPLEADO W-2?          ¿ES SUBCONTRATISTA 1099?|\n+---------------------------------------------------------------------------------------+\n| 1. Control de Horarios y Métodos:     Tú le fijas el horario     Él decide cómo y cuándo|\n| 2. Herramientas y Vehículo:           Usa tu troca y compresor   Pone sus herramientas  |\n| 3. Riesgo Financiero / Ganancia:      Cobra tarifa fija por hora Tiene opción de pérdida|\n| 4. Exclusividad y Permanencia:        Trabaja solo para ti       Tiene otros clientes   |\n| 5. Entidad Legal y Seguros:           No tiene LLC ni COI propio Tiene LLC y COI activo |\n| 6. Integración en el Negocio:         Hace el trabajo principal  Servicio especializado |\n+---------------------------------------------------------------------------------------+\n| SIMULACIÓN DE AUDITORÍA RETROACTIVA DEL IRS POR 3 TRABAJADORES MAL CLASIFICADOS:      |\n| - Salario pagado bajo 1099 (3 hombres x $40,000/año x 2 años):           $240,000 USD |\n| - Impuestos FICA no retenidos ni pagados (15.3% total):                   $36,720 USD |\n| - Multa Federal Section 3509(a) + Penalizaciones Estatales SUTA:          $14,500 USD |\n| - Ajuste de Auditoría de Workers' Comp (10.5% sobre nómina no asegurada): $25,200 USD |\n| TOTAL DE LA DEUDA EXIGIBLE EN 30 DÍAS:                                    $76,420 USD |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren el cuadro del Departamento de Trabajo en pantalla.  \n> Para que alguien sea legalmente un subcontratista 1099 legítimo en Estados Unidos, **TIENE QUE CUMPLIR ESTAS CONDICIONES INNEGOCIABLES**:  \n> 1. Debe tener su propia entidad legal registrada (LLC o Inc) con su propio número EIN.  \n> 2. Debe entregarte un **Certificado de Seguro (Certificate of Insurance - COI)** con póliza de General Liability y Workers' Comp activa donde tu empresa figure como *Additional Insured*.  \n> 3. Debe firmar un contrato de subcontratación por proyecto cerrado, no por horas.  \n> \n> Si tu muchacho no tiene LLC, no tiene COI y tú le pagas $180 al día por Zelle... ante la ley federal es tu **EMPLEADO W-2**.  \n> \n> Y cuando llega la auditoría anual obligatoria de tu póliza de Workers' Comp, el auditor de la aseguradora te pide los reportes de QuickBooks y las formas 1099.  \n> Cuando vea que le pagaste $80,000 dólares a personas sin Certificado de Seguro, la aseguradora asume que estuvieron bajo tu riesgo... y te manda un cobro de ajuste de prima de **$8,400 dólares de golpe en un solo cheque**.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Sebastián muestra la app de Gusto Payroll en pantalla).*\n\n> **SEBASTIÁN:**  \n> \"Para salir de este riesgo sin quebrar tu empresa, implementa este plan de transición en 3 pasos:\n> \n> **Paso 1: Clasifica a tu personal correctamente:**  \n> - Si es tu cuadrilla fija de lunes a sábado: **Pásalos a nómina W-2**.  \n> - Si es un especialista que solo llamas para texturizado especial o demolición pesada y tiene su propia empresa: **Manténlo como 1099 con contrato y COI en mano**.\n> \n> **Paso 2: Automatiza la nómina con Gusto Payroll:**  \n> Con una plataforma moderna como Gusto, pagar nómina W-2 toma 2 minutos desde el celular. El sistema calcula y paga automáticamente los impuestos FICA, retiene los taxes del trabajador, genera los reportes trimestrales 941 y envía la forma W-2 a final de año. Cero dolores de cabeza con el contador.\n> \n> **Paso 3: Activa Workers' Comp en modalidad Pay-As-You-Go:**  \n> No pagues pólizas tradicionales con estimados inflados al inicio de año. Al sincronizar Gusto con tu aseguradora (como Next Insurance o Hiscox), pagas el seguro centavo a centavo cada semana según la nómina real que corriste. Cuando llega la auditoría de fin de año, tu ajuste es de CERO dólares.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida mostrando el contrato legal y el checklist de auditoría).*\n\n> **SEBASTIÁN:**  \n> \"Para ayudarte a proteger tu patrimonio, redactamos junto a abogados laborales en Estados Unidos el **Subcontractor Agreement Template & 1099 vs W-2 Compliance Checklist**.  \n> \n> Incluye el modelo de contrato de subcontratación en inglés y español listo para llenar, la solicitud obligatoria de Forma W-9, la plantilla para exigir el Certificado de Seguro (COI) y el checklist de 10 puntos para saber si estás en riesgo de auditoría hoy mismo.  \n> \n> Descárgalo totalmente gratis en el enlace del primer comentario.\"\n\n---\n\n### [12:30 - 16:30] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado).*\n\n> **SEBASTIÁN:**  \n> \"Hacer las cosas bien no es un costo: es la única forma de dormir en paz y de calificar para contratos comerciales grandes con General Contractors y aseguradoras que te van a pagar el triple.  \n> \n> Si quieres que te ayudemos a estructurar tu nómina y formalizar tus operaciones para escalar con seguridad, agenda tu sesión con el equipo de Monoga OS abajo.  \n> Suscríbete, activa la campanita y nos vemos en el episodio 6 para revelarte cómo conseguir 25% de descuento en materiales en Sherwin-Williams y Home Depot Pro Desk.  \n> ¡A trabajar con sistemas!\"\n\n---"
       },
       {
-        id: 'seb_v6',
-        number: 6,
-        title: 'El truco de las grandes compañías para ganar 25% extra en materiales legalmente',
-        duration: '13:50 min',
-        pilar: 'Materiales & Supply Chain',
-        status: 'Guion Listo',
-        hook: `¿Vas a Sherwin-Williams o a The Home Depot, compras $4,000 dólares en pintura, tornillos y masking tape, y luego le cobras al cliente exactamente esos mismos $4,000 dólares mostrando el ticket de la tienda?
-Si estás haciendo eso, estás perdiendo dinero en cada galón de pintura y en cada caja de tornillos que entra a la obra.
-Las compañías americanas que facturan millones de dólares nunca cobran el material al costo. Aplican un markup comercial del 15% al 30% más un recargo por logística, acarreo y desperdicio.
-Hoy te voy a enseñar por qué cobrar el material al costo es una práctica amateur que financia al cliente con tu dinero, cómo abrir una cuenta Pro Tier para obtener hasta 40% de descuento directo y cómo presentar el costo de materiales en tu presupuesto sin que el cliente sienta que le estás cobrando de más.`,
-        fullScript: `[0:00 - 1:00] HOOK: EL TICKET DE SHERWIN-WILLIAMS EN LA MESA
-(Sebastián sostiene un ticket largo de tienda de materiales y un bote de pintura premium).
-"¿Vas a Sherwin-Williams o a The Home Depot, compras $4,000 dólares en pintura y tornillos, y luego le cobras al cliente exactamente esos mismos $4,000 mostrándole el recibo?
-Si haces eso, estás perdiendo dinero todos los días.
-Tu camioneta gastó gasolina para ir a buscar el material. Tu trabajador gastó 45 minutos cargando las cubetas. Tu tarjeta de crédito financió la compra por 30 días. Y si se derrama medio galón en la alfombra, ¿quién paga la garantía? TÚ.
-Las grandes empresas ganan un 20% a 30% extra en cada proyecto solo manejando inteligentemente el markup de materiales.
-Hoy te enseño la fórmula exacta y cómo estructurar tus compras para ganar miles de dólares más este mes."
-
-[1:01 - 4:15] POR QUÉ COBRAR MATERIAL AL COSTO ES PÉRDIDA NETA
-"Cuando le compras material al cliente sin recargo, le estás prestando un servicio bancario gratuito de financiamiento y logística.
-Analicemos los costos invisibles de los materiales:
-1. Costo financiero: si compras con tarjeta de crédito de negocio al 18% APR y el cliente te paga a los 25 días, perdiste 1.5% del valor de la compra.
-2. Desperdicio inevitable (Waste Factor): en pintura se queda entre 5% y 8% pegado en paredes de latas, brochas y charolas. En madera o drywall se desperdicia del 10% al 15% en cortes.
-3. Tiempo de flete y manipulación: el tiempo del chofer y la depreciación de la suspensión de la camioneta.
-Cobrar el material neto significa que tú estás pagando esos costos de tu propio bolsillo."
-
-[4:16 - 8:30] LA FÓRMULA DEL MATERIAL MARKUP
-"La regla estándar de la industria en EE. UU.:
-- Proyectos menores a $2,000 en materiales: Markup del 25% al 35%.
-- Proyectos de $2,000 a $10,000: Markup del 20% al 25%.
-- Proyectos comerciales de más de $10,000: Markup del 15% al 18%.
-Si compraste $3,000 de pintura en Sherwin:
-$3,000 x 1.25 = $3,750 dólares presupuestados.
-Esos $750 dólares extra cubren el tiempo de viaje, la gasolina, la entrega, las mermas y te dejan una ganancia limpia por gestión logística."
-
-[8:31 - 11:20] CÓMO ACCEDER A DESCUENTOS PRO TIER (40% OFF)
-"Si vas a la tienda como cliente común, pagas precio retail: un galón de Sherwin-Williams Duration te puede costar $82 dólares.
-Con una cuenta comercial Pro vinculada a tu LLC y volumen trimestral:
-Ese mismo galón baja a $44 o $48 dólares.
-Tú cotizas al cliente con base en el valor de mercado ($75 por galón aplicado) y tu margen neto por compra se duplica.
-Además, activando servicios como Sherwin Pro Delivery o Home Depot Curbside Jobsite Delivery, te llevan el material directamente a la casa del cliente a las 7:00 AM.
-¡Eliminas la parada de 45 minutos de tus muchachos en la mañana y ahorras más de $60 diarios por cuadrilla!"
-
-[11:21 - 13:50] CÓMO PRESENTARLO EN EL PRESUPUESTO & CTA
-"Nunca pongas en tu cotización: 'Pintura: $3,000 + Ganancia mía: $750'. Eso invita a que el cliente te pelee el precio.
-Presenta siempre el ítem cerrado: 'Suministro y aplicación de sistema de recubrimiento acrílico premium Sherwin-Williams Duration con preparación de superficies y sellador antimanchas: $9,800'.
-El cliente compra el resultado garantizado, no los botes de pintura.
-Para que calcules tu recargo exacto según tu oficio, construí la Material Markup & Waste Factor Calculator en Google Sheets.
-Descárgala gratis en el enlace fijado en el primer comentario. ¡A cobrar lo que vale tu tiempo y tu logística!"`,
-        structure: [
-          '0:00–1:00 Gancho: El ticket de Sherwin en la mesa y el error de cobrar al costo.',
-          '1:01–4:15 Los 3 costos invisibles: financiamiento, merma (waste) y tiempo de flete.',
-          '4:16–8:30 Fórmula de recargo escalonado (15% a 35%) según volumen.',
-          '8:31–11:20 Cuentas Pro comerciales y entregas en obra (Pro Delivery) para matar tiempos muertos.',
-          '11:21–13:50 Cómo redactar la cotización cerrada y descarga de la calculadora.'
+        "id": "seb_v6",
+        "number": 6,
+        "title": "El truco de los materiales: Cómo conseguir 25% de descuento en Sherwin-Williams y Home Depot Pro Desk sin tener cuenta comercial millonaria",
+        "duration": "12:30 min",
+        "pilar": "Supply Chain & Materiales",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Primer plano a dos galones de pintura idénticos. Gráficos de precios en pantalla: $82.99 vs $46.50).*\n\nEste galón de pintura le cuesta $83 dólares al cliente común en Sherwin-Williams. A nosotros nos cuesta $46.50. En este video te voy a enseñar cómo negociar tu cuenta comercial Pro Desk para ganar un 25% extra en materiales en cada trabajo.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Material Markup & Waste Factor Calculator en Google Sheets',
-        monetization: 'Afiliado Cuentas Comerciales / Material Pricing Masterclass',
-        cta: 'Descarga gratis la calculadora de recargo de materiales en el enlace fijado.',
-        shorts: ['S11: Cobrar el tornillo y la cinta: El costo fantasma', 'S12: Descuentos Pro en Home Depot y Sherwin']
+        "leadMagnet": "Material Markup & Supplier Negotiation Matrix 2026.",
+        "monetization": "Sherwin-Williams Commercial Account + Masterclass de Ahorro y Negociación ($497)",
+        "cta": "Descarga la Matriz de Descuentos y Negociación de Proveedores en el enlace fijado.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Primer plano a dos galones de pintura idénticos. Gráficos de precios en pantalla: $82.99 vs $46.50).*\n\n> **SEBASTIÁN:**  \n> \"Este galón de pintura le cuesta $83 dólares al cliente común en Sherwin-Williams. A nosotros nos cuesta $46.50. En este video te voy a enseñar cómo negociar tu cuenta comercial Pro Desk para ganar un 25% extra en materiales en cada trabajo.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián sostiene una brocha profesional y habla con energía).*\n\n> **SEBASTIÁN:**  \n> \"Muchos contratistas van a Home Depot o a Sherwin-Williams, pagan con su tarjeta de débito personal en la caja regular de clientes residenciales y pagan el precio completo con impuestos incluidos.  \n> \n> Luego van a la casa del cliente, le pasan el recibo y le dicen: *'Fueron $3,000 de materiales, págueme exactamente los $3,000'*.  \n> \n> ¿Qué acabas de hacer?  \n> 1. Pusiste tu camioneta y tu gasolina para ir a cargar los materiales.  \n> 2. Perdiste una hora haciendo fila en la tienda.  \n> 3. Si se derrama una cubeta en la alfombra del cliente, la pérdida sale de tu bolsillo.  \n> 4. Y le regalaste el descuento comercial al cliente.  \n> \n> Las grandes compañías de servicios en Estados Unidos tratan la compra y gestión de materiales como un **centro de beneficio activo (Profit Center)**, no como un trámite administrativo.  \n> Hoy te voy a enseñar cómo estructurar tus cuentas comerciales Pro y cómo aplicar el Markup correcto sin que el cliente se sienta estafado.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Captura de pantalla de la matriz de precios comparativa y simulación anual).*\n\n```\n+---------------------------------------------------------------------------------------+\n|           COMPARATIVA DE PRECIOS: RETAIL VS CUENTA COMERCIAL PRO NEGOCIADA            |\n+---------------------------------------------------------------------------------------+\n| PRODUCTO / SUMINISTRO               PRECIO PÚBLICO RETAIL    PRECIO PRO NEGOCIADO (TIER 3)|\n+---------------------------------------------------------------------------------------+\n| SW Duration Home Interior (Galón):        $82.49 USD              $46.20 USD (-44%)   |\n| SW Emerald Urethane Trim (Galón):        $104.99 USD              $58.75 USD (-44%)   |\n| SW Promar 200 Zero VOC (Cubeta 5 Gal):   $185.00 USD              $98.50 USD (-47%)   |\n| Cinta Azul Scotch 2090 (Caja 24 unds):   $198.00 USD             $132.00 USD (-33%)   |\n| Plástico Masking 9x400 (Rollo):           $42.00 USD              $27.50 USD (-35%)   |\n+---------------------------------------------------------------------------------------+\n| IMPACTO FINANCIERO ANUAL (CONTRATISTA CON CONSUMO DE $50,000 EN MATERIALES):          |\n| - Comprando a precio Retail / Sin cuenta optimizada:                     $50,000 USD  |\n| - Comprando con Cuenta Pro Tier + Descuento por Volumen:                 $32,500 USD  |\n| AHORRO DIRECTO EN COMPRA:                                                $17,500 USD  |\n+---------------------------------------------------------------------------------------+\n| APLICACIÓN DEL MATERIAL MARKUP RECOMENDADO (25% SOBRE PRECIO REAL DE COMPRA):         |\n| - Costo de compra negociado:                                             $32,500 USD  |\n| - Precio facturado al cliente en el presupuesto cerrado:                 $43,875 USD  |\n| GANANCIA NETA ADICIONAL GENERADA SOLO EN MATERIALES:                     $11,375 USD  |\n| BENEFICIO TOTAL COMBINADO AL AÑO:                                        $28,875 USD  |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren el poder de estos números.  \n> \n> Si facturas $200,000 al año, te gastas aproximadamente $50,000 en materiales y suministros.  \n> Con una cuenta comercial debidamente configurada con tu representante de ventas (*Sales Rep*) de Sherwin-Williams o con el *Pro Desk* de Home Depot, tu ahorro directo es de más de **$17,500 dólares al año**.  \n> \n> Y aquí está la regla de oro del contratista profesional: **Tú cotizas al cliente en base al valor de mercado, no al costo de descuento**.  \n> Si el galón de pintura de alta gama vale $80 en el mercado, tú presupuestas el trabajo con ese estándar de calidad. Tú compras a $46 gracias a tu volumen corporativo.  \n> \n> Adicionalmente, aplicas un **25% de Markup de Manejo y Garantía (Handling & Logistics Fee)**:  \n> Si compraste $3,000 de material en la tienda, el renglón de materiales en tu presupuesto cerrado debe ser de **$3,750 dólares**.  \n> Esos $750 dólares cubren el desgaste de tu camioneta, el combustible, el tiempo de transporte y el financiamiento. Los materiales TIENEN que dejar ganancia líquida.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Primer plano a Sebastián explicando la estrategia de negociación).*\n\n> **SEBASTIÁN:**  \n> \"Para conseguir estos precios sin ser una empresa millonaria, sigue estos 3 pasos:\n> \n> **Paso 1: Pide una reunión con el Sales Rep de la tienda:**  \n> No hables con el cajero. Ve al Pro Desk de Home Depot o a tu sucursal de Sherwin-Williams y di: *'Quiero hablar con el Store Manager o el Commercial Account Executive'*.  \n> Preséntate con tu LLC, tu seguro comercial y diles: *'Voy a consumir $40,000 dólares este año en pintura y materiales. Quiero que me asignen el código de precios Tier 3 o Contract Pricing en mis productos clave'*.\n> \n> **Paso 2: Estandariza tus 5 productos clave:**  \n> Elige tus 5 productos de batalla (por ejemplo: tu primer de drywall, tu pintura de techos, tu pintura de paredes, tu calafateo y tu cinta azul). Pide que te congelen el precio especial (*Price Lock*) en esos 5 códigos específicos para todo el año.\n> \n> **Paso 3: Activa Home Depot Pro Xtra y Paint Rewards:**  \n> Regístrate en el programa Home Depot Pro Xtra y sube tus compras al sistema. A partir de $2,000 de compra acumulas hasta un 20% de descuento directo en pinturas Behr y recibes entregas gratis en obra con el servicio *Jobsite Delivery*. Tu cuadrilla nunca más vuelve a perder tiempo en la tienda por la mañana.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida con el script de negociación y la hoja de cálculo).*\n\n> **SEBASTIÁN:**  \n> \"Para que vayas a la tienda totalmente preparado, redacté para ti la **Material Markup & Supplier Negotiation Matrix 2026**.  \n> \n> Incluye el guion exacto palabra por palabra en inglés para hablar con el Store Manager de Sherwin-Williams y Home Depot, la lista de los 10 productos que debes pedir con descuento especial y la calculadora de recargo de materiales para que nunca regales tus costos logísticos.  \n> \n> Descárgala gratis en el enlace del primer comentario fijado.\"\n\n---\n\n### [12:30 - 14:45] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado).*\n\n> **SEBASTIÁN:**  \n> \"Cada dólar que ahorras en materiales negociando como profesional va directo a la cuenta bancaria de tu familia.  \n> \n> Si quieres aprender a gestionar tu empresa con estándares de clase mundial, suscríbete al canal y dale like al video.  \n> En el siguiente episodio te voy a enseñar cómo cobrar los trabajos extras (Change Orders) sin que el cliente se enoje ni te quede debiendo dinero al final del proyecto.  \n> ¡Nos vemos en el próximo video!\"\n\n---"
       },
       {
-        id: 'seb_v7',
-        number: 7,
-        title: 'Cómo cobrar los trabajos extra (Change Orders) sin que el cliente se enoje',
-        duration: '14:10 min',
-        pilar: 'Contratos & Clientes',
-        status: 'Guion Listo',
-        hook: `Estás en el tercer día de pintar una casa y la dueña sale con una taza de café, te sonríe y te dice:
-"Oye, Sebastián, ya que estás aquí arriba con la escalera... ¿me puedes pintar también las molduras de este pasillo y la puerta del garaje? Es un momentito, ¿verdad?"
-Tú, por pena, por no quedar mal o por miedo a que se moleste, le dices: "Claro doña María, con mucho gusto".
-Trabajas 5 horas más, gastas un galón extra de pintura, y cuando vas a cobrar el viernes y le dices: "Oiga doña María, fueron $450 dólares más por las molduras", la cliente se transforma:
-"¡Pero tú nunca me dijiste que eso costaba extra! Yo pensé que venía incluido en el contrato original".
-Esa conversación incómoda te acaba de costar $450 dólares y un cliente disgustado que no te va a recomendar con nadie.
-Hoy te voy a dar la frase exacta de 10 palabras que debes responder para proteger tu dinero sin pelear, y te voy a entregar la plantilla legal de Change Order de 1 página que firmas en el celular antes de tocar una sola brocha.`,
-        fullScript: `[0:00 - 1:10] HOOK: "YA QUE ESTÁS AQUÍ..." LA FRASE MÁS CARA EN CONSTRUCCIÓN
-(Sebastián mirando a cámara, con tono cercano pero firme).
-"Estás en el tercer día de pintar una casa y la dueña sale con una taza de café, te sonríe y te dice:
-'Oye, ya que estás aquí arriba con la escalera... ¿me puedes pintar también las molduras de este pasillo y la puerta del garaje? Es un momentito, ¿verdad?'
-Tú, por pena o por miedo a que el cliente se moleste, dices: 'Claro, doña María, con mucho gusto'.
-Trabajas 5 horas más, gastas un galón extra de pintura, y cuando vas a cobrar el viernes y dices: 'Fueron $450 extra', el cliente se enoja:
-'¡Pero tú nunca me dijiste que eso costaba extra! Pensé que venía incluido'.
-Esa conversación te acaba de costar $450 dólares y una mala reseña.
-Hoy te enseño la frase exacta de 10 palabras que protege tu dinero y te entrego la plantilla de Change Order de 1 página."
-
-[1:11 - 4:00] LA PSICOLOGÍA DEL CLIENTE: POR QUÉ ASUMEN QUE TODO ES GRATIS
-"El cliente residencial no es un malvado que quiere robarte. Simplemente no entiende cómo funciona la construcción.
-Para el cliente, como ya te contrató y ya estás en su casa, cualquier arreglito adicional parece gratis o de bajo esfuerzo.
-Si tú no marcas el límite económico de inmediato, tú estás entrenando al cliente para que te pida más y más trabajo gratis.
-Al final de la obra, tú terminas exhausto, perdiendo dinero, y con resentimiento contra el cliente."
-
-[4:01 - 8:15] LA RESPUESTA DE 10 PALABRAS QUE ELIMINA EL CONFLICTO
-"Aquí está la frase que debes memorizar y enseñarle a todos tus capataces:
-'Con mucho gusto doña María, permítame preparar la Orden de Cambio formal'.
-Fíjate en las palabras: no dices 'eso le va a costar más' de forma cortante. Dices:
-'Con mucho gusto. Nuestro protocolo de seguro y calidad nos exige registrar cualquier área adicional en una Orden de Cambio. Le llega a su celular en 2 minutos para su firma y en cuanto lo apruebe, mis muchachos empiezan'.
-¿Qué lograste con esto?
-1. Validaste su petición amablemente.
-2. Trasladaste la responsabilidad a un protocolo profesional de la empresa.
-3. Dejaste en claro que hay una firma y un costo antes de empezar."
-
-[8:16 - 11:30] ANATOMÍA DEL CHANGE ORDER DE 1 PÁGINA (EN EL CELULAR)
-"Tu Orden de Cambio debe contener 5 elementos clave:
-1. Número de proyecto original y fecha.
-2. Descripción exacta del trabajo adicional (Scope of Work): 'Preparación, lijado y aplicación de 2 manos de esmalte blanco semi-gloss en molduras de pasillo principal y 1 puerta de acceso a garaje'.
-3. Materiales incluidos.
-4. Impacto en el tiempo: 'Añade 1 día laborable a la fecha estimada de entrega'.
-5. Precio cerrado y método de pago (50% al firmar la orden, 50% al finalizar).
-6. Firma digital con huella en la pantalla del celular del cliente usando tu CRM o app de firmas.
-¡Si no hay firma previa en el teléfono, no se toca una sola herramienta!"
-
-[11:31 - 14:10] EL LIEN WAIVER CONDICIONAL Y CTA
-"Para contratos de más de $5,000 dólares, acompaña tu cobro de Change Orders con un Lien Waiver Condicional (renuncia de gravamen sobre la propiedad condicionada a la liberación de los fondos).
-Esto le da al cliente americano una tranquilidad monumental de que no habrá disputas legales y acelera los pagos de inmediato.
-He empaquetado nuestra Plantilla de Change Order de 1 Página en PDF editable y formato CRM junto con el paquete de Lien Waivers.
-Descárgala 100% gratis en el enlace fijado en el primer comentario. ¡Protege tu sudor y cobra cada centavo que trabajas!"`,
-        structure: [
-          '0:00–1:10 Gancho: La frase "ya que estás aquí" y la pérdida de $450.',
-          '1:11–4:00 Psicología del cliente: por qué piden extras y por qué asumen que es gratis.',
-          '4:01–8:15 La frase de 10 palabras que traslada el costo a un protocolo profesional.',
-          '8:16–11:30 Los 5 elementos innegociables del Change Order de 1 página con firma en celular.',
-          '11:31–14:10 Lien Waivers condicionales para dar confianza y cobro en el sitio.'
+        "id": "seb_v7",
+        "number": 7,
+        "title": "Cómo cobrar trabajos extras (Change Orders) sin que el cliente se enoje ni te quede debiendo al final del proyecto",
+        "duration": "11:55 min",
+        "pilar": "Contratos & Change Orders",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Sebastián detiene con la mano extendida hacia la cámara con expresión firme).*\n\n'Ya que estás aquí, ¿me puedes pintar también esta puertecita y este zócalo?'. Esa simple frase le cuesta entre $1,500 y $4,000 dólares al mes a los contratistas latinos por pena de cobrar. Hoy te enseño la regla de oro para cobrar cada extra sin perder al cliente.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Plantilla de Change Order de 1 Página + Lien Waiver Pack',
-        monetization: 'Legal & Contract Toolkit para Contratistas Monoga OS ($47)',
-        cta: 'Descarga gratis la plantilla de Change Order en el enlace fijado del primer comentario.',
-        shorts: ['S13: "Ya que estás aquí, hazme esto otro"', 'S14: Nunca toques un martillo sin firma previa']
+        "leadMagnet": "Change Order Master Template & Bulletproof Lien Waiver Pack.",
+        "monetization": "Change Order & Contract Toolkit ($297) + Implementación de Operaciones ($3,000)",
+        "cta": "Descarga el Pack de Órdenes de Cambio y Lien Waivers en el enlace de la descripción.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Sebastián detiene con la mano extendida hacia la cámara con expresión firme).*\n\n> **SEBASTIÁN:**  \n> \"'Ya que estás aquí, ¿me puedes pintar también esta puertecita y este zócalo?'. Esa simple frase le cuesta entre $1,500 y $4,000 dólares al mes a los contratistas latinos por pena de cobrar. Hoy te enseño la regla de oro para cobrar cada extra sin perder al cliente.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián habla con tono cercano y empático).*\n\n> **SEBASTIÁN:**  \n> \"Estás en el cuarto día de una remodelación de baño o de pintura de una casa.  \n> La dueña de la casa sale a las 11:00 AM con un vaso de limonada, te sonríe y te dice:  \n> *'Sebastián, el trabajo está quedando precioso. Oye, ya que tienes la escalera puesta, ¿por qué no le das una manito de pintura a las molduras del pasillo y me arreglas esta grietita en el techo? No te toma nada, ¿verdad?'*.  \n> \n> Y tú, por pena, por quedar bien y por miedo a que se moleste, dices:  \n> *'Claro doña Mary, no se preocupe, yo se lo arreglo'*.  \n> \n> Tus muchachos se tardan 5 horas más en arreglar el techo y las molduras. Gastas galón y medio de pintura extra.  \n> Llega el viernes, terminas la obra y le dices con timidez: *'Doña Mary, de lo acordado eran $4,000, pero de las molduras y el techo son $450 dólares extra'*.  \n> \n> ¿Qué pasa en ese momento? La cara de la señora cambia de inmediato:  \n> *'¡Pero cómo! Yo pensé que eso venía incluido como cortesía. Si me hubieras dicho que costaba $450 no lo hubiera hecho. No te voy a pagar eso'*.  \n> \n> Se dañó la relación, perdiste $450 dólares, tus muchachos ya cobraron su tiempo, y te quedas con una amargura en el pecho que te dura todo el fin de semana.  \n> Hoy te voy a enseñar el protocolo de **Change Orders de 10 palabras** que elimina el 100% de estos conflictos.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla dividida con el impacto acumulado anual de los trabajos extras no cobrados).*\n\n```\n+---------------------------------------------------------------------------------------+\n|             EL COSTO INVISIBLE DE LOS \"FAVORCITOS\" NO COBRADOS (CHANGE ORDERS)        |\n+---------------------------------------------------------------------------------------+\n| ESCENARIO PROMEDIO DE UNA CUADRILLA DE 3 HOMBRES (4 PROYECTOS AL MES):                |\n| - Horas extras regaladas en \"arreglitos\" (8 hrs por proyecto x 4 proyectos):   32 hrs |\n| - Costo real de mano de obra cargada (32 hrs @ $32.92/hr):                 $1,053 USD |\n| - Materiales extra no facturados (galones, calafateo, cinta por mes):        $380 USD |\n| PÉRDIDA NETA DIRECTA MENSUAL:                                              $1,433 USD |\n+---------------------------------------------------------------------------------------+\n| IMPACTO ANUAL ACUMULADO DE FUGAS POR CHANGE ORDERS:                       $17,196 USD |\n+---------------------------------------------------------------------------------------+\n| RESULTADO CON PROTOCOLO ESTANDARIZADO DE CHANGE ORDER DIGITAL:                        |\n| - Proyectos con solicitudes de extras por parte del cliente:               75% de obras|\n| - Tasa de aprobación cuando se cotiza previamente con firma digital:       88% de éxito|\n| - Cobro promedio por Change Order:                                           $480 USD |\n| NUEVOS INGRESOS NETOS FACTURADOS AL AÑO (32 Change Orders aprobadas):    +$15,360 USD |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren el cuadro en pantalla.  \n> Si tienes una pequeña compañía con 3 o 4 trabajadores, regalar 8 horitas de trabajo por proyecto en detalles que 'no estaban en el contrato' te cuesta **$17,196 dólares al año de tu propio dinero**.  \n> \n> ¿Por qué se enoja el cliente?  \n> El cliente no se enoja porque le cobres por tu trabajo; **el cliente se enoja por la sorpresa al final**.  \n> Cuando tú le cobras al final sin haberle avisado antes, el cliente siente que le estás haciendo una trampa o cobrándole de más.  \n> \n> Pero cuando tú estableces las reglas del juego desde el día uno en el contrato principal, el cliente entiende que cualquier cambio o adición requiere una autorización por escrito con precio cerrado antes de tocar una herramienta.  \n> El 88% de los clientes en Estados Unidos dicen que SÍ y pagan con gusto cuando se les presenta la Orden de Cambio de manera formal y profesional.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Sebastián toma su teléfono y muestra la pantalla de la app en vivo).*\n\n> **SEBASTIÁN:**  \n> \"Este es el guion y el procedimiento de 4 pasos que tú y tus capataces deben seguir sin excepción:\n> \n> **Paso 1: La respuesta de 10 palabras:**  \n> Cuando el cliente te diga: *'¿Me puedes hacer esto otro?'*, tú respondes con una sonrisa educada:  \n> **'Con mucho gusto, déjeme preparar la Orden de Cambio en la aplicación'**.  \n> Nunca digas 'sí' en el aire. Usa siempre la palabra formal: *Change Order*.\n> \n> **Paso 2: Los 4 elementos innegociables del Change Order:**  \n> Abres tu app (Jobber o Housecall Pro) y creas el Change Order en 60 segundos con estos 4 datos:  \n> 1. **Alcance exacto (Scope):** 'Pintar dos manos en molduras de pasillo principal'.  \n> 2. **Materiales:** '1 galón Sherwin-Williams Emerald Semi-Gloss'.  \n> 3. **Impacto en tiempo:** 'Añade 4 horas de trabajo al cronograma original'.  \n> 4. **Precio cerrado:** '$380.00 USD'.\n> \n> **Paso 3: La firma digital previa en el teléfono:**  \n> Le pasas el teléfono al cliente o se lo envías por SMS a su celular y le dices:  \n> *'Mrs. Mary, para que el seguro nos autorice a trabajar en esta área adicional, solo necesito su firma digital en la pantalla y mis muchachos empiezan de inmediato'*.  \n> Cuando el cliente firma con el dedo, el contrato queda legalmente sellado.\n> \n> **Paso 4: El pago del extra:**  \n> Si el Change Order es menor a $500, se añade a la factura final automáticamente. Si es mayor a $1,000, se cobra el 50% de depósito en el momento de la firma digital.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida mostrando la plantilla de Change Order y los Lien Waivers).*\n\n> **SEBASTIÁN:**  \n> \"Para que nunca más vuelvas a tener una discusión con un cliente por trabajos extras, diseñé el paquete legal: **Change Order Master Template & Bulletproof Lien Waiver Pack**.  \n> \n> Incluye la plantilla de Orden de Cambio de 1 página en formato PDF y Word lista para personalizar con tu logotipo, las cláusulas de protección en inglés y español para incluir en tus presupuestos iniciales, y los formatos de *Conditional & Unconditional Lien Waivers* que te exigirán en proyectos comerciales grandes.  \n> \n> Descarga el paquete completo gratis en el primer comentario fijado.\"\n\n---\n\n### [12:30 - 15:15] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado con iluminación profesional).*\n\n> **SEBASTIÁN:**  \n> \"Tu tiempo, el sudor de tu frente y el esfuerzo de tu gente valen cada centavo. Deja la pena a un lado y empieza a cobrar como una empresa profesional.  \n> \n> Si quieres que te ayudemos a estandarizar todos los contratos, cotizaciones y flujos de trabajo de tu compañía de servicios en Estados Unidos, agenda una llamada estratégica con Monoga OS en el enlace de abajo.  \n> Suscríbete al canal, activa las notificaciones y acompáñame en el episodio final de esta serie donde te revelaré cómo salir de la camioneta y contratar a tu primer Project Manager para dejar de trabajar 70 horas a la semana.  \n> ¡Nos vemos en el próximo video!\"\n\n---"
       },
       {
-        id: 'seb_v8',
-        number: 8,
-        title: 'Cómo salir de la obra: El paso a paso para contratar y delegar en tu primer capataz',
-        duration: '18:00 min',
-        pilar: 'Escalamiento & Delegación',
-        status: 'Guion Listo',
-        hook: `Si tú no vas a la obra el lunes por la mañana... ¿tu compañía sigue produciendo dinero o todo se detiene por completo?
-Si la respuesta es que todo se detiene, déjame decirte algo que te va a doler:
-Tú no eres el dueño de un negocio. Eres un autoempleado que se compró una troca, herramientas y el peor jefe del mundo: tú mismo.
-Trabajas 14 horas al día, no ves crecer a tus hijos, tus fines de semana se van haciendo presupuestos y cobrando cheques, y si te enfermas una semana, tu familia no come.
-La única forma de pasar de $200,000 al año a más de $1 Millón de dólares con libertad de tiempo es aprender a delegar en un Capataz de Producción (un Lead Painter o Job Site Foreman).
-Hoy te voy a revelar el organigrama exacto, el perfil de contratación, la prueba técnica de 3 días y el sistema de bonos por rentabilidad para que tu cuadrilla trabaje con la misma calidad que tú... sin que tengas que estar parado en la obra todo el día.`,
-        fullScript: `[0:00 - 1:20] HOOK: LA CÁRCEL CON HERRAMIENTAS
-(Sebastián mira a la cámara con seriedad. Detrás de él, herramientas ordenadas y una pizarra con organigrama empresarial).
-"Si tú no vas a la obra el lunes por la mañana... ¿tu compañía sigue facturando o se para todo por completo?
-Si se para todo, no tienes una empresa: tienes una cárcel con herramientas donde tú eres el guardia y el prisionero.
-Trabajas 14 horas diarias de lunes a sábado. Cuando llegas a la casa cansado con dolor de espalda, tienes que sentarte a hacer estimados hasta las 11 de la noche. Y si te da una gripe fuerte y no puedes ir a trabajar... tus trabajadores se quedan sentados en la banqueta esperando órdenes.
-Ese techo de cristal te tiene atrapado en los $150,000 o $250,000 al año.
-La única manera de escalar a $1 Millón de dólares es contratar a tu primer Capataz (Lead Painter / Working Foreman).
-Hoy te muestro el proceso de contratación y el bono que hace que cuiden tu negocio como si fuera de ellos."
-
-[1:21 - 4:45] EL SÍNDROME DE "NADIE LO HACE TAN BIEN COMO YO"
-"El obstáculo número uno para crecer no son los clientes ni el dinero: es tu propio ego.
-Dices: 'Es que si Juan pinta la puerta, deja marcas de brocha. Es que si Pedro corta la moldura, le queda un milímetro abierta'.
-Claro que nadie lo hace al 100% como tú de entrada, porque tú llevas 10 años haciéndolo.
-Pero escucha esta regla de oro:
-Un capataz que haga el trabajo al 85% de tu calidad, pero siguiendo un checklist estricto de control de calidad, es 10 veces más valioso que tú haciéndolo al 100% mientras descuidas las ventas y la administración.
-Si tú estás en la escalera con una brocha en la mano, ¿quién está vendiendo los contratos de $20,000? Nadie."
-
-[4:46 - 9:30] EL PERFIL DEL CAPATAZ (WORKING FOREMAN VS CREW LEADER)
-"Para empresas que facturan entre $200K y $600K al año, no necesitas un gerente de oficina que ande con camisa polo limpia.
-Necesitas un Working Foreman (Capataz Operativo):
-- Pinta o ejecuta el 70% del tiempo con la cuadrilla.
-- El 30% restante del tiempo coordina materiales, recibe al cliente en la mañana, revisa la calidad con el checklist y reporta horas en el software.
-Perfil clave:
-1. Puntualidad inglesa: llega 15 minutos antes que el resto del equipo.
-2. Comunicación bilingüe básica o capacidad de comunicarse profesionalmente por la app de traducción con el dueño de casa.
-3. Licencia de conducir válida en USA y récord de manejo limpio.
-4. Criterio de resolución de problemas sin tener que llamarte a cada media hora por una lija."
-
-[9:31 - 13:50] LA MATRIZ DE PAGO Y EL BONO POR RENTABILIDAD BRUTA (3%)
-"¿Cuánto se le paga a un buen Capataz en USA?
-Si a tu pintor general le pagas $22/hora, tu Capataz debe ganar entre $26 y $30/hora base en W-2.
-Pero aquí está el secreto para que no te robe tiempo ni desperdicie materiales: El Bono de Rendimiento por Proyecto.
-Si un proyecto tiene presupuestadas 120 horas de mano de obra y $3,000 de materiales, y el Capataz entrega el trabajo con 100% de calidad aprobada en 105 horas sin reclamos:
-Le entregas un bono del 3% al 5% del margen bruto ahorrado.
-Por ejemplo: un bono de $200 o $300 dólares en su cheque de esa semana.
-De repente, tu capataz es el primero en apagar las luces, el primero en cuidar las brochas y el más estricto con los ayudantes para que no pierdan tiempo en el celular."
-
-[13:51 - 18:00] EL SISTEMA DE CONTROL DE CALIDAD EN 5 PUNTOS & CTA
-"Tú no dejas la calidad a la suerte. Implementas un SOP (Standard Operating Procedure) de 5 puntos:
-1. Inspección matutina de protección (plásticos y tape antes de abrir pintura).
-2. Foto de avance a mediodía enviada al chat de la empresa.
-3. Inspección con lámpara de 500 lumens a las 3:30 PM para buscar detalles.
-4. Limpieza absoluta de la propiedad 30 minutos antes de salir.
-5. Firma de satisfacción preliminar del cliente en la tablet.
-Con este sistema, tú solo visitas la obra dos veces por semana durante 20 minutos. El resto de tu tiempo lo dedicas a vender proyectos de $15,000 y hacer crecer tu patrimonio.
-Descarga gratis el Foreman Hiring Blueprint con la descripción de puesto, preguntas de entrevista y la matriz de bonos en el enlace del primer comentario.
-¡Deja de ser un esclavo de tu obra y conviértete en el verdadero director de tu empresa!"`,
-        structure: [
-          '0:00–1:20 Gancho: Si no vas a la obra el lunes y todo se para, estás preso.',
-          '1:21–4:45 Superar el síndrome de "nadie lo hace como yo": la regla del 85% con checklists.',
-          '4:46–9:30 El perfil del Working Foreman (Capataz que produce 70% y coordina 30%).',
-          '9:31–13:50 Matriz de compensación salarial y bono del 3% por ahorro de margen bruto.',
-          '13:51–18:00 El SOP de 5 puntos de inspección diaria y descarga del Blueprint.'
+        "id": "seb_v8",
+        "number": 8,
+        "title": "Cómo salir de la troca: El paso a paso para contratar a tu primer Project Manager (Supervisor) y dejar de trabajar 70 horas a la semana",
+        "duration": "15:00 min",
+        "pilar": "Escalamiento & Delegación",
+        "status": "Guion Listo",
+        "hook": "*(CÁMARA: Sebastián entra a cuadro, se quita el cinturón de herramientas y lo pone sobre la mesa con firmeza).*\n\nSi tú no vas a la obra el lunes por la mañana... ¿tu compañía sigue ganando dinero o se detiene por completo? Si todo se detiene, no tienes un negocio: tienes una cárcel con herramientas donde tú eres el prisionero. Hoy te enseño cómo salir de la obra para siempre.\n\n---",
+        "structure": [
+          "HOOK VISUAL & COGNITIVO",
+          "DIAGNÓSTICO DEL DOLOR",
+          "DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)",
+          "SISTEMA OPERATIVO PASO A PASO",
+          "INTEGRACIÓN DEL LEAD MAGNET DE REGALO",
+          "CTA DE CONVERSIÓN B2B Y CIERRE"
         ],
-        leadMagnet: 'Foreman Hiring Blueprint & Production Pay Matrix',
-        monetization: 'Monoga OS Scale Academy ($497) / Asesoría de Crecimiento Operativo',
-        cta: 'Descarga gratis el Blueprint para contratar a tu primer capataz en el primer comentario.',
-        shorts: ['S15: El síndrome de "Nadie lo hace como yo"', 'S16: El bono por rendimiento que no te quiebra']
+        "leadMagnet": "Project Manager / Foreman Hiring Blueprint & Production Pay Matrix.",
+        "monetization": "Programa Acelerador: De Operador a CEO de Servicios ($7,500 USD)",
+        "cta": "Si tu empresa factura más de $300K y estás listo para salir de la troca y contratar a tu primer PM, aplica a nuestro Programa de Escalamiento en la descripción.",
+        "fullScript": "### [0:00 - 0:15] 1. HOOK VISUAL & COGNITIVO\n*(CÁMARA: Sebastián entra a cuadro, se quita el cinturón de herramientas y lo pone sobre la mesa con firmeza).*\n\n> **SEBASTIÁN:**  \n> \"Si tú no vas a la obra el lunes por la mañana... ¿tu compañía sigue ganando dinero o se detiene por completo? Si todo se detiene, no tienes un negocio: tienes una cárcel con herramientas donde tú eres el prisionero. Hoy te enseño cómo salir de la obra para siempre.\"\n\n---\n\n### [0:15 - 2:00] 2. DIAGNÓSTICO DEL DOLOR\n*(CÁMARA: Plano medio. Sebastián se sienta y mira fijamente al lente).*\n\n> **SEBASTIÁN:**  \n> \"Hablemos de la trampa del éxito.  \n> Cuando empezaste, tu sueño era ser tu propio jefe, tener tiempo para tu familia y ganar buen dinero en Estados Unidos.  \n> \n> Hoy tu empresa factura $30,000, $50,000 o $80,000 dólares al mes. Tienes trabajo de sobra.  \n> Pero tu vida es un infierno:  \n> - Te levantas a las 5:30 AM a cargar materiales en Home Depot o Sherwin.  \n> - Llegas a las 7:30 AM a la obra a acomodar a los muchachos y decirles qué hacer.  \n> - A las 11:00 AM sales corriendo a hacer dos estimados al otro lado de la ciudad.  \n> - A la 1:30 PM te llama un cliente furioso porque un ayudante manchó una alfombra.  \n> - A las 4:30 PM regresas a recoger la herramienta y revisar que no hayan hecho porquerías.  \n> - Y a las 8:30 de la noche estás en la mesa de tu casa haciendo cotizaciones e invoices con los ojos ardiendo de sueño.  \n> \n> Trabajas 75 horas a la semana. No ves crecer a tus hijos. No tienes vacaciones desde hace 4 años.  \n> Estás atrapado en el síndrome de: *'Nadie lo hace tan bien como yo. Si no estoy yo en la obra, las cosas no salen bien'*.  \n> \n> Déjame decirte algo que te va a doler pero que te va a salvar la vida: **Un negocio que depende 100% de ti no vale nada**.  \n> Si te enfermas, si te rompes una pierna o si quieres tomarte dos semanas de vacaciones, tus ingresos caen a cero.  \n> \n> Hoy te voy a enseñar el mapa exacto para contratar, entrenar y delegar en tu primer **Project Manager / Working Foreman**, para que puedas dedicarte a ser el verdadero CEO de tu empresa.\"\n\n---\n\n### [2:00 - 8:00] 3. DEMOSTRACIÓN MATEMÁTICA EN PANTALLA (DATOS USA / USD)\n*(CÁMARA: Pantalla completa con el organigrama operativo y el modelo de compensación por incentivos).*\n\n```\n+---------------------------------------------------------------------------------------+\n|             DE AUTOEMPLEADO A EMPRESARIO: LA FÓRMULA DEL PROJECT MANAGER              |\n+---------------------------------------------------------------------------------------+\n| FASE 1: EL OPERADOR SOLITARIO (TRAP)   FASE 2: EL WORKING FOREMAN (ESCALA $500K - $1M)|\n+---------------------------------------------------------------------------------------+\n| - Dueño en la obra: 80% del tiempo    - Dueño en la obra: 10% del tiempo (Auditoría) |\n| - Horas trabajadas: 70 hrs/semana     - Horas trabajadas: 35 hrs/semana (Estrategia) |\n| - Techo de facturación: $250,000 USD   - Techo de facturación: $800,000 - $1,500,000  |\n| - Valor de la hora del dueño: $25/hr   - Valor de la hora del dueño: $250 - $500/hr   |\n+---------------------------------------------------------------------------------------+\n| ESTRUCTURA DE COMPENSACIÓN DEL PROJECT MANAGER / WORKING FOREMAN:                     |\n| 1. Salario Base W-2 (40 hrs semanales garantizadas):          $26.00 a $30.00 / hr   |\n|    ($52,000 a $60,000 USD anuales brutos)                                            |\n| 2. Bono de Rendimiento de Proyecto (Project Profit Bonus):    3% al 5% del Margen     |\n|    (Condición: Entregar a tiempo, bajo presupuesto de horas y con 5 estrellas de cliente)\n+---------------------------------------------------------------------------------------+\n| SIMULACIÓN FINANCIERA DEL BONO OPERATIVO:                                             |\n| - Proyecto residencial facturado en:                                     $12,000 USD  |\n| - Costo presupuestado de mano de obra y materiales:                       $7,000 USD  |\n| - Margen bruto presupuestado:                                             $5,000 USD  |\n| - Si el Foreman entrega el trabajo ahorrando 8 horas de mano de obra:                 |\n|   Margen bruto real logrado:                                              $5,400 USD  |\n| - Bono del 5% del margen para el Foreman:                                   $270 USD  |\n| GANANCIA PARA LA EMPRESA POR TENER UN LÍDER EN CAMPO:                    +$4,130 USD  |\n+---------------------------------------------------------------------------------------+\n```\n\n> **SEBASTIÁN:**  \n> \"Miren el modelo en pantalla.  \n> La pregunta número uno que me hacen los contratistas es: *'Sebastián, ¿cómo le pago a un buen supervisor sin que me robe los clientes ni se vuelva flojo?'*.  \n> \n> La respuesta es: **El modelo del Working Foreman con Bono de Rentabilidad**.  \n> \n> No contratas a un supervisor de corbata para que se siente en la camioneta a ver el teléfono.  \n> Contratas a un **Working Foreman (Capataz Operativo)**:  \n> - El **70% de su tiempo produce con sus manos** junto a los ayudantes.  \n> - El **30% de su tiempo coordina los materiales, revisa la calidad con un checklist estricto y habla con el cliente**.  \n> \n> Le pagas un excelente salario base en W-2 ($26 a $30 dólares la hora según tu estado).  \n> Pero el verdadero secreto está en el **Bono del 3% al 5% del Margen Bruto del Proyecto**.  \n> \n> ¿Qué pasa cuando tu capataz gana un bono si el trabajo se termina a tiempo y sin desperdicio de pintura?  \n> Pasa un milagro:  \n> De repente, él es el primero en apagar las luces, es el que cuida que no se boten las brochas, es el que le exige a los chalanes que no pierdan el tiempo en el celular y es el que se asegura de que el cliente quede fascinado para ganarse su bono.  \n> Alineaste sus intereses financieros con los intereses de tu empresa.\"\n\n---\n\n### [8:00 - 11:00] 4. SISTEMA OPERATIVO PASO A PASO\n*(CÁMARA: Sebastián señala los 4 pasos del manual de operaciones en la pizarra).*\n\n> **SEBASTIÁN:**  \n> \"Para salir de la obra sin que la calidad se caiga, implementa estos 4 estándares operativos (SOPs):\n> \n> **Paso 1: La Regla del 80%:**  \n> Tienes que aceptar psicológicamente que tu Project Manager al principio va a hacer el trabajo al **80% de tu nivel de perfección**. Y eso está PERFECTO. Tu 100% te tiene trabajando 70 horas a la semana. Un 80% ejecutado por un equipo siguiendo un manual te da una empresa escalable y libre.\n> \n> **Paso 2: El Checklist Diario de Calidad de 5 Puntos (Quality Checklist):**  \n> Tu capataz no se va de la obra sin completar en su app estos 5 puntos diarios con fotos:  \n> 1. Pisos y muebles 100% protegidos con plástico y lonas limpias.  \n> 2. Líneas de corte rectas y calafateo sin burbujas.  \n> 3. Revisión con reflector LED de 1,000 lúmenes para detectar imperfecciones en paredes.  \n> 4. Área de trabajo barrida y aspirada 30 minutos antes de terminar la jornada.  \n> 5. Firma de conformidad o reporte diario enviado al cliente.\n> \n> **Paso 3: El Walkthrough Final de Entrega (Punch List Cero):**  \n> Antes de pedir el cheque final, tu Project Manager camina la casa con el cliente con un rollo de cinta azul. Si hay algún detalle, se corrige en ese mismo instante. Cuando tú llegas a cobrar, el cliente solo tiene elogios para tu compañía.\n> \n> **Paso 4: Tu nuevo rol como CEO:**  \n> Al salirte de la obra, tus nuevas 40 horas semanales se dividen en:  \n> - 15 horas en ventas y cierre de estimados de alto ticket.  \n> - 10 horas en marketing y alianzas estratégicas con diseñadores y General Contractors.  \n> - 10 horas en finanzas, métricas y supervisión ejecutiva.  \n> - 5 horas de descanso y tiempo con tu familia.  \n> Así es como se construye una empresa millonaria.\"\n\n---\n\n### [11:00 - 12:30] 5. INTEGRACIÓN DEL LEAD MAGNET DE REGALO\n*(CÁMARA: Pantalla dividida mostrando el blueprint de contratación y los checklists).*\n\n> **SEBASTIÁN:**  \n> \"Para que no cometas errores al contratar a tu líder operativo, te preparé el **Project Manager / Foreman Hiring Blueprint & Production Pay Matrix**.  \n> \n> Incluye el anuncio de empleo exacto para publicar en Indeed y Facebook Groups, las 12 preguntas de entrevista para detectar si es un verdadero líder o un charlatán, el contrato de trabajo con la cláusula de no competencia y no solicitación de clientes, y la tabla de cálculo automático de bonos por proyecto.  \n> \n> Descárgalo totalmente gratis en el enlace fijado en el primer comentario.\"\n\n---\n\n### [12:30 - 18:30] 6. CTA DE CONVERSIÓN B2B Y CIERRE\n*(CÁMARA: Plano medio cerrado. Sebastián con tono inspirador, cercano y contundente).*\n\n> **SEBASTIÁN:**  \n> \"Hermanos contratistas: este país está lleno de oportunidades para los que no solo saben trabajar con las manos, sino que están dispuestos a aprender a trabajar con la cabeza y con sistemas.  \n> \n> El sueño americano no era cambiar de país para ser esclavo de una camioneta de trabajo; el sueño americano es crear una empresa formal, rentable y estructurada que le dé un futuro blindado a tu familia y empleo digno a nuestra gente.  \n> \n> Si has visto esta serie de 8 episodios y sientes que estás listo para dar el salto definitivo de autoempleado a dueño de compañía, en **Monoga OS** trabajamos mano a mano con contratistas seleccionados en Estados Unidos para auditar sus finanzas, implementar sus sistemas CRM, reestructurar sus precios y entrenar a sus equipos de operaciones.  \n> \n> Haz clic en el enlace de la descripción y agenda una llamada de diagnóstico 1 a 1 con nuestro equipo. Evaluaremos tu negocio y te diremos exactamente cuál es el camino para escalar al siguiente nivel.  \n> \n> Suscríbete al canal, dale like, comparte este paquete con todos los contratistas que conozcas y déjame saber en los comentarios cuál de estos 8 episodios fue el que más te abrió los ojos.  \n> \n> Nos vemos en la cima. ¡A construir empresas grandes!\"\n\n---\n\n# MATRIZ DE RESUMEN OPERATIVO Y ASIGNACIÓN DE LEAD MAGNETS\n\n| Episodio | Tema Central | Lead Magnet Vinculado | Herramienta / Software Destacado | Objetivo de Conversión B2B |\n|:---|:---|:---|:---|:---|\n| **Ep 1** | El Costo Real de Nómina ($20/hr) | *True Employee Cost Calculator 2026* | Gusto Payroll / Workers' Comp | Captura de datos + Afiliación Payroll |\n| **Ep 2** | Pricing 'Good, Better, Best' (40% Neto) | *Job Costing & 3-Tier Pricing Matrix* | Price Book / iPad Estimating | Adopción de Pricing Matrices |\n| **Ep 3** | De WhatsApp a CRM Automatizado | *Setup Blueprint: HCP vs Jobber* | Jobber / Housecall Pro | Afiliación SaaS B2B ($150-$250 CPA)|\n| **Ep 4** | Auditoría en Vivo ($45K Facturación) | *Contractor Health Scorecard & P&L* | QuickBooks Online / Dashboards | Consultoría High-Ticket ($2.5K-$7.5K)|\n| **Ep 5** | 1099 vs W-2 (Cumplimiento Legal) | *Subcontractor Agreement & Checklist* | Gusto / Next Insurance (COI) | Protección legal + Retención B2B |\n| **Ep 6** | Descuentos Pro en Materiales (25%) | *Material Markup & Supplier Matrix* | Sherwin Pro / Home Depot Pro Desk | Optimización de COGS y márgenes |\n| **Ep 7** | Cobro de Change Orders sin Enojo | *Change Order & Lien Waiver Pack* | Firma Digital en CRM / Pre-liens | Cierre de fugas financieras |\n| **Ep 8** | Salir de la Troca (Project Manager) | *Foreman Hiring & Pay Matrix* | SOPs de Calidad / Bonos Operativos | Mentoría & Implementación Master |\n\n---\n*Compendio oficial de guiones maestros B2B para Sebastián Monoga en EE. UU. Diseñado bajo los estándares de Monoga OS Editorial Guild 2026.*"
       }
     ],
-    shorts: [
+    "shorts": [
       {
-        id: 'seb_s1',
-        title: 'La mentira de los $20 la hora',
-        hook: 'Si contratas a $20/hr en USA, ese trabajador NO te cuesta $20/hr.',
-        script: `Si tienes una compañía de servicios en USA y pagas a $20 la hora, agrégale:
-- 8% de Taxes patronales FICA ($1.60)
-- 10% de Workers' Comp ($2.00)
-- $1.50 de herramientas, camioneta y gasolina
-- 25% de tiempo muerto en tráfico y Home Depot.
-Tu costo REAL es de $30 a $32 por hora facturable.
-Si estás cobrando $35 al cliente... estás trabajando de gratis para él.
-Descarga nuestra calculadora de costo real gratis en el link de mi perfil.`,
-        cta: 'Link en biografía.'
+        "id": "seb_s1",
+        "title": "La mentira de los $20/hr en Estados Unidos",
+        "hook": "Si le pagas $20 a tu chalán, tú estás pagando $32.14.",
+        "script": "¿Crees que un trabajador de $20 la hora te cuesta $20? Suma FICA 7.65%, Workers' Comp al 10.5%, seguro de responsabilidad y el tiempo muerto en Home Depot y cargando la troca.\nEl costo real es $32.14 por hora facturable.\nSi cobras a $35 creyendo que ganas la mitad, estás quebrando tu negocio.",
+        "cta": "Calcula tu costo real con la herramienta gratuita en mi perfil."
       },
       {
-        id: 'seb_s2',
-        title: 'La multa de $15,000 del IRS por pagar en cash o 1099',
-        hook: 'El error que quiebra a los contratistas latinos en Estados Unidos.',
-        script: `Muchos creen que pagar a sus chalanes con 1099 o cash ahorra impuestos.
-Hasta que un trabajador se cae de una escalera de 10 pies.
-El hospital reporta el accidente, la compañía de seguros niega la cobertura porque no tenías Workers' Comp y el Departamento de Trabajo te clasifica como empleador ilegal.
-La multa promedio por clasificación errónea supera los $15,000 por trabajador más demandas civiles.
-Pagar nómina formal con Gusto cuesta menos de $45 al mes y duerme en paz.`,
-        cta: 'Comenta "NÓMINA" para enviarte la guía de legalización.'
+        "id": "seb_s2",
+        "title": "Por qué cotizar por hora te mantiene pobre",
+        "hook": "Si el cliente te pregunta cuánto cobras por hora, ya perdiste la venta.",
+        "script": "Cuando cobras por hora, el cliente te castiga por ser rápido. Si tardas 10 horas cobras $500, pero si eres experto y tardas 4 horas cobras $200.\nDeja de vender tiempo. Cotiza por valor con el método de 3 opciones (Good, Better, Best).\nEl 60% de los clientes elige la opción media de alto margen.",
+        "cta": "Descarga la matriz de 3 opciones en el enlace de la bio."
       },
       {
-        id: 'seb_s3',
-        title: 'Margen vs Markup: El error de kínder',
-        hook: 'El 90% de contratistas calculan mal su ganancia.',
-        script: `Si un trabajo te cuesta $1,000 y le sumas 20% ($200) para cobrar $1,200...
-Tu margen NO es 20%, es 16.6%.
-Si de ahí pagas gasolina, seguro y herramientas, te quedó CERO.
-Para ganar 40% real:
-Divide tu costo entre 0.60.
-$1,000 / 0.60 = $1,666 dólares.
-Deja de regalar tu dinero en cada cotización.`,
-        cta: 'Calculadora en el link de mi perfil.'
+        "id": "seb_s3",
+        "title": "El error de usar WhatsApp para cotizar",
+        "hook": "Mandar un presupuesto por mensaje de texto te hace ver como aficionado.",
+        "script": "Cuando envías un precio por WhatsApp, el cliente te compara con el tipo que cobra $15 la hora y no tiene seguro.\nCuando envías una cotización formal interactiva por Jobber con fotos, opciones y botón de pagar depósito con tarjeta en 2 clics... tu tasa de cierre sube al 55% y cobras el doble.",
+        "cta": "Prueba Jobber gratis por 14 días con el link en mi biografía."
       },
       {
-        id: 'seb_s4',
-        title: 'El depósito del 50% NO es tu ganancia',
-        hook: 'Por qué tantos contratistas se quedan sin dinero a mitad de obra.',
-        script: `Cierras un proyecto de $10,000 y el cliente te da un cheque de $5,000 de anticipo.
-Miras tu cuenta bancaria y sientes que eres rico. Te compras ropa, sales a cenar o pagas cuentas atrasadas.
-Llega la segunda semana y no tienes dinero para comprar la segunda mano de pintura ni pagarle a tu gente.
-El depósito NO es tuyo; es del proyecto hasta que la obra esté entregada y aprobada.
-Separa el dinero en una cuenta de operaciones.`,
-        cta: 'Sígueme para aprender a manejar las finanzas de tu compañía.'
+        "id": "seb_s4",
+        "title": "La trampa de facturar $45,000 y ganar $700",
+        "hook": "Facturar mucho no sirve de nada si tu margen neto es basura.",
+        "script": "Audité una compañía de pintura en Atlanta que facturaba $45,000 al mes. El dueño trabajaba 70 horas y se quedaba con $780 netos.\nLas fugas: 1) Tarjetas abiertas en Sherwin-Williams sin control, 2) Trabajos extras sin cobrar y 3) Leads comprados en Angi que no cerraban.\nCorregimos esas 3 cosas y su ganancia subió a $13,200 limpios.",
+        "cta": "Haz el autodiagnóstico de salud de tu empresa en el enlace del perfil."
       },
       {
-        id: 'seb_s5',
-        title: 'Por qué perdiste el trabajo de $6,000 por WhatsApp',
-        hook: 'El cliente gringo no busca al más barato; busca certidumbre.',
-        script: `Mandaste tu presupuesto por mensaje de texto: "Te cobro $6,000 por pintar la casa".
-Pasaron tres días y el cliente no te contesta.
-¿Por qué? Porque llegó otra compañía con un iPad, le mandó un estimado formal con 3 opciones, fotos antes/después, garantía por escrito y botón para pagar con tarjeta.
-El cliente gringo de alto poder adquisitivo prefiere pagar $8,000 a una empresa profesional que $6,000 a alguien que manda textos en servilletas.
-Deja de usar papel y activa un CRM hoy mismo.`,
-        cta: 'Guía de CRM gratis en el link de mi perfil.'
+        "id": "seb_s5",
+        "title": "La multa de $25,000 del IRS que no conoces (1099 vs W2)",
+        "hook": "Si le das herramientas y le pones horario a tu 1099, no es subcontratista.",
+        "script": "El Departamento de Trabajo y el IRS están multando con hasta $25,000 por trabajador mal clasificado.\nSi tú le dices a qué hora llegar, usa tus escaleras y no tiene su propia LLC ni seguro... ante la ley es un empleado W-2.\nSi se cae del techo, tu seguro no lo cubre y tú respondes con tu casa.",
+        "cta": "Descarga el Checklist de Cumplimiento 1099 vs W-2 en mi perfil."
       },
       {
-        id: 'seb_s6',
-        title: 'El síndrome de "Nadie lo hace tan bien como yo"',
-        hook: 'No tienes una empresa; tienes una cárcel con herramientas.',
-        script: `"Es que si no lo pinto yo, el cliente se queja."
-Felicidades: te compraste un trabajo de 14 horas diarias donde tu jefe es el peor del mundo: TÚ MISMO.
-Tu labor como dueño no es agarrar la brocha; es crear el manual de calidad, entrenar a tu gente y salir a vender proyectos grandes.
-Si tu compañía no puede operar 15 días sin ti en la obra... no tienes una empresa; tienes autoempleo con dolor de espalda.`,
-        cta: 'Suscríbete a mi canal para aprender a delegar.'
+        "id": "seb_s6",
+        "title": "Cómo comprar pintura 25% más barata en Sherwin-Williams",
+        "hook": "Nunca compres pintura al precio de la etiqueta de la tienda.",
+        "script": "La pintura de calidad profesional como SuperPaint o Duration tiene un margen retail enorme.\nSi abres una cuenta comercial Pro y comprometes volumen anual, el galón baja de $78 a $42.\nAdemás, en tus presupuestos siempre debes aplicar un 20% de Markup por logística y manejo de material.",
+        "cta": "Descarga la matriz de negociación de proveedores en el link fijado."
       },
       {
-        id: 'seb_s7',
-        title: 'Tu troca de $80,000 NO es un gasto inteligente',
-        hook: 'Apenas facturas tus primeros $15K y sacas una Ford F-250.',
-        script: `Apenas facturas tus primeros $15,000 al mes y lo primero que haces es ir al dealer a sacar una camioneta de $80,000 con un pago de $1,200 al mes.
-Dices: "Es que la deduzco en los taxes con la Sección 179".
-¿De qué te sirve ahorrar $2,000 de impuestos si te amarraste una soga al cuello de $1,200 mensuales que tienes que pagar llueva o no haya trabajo?
-Compra una camioneta usada confiable al contado. Invierte tu flujo de caja en marketing, herramientas profesionales y sistemas.`,
-        cta: 'Aprende finanzas de construcción en mi perfil.'
+        "id": "seb_s7",
+        "title": "Las 10 palabras para cobrar trabajos extras (Change Orders)",
+        "hook": "Nunca vuelvas a regalar un favorcito en la obra.",
+        "script": "El cliente te dice: \"Oye, ya que estás aquí, ¿puedes resanar y pintar esta otra pared?\".\nTú dices las 10 palabras mágicas: \"Con mucho gusto, déjame preparar la orden de cambio en la aplicación\".\nEl cliente firma en el teléfono y aprueba el cobro antes de que toques la espátula.",
+        "cta": "Descarga las plantillas de Change Orders en el enlace de la descripción."
       },
       {
-        id: 'seb_s8',
-        title: 'La frase más cara: "Ya que estás aquí..."',
-        hook: 'Cómo perder $500 dólares en 3 segundos.',
-        script: `Estás pintando y la dueña te dice: "Oye, ya que estás aquí arriba con la escalera, ¿me pintas este closet rápido?".
-Si dices que sí sin una firma, acabas de regalar $500 dólares.
-La respuesta profesional:
-"Con gusto, doña María. Déjeme generar una Orden de Cambio en el sistema; en cuanto la apruebe en su celular, mis muchachos empiezan".
-Regla de oro: si no hay firma previa, no se toca una sola herramienta.`,
-        cta: 'Plantilla de Change Order gratis en mi biografía.'
-      },
-      {
-        id: 'seb_s9',
-        title: 'Las 3 preguntas del IRS para atraparte con 1099',
-        hook: '¿Tus trabajadores son realmente contratistas independientes?',
-        script: `Si el IRS o el Departamento de Trabajo audita tu compañía, te van a hacer 3 preguntas:
-1. ¿Tú fijas la hora a la que tienen que llegar a la obra?
-2. ¿Usan tus escaleras, compresores y camionetas?
-3. ¿Le facturan a otros clientes o solo dependen de tu cheque?
-Si respondiste SÍ a las dos primeras y NO a la tercera... son empleados W-2 ante la ley.
-Las multas por clasificación errónea superan los $15,000 por trabajador.`,
-        cta: 'Comenta "CHECKLIST" para enviarte la guía de cumplimiento.'
-      },
-      {
-        id: 'seb_s10',
-        title: 'Tu subcontratista no tiene seguro: ¿Quién paga?',
-        hook: 'El error que destruye contratistas en Florida y Texas.',
-        script: `Le pagas a un subcontratista 1099 para que te ayude a poner techos o pintar.
-Un muchacho se resbala de la escalera y se fractura la pelvis.
-La ambulancia lo lleva a urgencias: $85,000 en cirugías y terapia.
-Le preguntas al sub: "¿Tienes Workers' Comp?". Te dice: "No patrón, yo no tengo seguro".
-Adivina a quién le cae la demanda y la cuenta médica completa: A TI.
-Nunca dejes entrar a un subcontratista a tu obra sin un COI (Certificado de Seguro) verificado.`,
-        cta: 'Sígueme para proteger tu negocio legalmente.'
-      },
-      {
-        id: 'seb_s11',
-        title: 'Cobrar el tornillo y la cinta: El costo fantasma',
-        hook: 'Estás perdiendo $1,200 al mes en materiales consumibles.',
-        script: `En cada obra usas cinta azul, plástico, lijas, navajas, guantes y gasolina para ir a The Home Depot.
-¿A quién se lo cobras? La mayoría de contratistas NO lo cobran en el estimado; lo pagan de su ganancia.
-En un mes promedio de 4 obras, esos "gastos menores" suman más de $1,200 dólares limpios que salieron de tu bolsillo.
-Añade un 10% a 15% fijo de costo de consumibles y merma en cada cotización.`,
-        cta: 'Calculadora de markup en el link de mi perfil.'
-      },
-      {
-        id: 'seb_s12',
-        title: 'Descuentos Pro en Home Depot y Sherwin-Williams',
-        hook: 'Por qué estás pagando precio de turista en materiales.',
-        script: `Si compras tus galones de pintura pagando $75 por bote, estás regalando tu dinero.
-Con solo registrar tu LLC y abrir una cuenta comercial Sherwin-Williams Pro o Home Depot Pro Xtra:
-Ese mismo galón te baja a $42 o $46 dólares.
-En una casa de 50 galones, acabas de ahorrarte $1,500 dólares de pura ganancia líquida.
-No vayas como cliente normal: juega en las ligas profesionales.`,
-        cta: 'Mira el tutorial completo en mi canal de YouTube.'
-      },
-      {
-        id: 'seb_s13',
-        title: 'La regla del 85% para contratar a tu primer capataz',
-        hook: 'Supera el ego que te tiene atrapado en la obra.',
-        script: `Dices: "Nadie pinta con el detalle que yo pinto".
-Tienes razón. Pero un capataz que pinte al 85% de tu calidad, siguiendo un checklist estricto, te permite salir de la obra para cerrar contratos de $25,000.
-Tu tiempo vale $150 la hora vendiendo y liderando, no $25 empuñando una brocha.
-Acepta el 85% con sistemas y multiplica tu negocio por 5.`,
-        cta: 'Blueprint de contratación en el link del perfil.'
-      },
-      {
-        id: 'seb_s14',
-        title: 'El bono del 3% que hace que tu gente cuide tu dinero',
-        hook: 'Cómo hacer que tus trabajadores apaguen las luces y cuiden la pintura.',
-        script: `Si a tu capataz le pagas solo por hora fija, no le importa si la obra tarda 3 días más o si tiran 4 galones de pintura a la basura.
-Prueba esto:
-Si entregan la obra en el tiempo presupuestado y sin reclamos del cliente, dales un bono del 3% del margen de ganancia ahorrado en mano de obra.
-De repente, tu capataz es el primero en llegar, el más estricto con los ayudantes y cuida cada herramienta como si fuera suya.`,
-        cta: 'Matriz de bonos en el enlace de la bio.'
-      },
-      {
-        id: 'seb_s15',
-        title: 'Por qué nunca debes cobrar por hora al cliente',
-        hook: 'Cobrar por hora penaliza tu rapidez y experiencia.',
-        script: `Si eres novato y tardas 20 horas en pintar un cuarto a $40/hr, cobras $800.
-Si eres un maestro veterano y lo dejas perfecto en 6 horas... cobras $240.
-¿Tiene sentido ganar MENOS por ser más rápido y mejor?
-¡Claro que no! Cobra por proyecto cerrado con valor entregado.
-Haz el trabajo en 6 horas y gana $800 limpios con un cliente feliz.`,
-        cta: 'Aprende Job Costing en mi canal de YouTube.'
-      },
-      {
-        id: 'seb_s16',
-        title: 'El secreto del Good-Better-Best en presupuestos',
-        hook: 'Sube tu ticket promedio un 30% con este truco psicológico.',
-        script: `Nunca mandes un solo precio a tu cliente.
-Manda siempre 3 opciones:
-Opción 1 (Good): Acabado estándar con 1 año de garantía.
-Opción 2 (Better): Acabado premium con pintura lavable y 5 años de garantía.
-Opción 3 (Best): Acabado de lujo con sellador antimanchas, 10 años de garantía y lavado a presión gratis.
-El 65% de los clientes gringos eligen la opción del medio y el 20% compra la más cara.
-¡Tu facturación sube sin venderle a un solo cliente más!`,
-        cta: 'Plantilla de cotización de 3 opciones en mi perfil.'
+        "id": "seb_s8",
+        "title": "El paso a paso para salir de la troca y ser dueño",
+        "hook": "Si tu negocio no funciona sin ti en la obra, no tienes un negocio, tienes un empleo.",
+        "script": "Para dejar de trabajar 70 horas a la semana, necesitas un Project Manager (capataz de obra).\nPágale salario base más un bono del 3% sobre el margen bruto que ahorre en mano de obra y materiales.\nAsí sus incentivos están alineados con los tuyos y tú te dedicas 100% a vender y liderar.",
+        "cta": "Aplica a nuestro programa de escalamiento para contratistas en el perfil."
       }
     ],
-    communityPosts: [
+    "communityPosts": [
       {
-        id: 'seb_cp1',
-        type: 'Caso de Estudio',
-        title: 'Por qué 3 empleados a $22/h quebraron a un contratista en Florida',
-        content: `Una compañía de drywall en Orlando facturó $380,000 el año pasado. El dueño trabajaba 12 horas diarias y hoy debe $24,000 en tarjetas de crédito y $18,000 de auditoría de Workers' Comp.
-
-¿Cuál fue su error?
-Cotizaba a $38 la hora pensando que con pagar $22/h le sobraban $16 de ganancia.
-Cuando calculamos su Labor Burden real:
-- Salario: $22.00
-- FICA + FUTA + SUTA: $1.98
-- Workers' Comp (Drywall 12%): $2.64
-- Tiempo no facturable (6 hrs/sem en tráfico I-4 y supply houses): $3.80
-- Camioneta y herramienta: $2.10
-Costo real: $32.52 por hora.
-
-De los $38 que cobraba, le quedaban apenas $5.48 brutos por hombre. Un solo reclamo de garantía se comía la ganancia de 3 semanas de trabajo.
-
-La solución no fue trabajar más duro. Fue recalibrar su precio base a $58/hora y cotizar por pie cuadrado con la Matriz de Pricing.
-
-Pregunta para la comunidad:
-¿Cuánto estás cobrando hoy la hora por hombre en tu estado? (Responde sin pena, aquí estamos para aprender y subir los precios juntos).`
+        "id": "seb_cp1",
+        "type": "Caso de Estudio Financiero",
+        "title": "La historia de Orlando: Facturaba $380K al año y debía $42,000 en tarjetas de crédito",
+        "content": "La semana pasada terminamos la auditoría operativa de una compañía de pintura residencial en Florida.\nEl dueño (llamémoslo Orlando) estaba desesperado. Facturación anual de $380,000 USD, 4 trabajadores en nómina, 2 camionetas... pero debía $42,000 en tarjetas de crédito personales y $18,000 de ajuste de Workers' Comp.\n\n¿Cuál era el problema raíz?\n1. Estaba pagando $22/hora a sus pintores y cobrando la mano de obra a $32/hora. Su costo real con Labor Burden era de $36.40/hora. ¡Perdía $4.40 por cada hora trabajada de su cuadrilla!\n2. No cobraba Change Orders. En un proyecto de $8,000 regaló 14 horas de resane porque \"el cliente era buena gente\".\n3. Compraba materiales en retail pagando 35% de sobreprecio.\n\nEn 30 días implementamos:\n✅ Matriz de True Cost (precio mínimo de venta a $58/hora).\n✅ Jobber con depósitos automáticos del 50%.\n✅ Cuenta comercial Pro en Sherwin-Williams con 28% de descuento.\n\nResultado: En su último proyecto de $14,200, su margen neto cerrado fue del 42.8% ($6,077 limpios para la empresa).\n\n¿Sabes cuál es el margen neto real de tu último proyecto? Comenta \"AUDITORÍA\" y te paso la hoja de cálculo para medirlo."
       },
       {
-        id: 'seb_cp2',
-        type: 'Encuesta Interactiva',
-        title: '¿Cómo envías tus presupuestos a clientes hoy?',
-        content: `Queremos saber cómo opera nuestra comunidad de contratistas en USA:
-1. 📝 En papel / libreta escrita a mano
-2. 💬 Por mensaje de texto o WhatsApp
-3. 📄 En PDF básico hecho en Word o Excel
-4. 📱 Con un software CRM profesional (Housecall Pro, Jobber, Joist)
-
-Vota abajo. En el video de este jueves voy a mostrar cómo enviar cotizaciones interactivas de 3 opciones que cierran el 65% de las visitas.`
+        "id": "seb_cp2",
+        "type": "Debate de Industria & Precios",
+        "title": "¿Cotizas por pie cuadrado (SqFt) o por horas reales de producción?",
+        "content": "Pregunta seria para todos los contratistas de la comunidad:\nCuando vas a cotizar una casa residencial de 2,500 sqft... ¿cómo calculas el precio?\n\nOpción A: Multiplicas los pies cuadrados por una tarifa fija (ejemplo: $2.50 o $3.50 por sqft).\nOpción B: Desglosas materiales con 15% de desperdicio + Horas de mano de obra con True Cost + Overhead + Margen 40%.\n\nLa realidad: El 80% de los contratistas que usan la Opción A terminan perdiendo dinero en casas con techos altos, molduras complejas o reparaciones previas porque el pie cuadrado no mide la dificultad real.\n\nDéjame tu opinión en los comentarios: ¿Qué método usas tú y cuál ha sido tu experiencia?"
       },
       {
-        id: 'seb_cp3',
-        type: 'Contraste Visual & Sistemas',
-        title: 'La diferencia entre una compañía de $150K y una de $1M en USA',
-        content: `Miren este contraste real:
-🔴 Contratista A (Atrapado en $180K/año):
-- Presupuesto en servilleta o texto de WhatsApp: "Te cobro $4,500".
-- Cobros en cheque o Zelle que tardan 18 días en llegar.
-- Cuadrilla esperando en Home Depot a las 8:30 AM para comprar cinta.
-- Paga en efectivo y 1099 rezando para que no haya accidentes.
-- El dueño trabaja 70 horas a la semana con las manos llenas de pintura.
-
-🟢 Contratista B (Escalando a $1.2M/año):
-- Presupuesto digital interactivo con 3 opciones (Good, Better, Best) con firma en iPad.
-- Tarjeta de crédito cobrada en sitio con 50% de anticipo automático.
-- Materiales entregados en obra a las 7:00 AM por Sherwin Pro Delivery.
-- Nómina formal W-2 procesada con Gusto y póliza pay-as-you-go.
-- El dueño visita las obras 2 veces por semana y se dedica a ventas comerciales.
-
-La diferencia no es el talento con la brocha; es la ARQUITECTURA DE SISTEMAS.
-
-¿En cuál de los dos grupos te encuentras hoy y cuál es el cambio que vas a implementar este mes?`
+        "id": "seb_cp3",
+        "type": "Legal & Riesgo Operativo",
+        "title": "La carta de auditoría de Workers' Comp que nadie quiere recibir",
+        "content": "Atención contratistas en Texas, Florida, California, Georgia y Carolina del Norte:\nEl mes pasado recibimos más de 12 mensajes de dueños de negocio que recibieron una carta de ajuste de Workers' Comp por más de $15,000 USD.\n\n¿Por qué ocurre esto?\nPorque durante el año le pagaron a sus ayudantes con cheque personal o Zelle considerándolos \"1099 independientes\", pero al final del año la aseguradora audita las cuentas y reclasifica a todos como empleados W-2 porque no tenían su propio certificado de seguro (COI).\n\nSi no tienes un acuerdo formal de subcontratista firmado y un COI vigente antes de que pisen tu obra, esa factura te llegará a ti.\n\nDejo la plantilla de acuerdo legal y el checklist de verificación en el primer link de mi perfil."
       },
       {
-        id: 'seb_cp4',
-        type: 'Manifiesto Legal & Fiscal',
-        title: 'El mito más costoso: "A mí el IRS y el Workers\' Comp no me van a auditar"',
-        content: `Esta semana recibí la llamada de un colega contratista de remodelación en Georgia.
-Lleva 7 años trabajando. En 2025 facturó $480,000. Pagaba a sus 5 muchachos con 1099 en cheques personales.
-
-Uno de sus chalanes se cayó de un andamio de 8 pies. Fractura de muñeca y 3 meses sin trabajar.
-El hospital reportó el accidente laboral. La aseguradora investigó y determinó:
-1. El trabajador no tenía seguro propio.
-2. Usaba las herramientas de la empresa y cumplía horario estricto.
-3. Clasificación: Empleado no declarado (Misclassification).
-
-Multa retroactiva de nómina: $34,200.
-Ajuste de prima de Workers' Comp: $18,400.
-Gastos médicos directos: $22,000.
-Total a pagar: $74,600 dólares en 30 días.
-
-El negocio tuvo que cerrar sus puertas.
-
-La formalidad y la nómina legal no son un lujo; son el chaleco salvavidas de tu patrimonio.
-Comenta "BLINDAJE" si quieres que te comparta el Checklist de Transición a W-2 sin perder margen.`
+        "id": "seb_cp4",
+        "type": "Liderazgo & Mentalidad",
+        "title": "Dejar las herramientas no es traición a tus raíces, es responsabilidad con tu familia",
+        "content": "Muchos contratistas hispanos tienen una culpa invisible: sienten que si no están sudando en la obra con la brocha o el taladro, no están trabajando.\n\nDéjame decirte una verdad incómoda:\nCuando tú estás en la escalera pintando por $30 la hora, estás descuidando la labor de $300 la hora:\n- Vender proyectos de alto margen.\n- Crear alianzas comerciales con arquitectos y diseñadores.\n- Controlar los números y evitar fugas de dinero.\n- Entrenar y liderar a tu equipo.\n\nTu meta no es ser el mejor trabajador de tu cuadrilla. Tu meta es construir una empresa sólida que genere patrimonio y tranquilidad para tu familia.\n\nGuarda este post y léelo cada vez que sientas la tentación de no delegar."
       }
     ]
   },
-
-  // =========================================================================
-  // DANIEL MONOGA — SISTEMAS OPERATIVOS EMPRESARIALES, ARQUITECTURA & B2B
-  // =========================================================================
-  daniel: {
-    profile: {
-      name: 'Daniel Monoga',
-      role: 'Arquitecto de Sistemas & Director Monoga OS',
-      handle: 'Sistemas B2B (@danielmonoga)',
-      avatarText: 'DM',
-      avatarBg: 'bg-blue-600',
-      niche: 'Sistemas Operativos Empresariales & Automatización con IA Delimitada',
-      market: 'PyMEs y Directores de Operaciones en Latam y Mercado Hispano',
-      currency: 'USD ($)',
-      weeklyBudget: '180 minutos'
+  "daniel": {
+    "profile": {
+      "name": "Daniel Monoga",
+      "role": "Arquitecto de Sistemas & Director Tecnológico",
+      "handle": "Operating Systems & AI (@daniel)",
+      "avatarText": "DM",
+      "avatarBg": "bg-blue-600",
+      "niche": "Custom Operating Systems, Jarvis & B2B Automations",
+      "market": "PyMEs, Agencias, Operaciones High-Ticket Latam/Global",
+      "currency": "USD ($)",
+      "weeklyBudget": "180 minutos"
     },
-    longVideos: [
+    "longVideos": [
       {
-        id: 'dan_v1',
-        number: 1,
-        title: 'Tu empresa no necesita más recordatorios: necesita un sistema que no dependa de memoria',
-        duration: '09:00 min',
-        pilar: 'Jarvis (Operador Único)',
-        status: 'Listo para Grabar',
-        hook: `Si una tarea importante de tu empresa se cumple solamente porque una persona se acordó, no tenés un proceso confiable: tenés buena suerte. Y comprar otra aplicación no corrige eso.
-Hoy te voy a mostrar cómo pensé Jarvis para resolver el problema desde el otro lado: no empezar por un asistente inteligente, sino por definir exactamente qué puede hacer, quién lo controla y cómo sabemos que una acción ocurrió una sola vez.`,
-        fullScript: `[0:00–0:25 — Hook, cámara]
-"Si una tarea importante de tu empresa se cumple solamente porque una persona se acordó, no tenés un proceso confiable: tenés buena suerte. Y comprar otra aplicación no corrige eso. Hoy te voy a mostrar cómo pensé Jarvis para resolver el problema desde el otro lado: no empezar por un asistente inteligente, sino por definir exactamente qué puede hacer, quién lo controla y cómo sabemos que una acción ocurrió una sola vez."
-
-[0:25–1:20 — Dolor y stakes]
-"Pensemos en algo cotidiano: una llamada de seguimiento, un vencimiento, una reunión que requiere preparación o una tarea que no puede quedar flotando. En muchas empresas la información aparece en un chat, alguien la copia a una agenda, otra persona la anota en una hoja y finalmente todos confían en la memoria. El costo no es solo olvidar. También aparece el doble trabajo: dos personas responden, el recordatorio sale dos veces o nadie sabe si la tarea quedó cerrada. Ese problema es operativo antes de ser tecnológico."
-
-[1:20–2:25 — Evidencia y mapa]
-"Jarvis es un sistema personal de un solo operador que construí con herramientas deliberadamente estrechas. Puede trabajar con calendario, tareas, recordatorios, estudio, finanzas y rutinas, pero cada capacidad tiene límites. El acceso está ligado a un único dueño; los grupos están deshabilitados; y los recordatorios importantes no dependen de que un modelo de lenguaje recuerde qué hacer. Una capa determinista reclama cada entrega antes de enviarla y separa los resultados ambiguos para no duplicar acciones. La IA interpreta la intención, pero el estado operativo necesita reglas verificables."
-
-[2:25–4:20 — Demo sintética]
-"Voy a usar datos ficticios. Creo la tarea 'Confirmar pedido Demo Norte' con vencimiento mañana a las nueve. En el diagrama se ve la secuencia: pendiente, reclamado para envío, entregado o en cuarentena si el resultado fue ambiguo. Si el proceso se reinicia, no crea una segunda entrega. Esa propiedad se llama idempotencia: asegurar que el sistema haga exactamente una sola vez lo que debía ocurrir una vez. Además, Jarvis puede leer disponibilidad, pero las escrituras de calendario van solamente a un calendario administrado; no tiene permisos ilimitados."
-
-[4:20–5:45 — Decisión y tradeoff]
-"Es tentador conectar correo, archivos, navegador, pagos y mensajería y llamarlo un agente autónomo. Pero cada permiso amplía el daño posible. Yo preferí un conjunto exacto de herramientas y un comportamiento que falla de forma cerrada cuando el estado es ambiguo. El tradeoff es claro: hace menos cosas al comienzo, pero cada acción tiene dueño, límite y evidencia."
-
-[5:45–6:55 — Qué puede aplicar una empresa]
-"Para llevar esta idea a tu operación, elegí una sola tarea repetitiva y respondé cuatro preguntas:
-1. ¿Qué evento la dispara?
-2. ¿Quién puede autorizarla?
-3. ¿Qué dato demuestra que ya ocurrió?
-4. ¿Qué hacemos si el resultado es ambiguo?
-Si no podés responderlas, no necesitás IA todavía; necesitás definir el proceso."
-
-[6:55–9:00 — Cierre y CTA]
-"La pregunta útil no es '¿qué asistente de IA compro?'. Es '¿qué compromiso de mi operación no puede seguir dependiendo de memoria?'. Si querés mapear ese primer flujo, escribime 'MAPA' y contame qué tarea crítica depende hoy de que alguien se acuerde. Primero vemos si el proceso está listo para sostenerlo."`,
-        structure: [
-          '0:00–0:25 Gancho: Memoria individual vs Sistema determinista.',
-          '0:25–1:20 El costo del doble trabajo y tareas flotantes.',
-          '1:20–2:25 Evidencia de Jarvis: herramientas estrechas y dueño único.',
-          '2:25–4:20 Demo en pantalla: Idempotencia y calendario administrado.',
-          '4:20–5:45 Tradeoff: Por qué fallar cerrado protege la operación.',
-          '5:45–6:55 Las 4 preguntas operativas para dueños de empresas.',
-          '6:55–9:00 CTA: Palabra clave MAPA.'
+        "id": "dan_v1",
+        "number": 1,
+        "title": "Tu empresa no necesita más recordatorios: La verdad sobre Jarvis y la automatización",
+        "duration": "09:00 min",
+        "pilar": "Sistemas Deterministas",
+        "status": "Listo para Grabar",
+        "hook": "Si tu equipo pasa más de dos horas al día reenviando mensajes, copiando datos de WhatsApp a un Excel o recordando tareas por chat... tu problema no es de personal. Es de arquitectura.",
+        "structure": [
+          "Hook: El costo oculto del trabajo manual",
+          "Diagnóstico: Por qué las automatizaciones frágiles fallan",
+          "Arquitectura Jarvis: Ingestión, Idempotencia y Cuarentena",
+          "Demostración en Vivo: Flujo de eventos determinista",
+          "Lead Magnet: Blueprint de Sistemas Monoga OS",
+          "CTA: Diagnóstico Operativo de Automatización"
         ],
-        leadMagnet: 'Mapa de Flujo Operativo & Protocolo de 4 Preguntas',
-        monetization: 'Diagnóstico Operativo B2B y Roadmap de Automatización',
-        cta: 'Escribime "MAPA" en los comentarios y contame qué tarea crítica depende hoy de que alguien se acuerde.',
-        shorts: ['J1: No es olvido, es diseño', 'J2: La IA no debería enviar dos veces']
+        "leadMagnet": "Blueprint: Mapa de Flujo Operativo Monoga OS",
+        "monetization": "Diagnóstico Operativo de Sistemas B2B ($2,500 USD)",
+        "cta": "Agenda un diagnóstico operativo de 30 minutos para tu empresa en el enlace de la descripción.",
+        "fullScript": "[0:00 - 0:45] HOOK VISUAL & ARQUITECTURA\n(Daniel frente a monitor con consola de logs deterministas y diagrama de flujo en acrílico).\n\"Si tu equipo pasa más de dos horas al día reenviando mensajes, copiando datos de WhatsApp a un Excel o recordando tareas por chat... tu problema no es de personal. Es de arquitectura.\nLa mayoría de las empresas intentan resolver el caos operativo contratando más asistentes o pegando 15 herramientas con Zapier que se rompen al tercer día.\nHoy te voy a mostrar cómo diseñamos un sistema operativo de operador único con memoria determinista e idempotencia garantizada.\"\n\n[0:46 - 2:30] EL SÍNTOMA DEL NEGOCIO FRÁGIL\n\"En Monoga OS tenemos una regla: Si una tarea requiere que un humano recuerde hacerla tres veces al día, es un fallo de diseño.\nCuando dependes de la memoria humana en ventas, facturación o seguimiento de proyectos, estás acumulando deuda operativa.\nCada mensaje no contestado, cada cotización que se queda en borrador y cada cliente que no recibe su recibo es dinero que se evapora.\"\n\n[2:31 - 6:00] LA ARQUITECTURA DE TRES CAPAS\n\"1. Capa de Ingestión: Captura de eventos sin pérdida de datos.\n2. Capa de Idempotencia: Garantía matemática de que ningún mensaje o cobro se ejecuta dos veces.\n3. Capa de Cuarentena: Si un proceso falla, se aísla sin detener el resto de la empresa.\"\n\n[6:01 - 8:00] DEMOSTRACIÓN EN VIVO: JARVIS EN PRODUCCIÓN\n(Captura de pantalla de la arquitectura en código con datos sintéticos y cero credenciales expuestas).\n\n[8:01 - 9:00] LEAD MAGNET & CTA\n\"Te dejo el Blueprint del Mapa de Flujo Operativo en la descripción. Si quieres que auditemos tus procesos, agenda una sesión con nosotros.\""
       },
       {
-        id: 'dan_v2',
-        number: 2,
-        title: 'El costo oculto de operar ventas, inventario y producción por separado',
-        duration: '10:00 min',
-        pilar: 'MARAL OS (Integración ERP)',
-        status: 'Guion Listo',
-        hook: `Muchas empresas creen que tienen un problema de ventas, de inventario o de producción. A veces no es ninguno por separado. El problema vive en el espacio entre ellos: ventas promete algo, inventario no lo ve a tiempo, producción trabaja con otra versión y gerencia descubre el retraso cuando el cliente pregunta. Hoy vamos a mirar ese hueco con un caso real de software: MARAL OS.`,
-        fullScript: `[0:00–0:25 — Hook]
-"Muchas empresas creen que tienen un problema de ventas, de inventario o de producción. A veces el problema vive en el espacio entre ellos: ventas promete algo, inventario no lo ve a tiempo y producción trabaja con otra versión. Hoy miramos ese hueco con MARAL OS."
-
-[0:25–1:30 — El proceso fragmentado]
-"Imaginá este recorrido: entra un pedido por WhatsApp. Alguien copia productos a mano a una cotización. Después verifica existencias en otra hoja, avisa a producción y semanas después cartera intenta cobrar. Cada paso funciona bien por sí solo, pero el sistema completo falla porque cada traspaso vuelve a interpretar datos."
-
-[1:30–5:15 — Evidencia y Demo MARAL OS]
-"MARAL OS documenta una plataforma que conecta CRM, cotizaciones, pedidos, producción e inventario. La capa de WhatsApp con IA no cotiza sola: extrae datos de la solicitud y los presenta como borrador. Si falta el cliente o un producto no existe en inventario, el sistema NO inventa: detiene el flujo y deriva el caso para revisión humana. Esa pausa protege existencias y compromisos comerciales."
-
-[5:15–8:45 — Decisión de arquitectura de negocio]
-"El diseño correcto empieza por un objeto compartido —cliente, cotización, orden de producción— y por estados explícitos. Si cada área tiene su propia hoja de Excel, una automatización solo mueve errores más rápido."
-
-[8:45–10:00 — Cierre y CTA]
-"Escribime 'MAPA' y decime entre qué dos áreas se pierde más contexto en tu empresa: ventas e inventario, pedidos y taller, o compras y finanzas."`,
-        structure: [
-          '0:00–0:25 Gancho: El cuello de botella en los traspasos entre áreas.',
-          '0:25–1:30 El recorrido fragmentado típico de una PyME.',
-          '1:30–5:15 Demo de MARAL OS: Solicitud, cotización en borrador y parada humana.',
-          '5:15–8:45 Arquitectura: Datos compartidos vs silos en Excel.',
-          '8:45–10:00 CTA: Palabra clave MAPA.'
+        "id": "dan_v2",
+        "number": 2,
+        "title": "MARAL OS: Cómo unificamos una operación de $1.2M en una sola pantalla",
+        "duration": "11:15 min",
+        "pilar": "Sistemas Operativos Propios",
+        "status": "Guion Listo",
+        "hook": "¿Cuántas pestañas de software tienes abiertas en este momento para saber si tu empresa ganó o perdió dinero hoy?",
+        "structure": [
+          "Hook: El laberinto de software SaaS fragmentado",
+          "Caso MARAL: De 6 sistemas desconectados a una sola base de verdad",
+          "Roles y Permisos (RBAC): Ventas, Producción y Dirección",
+          "Demostración del Dashboard Ejecutivo",
+          "Lead Magnet: Matriz de Evaluación de Software B2B",
+          "CTA: Desarrollo de Custom OS para Empresas"
         ],
-        leadMagnet: 'Diagrama de Arquitectura de Traspasos MARAL OS',
-        monetization: 'Diseño e Implementación de ERPs Internos a Medida',
-        cta: 'Escribime "MAPA" y decime entre qué dos áreas se pierde más información en tu operación.',
-        shorts: ['M1: El problema vive entre áreas', 'M2: La revisión humana no es un fracaso']
+        "leadMagnet": "Framework de Auditoría de Sistemas SaaS vs Custom OS",
+        "monetization": "Implementación Custom OS Monoga ($5,000 - $15,000 USD)",
+        "cta": "Descarga la matriz de evaluación y descubre si tu empresa necesita un sistema a medida.",
+        "fullScript": "Guion completo de arquitectura de software para unificación de operaciones de media y gran escala."
       },
       {
-        id: 'dan_v3',
-        number: 3,
-        title: 'IA con datos sensibles: qué automatizar y qué mantener bajo control humano',
-        duration: '09:00 min',
-        pilar: 'Universidad OS (Gobierno de IA)',
-        status: 'Guion Listo',
-        hook: `Cuando una organización trabaja con datos sensibles, la peor pregunta es "¿cómo le damos acceso a la IA?". La pregunta correcta es "¿qué mínimo acceso necesita para esta tarea y dónde debe detenerse?". Hoy voy a usar Universidad OS como caso para mostrar cinco controles prácticos sin exponer un solo dato real.`,
-        fullScript: `[0:00–0:25 — Hook]
-"Cuando una organización trabaja con datos sensibles, la peor pregunta es '¿cómo le damos acceso a la IA?'. La pregunta correcta es '¿qué mínimo acceso necesita para esta tarea y dónde debe detenerse?'. Hoy muestro cinco controles prácticos."
-
-[0:25–2:00 — Riesgo empresarial y contexto factual]
-"Universidad OS es una aplicación privada basada en Next.js y Supabase con correos institucionales verificados y pasarela de IA controlada."
-
-[2:00–5:20 — Los 5 controles con demo sintética]
-1. Identidad antes que conversación (roles y dominios permitidos).
-2. Credencial detrás de un gateway seguro (el frontend jamás conoce la API key).
-3. Límites estrictos de entrada y salida (topes de tokens y tamaño).
-4. Herramientas restringidas (separar lectura, propuesta y ejecución).
-5. Publicación atómica de datos (validar el conjunto completo antes de hacerlo visible).
-
-[5:20–7:35 — El marco Sugerir / Preparar / Ejecutar]
-"Sugerir produce una recomendación. Preparar crea un borrador estructurado. Ejecutar cambia el mundo (envía, cobra o modifica registros oficiales). A medida que avanzas hacia ejecutar, necesitas más evidencia, permisos estrechos y reversibilidad."
-
-[7:35–9:00 — Cierre y CTA]
-"Escribime 'CONTROL' y completá: 'Nuestro sistema nunca debería ____ sin aprobación humana'."`,
-        structure: [
-          '0:00–0:25 Gancho: La pregunta correcta al conectar IA a datos de negocio.',
-          '0:25–2:00 Riesgos de filtración y acciones autónomas sin control.',
-          '2:00–5:20 Los 5 controles de arquitectura de Universidad OS.',
-          '5:20–7:35 Marco de 3 niveles: Sugerir, Preparar, Ejecutar.',
-          '7:35–9:00 CTA: Palabra clave CONTROL.'
+        "id": "dan_v3",
+        "number": 3,
+        "title": "Universidad OS: Seguridad, Control de Accesos y Cero Fugas de Datos",
+        "duration": "10:30 min",
+        "pilar": "Seguridad & RBAC",
+        "status": "Guion Listo",
+        "hook": "El mayor riesgo de ciberseguridad en tu empresa no son los hackers rusos. Es que tu recepcionista tenga acceso a la cuenta bancaria.",
+        "structure": [
+          "Hook: Privilegios excesivos en PyMEs",
+          "Principio del Mínimo Privilegio (Least Privilege)",
+          "Auditoría de Roles en Vivo",
+          "Arquitectura de Datos Segura",
+          "Lead Magnet: Checklist de Seguridad Operativa",
+          "CTA: Consultoría de Seguridad & RBAC"
         ],
-        leadMagnet: 'Matriz de Gobierno de IA: Sugerir / Preparar / Ejecutar',
-        monetization: 'Auditoría de Seguridad y Pasarelas de IA para Empresas',
-        cta: 'Escribime "CONTROL" y completá esta frase: "Nuestro sistema nunca debería ____ sin aprobación".',
-        shorts: ['U1: Tres niveles de automatización', 'U2: Definí primero lo prohibido']
+        "leadMagnet": "Checklist de Auditoría de Seguridad & Control de Accesos",
+        "monetization": "Auditoría de Seguridad Operativa ($2,000 USD)",
+        "cta": "Descarga el checklist y audita los accesos de tu empresa hoy mismo.",
+        "fullScript": "Guion completo de seguridad informática y control de accesos para empresas en crecimiento."
       },
       {
-        id: 'dan_v4',
-        number: 4,
-        title: 'Clínica en vivo: convertir conocimiento complejo en un sistema que guía decisiones',
-        duration: '42:00 min (Directo)',
-        pilar: 'Mecatrónica Industrial',
-        status: 'Guion Listo',
-        hook: `Hoy no vamos a hablar de física para físicos ni de software para desarrolladores. Vamos a resolver una pregunta empresarial: ¿cómo convertimos conocimiento complejo, que hoy vive en la cabeza de una persona, en un sistema que ayuda a tomar decisiones? Voy a usar un módulo de mecatrónica porque hace visible el problema: más manuales no enseñan; lo útil es reconocer la señal, tomar una decisión y recibir feedback inmediato.`,
-        fullScript: `[0:00–6:00 — Apertura y El Problema del Conocimiento Atrapado]
-"En una empresa, el experto ve una señal y sabe qué hacer. El nuevo integrante ve veinte páginas de procedimiento. La brecha se cierra haciendo explícitas cuatro cosas: la pista observable, la decisión posible, el feedback inmediato y la repetición."
-
-[6:00–25:00 — Demos del Laboratorio y Entrenador 2D]
-- Demo 1: Fasor y propagación de ondas (hacer visible la relación causal antes de memorizar fórmulas).
-- Demo 2: Feedback que explica la causa del error y la trampa de la opción incorrecta.
-- Demo 3: Repetición espaciada que reinserta preguntas falladas más adelante.
-
-[25:00–42:00 — Marco Aplicable a Empresas y Casos del Chat]
-- Cómo estandarizar cotizaciones técnicas que solo sabe hacer un ingeniero sénior.
-- Cómo convertir la inspección de fallas en una guía interactiva antes de intentar entrenar modelos de IA.
-- CTA: Palabra clave CONTROL.`,
-        structure: [
-          '0:00–6:00 Apertura: Conocimiento tácito vs documentación que nadie lee.',
-          '6:00–25:00 Demos: Causalidad visible, feedback diagnóstico y repetición.',
-          '25:00–35:00 Marco de 5 pasos para digitalizar criterio experto.',
-          '35:00–42:00 Clínica en vivo con casos del chat y CTA.'
+        "id": "dan_v4",
+        "number": 4,
+        "title": "Mecatrónica aplicada a Software: Cómo pensar en flujos a prueba de fallos",
+        "duration": "12:00 min",
+        "pilar": "Ingeniería Operativa",
+        "status": "Guion Listo",
+        "hook": "En ingeniería mecatrónica, si un sensor falla y no hay redundancia, una máquina de 10 toneladas se estrella. En tu empresa pasa exactamente lo mismo.",
+        "structure": [
+          "Hook: La mentalidad de ingeniería aplicada a negocios",
+          "Circuit Breakers y Redundancia en Procesos",
+          "Cómo diseñar flujos que se auto-reparan",
+          "Ejemplo práctico en logística y ventas",
+          "Lead Magnet: Diagrama de Circuit Breakers Operativos",
+          "CTA: Diagnóstico de Robustez Empresarial"
         ],
-        leadMagnet: 'Framework de Estandarización de Criterio Experto (SOP Interactivo)',
-        monetization: 'Diseño de Entrenadores Operativos y Plataformas Educativas B2B',
-        cta: 'Escribime "CONTROL" y nombrá el conocimiento que hoy depende de una sola persona en tu equipo.',
-        shorts: ['E1: Más documentación no siempre enseña', 'E2: El feedback que sí cambia conducta']
+        "leadMagnet": "Diagrama de Robustez y Circuit Breakers Operativos",
+        "monetization": "Diseño de Arquitectura Empresarial ($3,500 USD)",
+        "cta": "Aprende a blindar tus procesos con nuestro framework descargable.",
+        "fullScript": "Guion de ingeniería de sistemas y mecatrónica aplicada a negocios de alta exigencia."
       }
     ],
-    shorts: [
+    "shorts": [
       {
-        id: 'dan_s1',
-        title: 'No es olvido, es diseño',
-        hook: 'Si una tarea crítica depende de que alguien se acuerde, tu proceso no es confiable.',
-        script: `Antes de instalar otra app o comprar un asistente con IA, definí cuatro cosas:
-1. ¿Qué evento dispara la tarea?
-2. ¿Quién la autoriza?
-3. ¿Qué dato demuestra que ya ocurrió?
-4. ¿Qué hacemos si el resultado es ambiguo?
-Sin eso, la automatización solo acelera el desorden.`,
-        cta: 'Comentá "MAPA" y nombrá el compromiso que más se pierde.'
+        "id": "dan_s1",
+        "title": "No es olvido, es diseño",
+        "hook": "Si tu equipo olvida tareas clave, la culpa no es de ellos.",
+        "script": "Si un proceso depende de que un empleado recuerde enviar un correo o actualizar un estado manualmente, el error ya está programado en tu sistema.\nDiseña sistemas con disparadores automáticos e idempotencia.\nEl software no tiene días malos ni se distrae con el celular.",
+        "cta": "Descarga el mapa de flujo operativo en el enlace de la bio."
       },
       {
-        id: 'dan_s2',
-        title: 'La IA no debería enviar dos veces',
-        hook: 'Una respuesta duplicada parece un detalle técnico hasta que es un cobro a un cliente.',
-        script: `Un sistema confiable registra el estado antes de actuar y separa los resultados ambiguos.
-La palabra técnica es idempotencia.
-El valor empresarial es simple: hacer exactamente una sola vez lo que debía ocurrir una sola vez.
-Guardalo para tu próxima conversación sobre automatización.`,
-        cta: 'Guardá este video.'
-      },
-      {
-        id: 'dan_s3',
-        title: 'El problema vive entre áreas',
-        hook: 'Ventas puede funcionar bien e inventario también, y aun así el cliente recibir un mal servicio.',
-        script: `El fallo de una empresa suele vivir en el traspaso entre áreas: alguien copia a mano, espera una respuesta o vuelve a confirmar.
-Dibujá el recorrido completo y marcá dónde cambia de dueño.
-Ahí suele estar la primera automatización valiosa.`,
-        cta: '¿Entre qué dos áreas perdés más contexto?'
-      },
-      {
-        id: 'dan_s4',
-        title: 'Tres niveles de automatización',
-        hook: 'No es lo mismo sugerir, preparar y ejecutar.',
-        script: `Sugerir: produce una recomendación.
-Preparar: crea un borrador estructurado.
-Ejecutar: envía, cobra, publica o modifica un registro oficial.
-Cuanto más cerca estés de ejecutar, más permisos estrechos, evidencia y reversibilidad necesitás.`,
-        cta: '¿En cuál nivel está tu proyecto de IA?'
+        "id": "dan_s2",
+        "title": "La IA no debería enviar dos veces",
+        "hook": "¿Por qué la mayoría de chatbots envían mensajes duplicados?",
+        "script": "El 90% de las automatizaciones baratas no manejan estados de idempotencia.\nSi la red parpadea, reenvían el cobro o el mensaje dos veces al cliente generando desconfianza total.\nEn Monoga OS cada acción tiene una llave criptográfica única que impide duplicados.",
+        "cta": "Aprende sobre sistemas deterministas en mi canal de YouTube."
       }
     ],
-    communityPosts: [
+    "communityPosts": [
       {
-        id: 'dan_cp1',
-        type: 'Reflexión Operativa',
-        title: 'Dependencia de memoria en la empresa',
-        content: `Una operación frágil no siempre se ve como un gran fallo. A veces se ve como una frase inocente: "menos mal que alguien se acordó".
-
-Antes de automatizar una tarea crítica con software o IA, defino cuatro cosas innegociables:
-1. Disparador observable
-2. Responsable de autorización
-3. Evidencia verificable de ejecución
-4. Manejo de ambigüedad cuando algo falla
-
-Si falta una, todavía no hay un proceso listo para automatizar; hay un desorden esperando ser escalado.
-
-Pregunta para líderes de equipo:
-¿Qué compromiso crítico de tu empresa depende hoy exclusivamente de memoria individual?`
-      },
-      {
-        id: 'dan_cp2',
-        type: 'Arquitectura de Negocio',
-        title: 'Frontera de control en inteligencia artificial',
-        content: `La discusión sobre IA en las empresas mejora radicalmente cuando dejamos de preguntar "¿qué cosas maravillosas puede hacer?" y definimos qué jamás debe hacer sola.
-
-Aprobar un pago, cambiar condiciones de crédito o emitir un compromiso legal son decisiones de negocio.
-Clasificamos cada flujo en:
-- Sugerir (asistente)
-- Preparar (borrador)
-- Ejecutar (aprobación humana explícita)
-
-Completá la frase en comentarios:
-"Nuestro sistema nunca debería ______ sin aprobación humana".`
+        "id": "dan_cp1",
+        "type": "Arquitectura & Pensamiento Crítico",
+        "title": "Las 4 preguntas antes de automatizar cualquier proceso con IA",
+        "content": "Antes de pagarle a una agencia para que te monte un \"agente de IA\" en tu empresa, responde esto:\n1. ¿El proceso actual está documentado paso a paso con datos limpios?\n2. ¿Qué pasa si el webhook falla o la API se cae por 10 minutos?\n3. ¿El sistema tiene control de idempotencia para no duplicar acciones?\n4. ¿Quién tiene la llave de seguridad de los datos de tus clientes?\n\nSi no tienes respuesta clara a estas 4 preguntas, no estás automatizando: estás acelerando el caos."
       }
     ]
   }
 };
 
-// State tax presets for live in-browser calculator
-const STATE_TAX_PRESETS = {
-  TX: { name: 'Texas', sutaRate: 0.027, hasStateIncomeTax: false, typicalWorkersCompRate: 0.085 },
-  FL: { name: 'Florida', sutaRate: 0.027, hasStateIncomeTax: false, typicalWorkersCompRate: 0.078 },
-  CA: { name: 'California', sutaRate: 0.034, hasStateIncomeTax: true, typicalWorkersCompRate: 0.115 },
-  NY: { name: 'New York', sutaRate: 0.041, hasStateIncomeTax: true, typicalWorkersCompRate: 0.120 },
-  NC: { name: 'North Carolina', sutaRate: 0.025, hasStateIncomeTax: true, typicalWorkersCompRate: 0.072 },
-  GA: { name: 'Georgia', sutaRate: 0.027, hasStateIncomeTax: true, typicalWorkersCompRate: 0.075 }
+var STATE_TAX_PRESETS = {
+  "FL": {
+    "name": "Florida",
+    "sutaRate": 0.027,
+    "sutaCap": 7000,
+    "wcAvgRate": 0.105,
+    "stateIncomeTax": 0
+  },
+  "TX": {
+    "name": "Texas",
+    "sutaRate": 0.025,
+    "sutaCap": 9000,
+    "wcAvgRate": 0.098,
+    "stateIncomeTax": 0
+  },
+  "CA": {
+    "name": "California",
+    "sutaRate": 0.034,
+    "sutaCap": 7000,
+    "wcAvgRate": 0.142,
+    "stateIncomeTax": 0.06
+  },
+  "NY": {
+    "name": "New York",
+    "sutaRate": 0.041,
+    "sutaCap": 12500,
+    "wcAvgRate": 0.128,
+    "stateIncomeTax": 0.05
+  },
+  "GA": {
+    "name": "Georgia",
+    "sutaRate": 0.027,
+    "sutaCap": 9500,
+    "wcAvgRate": 0.092,
+    "stateIncomeTax": 0.05
+  },
+  "NC": {
+    "name": "North Carolina",
+    "sutaRate": 0.022,
+    "sutaCap": 29600,
+    "wcAvgRate": 0.088,
+    "stateIncomeTax": 0.04
+  }
 };
 
 function calculateTrueCostLive(wage, stateCode, downtimeHours, overheadWeekly, wcOverride) {
-  const baseWage = Number(wage) || 20;
-  const state = STATE_TAX_PRESETS[stateCode] || STATE_TAX_PRESETS.FL;
-  const weeklyPaidHours = 40;
-  const weeksYear = 52;
-  const totalPaidHoursYear = weeklyPaidHours * weeksYear; // 2080 hrs
-  const basePayrollYear = baseWage * totalPaidHoursYear;
+  wage = parseFloat(wage) || 20;
+  downtimeHours = parseFloat(downtimeHours) || 5;
+  overheadWeekly = parseFloat(overheadWeekly) || 80;
+  stateCode = (stateCode || 'FL').toUpperCase();
 
-  // FICA (7.65%)
-  const ficaYear = basePayrollYear * 0.0765;
-  // FUTA (0.6% on first 7K)
-  const futaYear = Math.min(basePayrollYear, 7000) * 0.006;
-  // SUTA (State Unemployment on first 9K average)
-  const sutaYear = Math.min(basePayrollYear, 9000) * state.sutaRate;
-  // Workers Comp
-  const wcRate = wcOverride !== undefined ? Number(wcOverride) : state.typicalWorkersCompRate;
-  const wcYear = basePayrollYear * wcRate;
-  // Overhead assigned (uniforms, tools, vehicle)
-  const overheadYear = (Number(overheadWeekly) || 75) * weeksYear;
+  var preset = STATE_TAX_PRESETS[stateCode] || STATE_TAX_PRESETS['FL'];
+  var annualPaidHours = 2000;
+  var annualGrossPay = wage * annualPaidHours;
 
-  const totalCostYear = basePayrollYear + ficaYear + futaYear + sutaYear + wcYear + overheadYear;
-  const costPerPaidHour = totalCostYear / totalPaidHoursYear;
+  var ficaTax = annualGrossPay * 0.0765;
+  var futaTax = Math.min(annualGrossPay, 7000) * 0.006;
+  var sutaTax = Math.min(annualGrossPay, preset.sutaCap) * preset.sutaRate;
+  var payrollTaxesYear = ficaTax + futaTax + sutaTax;
 
-  // Downtime calculation (non-billable hours per week)
-  const downtimeWeekly = Number(downtimeHours) || 5;
-  const billableHoursWeekly = Math.max(1, weeklyPaidHours - downtimeWeekly);
-  const billableHoursYear = billableHoursWeekly * weeksYear;
-  const trueCostPerBillableHour = totalCostYear / billableHoursYear;
+  var wcRate = wcOverride !== undefined && wcOverride !== null ? parseFloat(wcOverride) : preset.wcAvgRate;
+  var wcInsuranceYear = annualGrossPay * wcRate;
+  var glInsuranceYear = 650;
+  var safetyUniformYear = 450;
+  var totalInsuranceSafetyYear = wcInsuranceYear + glInsuranceYear + safetyUniformYear;
 
-  // Suggested selling price for 40% net margin: TrueCost / (1 - 0.40)
-  const suggestedSellingPrice40 = trueCostPerBillableHour / 0.60;
+  var assignedOverheadYear = overheadWeekly * 50;
+
+  var totalCostYear = annualGrossPay + payrollTaxesYear + totalInsuranceSafetyYear + assignedOverheadYear;
+  var costPerPaidHour = totalCostYear / annualPaidHours;
+
+  var annualDowntime = downtimeHours * 50;
+  var annualBillableHours = Math.max(annualPaidHours - annualDowntime, 500);
+  var trueCostPerBillableHour = totalCostYear / annualBillableHours;
+
+  var suggestedSellingPrice40 = trueCostPerBillableHour / (1 - 0.40);
+  var burdenPercent = ((costPerPaidHour - wage) / wage) * 100;
+  var trueBurdenPercent = ((trueCostPerBillableHour - wage) / wage) * 100;
+  var billableEfficiency = (annualBillableHours / annualPaidHours) * 100;
 
   return {
-    baseWage,
-    stateName: state.name,
+    stateCode: stateCode,
+    stateName: preset.name,
+    wage: wage,
+    costPerPaidHour: costPerPaidHour.toFixed(2),
+    trueCostPerBillableHour: trueCostPerBillableHour.toFixed(2),
+    suggestedSellingPrice40: suggestedSellingPrice40.toFixed(2),
+    burdenPercent: burdenPercent.toFixed(1) + '%',
+    trueBurdenPercent: trueBurdenPercent.toFixed(1) + '%',
+    billableEfficiency: billableEfficiency.toFixed(0),
     totalCostYear: Math.round(totalCostYear),
-    costPerPaidHour: Number(costPerPaidHour.toFixed(2)),
-    trueCostPerBillableHour: Number(trueCostPerBillableHour.toFixed(2)),
-    suggestedSellingPrice40: Number(suggestedSellingPrice40.toFixed(2)),
-    burdenPercent: Math.round(((costPerPaidHour - baseWage) / baseWage) * 100),
-    trueBurdenPercent: Math.round(((trueCostPerBillableHour - baseWage) / baseWage) * 100),
-    billableEfficiency: Math.round((billableHoursWeekly / weeklyPaidHours) * 100)
+    payrollTaxesYear: Math.round(payrollTaxesYear),
+    wcInsuranceYear: Math.round(wcInsuranceYear)
   };
 }
 
@@ -1069,5 +502,5 @@ if (typeof window !== 'undefined') {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_DATABASE, STATE_TAX_PRESETS, calculateTrueCostLive };
+  module.exports = { CONTENT_DATABASE: CONTENT_DATABASE, STATE_TAX_PRESETS: STATE_TAX_PRESETS, calculateTrueCostLive: calculateTrueCostLive };
 }
