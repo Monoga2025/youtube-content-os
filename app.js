@@ -51,17 +51,17 @@ function onInit() {
 function renderAll() {
   initData();
   if (!currentData) return;
-  renderProfileHeader();
-  renderTopMetrics();
-  renderWeeklyDailySchedule();
-  renderKanbanBoard();
-  renderCalendar();
-  renderRecentVideos();
-  renderTasks();
-  renderGuionesStudio();
-  renderShortsStudio();
-  renderCommunityStudio();
-  renderEightWeekRoadmap();
+  try { renderProfileHeader(); } catch(e) { console.error('Error in renderProfileHeader:', e); }
+  try { renderTopMetrics(); } catch(e) { console.error('Error in renderTopMetrics:', e); }
+  try { renderWeeklyDailySchedule(); } catch(e) { console.error('Error in renderWeeklyDailySchedule:', e); }
+  try { renderKanbanBoard(); } catch(e) { console.error('Error in renderKanbanBoard:', e); }
+  try { renderCalendar(); } catch(e) { console.error('Error in renderCalendar:', e); }
+  try { renderRecentVideos(); } catch(e) { console.error('Error in renderRecentVideos:', e); }
+  try { renderTasks(); } catch(e) { console.error('Error in renderTasks:', e); }
+  try { renderGuionesStudio(); } catch(e) { console.error('Error in renderGuionesStudio:', e); }
+  try { renderShortsStudio(); } catch(e) { console.error('Error in renderShortsStudio:', e); }
+  try { renderCommunityStudio(); } catch(e) { console.error('Error in renderCommunityStudio:', e); }
+  try { renderEightWeekRoadmap(); } catch(e) { console.error('Error in renderEightWeekRoadmap:', e); }
 }
 
 // ================= NAVIGATION VIEW SWITCHER =================
@@ -882,6 +882,7 @@ function showScriptInStudio(idx) {
 // ================= VIEW 3: SHORTS STUDIO =================
 function renderShortsStudio() {
   const container = document.getElementById('shortsListContainer');
+  if (!container || !currentData || !currentData.shorts) return;
   container.innerHTML = '';
 
   currentData.shorts.forEach(s => {
@@ -905,9 +906,10 @@ function renderShortsStudio() {
   });
 }
 
-// ================= VIEW 4: COMMUNITY POSTS =================
+// ================= VIEW 4: COMUNIDAD POSTS =================
 function renderCommunityStudio() {
   const container = document.getElementById('communityListContainer');
+  if (!container || !currentData || !currentData.communityPosts) return;
   container.innerHTML = '';
 
   currentData.communityPosts.forEach(post => {
@@ -931,22 +933,26 @@ ${post.content}
 
 // ================= VIEW 5: LIVE CALCULATOR RUNNER =================
 function runLiveCalculation() {
+  const calcFn = typeof calculateTrueCostLive === 'function' ? calculateTrueCostLive : (typeof window !== 'undefined' && typeof window.calculateTrueCostLive === 'function' ? window.calculateTrueCostLive : null);
+  if (!calcFn) return;
+
   const wage = document.getElementById('calcWage')?.value || 20;
   const state = document.getElementById('calcState')?.value || 'FL';
   const wc = document.getElementById('calcWc')?.value || 0.10;
   const downtime = document.getElementById('calcDowntime')?.value || 5;
   const overhead = document.getElementById('calcOverhead')?.value || 80;
 
-  const res = calculateTrueCostLive(wage, state, downtime, overhead, wc);
+  const res = calcFn(wage, state, downtime, overhead, wc);
+  if (!res) return;
 
-  document.getElementById('resPaidHour').innerHTML = `$${res.costPerPaidHour} <span class="text-xs font-bold text-slate-400">/hr</span>`;
-  document.getElementById('resBillableHour').innerHTML = `$${res.trueCostPerBillableHour} <span class="text-xs font-bold text-rose-400">/hr</span>`;
-  document.getElementById('resSellingPrice').textContent = `$${res.suggestedSellingPrice40}`;
-  document.getElementById('resBurdenPct').textContent = res.burdenPercent;
-  document.getElementById('resTrueBurdenPct').textContent = res.trueBurdenPercent;
-  document.getElementById('resEfficiency').textContent = `${res.billableEfficiency}%`;
-  document.getElementById('resTotalYear').textContent = `$${res.totalCostYear.toLocaleString()} USD`;
-  document.getElementById('calcStateBadge').textContent = res.stateName;
+  if (document.getElementById('resPaidHour')) document.getElementById('resPaidHour').innerHTML = `$${res.costPerPaidHour} <span class="text-xs font-bold text-slate-400">/hr</span>`;
+  if (document.getElementById('resBillableHour')) document.getElementById('resBillableHour').innerHTML = `$${res.trueCostPerBillableHour} <span class="text-xs font-bold text-rose-400">/hr</span>`;
+  if (document.getElementById('resSellingPrice')) document.getElementById('resSellingPrice').textContent = `$${res.suggestedSellingPrice40}`;
+  if (document.getElementById('resBurdenPct')) document.getElementById('resBurdenPct').textContent = res.burdenPercent;
+  if (document.getElementById('resTrueBurdenPct')) document.getElementById('resTrueBurdenPct').textContent = res.trueBurdenPercent;
+  if (document.getElementById('resEfficiency')) document.getElementById('resEfficiency').textContent = `${res.billableEfficiency}%`;
+  if (document.getElementById('resTotalYear')) document.getElementById('resTotalYear').textContent = `$${res.totalCostYear.toLocaleString()} USD`;
+  if (document.getElementById('calcStateBadge')) document.getElementById('calcStateBadge').textContent = res.stateName;
 }
 
 // ================= VIEW 6: 8-WEEK ROADMAP =================
