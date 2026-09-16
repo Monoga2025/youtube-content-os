@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreadorPro — Tu contenido, más lejos</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#EF4444',
+              'red-hover': '#DC2626',
+              blue: '#2563EB',
+              'blue-light': '#EFF6FF',
+              'blue-hover': '#1D4ED8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 px-6 py-2.5 flex items-center justify-between">
+    <!-- Brand / Logo -->
+    <div class="flex items-center gap-3 min-w-[240px]">
+      <div class="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white shadow-sm">
+        <i class="fa-brands fa-youtube text-xl"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5 leading-tight">
+          <span class="font-bold text-lg tracking-tight text-slate-900">Creador<span class="text-red-600">Pro</span></span>
+        </div>
+        <p class="text-[11px] text-slate-400 font-medium leading-none mt-0.5">Tu contenido, más lejos</p>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="flex-1 max-w-xl mx-8">
+      <div class="relative flex items-center">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-sm"></i>
+        <input 
+          id="globalSearch"
+          type="text" 
+          placeholder="Buscar videos, ideas, comentarios..." 
+          class="w-full pl-10 pr-12 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+        >
+        <span class="absolute right-3 px-1.5 py-0.5 text-[11px] font-semibold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs">⌘K</span>
+      </div>
+    </div>
+
+    <!-- Right Header Actions -->
+    <div class="flex items-center gap-4">
+      <!-- Notification Bell -->
+      <button class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors" title="Notificaciones">
+        <i class="fa-regular fa-bell text-lg"></i>
+        <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+      </button>
+
+      <!-- Profile Selector / User Info -->
+      <div class="relative" id="profileDropdownContainer">
+        <button id="profileDropdownBtn" class="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all">
+          <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-slate-200">
+          <div class="text-left leading-tight hidden sm:block">
+            <p id="userName" class="text-xs font-semibold text-slate-800">Alex Martinez</p>
+            <p id="userHandle" class="text-[11px] text-slate-400">@alexmartinez</p>
+          </div>
+          <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
+          <div class="px-4 py-2 border-b border-slate-100">
+            <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Cambiar de Perfil</p>
+          </div>
+          <button onclick="switchProfile('alex')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-7 h-7 rounded-full object-cover">
+            <div>
+              <p class="text-xs font-bold text-slate-800">Alex Martinez</p>
+              <p class="text-[11px] text-slate-400">Canal Tech & Lifestyle (@alexmartinez)</p>
+            </div>
+          </button>
+          <button onclick="switchProfile('daniel')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">DM</div>
+            <div>
+              <p class="text-xs font-bold text-slate-800">Daniel Monoga</p>
+              <p class="text-[11px] text-slate-400">Sistemas & B2B Software (@daniel)</p>
+            </div>
+          </button>
+          <button onclick="switchProfile('sebastian')" class="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-slate-50 transition-colors text-left">
+            <div class="w-7 h-7 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center">SM</div>
+            <div>
+              <p class="text-xs font-bold text-slate-800">Sebastián Monoga</p>
+              <p class="text-[11px] text-slate-400">Home Services & Contratistas USA (@sebastian)</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Upload Button -->
+      <button onclick="focusUploadForm()" class="bg-red-500 hover:bg-red-600 text-white font-medium text-sm px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all transform active:scale-98">
+        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+        <span>Subir Video</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <div class="flex flex-1 overflow-hidden">
+    
+    <!-- ================= LEFT SIDEBAR ================= -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
+      <!-- Main Nav Links -->
+      <nav class="space-y-1">
+        <a href="#dashboard" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-blue-50 text-blue-600">
+          <i class="fa-solid fa-chart-pie w-5 text-center text-blue-600"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#contenido" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-regular fa-circle-play w-5 text-center text-slate-400"></i>
+          <span>Contenido</span>
+        </a>
+        <a href="#subidas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-cloud-arrow-up w-5 text-center text-slate-400"></i>
+          <span>Subidas</span>
+        </a>
+        <a href="#calendario" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-regular fa-calendar w-5 text-center text-slate-400"></i>
+          <span>Calendario</span>
+        </a>
+        <a href="#ideas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-regular fa-lightbulb w-5 text-center text-slate-400"></i>
+          <span>Ideas</span>
+        </a>
+        <a href="#miniaturas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-regular fa-image w-5 text-center text-slate-400"></i>
+          <span>Miniaturas</span>
+        </a>
+        <a href="#analiticas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-chart-simple w-5 text-center text-slate-400"></i>
+          <span>Analíticas</span>
+        </a>
+        <a href="#comentarios" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <div class="flex items-center gap-3">
+            <i class="fa-regular fa-comment-dots w-5 text-center text-slate-400"></i>
+            <span>Comentarios</span>
+          </div>
+          <span class="bg-red-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full">12</span>
+        </a>
+        <a href="#listas" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-list w-5 text-center text-slate-400"></i>
+          <span>Listas de reproducción</span>
+        </a>
+        <a href="#configuracion" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-gear w-5 text-center text-slate-400"></i>
+          <span>Configuración</span>
+        </a>
+      </nav>
+
+      <!-- Bottom Growth Card -->
+      <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mt-6">
+        <div class="flex items-center justify-between mb-1.5">
+          <h4 class="text-xs font-bold text-slate-900">Sigue creciendo 🚀</h4>
+        </div>
+        <p class="text-[11px] text-slate-500 mb-2.5" id="growthProgressText">3 de 5 tareas completadas</p>
+        
+        <!-- Progress Bar -->
+        <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-3.5">
+          <div id="growthProgressBar" class="h-full bg-emerald-500 rounded-full transition-all duration-300" style="width: 60%;"></div>
+        </div>
+
+        <!-- Task Checklist -->
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-700 font-medium flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Sube tu primer video
+            </span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" checked class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-700 font-medium flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Personaliza tu canal
+            </span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-600">Conecta tus redes</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-600">Crea una lista de reproducción</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" class="growth-check rounded border-slate-300 text-emerald-600 focus:ring-0" onchange="updateGrowthScore()">
+            <span class="text-slate-600">Explora las analíticas</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================= DASHBOARD MAIN CONTENT AREA ================= -->
+    <main class="flex-1 overflow-y-auto p-6 space-y-6">
+
+      <!-- ================= 1. TOP METRICS BAR (5 KPI CARDS) ================= -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Card 1: Vistas totales -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+              <i class="fa-regular fa-eye"></i>
+            </div>
+            <span id="metric1Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-arrow-up text-[9px]"></i> 12%
+            </span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">Vistas totales</p>
+          <h3 id="metric1Value" class="text-2xl font-bold text-slate-900 mt-0.5">125,4K</h3>
+          <p id="metric1Sub" class="text-[11px] text-slate-400 mt-1">+13,2K que el mes pasado</p>
+        </div>
+
+        <!-- Card 2: Suscriptores -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <span id="metric2Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-arrow-up text-[9px]"></i> 8%
+            </span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">Suscriptores</p>
+          <h3 id="metric2Value" class="text-2xl font-bold text-slate-900 mt-0.5">8,320</h3>
+          <p id="metric2Sub" class="text-[11px] text-slate-400 mt-1">+612 que el mes pasado</p>
+        </div>
+
+        <!-- Card 3: Tiempo de reproducción -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <span id="metric3Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-arrow-up text-[9px]"></i> 14%
+            </span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">Tiempo de reproducción</p>
+          <h3 id="metric3Value" class="text-2xl font-bold text-slate-900 mt-0.5">4,1K horas</h3>
+          <p id="metric3Sub" class="text-[11px] text-slate-400 mt-1">+500 horas que el mes pasado</p>
+        </div>
+
+        <!-- Card 4: CTR promedio -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-chart-column"></i>
+            </div>
+            <span id="metric4Badge" class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-arrow-up text-[9px]"></i> 1,2%
+            </span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">CTR promedio</p>
+          <h3 id="metric4Value" class="text-2xl font-bold text-slate-900 mt-0.5">6,8%</h3>
+          <p id="metric4Sub" class="text-[11px] text-slate-400 mt-1">+0,8% que el mes pasado</p>
+        </div>
+
+        <!-- Card 5: Videos programados -->
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs hover:shadow-xs transition-shadow">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg">
+              <i class="fa-regular fa-calendar"></i>
+            </div>
+            <span class="text-xs text-slate-300 font-bold">—</span>
+          </div>
+          <p class="text-xs font-medium text-slate-400">Videos programados</p>
+          <h3 id="metric5Value" class="text-2xl font-bold text-slate-900 mt-0.5">3</h3>
+          <p id="metric5Sub" class="text-[11px] text-slate-400 mt-1">Próximo: 12 abr 2025</p>
+        </div>
+      </div>
+
+      <!-- ================= 2. BENTO MAIN 3-COLUMN WORKSPACE ================= -->
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+
+        <!-- ================= COL 1: SUBIR NUEVO VIDEO (3 Cols) ================= -->
+        <div class="xl:col-span-3 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs space-y-4">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Subir nuevo video</h3>
+            <p class="text-xs text-slate-400">Sube, configura y optimiza tu video de YouTube</p>
+          </div>
+
+          <!-- Drag & Drop Area -->
+          <div 
+            id="dropZone"
+            class="border-2 border-dashed border-slate-200 hover:border-blue-400 bg-slate-50/70 hover:bg-blue-50/30 rounded-2xl p-6 text-center transition-all cursor-pointer group"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            <input type="file" id="fileInput" class="hidden" accept="video/mp4,video/quicktime,video/x-msvideo" onchange="handleFileSelect(event)">
+            <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 group-hover:bg-blue-100 text-slate-500 group-hover:text-blue-600 flex items-center justify-center text-xl mb-3 transition-colors">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p class="text-xs font-semibold text-slate-700">Arrastra y suelta tu video aquí</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">o haz clic para seleccionar un archivo</p>
+            <p class="text-[10px] text-slate-400 mt-2 font-medium">MP4, MOV, AVI (máx. 2 GB)</p>
+            <div id="selectedFileName" class="hidden mt-3 text-xs font-semibold text-blue-600 bg-blue-50 py-1 px-2 rounded-lg truncate"></div>
+          </div>
+
+          <!-- Video Metadata Form -->
+          <form id="videoUploadForm" onsubmit="handleVideoSubmit(event)" class="space-y-3.5">
+            <!-- Título -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Título del video <span class="text-red-500">*</span></label>
+              <input 
+                id="formTitle"
+                type="text" 
+                required
+                placeholder="Escribe un título atractivo..." 
+                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+              >
+            </div>
+
+            <!-- Descripción -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción</label>
+              <textarea 
+                id="formDesc"
+                rows="3" 
+                placeholder="Cuenta de qué trata tu video..." 
+                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Etiquetas -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Etiquetas (separadas por coma)</label>
+              <input 
+                id="formTags"
+                type="text" 
+                placeholder="ej. productividad, youtube, consejos" 
+                class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+              >
+            </div>
+
+            <!-- 2-col selects: Lista y Audiencia -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Lista de reproducción</label>
+                <select id="formPlaylist" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                  <option value="">Selecciona...</option>
+                  <option value="tutoriales">Tutoriales</option>
+                  <option value="estrategia">Estrategia B2B</option>
+                  <option value="vlogs">Vlogs & Rutinas</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Audiencia</label>
+                <select id="formAudience" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                  <option value="todos">Todos</option>
+                  <option value="empresas">Empresarios B2B</option>
+                  <option value="contratistas">Contratistas USA</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 2-col inputs: Visibilidad y Fecha -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Visibilidad</label>
+                <select id="formVisibility" class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                  <option value="programar">Programar</option>
+                  <option value="publico">Público</option>
+                  <option value="oculto">Oculto</option>
+                  <option value="privado">Privado</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Fecha de programación</label>
+                <input 
+                  id="formDate"
+                  type="text" 
+                  value="12/04/2025 10:00" 
+                  class="w-full px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                >
+              </div>
+            </div>
+
+            <!-- Form Action Buttons -->
+            <div class="pt-2 space-y-2">
+              <button 
+                type="submit" 
+                class="w-full bg-red-500 hover:bg-red-600 text-white font-medium text-xs py-2.5 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>Subir Video</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="saveDraft()"
+                class="w-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-regular fa-floppy-disk"></i>
+                <span>Guardar como borrador</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ================= COL 2: PIPELINE & CALENDARIO & RECIENTES (6 Cols) ================= -->
+        <div class="xl:col-span-6 space-y-6">
+
+          <!-- 2.1 PIPELINE DE CONTENIDO (KANBAN BOARD) -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-diagram-project"></i>
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-slate-900">Pipeline de contenido</h3>
+                  <p class="text-[11px] text-slate-400">Arrastra videos entre etapas de tu proceso</p>
+                </div>
+              </div>
+              <button onclick="openAddIdeaModal()" class="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-plus text-[10px]"></i> Añadir idea
+              </button>
+            </div>
+
+            <!-- Kanban Horizontal Scrolling Board -->
+            <div id="kanbanBoard" class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
+              <!-- Columns are rendered via app.js -->
+            </div>
+          </div>
+
+          <!-- 2.2 SPLIT ROW: CALENDARIO DE CONTENIDO + MIS VIDEOS RECIENTES -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Calendario de contenido (7 Cols) -->
+            <div class="lg:col-span-7 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa-regular fa-calendar text-slate-400 text-sm"></i>
+                  <h4 class="text-xs font-bold text-slate-900">Calendario de contenido</h4>
+                </div>
+                <button onclick="openScheduleModal()" class="text-[11px] font-semibold text-blue-600 hover:bg-blue-50 border border-blue-200 px-2 py-1 rounded-lg transition-colors">
+                  + Programar
+                </button>
+              </div>
+
+              <!-- Calendar Month & View Toggles -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-1.5">
+                  <button class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-500 text-xs">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <span class="text-xs font-bold text-slate-800">Abril 2025</span>
+                  <button class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-500 text-xs">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div class="flex p-0.5 bg-slate-100 rounded-lg text-[10px] font-semibold text-slate-600">
+                  <button class="px-2 py-0.5 bg-slate-800 text-white rounded-md shadow-2xs">Mes</button>
+                  <button class="px-2 py-0.5 hover:text-slate-900 transition-colors">Semana</button>
+                  <button class="px-2 py-0.5 hover:text-slate-900 transition-colors">Agenda</button>
+                </div>
+              </div>
+
+              <!-- Calendar Grid -->
+              <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-slate-400 border-b border-slate-100 pb-1 mb-1">
+                <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+              </div>
+              <div id="calendarDays" class="grid grid-cols-7 gap-1 text-[10px]">
+                <!-- Calendar cells rendered via app.js -->
+              </div>
+            </div>
+
+            <!-- Mis videos recientes (5 Cols or full width below) -->
+            <div class="lg:col-span-5 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-xs font-bold text-slate-900">Mis videos recientes</h4>
+                  <a href="#contenido" class="text-[11px] font-semibold text-blue-600 hover:underline">Ver todos</a>
+                </div>
+
+                <div class="divide-y divide-slate-100" id="recentVideosList">
+                  <!-- Video rows rendered via app.js -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ================= COL 3: ANALÍTICAS, CHECKLIST & TAREAS (3 Cols) ================= -->
+        <div class="xl:col-span-3 space-y-6">
+
+          <!-- 3.1 RENDIMIENTO (ÚLTIMOS 28 DÍAS) CON CHART INTERACTIVO -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+            <div class="flex items-center justify-between mb-1">
+              <h4 class="text-xs font-bold text-slate-900">Rendimiento (últimos 28 días)</h4>
+              <select id="chartMetricSelect" onchange="updateChartMetric()" class="text-[11px] bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-slate-600 focus:outline-none">
+                <option value="vistas">Vistas ▾</option>
+                <option value="suscriptores">Suscriptores</option>
+                <option value="tiempo">Horas</option>
+              </select>
+            </div>
+
+            <!-- Metric Header -->
+            <div class="flex items-baseline gap-2 mb-2">
+              <span id="chartMetricDisplay" class="text-2xl font-bold text-slate-900">125,4K</span>
+              <span class="inline-flex items-center text-[11px] font-semibold text-emerald-600">
+                <i class="fa-solid fa-arrow-up text-[9px] mr-0.5"></i> 12%
+              </span>
+            </div>
+
+            <!-- SVG Smooth Bezier Chart with Peak Tooltip -->
+            <div class="relative w-full h-36 mt-3">
+              <!-- Floating peak badge -->
+              <div class="absolute top-1 right-2 bg-slate-800 text-white text-[9px] font-semibold py-0.5 px-2 rounded-md shadow-md flex items-center gap-1 z-10">
+                <span>6 abr 2025</span>
+                <span class="font-bold text-blue-300">5,4K vistas</span>
+              </div>
+              <svg viewBox="0 0 300 120" class="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="30" x2="300" y2="30" stroke="#F1F5F9" stroke-width="1"/>
+                <line x1="0" y1="65" x2="300" y2="65" stroke="#F1F5F9" stroke-width="1"/>
+                <line x1="0" y1="100" x2="300" y2="100" stroke="#F1F5F9" stroke-width="1"/>
+                <!-- Area Fill -->
+                <path d="M 0,95 C 40,90 60,65 100,70 C 140,75 160,55 200,50 C 240,45 260,25 285,28 L 285,110 L 0,110 Z" fill="url(#chartGradient)" />
+                <!-- Curved Stroke -->
+                <path d="M 0,95 C 40,90 60,65 100,70 C 140,75 160,55 200,50 C 240,45 260,25 285,28" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Highlight Dot -->
+                <circle cx="285" cy="28" r="4" fill="#2563EB" stroke="#FFFFFF" stroke-width="2" class="cursor-pointer animate-pulse"/>
+              </svg>
+              <!-- X Axis Labels -->
+              <div class="flex justify-between text-[9px] text-slate-400 mt-1">
+                <span>9 mar</span>
+                <span>16 mar</span>
+                <span>23 mar</span>
+                <span>30 mar</span>
+                <span>6 abr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.2 CHECKLIST DE OPTIMIZACIÓN -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-xs font-bold text-slate-900">Checklist de optimización</h4>
+              <span id="optimizationCounter" class="text-[11px] font-semibold text-slate-400">0/8 completadas</span>
+            </div>
+            
+            <div class="space-y-2 text-xs" id="optChecklist">
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Miniatura atractiva</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Título SEO optimizado</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Descripción detallada</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Etiquetas relevantes</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Capítulos</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Subtítulos</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Pantalla final (End Screen)</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" class="opt-check rounded border-slate-300 text-blue-600 focus:ring-0" onchange="updateOptimizationScore()">
+                <span class="text-slate-600">Tarjetas (Cards)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 3.3 TAREAS Y RECORDATORIOS -->
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-2xs">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-xs font-bold text-slate-900">Tareas y recordatorios</h4>
+              <button onclick="openAddTaskModal()" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                <i class="fa-solid fa-plus text-[10px]"></i> Añadir
+              </button>
+            </div>
+
+            <div class="space-y-2.5 text-xs" id="tasksList">
+              <!-- Task items rendered via app.js -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ================= MODALS ================= -->
+  <!-- Modal: Añadir Idea -->
+  <div id="ideaModal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-sm font-bold text-slate-900">Nueva Idea de Video</h3>
+        <button onclick="closeModal('ideaModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Título de la Idea</label>
+        <input id="modalIdeaTitle" type="text" placeholder="ej. Cómo escalar a $50K/mes con automatización" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Etapa Inicial</label>
+        <select id="modalIdeaStage" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
+          <option value="ideas">Ideas</option>
+          <option value="guion">Guión</option>
+          <option value="grabado">Grabado</option>
+          <option value="editado">Editado</option>
+          <option value="miniatura">Miniatura lista</option>
+          <option value="programado">Programado</option>
+        </select>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeModal('ideaModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
+        <button onclick="saveNewIdea()" class="px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl">Guardar Tarjeta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Añadir Tarea -->
+  <div id="taskModal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-sm font-bold text-slate-900">Añadir Tarea</h3>
+        <button onclick="closeModal('taskModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción de la Tarea</label>
+        <input id="modalTaskText" type="text" placeholder="ej. Revisar métricas de retención" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Fecha / Prioridad</label>
+        <input id="modalTaskBadge" type="text" placeholder="ej. Hoy / Mañana / 15 abr" class="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl">
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeModal('taskModal')" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Cancelar</button>
+        <button onclick="saveNewTask()" class="px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl">Crear Tarea</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
