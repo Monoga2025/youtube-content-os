@@ -495,12 +495,689 @@ function calculateTrueCostLive(wage, stateCode, downtimeHours, overheadWeekly, w
   };
 }
 
+// ================= DAILY YOUTUBE RADAR & HOOK EXTRACTOR =================
+var DAILY_YOUTUBE_RADAR = [
+  // --- NICHE 1: HOME SERVICES USA (Sebastián Monoga) ---
+  {
+    id: "yt_rad_1",
+    niche: "home-services",
+    nicheLabel: "Home Services USA",
+    title: "How I Scaled My Painting Business from $0 to $2.8M in 24 Months (Step-by-Step)",
+    channel: "Contractor Dynasty USA",
+    channelAvatar: "CD",
+    views: "348,200",
+    velocity: "+2,400 views/hora",
+    publishedDate: "Hace 1 día",
+    duration: "14:32",
+    retentionRate: "61.4%",
+    hookScore: 98,
+    hookType: "Prueba Visual & Disrupción de Cifra",
+    hookBadgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    hookSnippet: "Si crees que para facturar 2 millones al año en pintura necesitas 30 chalanes y matarte 80 horas a la semana... mira esta declaración de impuestos del IRS de mi empresa. Con solo 2 cuadrillas de 3 hombres y este sistema de cotizaciones en iPad, me quedaron $620,000 limpios en el bolsillo.",
+    breakdown: {
+      beat1_visual: "Muestra pantalla de iPad con declaración de taxes y número bancario resaltado.",
+      beat2_pain: "Desmitifica la creencia de que crecer significa contratar descontroladamente.",
+      beat3_promise: "Revela la matemática exacta de 2 cuadrillas ultra eficientes.",
+      structure: [
+        { time: "0:00 - 0:25", stage: "Hook Disruptivo", desc: "Contraste visual de dinero real en banco vs dolor de trabajar 80 horas." },
+        { time: "0:25 - 2:10", stage: "Open Loop de Quiebra", desc: "Por qué el 90% de contratistas quiebran al intentar pasar de $500K a $1M." },
+        { time: "2:10 - 7:30", stage: "Mecanismo Único", desc: "El Price Book digital en 3 niveles (Good, Better, Best)." },
+        { time: "7:30 - 11:45", stage: "Paso a Paso", desc: "Contratación del Working Foreman con bono sobre margen bruto." },
+        { time: "11:45 - 14:32", stage: "Lead Magnet & Cierre", desc: "Descarga de la Matriz de Pricing en PDF con link en descripción." }
+      ]
+    },
+    eloisaVerdict: "⭐ 98/100 de Retención: El gancho funciona porque derriba una objeción mental ('no tengo tiempo ni gente') en los primeros 12 segundos mostrando evidencia tangible e irrefutable.",
+    derivedIdeas: [
+      {
+        title: "Cómo facturar $50K/mes en Home Services con solo 3 personas en nómina",
+        angle: "Enfocado en la matemática de Labor Burden y eliminación de tiempos muertos.",
+        format: "Video Largo (12 min) + 2 Shorts"
+      },
+      {
+        title: "El error de comprar una segunda camioneta antes de tener un CRM",
+        angle: "Por qué la expansión prematura destruye el flujo de caja.",
+        format: "Short 9:16 (40 segs)"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_2",
+    niche: "home-services",
+    nicheLabel: "Home Services USA",
+    title: "Stop Charging By The Hour: The 3-Tier Estimate That Closed $145,000 This Month",
+    channel: "Home Service Millionaire",
+    channelAvatar: "HS",
+    views: "189,400",
+    velocity: "+1,650 views/hora",
+    publishedDate: "Hace 2 días",
+    duration: "12:18",
+    retentionRate: "58.7%",
+    hookScore: 96,
+    hookType: "Pérdida Inminente & Antítesis",
+    hookBadgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    hookSnippet: "Si todavía mandas un mensaje de texto que dice '$4,500 mano de obra y pintura incluida', estás perdiendo exactamente el 42% del dinero de cada contrato antes de subirte a la escalera. Te voy a mostrar cómo presentar 3 opciones para que el cliente elija la de $7,500 con una sonrisa.",
+    breakdown: {
+      beat1_visual: "Primer plano a un mensaje de WhatsApp arrugado y tachado en rojo.",
+      beat2_pain: "Sentimiento de impotencia al ver que el cliente gringo pide rebaja de $500.",
+      beat3_promise: "La psicología del efecto ancla (Price Anchoring) aplicada a techos y pintura.",
+      structure: [
+        { time: "0:00 - 0:30", stage: "Hook de Pérdida", desc: "Cálculo en vivo de dinero perdido por cotizar con un solo número." },
+        { time: "0:30 - 2:00", stage: "Diagnóstico Psicológico", desc: "Cómo piensa el dueño de casa gringo cuando le presentas opciones." },
+        { time: "2:00 - 6:45", stage: "Diseño del Paquete Platino", desc: "Qué incluir en el nivel alto para que el nivel medio parezca regalado." },
+        { time: "6:45 - 10:15", stage: "Guion de Cierre en Sitio", desc: "Qué decir cuando el cliente te pregunta: '¿cuál me recomiendas tú?'." },
+        { time: "10:15 - 12:18", stage: "CTA", desc: "Descarga de la Matriz Good Better Best." }
+      ]
+    },
+    eloisaVerdict: "⭐ 96/100: Excelente uso de 'Negative Framing' (pérdida de dinero inmediata). La urgencia inicial evita que el espectador abandone en el drop-off del segundo 30.",
+    derivedIdeas: [
+      {
+        title: "Por qué el cliente gringo te regatea (y cómo cobrar $2,000 más sin discutir)",
+        angle: "Comparación de presupuestos de 1 página vs presupuesto en 3 niveles.",
+        format: "Video Largo (14 min)"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_3",
+    niche: "home-services",
+    nicheLabel: "Home Services USA",
+    title: "The $25,000 IRS Misclassification Trap Every Latino Contractor Is Falling Into",
+    channel: "US Contractor Legal & Tax",
+    channelAvatar: "CL",
+    views: "215,800",
+    velocity: "+1,900 views/hora",
+    publishedDate: "Hace 3 días",
+    duration: "13:50",
+    retentionRate: "59.2%",
+    hookScore: 97,
+    hookType: "Riesgo Legal / Miedo Fundado",
+    hookBadgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    hookSnippet: "Si le pagas a tus trabajadores con Zelle o cheque personal y crees que porque te firman una forma 1099 ya estás protegido... el Departamento de Trabajo y el IRS acaban de cambiar la ley. Una sola llamada de un trabajador lesionado te puede costar $25,000 de multa y poner en riesgo tu casa.",
+    breakdown: {
+      beat1_visual: "Carta oficial de auditoría con sello federal.",
+      beat2_pain: "La falsa seguridad de pagar 'por debajo de la mesa' o en 1099 informal.",
+      beat3_promise: "El checklist de 6 puntos para blindar tu LLC este 2026.",
+      structure: [
+        { time: "0:00 - 0:35", stage: "Hook de Alerta Roja", desc: "Lectura del párrafo de multa por reclasificación involuntaria." },
+        { time: "0:35 - 3:00", stage: "Las 3 Pruebas del IRS", desc: "Control de horario, propiedad de herramientas y exclusividad." },
+        { time: "3:00 - 8:00", stage: "Caso de Estudio Real", desc: "Contratista en Texas que tuvo que pagar $38,000 de Workers' Comp retroactivo." },
+        { time: "8:00 - 11:30", stage: "Plan de Transición W-2 Seguro", desc: "Cómo pasar ayudantes a W-2 usando Gusto sin quebrar tu margen." },
+        { time: "11:30 - 13:50", stage: "Lead Magnet", desc: "Subcontractor Agreement y Checklist de Cumplimiento." }
+      ]
+    },
+    eloisaVerdict: "⭐ 97/100: El disparador de protección y miedo a perder el patrimonio familiar es el más potente para audiencias inmigrantes y dueños de negocio en USA.",
+    derivedIdeas: [
+      {
+        title: "1099 vs W-2 en USA: Cómo saber si tu ayudante te puede demandar",
+        angle: "Explicación simple con peras y manzanas de los riesgos de seguros.",
+        format: "Video Largo + Short Viral"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_4",
+    niche: "home-services",
+    nicheLabel: "Home Services USA",
+    title: "How to Charge for Extra Work (Change Orders) Without Losing the Customer",
+    channel: "Builder & Trades Blueprint",
+    channelAvatar: "BT",
+    views: "142,300",
+    velocity: "+980 views/hora",
+    publishedDate: "Hace 4 días",
+    duration: "11:05",
+    retentionRate: "55.9%",
+    hookScore: 94,
+    hookType: "Historia de Fricción Cotidiana",
+    hookBadgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+    hookSnippet: "'Oye amigo, ya que tienes la escalera puesta, ¿me pintas también el marquito de la puerta?'. Esa simple pregunta le cuesta $1,800 al mes a cada cuadrilla de servicios por pena a decir: 'sí, pero le cuesta'. Te revelo el guion de 10 palabras que uso para que firmen el cobro en su celular.",
+    breakdown: {
+      beat1_visual: "Representación dramática del cliente sonriente pidiendo el favor.",
+      beat2_pain: "La frustración de trabajar 4 horas gratis y la pelea del viernes al cobrar.",
+      beat3_promise: "El protocolo de autorización digital previa antes de tocar una brocha.",
+      structure: [
+        { time: "0:00 - 0:28", stage: "Hook Cotidiano", desc: "Recreación de la escena que todo contratista ha vivido." },
+        { time: "0:28 - 2:20", stage: "El Costo Invisible", desc: "Tabla sumando 8 horas de favorcitos al mes = $1,400 tirados." },
+        { time: "2:20 - 6:50", stage: "El Guion de 10 Palabras", desc: "'Con gusto, permítame abrir la orden de cambio en la aplicación'." },
+        { time: "6:50 - 9:30", stage: "Firma Digital en Jobber", desc: "Demostración de cómo el cliente firma con el dedo en el teléfono." },
+        { time: "9:30 - 11:05", stage: "Cierre", desc: "Plantilla de Change Order descargable gratis." }
+      ]
+    },
+    eloisaVerdict: "⭐ 94/100: Retención sólida. Al usar una frase exacta entre comillas en el primer segundo, el espectador se identifica de inmediato ('¡eso me pasó el martes!').",
+    derivedIdeas: [
+      {
+        title: "Las 10 palabras mágicas para cobrar trabajos extras en la obra",
+        angle: "Enfocado en eliminar la pena y formalizar la relación comercial.",
+        format: "Short de 38 segundos de alto impacto"
+      }
+    ]
+  },
+
+  // --- NICHE 2: B2B SYSTEMS, SAAS & AI (Daniel Monoga) ---
+  {
+    id: "yt_rad_5",
+    niche: "b2b-systems",
+    nicheLabel: "Sistemas B2B & IA",
+    title: "I Replaced My 5-Person Ops Team with Autonomous Local AI Agents and Node.js",
+    channel: "Autonomous Engineering",
+    channelAvatar: "AE",
+    views: "482,100",
+    velocity: "+3,200 views/hora",
+    publishedDate: "Hace 1 día",
+    duration: "15:44",
+    retentionRate: "64.2%",
+    hookScore: 99,
+    hookType: "Disrupción Radical & Demostración en Vivo",
+    hookBadgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+    hookSnippet: "A las 2:14 AM un cliente solicitó una auditoría de $12,000 en nuestro portal. Ningún humano estaba despierto. A las 2:15 AM nuestro sistema autónomo procesó el pago, generó el contrato, creó el workspace en GitHub y despachó 3 subagentes de investigación. A las 8:00 AM el cliente tenía su entregable listo. Así se ve la arquitectura de una empresa de un solo operador.",
+    breakdown: {
+      beat1_visual: "Terminal con logs en tiempo real mostrando timestamps exactos 02:14 -> 02:15.",
+      beat2_pain: "La pesadilla de gestionar 5 coordinadores humanos que se olvidan de enviar correos.",
+      beat3_promise: "Código abierto y diagramas de arquitectura sin Zapier ni herramientas frágiles.",
+      structure: [
+        { time: "0:00 - 0:40", stage: "Hook Demostrativo", desc: "Muestra del log de ejecución autónoma nocturna sin intervención." },
+        { time: "0:40 - 2:30", stage: "Por qué Zapier Falla", desc: "Webhooks sin idempotencia que cobran doble o pierden registros." },
+        { time: "2:30 - 7:00", stage: "Arquitectura Determinista", desc: "Node.js nativo, SQLite local y colas transaccionales garantizadas." },
+        { time: "7:00 - 12:00", stage: "Los 3 Subagentes", desc: "Ingesta, Transformación y Auditoría de Calidad con validación de tipos." },
+        { time: "12:00 - 15:44", stage: "Blueprint B2B", desc: "Acceso al repositorio de arquitectura y CTA a consultoría de sistemas." }
+      ]
+    },
+    eloisaVerdict: "⭐ 99/100: Obra maestra de storytelling B2B. En lugar de decir 'la IA es el futuro', cuenta una historia en tiempo real con una transacción monetaria real de $12K. Hipnótico.",
+    derivedIdeas: [
+      {
+        title: "Cómo construir un holding de servicios con un solo operador y agentes locales",
+        angle: "Monoga OS como estándar de ejecución sin dependencias rotas.",
+        format: "Video Largo (15 min)"
+      },
+      {
+        title: "El error de usar Zapier para procesos críticos de facturación",
+        angle: "Por qué las APIs se caen y cómo la idempotencia salva empresas.",
+        format: "Short Técnico (45 segs)"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_6",
+    niche: "b2b-systems",
+    nicheLabel: "Sistemas B2B & IA",
+    title: "How to Turn 1,000 YouTube Views into $50,000 in B2B Contracts (High Ticket Funnel)",
+    channel: "B2B Media Architecture",
+    channelAvatar: "BM",
+    views: "294,000",
+    velocity: "+2,100 views/hora",
+    publishedDate: "Hace 2 días",
+    duration: "13:20",
+    retentionRate: "62.8%",
+    hookScore: 98,
+    hookType: "Contrarian / Revelación Anti-Masa",
+    hookBadgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    hookSnippet: "Perseguir millones de visitas en YouTube es para creadores de entretenimiento que ganan $2 dólares por cada mil views con AdSense. Si vendes software, sistemas o consultoría B2B, necesitas exactamente 800 visitas calificadas al mes para cerrar 4 contratos de $10,000 dólares. Te muestro la matemática de embudo en pantalla.",
+    breakdown: {
+      beat1_visual: "Pizarra de cristal con comparación: 1,000,000 views = $2,000 vs 1,000 views = $50,000.",
+      beat2_pain: "Creadores exhaustos bailando en TikTok y con la cuenta de banco vacía.",
+      beat3_promise: "La fórmula de conversión: Video Técnico -> Lead Magnet Específico -> Diagnóstico Pagado.",
+      structure: [
+        { time: "0:00 - 0:35", stage: "Hook Contrarian", desc: "Demolición del mito de la viralidad masiva en canales de negocio." },
+        { time: "0:35 - 2:40", stage: "La Anatomía del Lead B2B", desc: "Quién ve videos de sistemas: directores de operaciones y CEOs." },
+        { time: "2:40 - 7:15", stage: "Diseño del Lead Magnet Irresistible", desc: "No regales un eBook de 40 páginas; regala una calculadora ejecutable." },
+        { time: "7:15 - 10:45", stage: "El Filtro de Calificación", desc: "Cómo evitar que curiosos sin presupuesto agenden llamadas contigo." },
+        { time: "10:45 - 13:20", stage: "CTA", desc: "Descarga de la plantilla de embudo B2B." }
+      ]
+    },
+    eloisaVerdict: "⭐ 98/100: Conecta directamente con la ambición y el intelecto del espectador B2B. Polariza positivamente contra la 'chatarra de entretenimiento'.",
+    derivedIdeas: [
+      {
+        title: "Por qué 500 views en YouTube valen más que 100,000 seguidores en Instagram para vender B2B",
+        angle: "Intención de búsqueda vs consumo pasivo de scroll.",
+        format: "Video Largo (11 min)"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_7",
+    niche: "b2b-systems",
+    nicheLabel: "Sistemas B2B & IA",
+    title: "Why Custom Operating Systems Are Crushing Off-The-Shelf SaaS in 2026",
+    channel: "The Enterprise Engineer",
+    channelAvatar: "EE",
+    views: "167,800",
+    velocity: "+1,200 views/hora",
+    publishedDate: "Hace 3 días",
+    duration: "14:10",
+    retentionRate: "57.3%",
+    hookScore: 95,
+    hookType: "Dolor Financiero Corporativo",
+    hookBadgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+    hookSnippet: "Esta agencia pagaba $4,200 dólares al mes en 18 licencias de HubSpot, ClickUp, Notion, Slack y Zapier. Tenían datos duplicados, reportes atrasados y un equipo que pasaba 3 horas al día copiando IDs de clientes. Construimos un Custom OS unificado en 3 semanas y redujimos su factura de software a $85 dólares.",
+    breakdown: {
+      beat1_visual: "Gráfico de barras mostrando $4,200/mes cayendo a $85/mes.",
+      beat2_pain: "La 'pesadilla SaaS' donde cada departamento usa una herramienta diferente.",
+      beat3_promise: "Arquitectura unificada con SQLite, Node nativo y UI Luxury.",
+      structure: [
+        { time: "0:00 - 0:30", stage: "Hook de Costo Oculto", desc: "Suma en vivo de 18 suscripciones SaaS recurrentes." },
+        { time: "0:30 - 3:00", stage: "La Fuga de Datos", desc: "Por qué los datos fragmentados destruyen la toma de decisiones ejecutivas." },
+        { time: "3:00 - 8:00", stage: "El Tour por el Custom OS", desc: "Demostración de una sola pantalla con RBAC, métricas y automatizaciones." },
+        { time: "8:00 - 11:30", stage: "Matemática de Retorno (ROI)", desc: "Ahorro de $49,000 anuales solo en suscripciones eliminadas." },
+        { time: "11:30 - 14:10", stage: "Cierre", desc: "Agenda un Diagnóstico de Arquitectura con nuestro equipo." }
+      ]
+    },
+    eloisaVerdict: "⭐ 95/100: El dolor de pagar miles de dólares en SaaS que no se comunican es universal entre directores de empresa. Altísima conversión comercial.",
+    derivedIdeas: [
+      {
+        title: "MARAL OS: Cómo unificamos una empresa de $1.2M en una sola pantalla",
+        angle: "Caso de estudio de Monoga OS resolviendo la fragmentación SaaS.",
+        format: "Video Largo (12 min)"
+      }
+    ]
+  },
+
+  // --- NICHE 3: STORYTELLING, RETENTION & ELOISA WOLF ACADEMY ---
+  {
+    id: "yt_rad_8",
+    niche: "storytelling-eloisa",
+    nicheLabel: "Eloísa Wolf Academy",
+    title: "La Estructura de Hook de 3 Segundos que Retiene al 60% de tu Audiencia (The 3-Beat Hook)",
+    channel: "Eloísa Wolf Oficial",
+    channelAvatar: "EW",
+    views: "542,000",
+    velocity: "+4,100 views/hora",
+    publishedDate: "Ayer",
+    duration: "16:20",
+    retentionRate: "68.9%",
+    hookScore: 100,
+    hookType: "Metodología Maestra de Retención",
+    hookBadgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    hookSnippet: "Si tu video empieza con 'Hola a todos, bienvenidos a mi canal, hoy les traigo un tema súper interesante'... ¡CORTE! Acabas de perder al 50% de la gente antes de que parpadeen. En YouTube moderno tienes exactamente 3 segundos para clavar 3 golpes: Romper el patrón visual, apuñalar el dolor y prometer la victoria sin spoiler. Te enseño cómo aplicarlo a cualquier nicho.",
+    breakdown: {
+      beat1_visual: "Eloísa frente a cámara con claqueta de cine, corta en seco la pantalla.",
+      beat2_pain: "Gráfico de retención de YouTube Studio cayendo como un precipicio en el segundo 15.",
+      beat3_promise: "La plantilla del 3-Beat Hook con 5 ejemplos de canales reales.",
+      structure: [
+        { time: "0:00 - 0:30", stage: "The 3-Beat Masterclass", desc: "Demostración de lo que NO se debe hacer vs el gancho hipnótico." },
+        { time: "0:30 - 3:00", stage: "Psicología del Pulgar (Thumbstop)", desc: "Por qué el cerebro humano descarta el contenido predecible." },
+        { time: "3:00 - 8:30", stage: "Los 3 Golpes Explicados", desc: "Golpe 1: Visual Disruptor. Golpe 2: Dolor Agudo. Golpe 3: Promesa Específica." },
+        { time: "8:30 - 13:00", stage: "Auditoría en Vivo", desc: "Reescribe 3 intros aburridas en máquinas de retención en tiempo real." },
+        { time: "13:00 - 16:20", stage: "Cierre & Framework", desc: "Descarga la hoja de trabajo de Hooks de Eloísa Wolf." }
+      ]
+    },
+    eloisaVerdict: "⭐ 100/100: Mi propia fórmula probada con millones de reproducciones. Si aplicas esta estructura a los videos de Sebastián y Daniel, la gráfica de retención se mantiene por encima del 50% garantizado.",
+    derivedIdeas: [
+      {
+        title: "Cómo reescribir tus primeros 20 segundos para duplicar la retención de YouTube",
+        angle: "Fórmula paso a paso con ejemplos antes/después.",
+        format: "Masterclass / Video Largo"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_9",
+    niche: "storytelling-eloisa",
+    nicheLabel: "Eloísa Wolf Academy",
+    title: "Storytelling de 3 Actos para Videos Educativos: Cómo Mantener la Atención 15 Minutos",
+    channel: "Eloísa Wolf Oficial",
+    channelAvatar: "EW",
+    views: "389,000",
+    velocity: "+2,800 views/hora",
+    publishedDate: "Hace 3 días",
+    duration: "18:45",
+    retentionRate: "66.4%",
+    hookScore: 99,
+    hookType: "Narrativa Inmersiva B2B",
+    hookBadgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+    hookSnippet: "Un video educativo no es una clase universitaria aburrida con diapositivas; es un viaje de suspenso donde tu cliente es el protagonista y su desorden operativo es el dragón que lo quiere devorar. Si estructurarás tus tutoriales en 3 actos cinematográficos, la gente no solo los verá completos, sino que te pedirán trabajar contigo.",
+    breakdown: {
+      beat1_visual: "Eloísa dibujando la curva de tensión narrativa en un pizarrón negro.",
+      beat2_pain: "La frustración de hacer videos llenos de valor pero que la gente abandona al minuto 3.",
+      beat3_promise: "La adaptación del viaje del héroe de Hollywood a los negocios y software.",
+      structure: [
+        { time: "0:00 - 0:35", stage: "Hook Cinematográfico", desc: "El contraste entre el profesor aburrido y el narrador magnético." },
+        { time: "0:35 - 4:00", stage: "Acto 1: El Status Quo Roto", desc: "Establecer la herida del espectador y por qué no puede seguir igual." },
+        { time: "4:00 - 11:00", stage: "Acto 2: La Batalla & La Prueba", desc: "La demostración de los datos donde la antigua forma es derrotada." },
+        { time: "11:00 - 15:30", stage: "Acto 3: El Nuevo Orden", desc: "El sistema que devuelve la libertad y el llamado a la acción natural." },
+        { time: "15:30 - 18:45", stage: "Plantilla", desc: "Framework descargable de Guion en 3 Actos." }
+      ]
+    },
+    eloisaVerdict: "⭐ 99/100: El storytelling no es para inventar cuentos de hadas; es el pegamento que hace que un desglose de impuestos o de código se sienta como un thriller financiero.",
+    derivedIdeas: [
+      {
+        title: "La estructura de guion que convierte visitas frías en contratos de $5,000",
+        angle: "Fórmula de 3 actos aplicada a auditorías en vivo.",
+        format: "Video Largo (14 min)"
+      }
+    ]
+  },
+  {
+    id: "yt_rad_10",
+    niche: "storytelling-eloisa",
+    nicheLabel: "Eloísa Wolf Academy",
+    title: "La Regla de los 4 Segundos: Cómo Editar para Que Nadie Pueda Salirse de tu Video",
+    channel: "Eloísa Wolf Oficial",
+    channelAvatar: "EW",
+    views: "420,500",
+    velocity: "+3,100 views/hora",
+    publishedDate: "Hace 5 días",
+    duration: "14:12",
+    retentionRate: "65.1%",
+    hookScore: 98,
+    hookType: "Pacing & Psicología Visual",
+    hookBadgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    hookSnippet: "El cerebro humano moderno en 2026 se aburre exactamente a los 4.2 segundos si la pantalla no cambia de estímulo. No necesitas efectos de fuegos artificiales ni transiciones mareantes; necesitas micro-cortes estratégicos, zooms sutiles de énfasis y cambio de jerarquía de audio. Te muestro la línea de tiempo de Premiere que retiene al 65%.",
+    breakdown: {
+      beat1_visual: "Línea de tiempo de edición con marcadores de 4 segundos en pantalla gigante.",
+      beat2_pain: "Videos con planos fijos de una cabeza parlante durante 2 minutos que duermen al público.",
+      beat3_promise: "Los 5 recursos de edición de bajo presupuesto que multiplican el tiempo de sesión.",
+      structure: [
+        { time: "0:00 - 0:32", stage: "Hook de Pacing", desc: "Demostración en vivo de ritmo lento vs ritmo dinámico calibrado." },
+        { time: "0:32 - 3:15", stage: "La Ciencia del Enfoque", desc: "Cómo el nervio óptico reacciona a los micro-movimientos." },
+        { time: "3:15 - 8:00", stage: "Los 5 Trucos", desc: "J-cuts de audio, cambio de plano medio a cerrado, textos de confirmación." },
+        { time: "8:00 - 11:45", stage: "Teleprompter Pacing", desc: "Cómo modular la velocidad al hablar para no sonar como robot." },
+        { time: "11:45 - 14:12", stage: "Checklist", desc: "Descarga del Checklist de Pacing para Editores." }
+      ]
+    },
+    eloisaVerdict: "⭐ 98/100: Crítico para la fase de producción de Sebastián y Daniel. Un gran guion mal editado o hablado a ritmo plano pierde el 40% de su impacto.",
+    derivedIdeas: [
+      {
+        title: "Checklist de Pacing para grabar en menos de 75 minutos sin trabarse",
+        angle: "Técnicas de teleprompter y pausas dramáticas para fundadores.",
+        format: "Guía de Estudio + Short"
+      }
+    ]
+  }
+];
+
+// ================= AGENTE ESTRATÉGICO ELOISA WOLF AI (24/7) =================
+var ELOISA_WOLF_KNOWLEDGE = {
+  profile: {
+    name: "Eloísa Wolf",
+    title: "Directora de Estrategia de Contenido & Retención YouTube",
+    tagline: "Especialista en The 3-Beat Hook, Retención >50% y Conversión B2B",
+    statusText: "En Línea 24/7 • Asesorando Canales del Holding Monoga",
+    avatarBg: "bg-gradient-to-tr from-amber-500 to-rose-500",
+    avatarInitials: "EW",
+    quote: "Si tu gancho no detiene el pulgar en 3 segundos, tus 15 minutos de sabiduría mueren en la oscuridad."
+  },
+  goldenRules: [
+    {
+      num: 1,
+      title: "The 3-Beat Hook (Innegociable)",
+      desc: "Beat 1: Disruptor Visual (muestra el dinero, el contrato o el error). Beat 2: Dolor Agudo (qué le está costando al espectador hoy). Beat 3: Promesa Específica (la solución sin dar el spoiler)."
+    },
+    {
+      num: 2,
+      title: "Cero Relleno / Cero Cortesías Muertas",
+      desc: "Prohibido decir 'Hola a todos', 'Bienvenidos', 'En este video'. Entra disparando el conflicto desde el fotograma 00:00:01."
+    },
+    {
+      num: 3,
+      title: "Open Loops de Alto Valor",
+      desc: "Abre una pregunta o dilema en el primer minuto que solo se resuelva hacia el minuto 8 o 10. Eso aplana la curva de retención."
+    },
+    {
+      num: 4,
+      title: "Conversión B2B Invisible",
+      desc: "No mendigues 'suscríbete'. Ofrece la herramienta o plantilla exacta que acabas de mostrar en pantalla como Lead Magnet de descarga gratuita para capturar el prospecto."
+    },
+    {
+      num: 5,
+      title: "El Espectador es el Héroe",
+      desc: "Habla siempre en segunda persona ('Tú', 'Tu negocio', 'Tus trabajadores'). Tú eres el guía sabio, no el protagonista presumido."
+    }
+  ],
+  templates: {
+    hookCuriosity: "Si todavía estás haciendo [ACCIÓN COMÚN] creyendo que [BENEFICIO ESPERADO]... en los próximos 10 minutos te voy a mostrar la razón matemática por la que estás perdiendo [CANTIDAD/DINERO/TIEMPO] sin que tu contador te haya dicho una sola palabra.",
+    hookFinancialLoss: "Si le pagas [CIFRA] a tu [TRABAJADOR/PROVEEDOR/SOFTWARE] y crees que te cuesta [CIFRA]... tu empresa está regalando [PÉRDIDA REAL] cada mes. Vamos a abrir la hoja de cálculo y te voy a desglosar centavo por centavo a dónde se va tu margen.",
+    hookContrarian: "Todo el mundo en tu industria te dice que necesitas [CONSEJO TÍPICO: MÁS GENTE / MÁS PUBLICIDAD / MÁS HERRAMIENTAS]. Eso es exactamente lo que te tiene atrapado trabajando 70 horas a la semana. Lo que realmente necesitas son estos 3 sistemas.",
+    hookVisualProof: "*(Muestra pantalla o documento con cifra real)* Esto es lo que pasó cuando cambiamos una sola palabra en nuestras cotizaciones. De un 28% de cierre subimos al 54% y cobramos depósitos automáticos en menos de 15 minutos. Te enseño el guion palabra por palabra.",
+    hookPersonalStory: "Hace unos años yo tenía [SITUACIÓN CAÓTICA: LIBRETAS / HORAS EXTRAS / DEUDAS]. Estaba a punto de tirar la toalla hasta que entendí este único principio operativo. Si hoy sientes que el dinero se te escapa entre los dedos, este video te va a cambiar la vida."
+  }
+};
+
+// ================= ELOISA WOLF AI ADVISORY ENGINES =================
+function auditScriptWithEloisa(scriptText, title, profileKey) {
+  var isSebastian = (profileKey || 'sebastian') === 'sebastian';
+  var targetNiche = isSebastian ? "Contratistas Hispanos y Home Services en EE. UU." : "Empresas B2B, Sistemas Operativos y AI Automation";
+  var text = (scriptText || '').trim();
+  
+  // Calculate analytics
+  var wordCount = text.split(/\s+/).filter(Boolean).length;
+  var estimatedMinutes = Math.round((wordCount / 140) * 10) / 10;
+  var hasIntroSalutation = /hola|bienvenidos|buenos d[ií]as|en este video vamos a/i.test(text.slice(0, 180));
+  var hasDataOrNumbers = /\$|\d+%|\d+,\d+|\d+ horas/i.test(text.slice(0, 400));
+  var hasLeadMagnet = /descarga|enlace|lead magnet|plantilla|calculadora/i.test(text);
+
+  var hookScore = 92;
+  if (hasIntroSalutation) hookScore -= 18;
+  if (!hasDataOrNumbers) hookScore -= 12;
+  if (hasLeadMagnet) hookScore += 8;
+  hookScore = Math.min(Math.max(hookScore, 65), 99);
+
+  var feedback = [];
+  if (hasIntroSalutation) {
+    feedback.push("🚨 **Corte Inmediato en la Intro:** Detecté saludos o frases de cortesía en los primeros segundos. ¡Elimínalos de raíz! El espectador decide si se queda o se va en los primeros 3 segundos.");
+  } else {
+    feedback.push("✅ **Ataque Frontal Impecable:** Entraste directo a la tensión sin saludos pasivos. Esto garantiza un retention drop inicial menor al 15%.");
+  }
+
+  if (hasDataOrNumbers) {
+    feedback.push("🔥 **Prueba Concreta Identificada:** El uso de números exactos (dólares, porcentajes o tiempos) en la apertura ancla la credibilidad de inmediato.");
+  } else {
+    feedback.push("⚠️ **Falta de Especificidad Numérica:** Introduce una cifra concreta en los primeros 20 segundos para que el dolor se sienta medible.");
+  }
+
+  feedback.push(isSebastian
+    ? "💡 **Consejo de Eloísa para Home Services:** Cuando hables del cliente gringo o de los chalanes, usa la técnica del espejo: Sebastián debe sostener la herramienta física o mostrar el invoice en la mano para validar que él también estuvo en la obra."
+    : "💡 **Consejo de Eloísa para Sistemas B2B:** Cuando expliques código o arquitectura Jarvis, muestra la terminal con datos sintéticos corriendo en vivo en pantalla dividida; ver el sistema en acción retiene a la audiencia técnica."
+  );
+
+  var revisedHook = isSebastian
+    ? "*(CÁMARA: Plano medio cerrado, sosteniendo una cotización tachada en rojo).* Si todavía mandas presupuestos de un solo precio por WhatsApp o papel, estás regalando el 40% de tu margen neto a clientes que te piden rebaja. Te voy a mostrar las 3 opciones exactas para que Mr. Smith elija la opción de $6,500 con una sonrisa."
+    : "*(CÁMARA: Pantalla dividida con terminal de logs en tiempo real).* Si tu equipo pasa más de dos horas copiando datos entre WhatsApp, hojas de cálculo y Zapier, tu problema no es de personal: es de arquitectura. Te muestro cómo automatizamos un holding entero con cero errores de duplicidad.";
+
+  return {
+    title: title || "Guion Seleccionado",
+    targetNiche: targetNiche,
+    wordCount: wordCount,
+    estimatedMinutes: estimatedMinutes,
+    hookScore: hookScore,
+    pacingRating: hookScore > 90 ? "Élite (Pacing Rápido)" : "Requiere Recorte de Relleno",
+    verdict: hookScore > 88 ? "Listo para Grabar en Teleprompter" : "Ajustar Apertura antes de Grabar",
+    feedback: feedback,
+    revisedHook: revisedHook
+  };
+}
+
+function generateHooksWithEloisa(topic, profileKey) {
+  var isSebastian = (profileKey || 'sebastian') === 'sebastian';
+  var t = topic || (isSebastian ? "Cómo cotizar trabajos de pintura en USA" : "Arquitectura de agentes de IA para empresas");
+
+  return [
+    {
+      style: "1. The 3-Beat Hook (Disruptor Visual + Dolor + Promesa)",
+      hookText: isSebastian
+        ? "*(Sostiene un billete de $20 USD frente a la cámara)*. Si crees que pagarle $20 la hora a tu ayudante te cuesta $20 la hora, tu negocio está perdiendo $12.14 cada 60 minutos sin que te des cuenta. Mira esta matemática."
+        : "*(Muestra pantalla con terminal de 02:15 AM)*. A las 2 de la mañana un cliente nos pagó $12,000 y nuestro sistema generó contrato, workspace y auditoría sin que ningún humano se despertara. Te enseño el blueprint en código."
+    },
+    {
+      style: "2. Hook de Pérdida Financiera Inminente",
+      hookText: isSebastian
+        ? "La mayoría de contratistas hispanos trabajan 65 horas bajo el sol para terminar el viernes con $80 dólares en la cuenta de banco de Chase. Hay una fuga silenciosa en tus órdenes de cambio que te está quebrando."
+        : "Pagar $3,500 dólares al mes en 15 herramientas SaaS desconectadas es el impuesto a la falta de arquitectura. Te muestro cómo reducirlo a $80 unificando tus operaciones."
+    },
+    {
+      style: "3. Hook Contrarian (Destruyendo el Mito de la Industria)",
+      hookText: isSebastian
+        ? "Todo el mundo te dice que para ganar más dinero necesitas comprar otra camioneta y contratar más chalanes. Es mentira. Con 3 hombres y este sistema de precios Good, Better, Best ganas el triple sin trabajar los fines de semana."
+        : "Perseguir un millón de visitas en YouTube es para canales de bromas. Si vendes B2B, necesitas 500 visitas de directores de operaciones para facturar $40K al mes. Aquí está la matemática de embudo."
+    },
+    {
+      style: "4. Hook de Historia de Fricción Cotidiana",
+      hookText: isSebastian
+        ? "'Oye amigo, ya que estás aquí, ¿me puedes dar una manito de pintura a esta puertecita?'. Esa simple frase le cuesta $1,500 al mes a cada contratista por pena a cobrar. Hoy te enseño la regla de las 10 palabras."
+        : "Eran las 7:00 PM del viernes y un webhook fallido duplicó 40 cargos a tarjetas de crédito de clientes. Si tus automatizaciones no tienen idempotencia, estás construyendo sobre arena."
+    },
+    {
+      style: "5. Hook de Demostración Numérica Irrefutable",
+      hookText: isSebastian
+        ? "Abrí el P&L de una compañía de servicios que factura $45,000 al mes en Atlanta. El dueño ganaba menos que sus pintores. Tapamos estas 3 fugas y en 30 días se quedó con $14,000 netos."
+        : "Comparamos una empresa gestionada con hojas de cálculo vs una con Monoga OS. La diferencia: 32 horas semanales ahorradas y cero contratos perdidos por falta de seguimiento."
+    }
+  ];
+}
+
+function generateWeeklyPlanWithEloisa(profileKey, radarVideos) {
+  var isSebastian = (profileKey || 'sebastian') === 'sebastian';
+  var nicheName = isSebastian ? "Contratistas Hispanos USA" : "Sistemas B2B & Software Operativo";
+
+  return {
+    weekTitle: isSebastian ? "Semana Maestra: Blindaje Financiero & Cierre en 3 Opciones" : "Semana Maestra: Automatización Determinista & Embudo High-Ticket",
+    niche: nicheName,
+    weeklyGoal: isSebastian ? "Cerrar 3 contratos con margen 40% + 150 descargas de calculadora" : "Capturar 8 diagnósticos operativos B2B + 300 descargas del Blueprint",
+    days: [
+      {
+        day: "Lunes",
+        format: "Post de Comunidad & LinkedIn",
+        icon: "fa-comments",
+        badge: "Educación & Debate",
+        badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+        title: isSebastian ? "Caso de Estudio: Cómo Orlando eliminó $42K de deuda cobrando a $58/hr" : "Las 4 preguntas antes de automatizar cualquier proceso con IA en tu empresa",
+        objective: "Abrir debate en comentarios, sembrar el dolor y calentar audiencia para el video del jueves."
+      },
+      {
+        day: "Martes",
+        format: "Short Vertical (9:16 - 38s)",
+        icon: "fa-mobile-screen",
+        badge: "Hook Viral",
+        badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+        title: isSebastian ? "Short 1: La mentira de pagar $20/hr en Estados Unidos" : "Short 1: Por qué Zapier rompe tus finanzas y necesitas idempotencia",
+        objective: "Thumbstop en 3 segundos derivado del video analizado del radar. CTA a descargar herramienta en perfil."
+      },
+      {
+        day: "Miércoles",
+        format: "Historia de Precalentamiento / Post Técnico",
+        icon: "fa-file-lines",
+        badge: "Lead Magnet Drop",
+        badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        title: isSebastian ? "Muestra del archivo Excel de Labor Burden 2026 listo para descargar" : "Diagrama de Circuit Breakers y Colas Transaccionales en pantalla",
+        objective: "Demostrar valor antes de pedir la vista larga del jueves. Alta tasa de descarga de archivo."
+      },
+      {
+        day: "Jueves",
+        format: "Video Largo de YouTube (13-15 min)",
+        icon: "fa-video",
+        badge: "Pilar Maestro (A-Roll)",
+        badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+        title: isSebastian ? "Episodio: El costo REAL de pagar $20/hr a un chalán en USA (Workers' Comp, FICA y Downtime)" : "Episodio: Tu empresa no necesita más recordatorios: La verdad sobre Jarvis y Sistemas Deterministas",
+        objective: "Video de alta retención (>55%). Teleprompter palabra x palabra, demostración matemática en pantalla y CTA al Lead Magnet."
+      },
+      {
+        day: "Viernes",
+        format: "Short Vertical (9:16 - 42s)",
+        icon: "fa-mobile-screen",
+        badge: "Contrarian / Clímax",
+        badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+        title: isSebastian ? "Short 2: Por qué cotizar por hora te mantiene esclavo de la brocha" : "Short 2: Por qué 500 visitas en YouTube valen más que 100K en TikTok para vender B2B",
+        objective: "Punta de lanza para redirigir tráfico nuevo hacia el video largo publicado el jueves."
+      },
+      {
+        day: "Sábado",
+        format: "Post Táctico de Cierre de Semana",
+        icon: "fa-bullhorn",
+        badge: "Conversión B2B",
+        badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+        title: isSebastian ? "Pregunta de fin de semana: ¿Cuánto dinero te quedaron a deber en Change Orders este viernes?" : "Resumen de arquitectura: Los 3 checkpoints que todo SaaS B2B debe revisar el fin de semana",
+        objective: "Llamado a la acción directo a agendar Diagnóstico Operativo de 20 minutos con Monoga OS."
+      },
+      {
+        day: "Domingo",
+        format: "Revisión de Métricas & Descanso",
+        icon: "fa-chart-line",
+        badge: "Planificación Sprint",
+        badgeColor: "bg-slate-100 text-slate-700 border-slate-200",
+        title: "Auditoría de Retención en YouTube Studio y Carga del Teleprompter de la Siguiente Semana",
+        objective: "Revisar retención promedio, suscriptores ganados y leads capturados en el embudo."
+      }
+    ]
+  };
+}
+
+function answerEloisaConsultation(message, contextProfile, activeScriptTitle) {
+  var isSebastian = (contextProfile || 'sebastian') === 'sebastian';
+  var q = (message || '').toLowerCase();
+  
+  if (q.includes('gancho') || q.includes('hook') || q.includes('intro')) {
+    var hooks = generateHooksWithEloisa(activeScriptTitle || "Mi próximo video", contextProfile);
+    return "¡Hola! Como tu asesora estratégica, te digo esto sin rodeos: **el gancho define el 80% del éxito de tu video**.\n\nAquí tienes 3 opciones creadas con mi metodología **The 3-Beat Hook**, listas para usar en tu cámara:\n\n" +
+      "**Opción 1 (Disrupción Visual):**\n> " + hooks[0].hookText + "\n\n" +
+      "**Opción 2 (Pérdida Financiera Inminente):**\n> " + hooks[1].hookText + "\n\n" +
+      "**Opción 3 (Contrarian / Romper Mito):**\n> " + hooks[2].hookText + "\n\n" +
+      "💡 *Consejo de Eloísa:* Ensaya el gancho 3 veces en voz alta. Si tardas más de 25 segundos en pronunciarlo, córtale 5 palabras. Menos es más.";
+  }
+
+  if (q.includes('auditar') || q.includes('guion') || q.includes('script') || q.includes('revisar')) {
+    var audit = auditScriptWithEloisa(activeScriptTitle || "Guion Operativo", activeScriptTitle, contextProfile);
+    return "🎯 **Auditoría Express de Eloísa Wolf:**\n\n" +
+      "• **Nicho Analizado:** " + audit.targetNiche + "\n" +
+      "• **Puntuación del Gancho:** **" + audit.hookScore + "/100** (" + audit.pacingRating + ")\n" +
+      "• **Veredicto:** *" + audit.verdict + "*\n\n" +
+      "**Puntos Clave a Corregir:**\n" +
+      audit.feedback.map(function(f){ return "• " + f; }).join("\n") + "\n\n" +
+      "**Tu Introducción Reescrita con la Fórmula Wolf:**\n" +
+      "> " + audit.revisedHook + "\n\n" +
+      "¿Quieres que reescriba también la transición hacia el Lead Magnet?";
+  }
+
+  if (q.includes('monetiz') || q.includes('dinero') || q.includes('embudo') || q.includes('lead magnet') || q.includes('venta') || q.includes('b2b')) {
+    return "💰 **Estrategia de Monetización B2B de Eloísa Wolf:**\n\n" +
+      "Deja de pensar en centavos de YouTube AdSense. Tu canal es una máquina de generación de clientes calificados. Este es el embudo de 3 pasos que debes tener activo:\n\n" +
+      "1. **El Gancho y Demostración (Top of Funnel):** Resuelves un problema técnico real en pantalla durante 10 minutos (True Cost, Nómina o Custom OS).\n" +
+      "2. **El Lead Magnet Irresistible (Mid Funnel):** Regalas la misma herramienta o matriz que usaste en pantalla. Sin trucos, entrega el archivo real en el primer comentario fijado.\n" +
+      "3. **La Conversión High-Ticket (Bottom of Funnel):** Al descargar la plantilla, la página de gracias les ofrece: *'¿Quieres que auditemos tus números o implementemos este sistema en tu empresa? Agenda un diagnóstico de 20 min'*. De ahí salen contratos de **$2,500 a $7,500 USD**.\n\n" +
+      (isSebastian ? "Para Sebastián: Cada video debe impulsar la afiliación de Gusto/Jobber y la auditoría de operaciones de Monoga." : "Para Daniel: Cada video debe impulsar el diagnóstico de arquitectura y el desarrollo de Custom OS de Monoga.");
+  }
+
+  if (q.includes('plan') || q.includes('semana') || q.includes('cronograma')) {
+    var plan = generateWeeklyPlanWithEloisa(contextProfile);
+    return "📅 **Plan Semanal Estratégico Generado por Eloísa Wolf:**\n\n" +
+      "Objetivo de la semana: **" + plan.weeklyGoal + "**\n\n" +
+      plan.days.map(function(d){
+        return "• **" + d.day + " (" + d.format + "):** " + d.title + "\n  *Objetivo:* " + d.objective;
+      }).join("\n\n") + "\n\n" +
+      "💡 *Regla de Oro de Eloísa:* Graba el video largo y los dos shorts en un solo bloque de grabación de 90 minutos el jueves por la mañana con tu teleprompter.";
+  }
+
+  // General response
+  return "¡Hola! Soy Eloísa Wolf, tu asesora de estrategia y retención en YouTube. Estoy monitoreando el canal de **" +
+    (isSebastian ? "Sebastián Monoga (Home Services USA)" : "Daniel Monoga (Sistemas B2B & Software)") + "**.\n\n" +
+    "Puedo ayudarte 24/7 con:\n" +
+    "1. ⚡ **Auditar cualquier guion** o introducción palabra por palabra.\n" +
+    "2. 🎣 **Generar 5 ganchos virales** con la fórmula The 3-Beat Hook para cualquier tema.\n" +
+    "3. 💎 **Diseñar tu embudo de monetización B2B** para convertir vistas en clientes de alto valor.\n" +
+    "4. 📅 **Estructurar tu plan de contenido semanal** para que grabes en menos de 90 minutos.\n\n" +
+    "¿Qué tema o guion quieres que afinemos hoy?";
+}
+
 if (typeof window !== 'undefined') {
   window.CONTENT_DATABASE = CONTENT_DATABASE;
   window.STATE_TAX_PRESETS = STATE_TAX_PRESETS;
   window.calculateTrueCostLive = calculateTrueCostLive;
+  window.DAILY_YOUTUBE_RADAR = DAILY_YOUTUBE_RADAR;
+  window.ELOISA_WOLF_KNOWLEDGE = ELOISA_WOLF_KNOWLEDGE;
+  window.auditScriptWithEloisa = auditScriptWithEloisa;
+  window.generateHooksWithEloisa = generateHooksWithEloisa;
+  window.generateWeeklyPlanWithEloisa = generateWeeklyPlanWithEloisa;
+  window.answerEloisaConsultation = answerEloisaConsultation;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_DATABASE: CONTENT_DATABASE, STATE_TAX_PRESETS: STATE_TAX_PRESETS, calculateTrueCostLive: calculateTrueCostLive };
+  module.exports = {
+    CONTENT_DATABASE: CONTENT_DATABASE,
+    STATE_TAX_PRESETS: STATE_TAX_PRESETS,
+    calculateTrueCostLive: calculateTrueCostLive,
+    DAILY_YOUTUBE_RADAR: DAILY_YOUTUBE_RADAR,
+    ELOISA_WOLF_KNOWLEDGE: ELOISA_WOLF_KNOWLEDGE,
+    auditScriptWithEloisa: auditScriptWithEloisa,
+    generateHooksWithEloisa: generateHooksWithEloisa,
+    generateWeeklyPlanWithEloisa: generateWeeklyPlanWithEloisa,
+    answerEloisaConsultation: answerEloisaConsultation
+  };
 }
+

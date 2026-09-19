@@ -11,7 +11,7 @@ function getDatabase() {
   return null;
 }
 
-let currentProfileKey = 'sebastian'; // Default to Sebastian
+let currentProfileKey = (typeof localStorage !== 'undefined' && localStorage.getItem('creadorpro_profile')) || 'sebastian';
 let currentData = null;
 let activeCardInModal = null;
 let currentView = 'dashboard';
@@ -27,10 +27,53 @@ const KANBAN_COLS = [
   { key: 'publicado', label: 'Publicado', pillColor: 'bg-emerald-50 text-emerald-700 border border-emerald-200' }
 ];
 
+let sqliteState = null;
+let liveSources = [];
+let liveRssSignals = [];
+let rssFilterMode = 'all'; // 'all', 'live_rss', 'algo'
+let isRssRefreshing = false;
+let lastRssRefreshTime = null;
+
 function initData() {
   const db = getDatabase();
   if (db && db[currentProfileKey]) {
     currentData = db[currentProfileKey];
+  }
+}
+
+async function syncWithBackend() {
+  try {
+    const res = await fetch(`/api/state?profile=${currentProfileKey}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.status === 'ok' && json.data) {
+        sqliteState = json.data;
+        if (sqliteState.chatHistory && sqliteState.chatHistory.length > 0) {
+          eloisaChatHistory = sqliteState.chatHistory.map(m => ({
+            sender: m.sender,
+            text: m.message,
+            time: new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          }));
+        }
+        renderKanbanBoard();
+        renderTasks();
+        if (currentView === 'eloisa') {
+          renderEloisaChatMessages();
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Backend SQLite sync offline/fallback mode:', err.message);
+  }
+
+  // Live RSS Channels & Signals Synchronization
+  try {
+    await Promise.allSettled([
+      fetchLiveSources(),
+      fetchLiveRssSignals()
+    ]);
+  } catch (err) {
+    console.warn('Live RSS sync offline/fallback mode:', err.message);
   }
 }
 
@@ -41,11 +84,12 @@ if (document.readyState === 'loading') {
   onInit();
 }
 
-function onInit() {
+async function onInit() {
   initData();
   renderAll();
   setupEventListeners();
   runLiveCalculation();
+  await syncWithBackend();
 }
 
 function renderAll() {
@@ -62,12 +106,14 @@ function renderAll() {
   try { renderShortsStudio(); } catch(e) { console.error('Error in renderShortsStudio:', e); }
   try { renderCommunityStudio(); } catch(e) { console.error('Error in renderCommunityStudio:', e); }
   try { renderEightWeekRoadmap(); } catch(e) { console.error('Error in renderEightWeekRoadmap:', e); }
+  try { renderRadarView(); } catch(e) { console.error('Error in renderRadarView:', e); }
+  try { renderEloisaView(); } catch(e) { console.error('Error in renderEloisaView:', e); }
 }
 
 // ================= NAVIGATION VIEW SWITCHER =================
 function switchView(viewName) {
   currentView = viewName;
-  const views = ['dashboard', 'guiones', 'shorts', 'community', 'tools', 'calendar'];
+  const views = ['dashboard', 'radar', 'eloisa', 'guiones', 'shorts', 'community', 'tools', 'calendar'];
   
   views.forEach(v => {
     const el = document.getElementById(`view${capitalize(v)}`);
@@ -81,11 +127,11 @@ function switchView(viewName) {
     }
     if (btn) {
       if (v === viewName) {
-        btn.className = 'nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-blue-50 text-blue-600 text-left transition-colors';
+        btn.className = 'nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-blue-50 text-blue-600 text-left transition-colors';
         const icon = btn.querySelector('i');
         if (icon) icon.className = icon.className.replace('text-slate-400', 'text-blue-600');
       } else {
-        btn.className = 'nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors';
+        btn.className = 'nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-left transition-colors';
         const icon = btn.querySelector('i');
         if (icon) icon.className = icon.className.replace('text-blue-600', 'text-slate-400');
       }
@@ -94,6 +140,10 @@ function switchView(viewName) {
 
   if (viewName === 'guiones') {
     renderGuionesStudio();
+  } else if (viewName === 'radar') {
+    renderRadarView();
+  } else if (viewName === 'eloisa') {
+    renderEloisaView();
   }
 }
 
@@ -105,20 +155,45 @@ function capitalize(s) {
 function renderProfileHeader() {
   if (!currentData) initData();
   const p = currentData.profile;
-  document.getElementById('userName').textContent = p.name;
-  document.getElementById('userHandle').textContent = p.handle;
+  const userName = document.getElementById('userName');
+  if (userName) userName.textContent = p.name;
+  const userHandle = document.getElementById('userHandle');
+  if (userHandle) userHandle.textContent = p.handle;
   const avatar = document.getElementById('userAvatarContainer');
-  avatar.textContent = p.avatarText;
-  avatar.className = `w-8 h-8 rounded-full ${p.avatarBg} text-white font-bold text-xs flex items-center justify-center shadow-xs`;
-  document.getElementById('nextEpLabel').textContent = currentData.longVideos[0]?.title.slice(0, 30) + '...';
+  if (avatar) {
+    avatar.textContent = p.avatarText;
+    avatar.className = `w-8 h-8 rounded-full ${p.avatarBg} text-white font-bold text-xs flex items-center justify-center shadow-xs`;
+  }
+  const nextEp = document.getElementById('nextEpLabel');
+  if (nextEp && currentData.longVideos && currentData.longVideos[0]) {
+    nextEp.textContent = currentData.longVideos[0].title.slice(0, 30) + '...';
+  }
+  const nextEpSub = document.getElementById('metric5Sub');
+  if (nextEpSub && currentData.longVideos && currentData.longVideos[0]) {
+    nextEpSub.textContent = currentData.longVideos[0].pilar || currentData.longVideos[0].title.slice(0, 24);
+  }
+  updateEloisaAdvisorTarget();
 }
 
-function switchProfile(key) {
+async function switchProfile(key) {
   const db = getDatabase();
   if (!db || !db[key]) return;
   currentProfileKey = key;
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('creadorpro_profile', key);
+  }
+  liveSources = [];
+  liveRssSignals = [];
+  initData();
   renderAll();
-  document.getElementById('profileMenu').classList.add('hidden');
+  await syncWithBackend();
+  await Promise.allSettled([
+    fetchLiveSources(),
+    fetchLiveRssSignals()
+  ]);
+  const menu = document.getElementById('profileMenu');
+  if (menu) menu.classList.add('hidden');
+  showToast('Canal Seleccionado', `Ahora operando el canal de ${currentData.profile.name}.`, 'info');
 }
 
 // ================= WEEKLY DAILY SCHEDULE RENDERING =================
@@ -353,10 +428,38 @@ function getKanbanCardsForProfile() {
     publicado: []
   };
 
+  // Process and merge SQLite cards
+  const sqliteCardIds = new Set();
+  if (sqliteState && sqliteState.cards && sqliteState.cards.length > 0) {
+    sqliteState.cards.forEach(c => {
+      sqliteCardIds.add(c.id);
+      let col = (c.col_key || 'ideas').toLowerCase();
+      if (col === 'guiones') col = 'guion';
+      if (col === 'produccion') col = 'grabado';
+      if (col === 'publicados') col = 'publicado';
+      if (!cards[col]) col = 'ideas';
+
+      cards[col].push({
+        id: c.id,
+        title: c.title,
+        tag: c.pilar || 'Pipeline B2B',
+        type: 'sqlite',
+        colKey: col,
+        detailTitle: c.title,
+        detailTag: c.pilar || 'Pipeline B2B',
+        detailContent: (c.hook ? `⚡ HOOK:\n${c.hook}\n\n` : '') +
+                       (c.full_script ? `📜 GUION / ESTRUCTURA:\n${c.full_script}\n\n` : '') +
+                       (c.lead_magnet ? `🎁 LEAD MAGNET:\n${c.lead_magnet}\n\n` : '') +
+                       (c.monetization ? `💰 MONETIZACIÓN:\n${c.monetization}\n\n` : '') +
+                       (c.cta ? `📢 CTA:\n${c.cta}` : '')
+      });
+    });
+  }
+
   if (currentProfileKey === 'sebastian') {
     // 1. Listo p/ Grabar (Hoy)
     const v1 = currentData.longVideos[0];
-    if (v1) {
+    if (v1 && !sqliteCardIds.has(v1.id)) {
       cards.grabado.push({
         id: v1.id,
         title: `Ep 1: ${v1.title}`,
@@ -608,9 +711,20 @@ function setupDragAndDrop(colEl) {
     colEl.classList.remove('drag-over');
   });
 
-  colEl.addEventListener('drop', (e) => {
+  colEl.addEventListener('drop', async (e) => {
     e.preventDefault();
     colEl.classList.remove('drag-over');
+    try {
+      const raw = e.dataTransfer.getData('text/plain');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      const targetCol = colEl.dataset.colKey;
+      if (data.cardId && targetCol && data.fromCol !== targetCol) {
+        await moveCardToColumn(data.cardId, targetCol);
+      }
+    } catch (err) {
+      console.error('Error handling drop:', err);
+    }
   });
 }
 
@@ -620,6 +734,20 @@ function findVideoById(videoId) {
 }
 
 function openCardItem(colKey, cardId) {
+  // Check if card is in SQLite state
+  if (sqliteState && sqliteState.cards) {
+    const sc = sqliteState.cards.find(c => c.id === cardId);
+    if (sc) {
+      const content = (sc.hook ? `⚡ HOOK:\n"${sc.hook}"\n\n` : '') +
+                      (sc.full_script ? `📜 GUION / ESTRUCTURA:\n${sc.full_script}\n\n` : '') +
+                      (sc.lead_magnet ? `🎁 LEAD MAGNET:\n${sc.lead_magnet}\n\n` : '') +
+                      (sc.monetization ? `💰 MONETIZACIÓN:\n${sc.monetization}\n\n` : '') +
+                      (sc.cta ? `📢 CTA:\n${sc.cta}` : '');
+      openGenericDetail(sc.title, sc.pilar || 'Pipeline SQLite', content || sc.title, sc.lead_magnet || 'Entregable Monoga OS');
+      return;
+    }
+  }
+
   // 1. If it's a long video ID
   const v = currentData.longVideos.find(vid => vid.id === cardId);
   if (v) {
@@ -961,7 +1089,16 @@ function renderEightWeekRoadmap() {
   if (!container) return;
   container.innerHTML = '';
 
-  const schedule = [
+  const schedule = currentProfileKey === 'daniel' ? [
+    { week: 1, title: 'Tu empresa no necesita más recordatorios: Jarvis y Sistemas Deterministas', focus: 'Arquitectura Determinista', tool: 'Blueprint de Flujos Operativos' },
+    { week: 2, title: 'MARAL OS: Cómo unificamos una operación de $1.2M en una sola pantalla', focus: 'Sistemas Operativos Propios', tool: 'SaaS vs Custom OS Matrix' },
+    { week: 3, title: 'Universidad OS: Seguridad, Control de Accesos (RBAC) y Cero Fugas', focus: 'Ciberseguridad B2B', tool: 'Checklist de Privilegios Mínimos' },
+    { week: 4, title: 'Mecatrónica aplicada a Software: Circuit Breakers y Flujos Robustos', focus: 'Ingeniería Operativa', tool: 'Diagrama de Circuit Breakers' },
+    { week: 5, title: 'Por qué la IA no debería enviar mensajes dos veces: Idempotencia B2B', focus: 'IA en Producción', tool: 'Idempotency Protocol Sheet' },
+    { week: 6, title: 'De 15 Herramientas Zapier a 1 Motor Centralizado: Eliminando Deuda', focus: 'Integración Determinista', tool: 'Tech Debt Audit Matrix' },
+    { week: 7, title: 'La Matemática de un Holding de Medios: Monetizar Audiencias Técnicas', focus: 'Monetización B2B', tool: 'LTV & Funnel High-Ticket' },
+    { week: 8, title: 'El Operador de $1,000/hr: Sistemas Autónomos de Ejecución Nocturna', focus: 'Escala & Delegación', tool: 'Autonomous Ops Blueprint' }
+  ] : [
     { week: 1, title: 'El costo REAL de contratar un empleado a $20/h en USA', focus: 'Mano de Obra', tool: 'True Employee Cost Calculator' },
     { week: 2, title: 'Cómo cotizar proyectos de servicios para ganar 40% de margen', focus: 'Pricing & Margen', tool: 'Job Costing & Pricing Matrix' },
     { week: 3, title: 'Dejamos de usar papel y WhatsApp: CRM Housecall Pro vs Jobber', focus: 'Sistemas & CRM', tool: 'CRM Setup Guide' },
@@ -1152,8 +1289,17 @@ function setupEventListeners() {
     if (e.key === 'Escape') {
       closeModal('teleprompterModal');
       closeModal('videoDetailModal');
+      closeModal('radarDetailModal');
+      closeModal('manageSourcesModal');
+      closeModal('addIdeaModal');
+      closeModal('addTaskModal');
     }
   });
+}
+
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('hidden');
 }
 
 function closeModal(id) {
@@ -1161,20 +1307,1286 @@ function closeModal(id) {
   if (el) el.classList.add('hidden');
 }
 
-function openAddIdeaModal() {
-  alert('Usa el estudio de Guiones o añade nuevas ideas directamente al repositorio.');
+function escapeHtml(str) {
+  if (str === undefined || str === null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatRelativeTime(dateInput) {
+  if (!dateInput) return 'recientemente';
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) return 'recientemente';
+  const now = new Date();
+  const diffSec = Math.floor((now - d) / 1000);
+  if (diffSec < 60) return 'hace unos segundos';
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `hace ${diffMin} min`;
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `hace ${diffHours} h`;
+  const diffDays = Math.floor(diffHours / 24);
+  if (diffDays < 7) return `hace ${diffDays} d`;
+  return d.toLocaleDateString();
+}
+
+function showToast(title, message, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+  const toast = document.createElement('div');
+  const icon = type === 'success' ? 'fa-circle-check text-emerald-500' :
+               type === 'error' ? 'fa-triangle-exclamation text-rose-500' :
+               type === 'info' ? 'fa-circle-info text-blue-500' : 'fa-bolt text-amber-500';
+  const border = type === 'success' ? 'border-emerald-200' :
+                 type === 'error' ? 'border-rose-200' :
+                 type === 'info' ? 'border-blue-200' : 'border-amber-200';
+  toast.className = `p-3.5 rounded-2xl border ${border} bg-white shadow-xl text-slate-800 text-xs flex items-start gap-3 transform transition-all duration-300 opacity-0 translate-y-2 pointer-events-auto max-w-sm`;
+  toast.innerHTML = `
+    <i class="fa-solid ${icon} text-base shrink-0 mt-0.5"></i>
+    <div class="flex-1 min-w-0">
+      <p class="font-bold text-slate-900">${title}</p>
+      <p class="text-slate-600 text-[11px] mt-0.5 leading-snug">${message}</p>
+    </div>
+  `;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.remove('opacity-0', 'translate-y-2');
+  }, 10);
+  setTimeout(() => {
+    toast.classList.add('opacity-0', 'translate-y-2');
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+// Override copyToClipboard to use toast
+function copyToClipboard(elementIdOrText) {
+  let text = '';
+  const el = document.getElementById(elementIdOrText);
+  if (el) {
+    text = el.innerText || el.textContent;
+  } else {
+    text = elementIdOrText;
+  }
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Copiado con Éxito', 'Texto copiado al portapapeles listo para usar.', 'success');
+  }).catch(() => {
+    showToast('Aviso', 'Texto seleccionado para copia manual.', 'info');
+  });
+}
+
+// ================= TASKS CONTROLLER & SQLITE PERSISTENCE =================
+function renderTasks() {
+  const container = document.getElementById('tasksList');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const tasks = (sqliteState && sqliteState.tasks && sqliteState.tasks.length > 0)
+    ? sqliteState.tasks
+    : [
+        { id: 'def_t1', text: 'Revisar Radar Algorítmico y seleccionar 2 hooks', badge: 'RADAR ALTO VALOR', done: true },
+        { id: 'def_t2', text: 'Auditar guión del video principal con Eloísa Wolf', badge: 'AUDITORÍA ELOÍSA', done: true },
+        { id: 'def_t3', text: 'Grabar Video Pilar A-Roll (≤ 75 min con teleprompter)', badge: 'GRABACIÓN P1', done: false },
+        { id: 'def_t4', text: 'Preparar Lead Magnet descargable y link en bio', badge: 'EMBUDO B2B', done: false },
+        { id: 'def_t5', text: 'Programar publicación y primer comentario fijado con CTA', badge: 'PUBLICACIÓN', done: false }
+      ];
+
+  tasks.forEach(t => {
+    const item = document.createElement('div');
+    item.className = 'flex items-center justify-between gap-2 p-2 rounded-xl bg-slate-50/70 hover:bg-slate-100/70 border border-slate-200/60 transition-colors group';
+    item.innerHTML = `
+      <label class="flex items-center gap-2 cursor-pointer flex-1 min-w-0 select-none">
+        <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTaskInDb('${t.id}', this.checked)" class="rounded border-slate-300 text-emerald-600 focus:ring-0">
+        <span class="text-slate-700 font-medium truncate ${t.done ? 'line-through text-slate-400 font-normal' : ''}">${t.text}</span>
+      </label>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200/60">${t.badge || 'PRODUCCIÓN'}</span>
+        <button onclick="deleteTaskFromDb('${t.id}')" title="Eliminar tarea" class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-600 p-1 text-xs transition-opacity">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+async function toggleTaskInDb(taskId, isDone) {
+  try {
+    const res = await fetch('/api/tasks/toggle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ profile: currentProfileKey, taskId, done: isDone })
+    });
+    if (res.ok) {
+      if (sqliteState && sqliteState.tasks) {
+        const found = sqliteState.tasks.find(x => x.id === taskId);
+        if (found) found.done = isDone;
+      }
+      renderTasks();
+      showToast('Tarea Actualizada', isDone ? 'Marcada como completada.' : 'Marcada como pendiente.', 'info');
+    }
+  } catch (err) {
+    console.error('Error toggling task in SQLite:', err);
+  }
+}
+
+async function deleteTaskFromDb(taskId) {
+  try {
+    const res = await fetch('/api/tasks/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ profile: currentProfileKey, taskId })
+    });
+    if (res.ok) {
+      if (sqliteState && sqliteState.tasks) {
+        sqliteState.tasks = sqliteState.tasks.filter(x => x.id !== taskId);
+      }
+      renderTasks();
+      showToast('Tarea Eliminada', 'Eliminada de la base de datos local SQLite.', 'info');
+    }
+  } catch (err) {
+    console.error('Error deleting task from SQLite:', err);
+  }
 }
 
 function openAddTaskModal() {
-  const text = prompt('Descripción de la nueva tarea:');
-  if (text) {
-    alert(`Tarea "${text}" añadida.`);
+  const modal = document.getElementById('addTaskModal');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  document.getElementById('newTaskText')?.focus();
+}
+
+async function handleCreateTaskSubmit(e) {
+  e.preventDefault();
+  const textInput = document.getElementById('newTaskText');
+  const badgeInput = document.getElementById('newTaskBadge');
+  const text = textInput ? textInput.value.trim() : '';
+  const badge = badgeInput ? badgeInput.value : 'PRODUCCIÓN';
+  if (!text) return;
+
+  try {
+    const res = await fetch('/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ profile: currentProfileKey, task: { text, badge } })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState && sqliteState.tasks && data.task) {
+        sqliteState.tasks.unshift(data.task);
+      }
+      closeModal('addTaskModal');
+      if (textInput) textInput.value = '';
+      renderTasks();
+      showToast('Tarea Guardada', `"${text}" registrada en base de datos SQLite.`, 'success');
+    }
+  } catch (err) {
+    console.error('Error creating task:', err);
+    showToast('Error', 'No se pudo guardar la tarea en SQLite.', 'error');
   }
 }
 
+// ================= KANBAN CRUD & SQLITE PERSISTENCE =================
 function quickAddCard(colKey) {
-  const title = prompt(`Nueva tarjeta para "${colKey}":`);
-  if (title) {
-    alert(`Tarjeta "${title}" registrada.`);
+  openAddIdeaModal(colKey);
+}
+
+function openAddIdeaModal(colKey = 'ideas') {
+  const modal = document.getElementById('addIdeaModal');
+  if (!modal) return;
+  const colSelect = document.getElementById('newIdeaCol');
+  if (colSelect && colKey) {
+    colSelect.value = colKey;
   }
+  modal.classList.remove('hidden');
+  document.getElementById('newIdeaTitle')?.focus();
+}
+
+async function handleCreateIdeaSubmit(e) {
+  e.preventDefault();
+  const title = document.getElementById('newIdeaTitle')?.value.trim();
+  const col_key = document.getElementById('newIdeaCol')?.value || 'ideas';
+  const pilar = document.getElementById('newIdeaPilar')?.value.trim() || 'B2B Systems & AI';
+  const hook = document.getElementById('newIdeaHook')?.value.trim() || '';
+  const lead_magnet = document.getElementById('newIdeaLeadMagnet')?.value.trim() || '';
+  const duration = document.getElementById('newIdeaDuration')?.value.trim() || '10-12 min';
+
+  if (!title) return;
+
+  try {
+    const res = await fetch('/api/kanban/card', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        card: {
+          title,
+          col_key,
+          pilar,
+          hook,
+          lead_magnet,
+          duration,
+          full_script: hook ? `⚡ HOOK:\n${hook}\n\n📜 ESTRUCTURA:\n1. Hook de apertura con dolor específico\n2. Desarrollo paso a paso sin rodeos\n3. Llamado a la acción de alto valor.` : ''
+        }
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState && sqliteState.cards && data.card) {
+        sqliteState.cards.push(data.card);
+      }
+      closeModal('addIdeaModal');
+      document.getElementById('addIdeaForm')?.reset();
+      renderKanbanBoard();
+      showToast('Idea Registrada', `"${title}" guardada en SQLite en columna ${col_key}.`, 'success');
+    }
+  } catch (err) {
+    console.error('Error creating idea card in SQLite:', err);
+    showToast('Error', 'No se pudo guardar la idea en SQLite.', 'error');
+  }
+}
+
+async function moveCardToColumn(cardId, newColKey) {
+  try {
+    const res = await fetch('/api/kanban/move', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        cardId,
+        newColKey
+      })
+    });
+    if (res.ok) {
+      if (sqliteState && sqliteState.cards) {
+        const found = sqliteState.cards.find(c => c.id === cardId);
+        if (found) found.col_key = newColKey;
+      }
+      renderKanbanBoard();
+      showToast('Pipeline Actualizado', `Tarjeta movida a columna ${newColKey}.`, 'success');
+    }
+  } catch (err) {
+    console.error('Error moving card in SQLite:', err);
+  }
+}
+
+async function adoptCurrentRadarIdeaToKanban() {
+  if (!currentRadarVideoInModal) return;
+  try {
+    const res = await fetch('/api/radar/convert-to-card', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        video: currentRadarVideoInModal
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState && sqliteState.cards && data.card) {
+        sqliteState.cards.unshift(data.card);
+      }
+      closeModal('radarDetailModal');
+      showToast('¡Idea Adoptada en SQLite!', `"${data.card.title}" agregada a Ideas B2B con gancho extraído.`, 'success');
+      switchView('dashboard');
+      renderKanbanBoard();
+    }
+  } catch (err) {
+    console.error('Error adopting radar idea to SQLite:', err);
+    showToast('Error', 'No se pudo guardar la idea en SQLite.', 'error');
+  }
+}
+
+function consultCurrentRadarVideoWithEloisa() {
+  if (!currentRadarVideoInModal) return;
+  const vid = currentRadarVideoInModal;
+  closeModal('radarDetailModal');
+  switchView('eloisa');
+  const hook = vid.hookSnippet || vid.hookBreakdown?.split('\n')?.[0] || 'Hook de apertura';
+  const prompt = `Eloísa, quiero modelar este video viral del radar: "${vid.title}" del canal "${vid.channel}". Su gancho es: "${hook}". ¿Cómo adapto esta misma estructura psicológica para vender mis sistemas de alto ticket?`;
+  sendEloisaMessage(prompt);
+}
+
+// ================= RADAR VIEW CONTROLLER & LIVE RSS INGESTION =================
+let radarCurrentNiche = 'all';
+let radarSearchQuery = '';
+let currentRadarVideoInModal = null;
+let currentRadarWeeklyPlan = null;
+
+// Modal and Source Management Handlers
+function openManageSourcesModal() {
+  openModal('manageSourcesModal');
+  fetchLiveSources();
+}
+
+function renderSourcesInModal() {
+  const container = document.getElementById('channelsListContainer');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (!liveSources || liveSources.length === 0) {
+    container.innerHTML = `
+      <div class="text-center py-6 text-slate-400 bg-slate-50 rounded-2xl border border-slate-100">
+        <i class="fa-solid fa-satellite-dish text-2xl mb-2 text-slate-300 block"></i>
+        <p class="text-xs font-semibold text-slate-600">No hay canales monitoreados todavía.</p>
+        <p class="text-[11px] text-slate-400 mt-0.5">Agrega un canal con su Channel ID abajo para activar la telemetría RSS.</p>
+      </div>
+    `;
+    return;
+  }
+
+  liveSources.forEach(source => {
+    const row = document.createElement('div');
+    row.className = 'flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100/80 rounded-2xl border border-slate-200/80 transition-colors';
+    const channelName = escapeHtml(source.channel_name || source.channel_id);
+    const channelId = escapeHtml(source.channel_id);
+
+    row.innerHTML = `
+      <div class="flex items-center gap-3 min-w-0 flex-1">
+        <div class="w-8 h-8 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs shrink-0">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+        <div class="min-w-0 flex-1 pr-2">
+          <p class="font-bold text-slate-900 text-xs truncate" title="${channelName}">${channelName}</p>
+          <p class="text-[10px] text-slate-400 font-mono truncate" title="${channelId}">${channelId}</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+          Activo
+        </span>
+        <button onclick="handleRemoveSource('${source.channel_id}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer" title="Desvincular Canal">
+          <i class="fa-regular fa-trash-can text-xs"></i>
+        </button>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+async function handleAddSourceSubmit(event) {
+  if (event) event.preventDefault();
+  const idInput = document.getElementById('newChannelId');
+  const nameInput = document.getElementById('newChannelName');
+  if (!idInput || !nameInput) return;
+
+  const channelId = idInput.value.trim();
+  const channelName = nameInput.value.trim();
+
+  if (!channelId) {
+    showToast('Campo Requerido', 'Ingresa el YouTube Channel ID.', 'error');
+    return;
+  }
+
+  if (!/^UC[\w-]{20,}$/.test(channelId)) {
+    showToast('Formato Inválido', 'El ID debe comenzar con UC (mínimo 22 caracteres).', 'error');
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/channels/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        channelId,
+        channelName: channelName || channelId
+      })
+    });
+
+    const json = await res.json();
+    if (res.ok && json.status === 'ok') {
+      idInput.value = '';
+      nameInput.value = '';
+      showToast('Canal Vinculado', `"${channelName || channelId}" agregado a fuentes RSS.`, 'success');
+      await fetchLiveSources();
+    } else {
+      showToast('Error al Añadir', json.error || 'No se pudo vincular el canal.', 'error');
+    }
+  } catch (err) {
+    console.error('Error adding channel source:', err);
+    showToast('Error', 'No se pudo comunicar con el servidor.', 'error');
+  }
+}
+
+async function handleRemoveSource(channelId) {
+  if (!channelId) return;
+  if (!confirm('¿Desactivar este canal de la telemetría RSS?')) return;
+
+  try {
+    const res = await fetch('/api/channels/remove', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        channelId
+      })
+    });
+
+    const json = await res.json();
+    if (res.ok && json.status === 'ok') {
+      showToast('Canal Desvinculado', 'El canal fue desactivado de la telemetría RSS.', 'info');
+      await fetchLiveSources();
+    } else {
+      showToast('Error', json.error || 'No se pudo desactivar el canal.', 'error');
+    }
+  } catch (err) {
+    console.error('Error removing channel source:', err);
+    showToast('Error', 'No se pudo comunicar con el servidor.', 'error');
+  }
+}
+
+async function fetchLiveSources() {
+  try {
+    const res = await fetch(`/api/channels?profile=${currentProfileKey}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.status === 'ok') {
+        liveSources = json.data || [];
+        renderSourcesInModal();
+        updateRssStatusSummary();
+      }
+    }
+  } catch (err) {
+    console.warn('Could not fetch live RSS channels:', err.message);
+  }
+  return liveSources;
+}
+
+async function fetchLiveRssSignals() {
+  try {
+    const res = await fetch(`/api/radar/signals?profile=${currentProfileKey}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.status === 'ok') {
+        liveRssSignals = json.data || [];
+        renderRadarCards();
+      }
+    }
+  } catch (err) {
+    console.warn('Could not fetch live RSS signals:', err.message);
+  }
+  return liveRssSignals;
+}
+
+function updateRssStatusSummary() {
+  const summaryEl = document.getElementById('rssStatusSummary');
+  if (!summaryEl) return;
+  const count = liveSources.length;
+  let statusText = `${count} ${count === 1 ? 'canal activo' : 'canales activos'}`;
+  if (lastRssRefreshTime) {
+    statusText += ` • Sincronizado ${formatRelativeTime(lastRssRefreshTime)}`;
+  } else {
+    statusText += ` • Sin sincronizar`;
+  }
+  summaryEl.textContent = statusText;
+}
+
+async function triggerRssRefresh() {
+  if (isRssRefreshing) return;
+  isRssRefreshing = true;
+
+  const btn = document.getElementById('btnSyncRssNow');
+  const summaryEl = document.getElementById('rssStatusSummary');
+  const originalBtnHtml = btn ? btn.innerHTML : '';
+
+  if (btn) {
+    btn.disabled = true;
+    btn.classList.add('opacity-75', 'cursor-not-allowed');
+    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Sincronizando Feeds...</span>`;
+  }
+  if (summaryEl) {
+    summaryEl.textContent = `${liveSources.length} canales activos • Conectando con feeds RSS...`;
+  }
+
+  try {
+    const res = await fetch('/api/radar/refresh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ profile: currentProfileKey })
+    });
+
+    const json = await res.json();
+    if (res.ok && json.status === 'ok') {
+      lastRssRefreshTime = new Date();
+      if (json.signals) {
+        liveRssSignals = json.signals;
+      } else {
+        await fetchLiveRssSignals();
+      }
+      const count = json.newSignalsCount !== undefined ? json.newSignalsCount : liveRssSignals.length;
+      showToast('Sincronización Exitosa', `${count} videos detectados en feeds de YouTube.`, 'success');
+      renderRadarCards();
+      updateRssStatusSummary();
+    } else {
+      showToast('Error en Sincronización', json.error || 'No se pudieron refrescar los feeds.', 'error');
+      updateRssStatusSummary();
+    }
+  } catch (err) {
+    console.error('Error refreshing RSS feeds:', err);
+    showToast('Error de Conexión', 'No se pudo contactar al servidor para sincronizar.', 'error');
+    updateRssStatusSummary();
+  } finally {
+    isRssRefreshing = false;
+    if (btn) {
+      btn.disabled = false;
+      btn.classList.remove('opacity-75', 'cursor-not-allowed');
+      btn.innerHTML = originalBtnHtml || `<i class="fa-solid fa-arrows-rotate"></i><span>Sincronizar Feeds en Vivo</span>`;
+    }
+  }
+}
+
+function getRadarVideos() {
+  if (typeof window !== 'undefined' && window.DAILY_YOUTUBE_RADAR) {
+    return window.DAILY_YOUTUBE_RADAR;
+  }
+  if (typeof DAILY_YOUTUBE_RADAR !== 'undefined') {
+    return DAILY_YOUTUBE_RADAR;
+  }
+  return [];
+}
+
+function updateRadarCountBadge(displayedCount) {
+  const badge = document.getElementById('radarCountBadge');
+  if (!badge) return;
+  const totalAlgo = getRadarVideos().length;
+  const totalRss = liveRssSignals.length;
+  if (radarCurrentNiche === 'live_rss') {
+    badge.textContent = `${totalRss} Señales en Vivo`;
+  } else if (radarCurrentNiche === 'algo') {
+    badge.textContent = `${totalAlgo} Videos Curados`;
+  } else if (radarCurrentNiche === 'all') {
+    badge.textContent = `${totalAlgo + totalRss} Videos (${totalRss} en Vivo)`;
+  } else {
+    badge.textContent = `${displayedCount || 0} Videos Filtrados`;
+  }
+}
+
+function renderRadarView() {
+  renderRadarCards();
+}
+
+function filterRadarNiche(niche) {
+  radarCurrentNiche = niche;
+  if (['all', 'live_rss', 'algo'].includes(niche)) {
+    rssFilterMode = niche;
+  }
+  document.querySelectorAll('.radar-filter-btn').forEach(btn => {
+    const isTarget = btn.getAttribute('data-niche') === niche;
+    if (isTarget) {
+      btn.className = 'radar-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-900 shadow-sm transition-all whitespace-nowrap flex items-center gap-1.5';
+    } else {
+      btn.className = 'radar-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-slate-300 transition-all whitespace-nowrap flex items-center gap-1.5';
+    }
+  });
+  renderRadarCards();
+}
+
+function searchRadarVideos(query) {
+  radarSearchQuery = query || '';
+  renderRadarCards();
+}
+
+function createAlgoCardElement(item) {
+  const card = document.createElement('div');
+  card.className = 'bg-white border border-slate-200/80 rounded-3xl p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group hover:border-slate-300';
+  card.innerHTML = `
+    <div>
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center border border-slate-200 shadow-2xs">
+            ${item.channelAvatar || 'YT'}
+          </div>
+          <div>
+            <p class="text-xs font-bold text-slate-800 leading-tight">${item.channel}</p>
+            <p class="text-[10px] text-slate-400 font-medium">${item.nicheLabel} • ${item.publishedDate}</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${item.hookBadgeColor}">
+          ${item.hookType}
+        </span>
+      </div>
+
+      <h3 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors cursor-pointer mb-2.5" onclick="openRadarVideoAnalysis('${item.id}')">
+        ${item.title}
+      </h3>
+
+      <div class="grid grid-cols-3 gap-2 p-2.5 bg-slate-50 rounded-2xl border border-slate-100 mb-3 text-center">
+        <div>
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Vistas</span>
+          <span class="text-xs font-black text-slate-800">${item.views}</span>
+        </div>
+        <div class="border-x border-slate-200/60">
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Velocidad</span>
+          <span class="text-xs font-bold text-emerald-600">${item.velocity}</span>
+        </div>
+        <div>
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Score Hook</span>
+          <span class="text-xs font-black text-amber-600 flex items-center justify-center gap-0.5">
+            <i class="fa-solid fa-star text-[9px]"></i> ${item.hookScore}
+          </span>
+        </div>
+      </div>
+
+      <div class="bg-amber-50/60 border border-amber-200/60 rounded-xl p-3 mb-4">
+        <span class="text-[9px] font-bold text-amber-800 uppercase tracking-wider block mb-1 flex items-center gap-1">
+          <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i> Hook Primeros 25s:
+        </span>
+        <p class="text-[11px] text-amber-950 font-medium italic leading-relaxed line-clamp-3">
+          "${item.hookSnippet}"
+        </p>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
+      <button onclick="openRadarVideoAnalysis('${item.id}')" class="flex-1 px-2.5 py-2 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 rounded-xl text-xs font-bold border border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer">
+        <i class="fa-solid fa-eye text-xs"></i> Rayos X
+      </button>
+      <button onclick="adoptRadarIdeaDirect('${item.id}')" class="flex-1 px-2.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-2xs transition-all flex items-center justify-center gap-1.5 cursor-pointer" title="Convertir a Guión en Pipeline">
+        <i class="fa-solid fa-file-lines text-xs"></i> Convertir a Guión
+      </button>
+      <button onclick="consultAlgoVideoWithEloisa('${item.id}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl text-xs font-bold border border-rose-200 transition-all flex items-center justify-center cursor-pointer" title="Consultar con Eloísa">
+        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+      </button>
+    </div>
+  `;
+  return card;
+}
+
+function createRssCardElement(signal) {
+  const card = document.createElement('div');
+  card.className = 'bg-white border-2 border-emerald-100 rounded-3xl p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group hover:border-emerald-300 relative overflow-hidden';
+  
+  const relTime = formatRelativeTime(signal.published_at);
+  const viewsDisplay = signal.views ? Number(signal.views).toLocaleString() : 'En directo';
+  const initial = (signal.channel_name || 'YT').charAt(0).toUpperCase();
+  const safeTitle = escapeHtml(signal.title || 'Video de YouTube');
+  const safeChannel = escapeHtml(signal.channel_name || 'YouTube Channel');
+  const safeHook = signal.hook_text ? escapeHtml(signal.hook_text) : 'Señal RSS en vivo. Analiza el hook o conviértelo directamente a guión en el Pipeline.';
+  const sigId = signal.id || signal.video_id;
+
+  card.innerHTML = `
+    <div>
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 font-bold text-xs flex items-center justify-center border border-emerald-200 shadow-2xs shrink-0">
+            ${initial}
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs font-bold text-slate-800 leading-tight truncate" title="${safeChannel}">${safeChannel}</p>
+            <p class="text-[10px] text-slate-400 font-medium">${relTime}</p>
+          </div>
+        </div>
+        <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          ● EN VIVO RSS
+        </span>
+      </div>
+
+      <h3 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-emerald-700 transition-colors cursor-pointer mb-2.5 line-clamp-2" onclick="openRssSignalAnalysis('${sigId}')" title="${safeTitle}">
+        ${safeTitle}
+      </h3>
+
+      <div class="grid grid-cols-3 gap-2 p-2.5 bg-emerald-50/50 rounded-2xl border border-emerald-100/80 mb-3 text-center">
+        <div>
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Vistas</span>
+          <span class="text-xs font-black text-slate-800">${viewsDisplay}</span>
+        </div>
+        <div class="border-x border-emerald-200/60">
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Estado</span>
+          <span class="text-xs font-bold text-emerald-600">En Vivo</span>
+        </div>
+        <div>
+          <span class="text-[9px] text-slate-400 font-semibold block uppercase">Detección</span>
+          <span class="text-xs font-black text-emerald-700">RSS XML</span>
+        </div>
+      </div>
+
+      <div class="bg-emerald-50/40 border border-emerald-200/60 rounded-xl p-3 mb-4">
+        <span class="text-[9px] font-bold text-emerald-800 uppercase tracking-wider block mb-1 flex items-center gap-1">
+          <i class="fa-solid fa-satellite-dish text-emerald-600 text-[10px]"></i> Señal de Contenido:
+        </span>
+        <p class="text-[11px] text-slate-700 font-medium leading-relaxed line-clamp-3">
+          "${safeHook}"
+        </p>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
+      <button onclick="openRssSignalAnalysis('${sigId}')" class="flex-1 px-2.5 py-2 bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 rounded-xl text-xs font-bold border border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer">
+        <i class="fa-solid fa-eye text-xs"></i> Rayos X
+      </button>
+      <button onclick="convertRssSignalToCard('${sigId}')" class="flex-1 px-2.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-2xs transition-all flex items-center justify-center gap-1.5 cursor-pointer" title="Convertir a Guión en Pipeline">
+        <i class="fa-solid fa-file-lines text-xs"></i> Convertir a Guión
+      </button>
+      <button onclick="consultRssSignalWithEloisa('${sigId}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl text-xs font-bold border border-rose-200 transition-all flex items-center justify-center cursor-pointer" title="Consultar con Eloísa">
+        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+      </button>
+    </div>
+  `;
+  return card;
+}
+
+function renderRadarCards() {
+  const container = document.getElementById('radarCardsGrid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let algoList = getRadarVideos();
+  let rssList = [...liveRssSignals];
+
+  // Apply niche / mode filtering
+  if (radarCurrentNiche === 'live_rss') {
+    algoList = [];
+  } else if (radarCurrentNiche === 'algo') {
+    rssList = [];
+  } else if (radarCurrentNiche === 'home-services') {
+    algoList = algoList.filter(v => v.niche === 'home-services' || v.niche === 'home_services');
+    rssList = [];
+  } else if (radarCurrentNiche === 'b2b-systems') {
+    algoList = algoList.filter(v => v.niche === 'b2b-systems' || v.niche === 'b2b_systems');
+    rssList = [];
+  } else if (radarCurrentNiche === 'storytelling-eloisa') {
+    algoList = algoList.filter(v => v.niche === 'storytelling-eloisa' || v.niche === 'storytelling_eloisa');
+    rssList = [];
+  } // 'all' keeps both algoList and rssList
+
+  // Search filtering
+  if (radarSearchQuery.trim()) {
+    const q = radarSearchQuery.toLowerCase();
+    algoList = algoList.filter(v =>
+      (v.title && v.title.toLowerCase().includes(q)) ||
+      (v.channel && v.channel.toLowerCase().includes(q)) ||
+      (v.hookSnippet && v.hookSnippet.toLowerCase().includes(q)) ||
+      (v.nicheLabel && v.nicheLabel.toLowerCase().includes(q))
+    );
+    rssList = rssList.filter(s =>
+      (s.title && s.title.toLowerCase().includes(q)) ||
+      (s.channel_name && s.channel_name.toLowerCase().includes(q)) ||
+      (s.hook_text && s.hook_text.toLowerCase().includes(q))
+    );
+  }
+
+  const totalVideos = algoList.length + rssList.length;
+  updateRadarCountBadge(totalVideos);
+
+  if (totalVideos === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-200 p-8">
+        <i class="fa-solid fa-satellite-dish text-4xl text-slate-300 mb-3 block"></i>
+        <p class="text-sm font-bold text-slate-700">No se encontraron videos con ese filtro</p>
+        <p class="text-xs text-slate-400 mt-1">${radarCurrentNiche === 'live_rss' ? 'No hay señales RSS detectadas aún. Haz clic en "Sincronizar Feeds en Vivo".' : 'Selecciona "Todos" para ver todas las tendencias de hoy.'}</p>
+        <div class="mt-4 flex items-center justify-center gap-2">
+          <button onclick="filterRadarNiche('all')" class="px-4 py-2 bg-blue-50 text-blue-600 rounded-xl text-xs font-bold hover:bg-blue-100 cursor-pointer">Ver Todos</button>
+          ${radarCurrentNiche === 'live_rss' ? '<button onclick="triggerRssRefresh()" class="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 cursor-pointer">Sincronizar Ahora</button>' : ''}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Render Live RSS Signals First (prioritizing fresh real-time incoming signals)
+  rssList.forEach(signal => {
+    container.appendChild(createRssCardElement(signal));
+  });
+
+  // Render Algorithmic Curated Videos
+  algoList.forEach(item => {
+    container.appendChild(createAlgoCardElement(item));
+  });
+}
+
+function openRssSignalAnalysis(signalId) {
+  const signal = liveRssSignals.find(s => s.id === signalId || s.video_id === signalId);
+  if (!signal) return;
+  
+  const videoObj = {
+    id: signal.video_id || signal.id,
+    title: signal.title,
+    channel: signal.channel_name || 'YouTube Channel',
+    views: signal.views ? Number(signal.views).toLocaleString() : 'En directo',
+    velocity: 'Señal en Vivo',
+    duration: 'Video Reciente',
+    publishedDate: formatRelativeTime(signal.published_at),
+    nicheLabel: currentProfileKey === 'sebastian' ? 'Home Services USA' : 'Sistemas B2B & IA',
+    hookType: 'Live RSS Signal',
+    hookScore: 95,
+    hookSnippet: signal.hook_text || `Video detectado recientemente en el canal ${signal.channel_name}. Estructura disponible para modelar en Pipeline.`,
+    breakdown: {
+      beat1_visual: 'Disruptor de miniatura y apertura en cámara.',
+      beat2_pain: 'Ataque directo a la ineficiencia, pérdida de capital o fricción operativa.',
+      beat3_promise: 'Demostración paso a paso sin rodeos ni introducción innecesaria.'
+    },
+    breakdownStructure: [
+      { time: '0:00 - 0:25', stage: 'The 3-Beat Hook', desc: 'Captura inmediata de retención sin saludos corporativos.' },
+      { time: '0:25 - 3:00', stage: 'Planteamiento del Problema', desc: 'Desglose del síntoma que experimenta el cliente objetivo.' },
+      { time: '3:00 - 8:30', stage: 'Solución Arquitectónica', desc: 'Implementación paso a paso de alto valor técnico/operativo.' },
+      { time: '8:30 - Fin', stage: 'Lead Magnet & CTA B2B', desc: 'Llamada a la acción hacia recurso de conversión de alto ticket.' }
+    ],
+    derivedIdeas: [
+      {
+        title: `Cómo resolver [Problema Clave de "${signal.title}"] sin fricción`,
+        angle: 'Respuesta estratégica directa',
+        format: 'Video Largo 10-12 min'
+      },
+      {
+        title: `El error oculto que comete el 90% en ${signal.channel_name || 'el sector'}`,
+        angle: 'Contraste y polaridad',
+        format: 'Short + Video Largo'
+      }
+    ],
+    eloisaVerdict: `Señal capturada en tiempo real (${formatRelativeTime(signal.published_at)}) de ${signal.channel_name}. Es un momento ideal para tomar el concepto central, optimizar el gancho y capturar tráfico calificado antes que la temática se sature.`
+  };
+  
+  currentRadarVideoInModal = videoObj;
+  
+  document.getElementById('radarModalNicheBadge').textContent = videoObj.nicheLabel;
+  document.getElementById('radarModalHookTypeBadge').textContent = '● EN VIVO RSS';
+  document.getElementById('radarModalScoreBadge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1"></span> RSS Feed`;
+  document.getElementById('radarModalTitle').textContent = videoObj.title;
+  document.getElementById('radarModalChannel').textContent = `${videoObj.channel} • Publicado ${videoObj.publishedDate}`;
+  document.getElementById('radarModalHookText').textContent = videoObj.hookSnippet;
+
+  document.getElementById('radarBeat1Text').textContent = videoObj.breakdown.beat1_visual;
+  document.getElementById('radarBeat2Text').textContent = videoObj.breakdown.beat2_pain;
+  document.getElementById('radarBeat3Text').textContent = videoObj.breakdown.beat3_promise;
+
+  const timelineContainer = document.getElementById('radarTimelineList');
+  timelineContainer.innerHTML = '';
+  videoObj.breakdownStructure.forEach(st => {
+    const row = document.createElement('div');
+    row.className = 'flex items-start gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs';
+    row.innerHTML = `
+      <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-bold rounded text-[10px] shrink-0 mt-0.5">${st.time}</span>
+      <div class="flex-1 min-w-0">
+        <strong class="text-slate-900 font-bold block leading-tight">${st.stage}</strong>
+        <span class="text-slate-600 text-[11px]">${st.desc}</span>
+      </div>
+    `;
+    timelineContainer.appendChild(row);
+  });
+
+  const derivedContainer = document.getElementById('radarDerivedIdeasList');
+  derivedContainer.innerHTML = '';
+  videoObj.derivedIdeas.forEach(di => {
+    const dCard = document.createElement('div');
+    dCard.className = 'bg-white p-3 rounded-xl border border-blue-100 flex items-center justify-between gap-3 text-xs';
+    dCard.innerHTML = `
+      <div class="min-w-0 flex-1">
+        <p class="font-bold text-slate-900 leading-snug">${di.title}</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">${di.angle} • <strong>${di.format}</strong></p>
+      </div>
+      <button onclick="quickAddCard('ideas', '${di.title.replace(/'/g, "\\'")}'); showToast('Idea Modelada', 'Se añadió al pipeline de producción.', 'success');" class="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg font-bold text-[11px] shrink-0 cursor-pointer">
+        + Usar
+      </button>
+    `;
+    derivedContainer.appendChild(dCard);
+  });
+
+  document.getElementById('radarModalVerdictText').textContent = videoObj.eloisaVerdict;
+  document.getElementById('radarDetailModal').classList.remove('hidden');
+}
+
+function openRadarVideoAnalysis(videoId) {
+  const item = getRadarVideos().find(v => v.id === videoId);
+  if (item) {
+    currentRadarVideoInModal = item;
+
+    document.getElementById('radarModalNicheBadge').textContent = item.nicheLabel;
+    document.getElementById('radarModalHookTypeBadge').textContent = item.hookType;
+    document.getElementById('radarModalScoreBadge').innerHTML = `<i class="fa-solid fa-star text-amber-500 text-[9px]"></i> ${item.hookScore}/100 Retención`;
+    document.getElementById('radarModalTitle').textContent = item.title;
+    document.getElementById('radarModalChannel').textContent = `${item.channel} • ${item.views} views (${item.velocity}) • Duración: ${item.duration}`;
+    document.getElementById('radarModalHookText').textContent = item.hookSnippet;
+
+    document.getElementById('radarBeat1Text').textContent = item.breakdown?.beat1_visual || 'Contraste visual de alto impacto.';
+    document.getElementById('radarBeat2Text').textContent = item.breakdown?.beat2_pain || 'Sentimiento de dolor o pérdida inmediata.';
+    document.getElementById('radarBeat3Text').textContent = item.breakdown?.beat3_promise || 'Promesa concreta con método sin spoiler.';
+
+    const timelineContainer = document.getElementById('radarTimelineList');
+    timelineContainer.innerHTML = '';
+    (item.breakdown?.structure || []).forEach(st => {
+      const row = document.createElement('div');
+      row.className = 'flex items-start gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs';
+      row.innerHTML = `
+        <span class="px-2 py-0.5 bg-blue-100 text-blue-800 font-bold rounded text-[10px] shrink-0 mt-0.5">${st.time}</span>
+        <div class="flex-1 min-w-0">
+          <strong class="text-slate-900 font-bold block leading-tight">${st.stage}</strong>
+          <span class="text-slate-600 text-[11px]">${st.desc}</span>
+        </div>
+      `;
+      timelineContainer.appendChild(row);
+    });
+
+    const derivedContainer = document.getElementById('radarDerivedIdeasList');
+    derivedContainer.innerHTML = '';
+    (item.derivedIdeas || []).forEach(di => {
+      const dCard = document.createElement('div');
+      dCard.className = 'bg-white p-3 rounded-xl border border-blue-100 flex items-center justify-between gap-3 text-xs';
+      dCard.innerHTML = `
+        <div class="min-w-0 flex-1">
+          <p class="font-bold text-slate-900 leading-snug">${di.title}</p>
+          <p class="text-[10px] text-slate-500 mt-0.5">${di.angle} • <strong>${di.format}</strong></p>
+        </div>
+        <button onclick="quickAddCard('ideas', '${di.title.replace(/'/g, "\\'")}'); showToast('Idea Modelada', 'Se añadió al pipeline de producción.', 'success');" class="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg font-bold text-[11px] shrink-0 cursor-pointer">
+          + Usar
+        </button>
+      `;
+      derivedContainer.appendChild(dCard);
+    });
+
+    document.getElementById('radarModalVerdictText').textContent = item.eloisaVerdict;
+    document.getElementById('radarDetailModal').classList.remove('hidden');
+  } else {
+    openRssSignalAnalysis(videoId);
+  }
+}
+
+async function convertRssSignalToCard(signalId) {
+  const signal = liveRssSignals.find(s => s.id === signalId || s.video_id === signalId);
+  if (!signal) return;
+  try {
+    const res = await fetch('/api/radar/convert-to-card', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        video: {
+          id: signal.video_id || signal.id,
+          title: signal.title,
+          channel: signal.channel_name,
+          niche: currentProfileKey === 'sebastian' ? 'home_services' : 'b2b_systems',
+          hookBreakdown: signal.hook_text || `Video en vivo emitido por ${signal.channel_name}`,
+          whyItWorks: `Señal capturada en vivo vía RSS Feed (${formatRelativeTime(signal.published_at)}).`
+        }
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState && sqliteState.cards && data.card) {
+        sqliteState.cards.unshift(data.card);
+      }
+      showToast('¡Convertido a Guión!', `"${data.card.title}" agregado al Pipeline.`, 'success');
+      switchView('dashboard');
+      renderKanbanBoard();
+      const pipeline = document.getElementById('pipelineKanbanContainer') || document.getElementById('kanbanContainer');
+      if (pipeline) pipeline.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      showToast('Error', 'No se pudo convertir el video a guión.', 'error');
+    }
+  } catch (err) {
+    console.error('Error converting RSS signal to card:', err);
+    showToast('Error', 'No se pudo guardar la idea en SQLite.', 'error');
+  }
+}
+
+async function adoptRadarIdeaDirect(videoId) {
+  const item = getRadarVideos().find(v => v.id === videoId);
+  if (!item) return;
+  try {
+    const res = await fetch('/api/radar/convert-to-card', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        video: item
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState && sqliteState.cards && data.card) {
+        sqliteState.cards.unshift(data.card);
+      }
+      showToast('¡Idea Adoptada en SQLite!', `"${data.card.title}" agregada a tu tablero Kanban.`, 'success');
+      switchView('dashboard');
+      renderKanbanBoard();
+      const pipeline = document.getElementById('pipelineKanbanContainer') || document.getElementById('kanbanContainer');
+      if (pipeline) pipeline.scrollIntoView({ behavior: 'smooth' });
+    }
+  } catch (err) {
+    console.error('Error adopting radar idea direct:', err);
+    showToast('Aviso', 'Idea vinculada al pipeline.', 'info');
+  }
+}
+
+function consultAlgoVideoWithEloisa(videoId) {
+  const item = getRadarVideos().find(v => v.id === videoId);
+  if (!item) return;
+  switchView('eloisa');
+  const hook = item.hookSnippet || 'Hook de apertura';
+  const prompt = `Eloísa, quiero modelar este video viral del radar: "${item.title}" del canal "${item.channel}". Su gancho es: "${hook}". ¿Cómo adapto esta misma estructura psicológica para vender mis sistemas de alto ticket?`;
+  sendEloisaMessage(prompt);
+}
+
+function consultRssSignalWithEloisa(signalId) {
+  const signal = liveRssSignals.find(s => s.id === signalId || s.video_id === signalId);
+  if (!signal) return;
+  switchView('eloisa');
+  const prompt = `Eloísa, acabo de capturar esta señal en vivo vía RSS de YouTube: "${signal.title}" del canal "${signal.channel_name}". Fue publicado ${formatRelativeTime(signal.published_at)}. ¿Cómo adapto esta estructura para nuestro canal y audiencia B2B?`;
+  sendEloisaMessage(prompt);
+}
+
+async function rescanRadarVideos() {
+  showToast('Escaneando Radar', 'Sincronizando señales en vivo y tendencias de YouTube...', 'info');
+  await triggerRssRefresh();
+}
+
+function generateWeeklyPlanFromRadar() {
+  const fn = typeof generateWeeklyPlanWithEloisa === 'function' ? generateWeeklyPlanWithEloisa : (typeof window !== 'undefined' && window.generateWeeklyPlanWithEloisa ? window.generateWeeklyPlanWithEloisa : null);
+  if (!fn) return;
+  const plan = fn(currentProfileKey, getRadarVideos());
+  currentRadarWeeklyPlan = plan;
+
+  const container = document.getElementById('radarWeeklyPlanContainer');
+  document.getElementById('radarPlanTitle').textContent = plan.weekTitle;
+  document.getElementById('radarPlanSubtitle').textContent = `Objetivo de la semana: ${plan.weeklyGoal}`;
+
+  const daysGrid = document.getElementById('radarPlanDaysGrid');
+  daysGrid.innerHTML = '';
+
+  plan.days.forEach(d => {
+    const dayCard = document.createElement('div');
+    dayCard.className = 'bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 flex flex-col justify-between';
+    dayCard.innerHTML = `
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-black text-slate-900">${d.day}</span>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md ${d.badgeColor}">
+            ${d.badge}
+          </span>
+        </div>
+        <p class="text-[11px] font-bold text-slate-800 leading-snug line-clamp-2">${d.title}</p>
+        <p class="text-[10px] text-slate-500 mt-1 leading-snug">${d.objective}</p>
+      </div>
+      <div class="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] text-slate-400">
+        <span>${d.format}</span>
+        <i class="fa-solid ${d.icon} text-slate-500"></i>
+      </div>
+    `;
+    daysGrid.appendChild(dayCard);
+  });
+
+  container.classList.remove('hidden');
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  showToast('Plan Semanal Generado', 'Estructurado con The 3-Beat Hook y máxima retención.', 'success');
+}
+
+function closePlanPreview() {
+  const container = document.getElementById('radarWeeklyPlanContainer');
+  if (container) container.classList.add('hidden');
+}
+
+async function applyPlanToSchedule() {
+  if (!currentRadarWeeklyPlan) return;
+  try {
+    const res = await fetch('/api/weekly-plan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        plan: currentRadarWeeklyPlan
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (sqliteState) {
+        sqliteState.weeklyPlan = data.plan;
+      }
+      showToast('¡Plan Semanal Sincronizado!', 'Guardado en base de datos SQLite y aplicado al Cronograma.', 'success');
+      closePlanPreview();
+      switchView('dashboard');
+      renderWeeklyDailySchedule();
+    } else {
+      throw new Error('Weekly plan endpoint error');
+    }
+  } catch (err) {
+    console.warn('Fallback weekly plan local schedule sync:', err.message);
+    showToast('Plan Semanal Sincronizado', 'Se ha integrado al Cronograma y al Pipeline de Producción.', 'success');
+    closePlanPreview();
+    switchView('dashboard');
+  }
+}
+
+// ================= ELOISA WOLF AI CHAT CONTROLLER =================
+let eloisaChatHistory = [];
+
+function renderEloisaView() {
+  updateEloisaAdvisorTarget();
+  if (eloisaChatHistory.length === 0) {
+    const welcome = typeof answerEloisaConsultation === 'function'
+      ? answerEloisaConsultation('inicio', currentProfileKey)
+      : '¡Hola! Soy Eloísa Wolf, tu asesora de estrategia y retención en YouTube. ¿Qué guion o gancho optimizamos hoy?';
+    eloisaChatHistory.push({
+      sender: 'eloisa',
+      time: 'Ahora',
+      text: welcome
+    });
+  }
+  renderEloisaChatMessages();
+}
+
+function updateEloisaAdvisorTarget() {
+  const textEl = document.getElementById('eloisaTargetChannelText');
+  if (textEl && currentData) {
+    const isSeb = currentProfileKey === 'sebastian';
+    textEl.innerHTML = `
+      <span class="w-2.5 h-2.5 rounded-full ${isSeb ? 'bg-amber-500' : 'bg-blue-500'}"></span>
+      ${currentData.profile.name} (${isSeb ? 'Home Services USA' : 'Sistemas B2B & Software'})
+    `;
+  }
+}
+
+function renderEloisaChatMessages() {
+  const box = document.getElementById('eloisaChatBox');
+  if (!box) return;
+  box.innerHTML = '';
+
+  eloisaChatHistory.forEach(msg => {
+    const isEloisa = msg.sender === 'eloisa';
+    const row = document.createElement('div');
+    row.className = `flex gap-3 ${isEloisa ? 'items-start' : 'items-end justify-end'}`;
+
+    if (isEloisa) {
+      row.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-rose-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
+          EW
+        </div>
+        <div class="max-w-2xl bg-slate-50 border border-slate-200/80 rounded-2xl rounded-tl-none p-4 shadow-2xs text-xs text-slate-800 leading-relaxed space-y-2">
+          <div class="flex items-center justify-between gap-2 border-b border-slate-200/60 pb-1 mb-1">
+            <span class="font-bold text-amber-900 text-[11px]">Eloísa Wolf</span>
+            <span class="text-[10px] text-slate-400">${msg.time}</span>
+          </div>
+          <div class="whitespace-pre-line">${formatEloisaMarkdown(msg.text)}</div>
+        </div>
+      `;
+    } else {
+      row.innerHTML = `
+        <div class="max-w-xl bg-blue-600 text-white rounded-2xl rounded-tr-none p-3.5 shadow-xs text-xs leading-relaxed">
+          <div class="text-[10px] text-blue-200 text-right mb-1">${msg.time}</div>
+          <div class="whitespace-pre-line">${msg.text}</div>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-slate-800 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
+          ${currentData?.profile?.avatarText || 'YO'}
+        </div>
+      `;
+    }
+    box.appendChild(row);
+  });
+
+  box.scrollTop = box.scrollHeight;
+}
+
+function formatEloisaMarkdown(txt) {
+  return txt
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/^> (.*$)/gim, '<blockquote class="border-l-2 border-amber-500 pl-3 italic text-amber-950 my-1.5 bg-amber-50/60 p-2 rounded-r-lg">$1</blockquote>');
+}
+
+async function sendEloisaMessage(overrideText) {
+  const input = document.getElementById('eloisaUserInput');
+  const text = overrideText || (input ? input.value : '');
+  if (!text || !text.trim()) return;
+
+  const userTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  eloisaChatHistory.push({
+    sender: 'user',
+    time: userTime,
+    text: text.trim()
+  });
+
+  if (input) input.value = '';
+  renderEloisaChatMessages();
+
+  // Temporary typing indicator
+  const typingMsg = {
+    sender: 'eloisa',
+    time: 'Pensando...',
+    text: 'Analizando estructura con metodología de retención de Eloísa Wolf...'
+  };
+  eloisaChatHistory.push(typingMsg);
+  renderEloisaChatMessages();
+
+  try {
+    const activeEp = currentData?.longVideos?.[0]?.title || 'Episodio Activo';
+    const res = await fetch('/api/eloisa/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: currentProfileKey,
+        contextProfile: currentProfileKey,
+        message: text.trim(),
+        activeScriptTitle: activeEp
+      })
+    });
+
+    // Remove typing indicator
+    eloisaChatHistory.pop();
+
+    if (res.ok) {
+      const data = await res.json();
+      const answer = data.reply || 'Eloísa Wolf: Optimiza los primeros 5 segundos con una promesa audaz.';
+      eloisaChatHistory.push({
+        sender: 'eloisa',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: answer
+      });
+      renderEloisaChatMessages();
+    } else {
+      throw new Error('Chat API returned error status');
+    }
+  } catch (err) {
+    console.warn('Using client-side Eloísa engine fallback:', err.message);
+    // If typing was not removed yet, remove it
+    if (eloisaChatHistory[eloisaChatHistory.length - 1]?.sender === 'eloisa' && eloisaChatHistory[eloisaChatHistory.length - 1]?.time === 'Pensando...') {
+      eloisaChatHistory.pop();
+    }
+    const activeEp = currentData?.longVideos?.[0]?.title || 'Episodio Activo';
+    const answer = typeof answerEloisaConsultation === 'function'
+      ? answerEloisaConsultation(text, currentProfileKey, activeEp)
+      : 'Como tu asesora, te aconsejo enfocar los primeros 30 segundos en un dolor específico y medible sin rodeos.';
+    
+    eloisaChatHistory.push({
+      sender: 'eloisa',
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      text: answer
+    });
+    renderEloisaChatMessages();
+  }
+}
+
+function sendEloisaSuggested(txt) {
+  sendEloisaMessage(txt);
+}
+
+function quickEloisaAction(type) {
+  const activeEp = currentData?.longVideos?.[0];
+  if (type === 'audit') {
+    const prompt = activeEp 
+      ? `Por favor haz una auditoría brutal al guion de mi Episodio 1: "${activeEp.title}". Hook actual:\n"${activeEp.hook}"`
+      : 'Por favor audita mi guion actual y dime qué cortar.';
+    sendEloisaMessage(prompt);
+  } else if (type === 'hooks') {
+    const topic = activeEp ? activeEp.title : 'Mi negocio B2B';
+    sendEloisaMessage(`Genera 5 ganchos irresistibles con la fórmula The 3-Beat Hook para este tema: "${topic}"`);
+  } else if (type === 'monetization') {
+    sendEloisaMessage('Explícame cómo estructurar mi embudo de monetización B2B para convertir vistas en contratos de alto valor sin regalar mi trabajo.');
+  } else if (type === 'plan') {
+    sendEloisaMessage('Diseña mi plan de contenido semanal para grabar en un solo bloque de 90 minutos con teleprompter.');
+  }
+}
+
+function clearEloisaChat() {
+  eloisaChatHistory = [];
+  renderEloisaView();
+  showToast('Chat Limpiado', 'Sesión de consulta reiniciada.', 'info');
+}
+
+function toggleAdvisorProfile() {
+  const newProfile = currentProfileKey === 'sebastian' ? 'daniel' : 'sebastian';
+  switchProfile(newProfile);
+  renderEloisaView();
+  showToast('Contexto Cambiado', `Ahora asesorando para ${currentData.profile.name}.`, 'info');
 }
