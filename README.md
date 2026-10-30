@@ -39,3 +39,8 @@ API mode is intentionally unavailable: no local API adapter exists, so `refresh 
 - https://nodejs.org/api/sqlite.html
 - https://nodejs.org/api/globals.html#fetch
 - https://developers.google.com/youtube/v3/guides/implementation/feeds
+
+## Content tooling and agent rules
+- [`tools/script-generator/`](tools/script-generator/README.md) and [`tools/teleprompter/`](tools/teleprompter/README.md): script generators and teleprompter builder (ported from `growth-studio`). Index: [`tools/README.md`](tools/README.md).
+- [`docs/agent-rules/`](docs/agent-rules/README.md): agent rules and notes (from `content-agent-generator`).
+- Quality gate: [`monoga-content-verifier`](https://github.com/Monoga2025/monoga-content-verifier) is a separate repo and stays independent.

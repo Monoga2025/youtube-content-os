@@ -7,3 +7,8 @@ token.json
 node_modules/
 __pycache__/
 *.pyc
+
+# generated outputs of tools/*
+prospects_ledger.json
+teleprompters_output/
+youtube_consulting_output/
