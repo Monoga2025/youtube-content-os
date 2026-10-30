@@ -1,5 +1,11 @@
 # Local-first YouTube Content OS
 
+## Screenshots
+
+![Content OS dashboard: weekly recording schedule, B2B production pipeline and recording checklist.](docs/screenshots/dashboard.png)
+
+*Content OS dashboard: weekly recording schedule, B2B production pipeline and recording checklist.*
+
 ## Two independent local profiles
 Daniel and Sebastián have isolated SQLite, workbook, backups, logs, sources, missions, feedback, evidence, revisions, and owner identity below `%LOCALAPPDATA%\Monoga\YouTubeContentOS\profiles\<profile>`. `--profile` accepts only `daniel` or `sebastian`; it never accepts paths. RSS editorial strategy can be shared, but all channel data and operating records are profile-owned.
 
